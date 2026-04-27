@@ -15,7 +15,7 @@ const Footer = () => {
         {/* Logo and Copyright Section - Left Side */}
         <div className="mb-6 md:mb-0">
           <div className="flex flex-col items-center md:items-start">
-            <Link href="/">
+            <Link href="/ai">
               <Image
                 src={logo}
                 alt="FutureBits Logo"
@@ -24,8 +24,9 @@ const Footer = () => {
               />
             </Link>
             <p className="hidden sm:inline-block  sm:max-w-[320px]  lg:max-w-[400px] xl:max-w-full mt-7 text-[14px] lg:text-[16px] font-normal font-poppins text-white/60 sm:px-6 lg:px-0 ">
-              Copyright©2025 All rights reserved <span className="inline-block px-[6px] lg:px-[10px]">|</span> Made with ❤️ & 💪 by
-              Futurebits.
+              Copyright©2025 All rights reserved{" "}
+              <span className="inline-block px-[6px] lg:px-[10px]">|</span>
+              Futurebits builds production-grade AI, design, and software systems.
             </p>
           </div>
         </div>
@@ -79,7 +80,9 @@ const Footer = () => {
         </div>
 
         <p className="inline-block items-center text-center px-6 sm:hidden mt-10 text-[14px] lg:text-[16px] font-normal font-poppins text-white/60 ">
-          Copyright©2025 All rights reserved <span className="finline-block px-[5px]">|</span> Made with ❤️ & 💪 by Futurebits.
+          Copyright©2025 All rights reserved{" "}
+          <span className="finline-block px-[5px]">|</span> Futurebits builds
+          production-grade AI, design, and software systems.
         </p>
       </div>
     </footer>

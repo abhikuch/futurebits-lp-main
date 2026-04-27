@@ -2,14 +2,11 @@
 
 import Footer from "./Footer";
 import Hero from "./Hero";
-import Engaged from "./Engaged";
 import ServicesSection from "./services";
-import BenefitsSection from "./Benefits";
 import ProjectsSection from "./ProjectSection";
 import Feature from "./Feature";
 import AboutMe from "./AboutMe";
 import TestimonialsCarousel from "./TestimonialCarousel";
-import POVStrip from "@/components/shared/POVStrip";
 import EngagementModels from "@/components/shared/EngagementModels";
 import FAQSection from "@/components/shared/FAQSection";
 import ProofBand from "@/components/shared/ProofBand";
@@ -21,22 +18,13 @@ export default function LandingPageAI() {
       <main id="main-content" className="bg-[#000000] ">
         <Hero />
       </main>
-      <ProofBand vertical="ai" ctaHref={CAL.ai} ctaLabel="Book a 30-min AI working call" />
-      <div className="fb-section">
-        <Engaged />
-      </div>
+      <ProofBand vertical="ai" />
       <div className="fb-section">
         <ServicesSection />
-      </div>
-
-      <div className="fb-section">
-        <BenefitsSection />
       </div>
       <div className="fb-section">
         <ProjectsSection />
       </div>
-
-      <POVStrip vertical="ai" accent="#01B0EA" />
 
       <div className="fb-section">
         <TestimonialsCarousel />

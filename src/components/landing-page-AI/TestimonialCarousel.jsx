@@ -1,11 +1,9 @@
 "use client";
 
-import * as React from "react";
 import { useState, useRef } from "react";
 import Image from "next/image";
 import quote from "@/assets/landing-page-AI/quote.svg";
 import star from "@/assets/design/star.svg";
-import BeamButton from "./BeamButton";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -19,11 +17,7 @@ import Avatar1 from "@/assets/avatar_1.webp";
 import Avatar2 from "@/assets/avatar_2.webp";
 import Avatar3 from "@/assets/avatar_3.webp";
 import Avatar4 from "@/assets/avatar_4.webp";
-import Avatar5 from "@/assets/avatar_5.webp";
-import Avatar6 from "@/assets/avatar_6.webp";
-import Avatar7 from "@/assets/avatar_7.webp";
-import Avatar8 from "@/assets/avatar_8.webp";
-import Link from "next/link";
+ 
 
 // Testimonial data - keeping original structure but updating first item to match design
 const testimonials = [
@@ -62,39 +56,6 @@ const testimonials = [
     author: "Vinod Bombale",
     position: "Portfolio Manager - Global Pricing Innovation",
     avatar: Avatar4,
-  },
-  {
-    id: 5,
-    content:
-      "Working with Futurebits has been a seamless experience. Their team is always receptive to our requirements, and quickly addresses any challenges that arise. They are proactive, engaging and focused to coming to a simpler, and more practical solution in all our web design & build requirements. We appreciate their collaborative approach and their dedication to ensuring our website runs smoothly.",
-    rating: 5,
-    author: "Ajay Menon",
-    position: "Senior Lead TechnoServe / Program Director Greenr",
-    avatar: Avatar5,
-  },
-  {
-    id: 6,
-    content:"A team of self-starters through and through, Futurebits not only delivered high-quality work but also uplifted the entire team with their positive energy and collaborative spirit. Their creativity stood out—whether in layout, color schemes, or user flow. Every design choice reflected a deep concern for the end user’s experience. Our discussions were richer and more productive thanks to their thoughtful contributions and genuine enthusiasm.I wholeheartedly recommend Futurebits to any team looking for a talented, user-centered design partner that combines aesthetic sensibility with strategic thinking.",
-    rating: 5,
-    author: "Gopesh Mittal",
-    position: "Co-Founder Alphaquark",
-    avatar: Avatar6,
-  },
-  {
-    id: 7,
-    content:"Futurebits is a detail-oriented design company with a strong understanding of the fintech space and provides valuable inputs to projects as needed.",
-    rating: 5,
-    author: "Pratik Ghosh",
-    position: "Founder Alphaquark",
-    avatar: Avatar7,
-  },
-  {
-    id: 8,
-    content:"I had a fantastic experience working with Futurebits. From the initial consultation to the final launch, their team was professional, creative, and incredibly responsive. They took the time to understand my vision and transformed it into a beautiful, user-friendly website that truly represented my art brand.What impressed me most was their attention to detail, timely delivery, and willingness to go the extra mile to ensure I was completely satisfied.Highly recommended!",
-    rating: 5,
-    author: "Anita Rajwade",
-    position: "Artist",
-    avatar: Avatar8,
   },
 ];
 
@@ -161,72 +122,9 @@ const TestimonialCard = ({ testimonial }) => {
   );
 };
 
-const slides = [
-  {
-    content: (
-      <TestimonialCard
-        key={`${testimonials[0].id}`}
-        testimonial={testimonials[0]}
-      />
-    ),
-  },
-  {
-    content: (
-      <TestimonialCard
-        key={`${testimonials[1].id}`}
-        testimonial={testimonials[1]}
-      />
-    ),
-  },
-  {
-    content: (
-      <TestimonialCard
-        key={`${testimonials[2].id}`}
-        testimonial={testimonials[2]}
-      />
-    ),
-  },
-  {
-    content: (
-      <TestimonialCard
-        key={`${testimonials[3].id}`}
-        testimonial={testimonials[3]}
-      />
-    ),
-  },
-  {
-    content: (
-      <TestimonialCard
-        key={`${testimonials[4].id}`}
-        testimonial={testimonials[4]}
-      />
-    ),
-  },
-  {
-    content: (
-      <TestimonialCard
-        key={`${testimonials[5].id}`}
-        testimonial={testimonials[5]}
-      />
-    ),
-  },
-  {
-    content: (
-      <TestimonialCard
-        key={`${testimonials[6].id}`}
-        testimonial={testimonials[6]}
-      />
-    ),
-  },
-  {
-    content: (
-      <TestimonialCard
-        key={`${testimonials[7].id}`}
-        testimonial={testimonials[7]}
-      />
-    ),
-  },
-];
+const slides = testimonials.map((testimonial) => ({
+  content: <TestimonialCard key={testimonial.id} testimonial={testimonial} />,
+}));
 
 // Main testimonials carousel component
 export default function TestimonialsCarousel() {
@@ -344,19 +242,6 @@ export default function TestimonialsCarousel() {
           className="!z-10 absolute top-0 left-0 w-full h-full"
         />
 
-        {/* CTA Button */}
-        <Link
-          href="https://cal.com/futurebits/ai?duration=30"
-          target="_blank"
-          className=" "
-        >
-          <div className=" mt-[20px] w-full flex justify-center items-center ">
-            <BeamButton
-              title="Book a 30-min AI working call"
-              className="w-[250px] sm:w-[220px]"
-            />
-          </div>
-        </Link>
       </div>
     </section>
   );
