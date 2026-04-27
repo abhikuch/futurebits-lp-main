@@ -1,0 +1,346 @@
+import { CAL } from "@/config/site";
+
+export const SERVICE_CATEGORIES = [
+  {
+    slug: "build",
+    title: "Build",
+    shortTitle: "Development",
+    description:
+      "End-to-end software engineering for SaaS, web apps, internal tooling, and modernization.",
+    ctaLabel: "Book a 30-min build call",
+    ctaHref: CAL.ai,
+  },
+  {
+    slug: "ai-automation",
+    title: "AI & Automation",
+    shortTitle: "AI & Automation",
+    description:
+      "Applied AI systems, agents, retrieval, and workflow automation built for production outcomes.",
+    ctaLabel: "Book a 30-min AI working call",
+    ctaHref: CAL.ai,
+  },
+  {
+    slug: "design",
+    title: "Design",
+    shortTitle: "Design",
+    description:
+      "UI/UX and product design focused on activation, conversion, and retention outcomes.",
+    ctaLabel: "Book a 30-min product call",
+    ctaHref: CAL.design,
+  },
+  {
+    slug: "integrations-platform",
+    title: "Integrations & Platform",
+    shortTitle: "Integrations",
+    description:
+      "Payments, auth, analytics, APIs, and deployment foundations that keep products reliable.",
+    ctaLabel: "Book a 30-min architecture call",
+    ctaHref: CAL.ai,
+  },
+  {
+    slug: "startup-tech-partner",
+    title: "Startup Tech Partner",
+    shortTitle: "Startup Partner",
+    description:
+      "Founder-focused product strategy, architecture, and delivery from idea to launch.",
+    ctaLabel: "Book a 30-min founder call",
+    ctaHref: CAL.ai,
+  },
+];
+
+const RAW_SERVICES = [
+  // Development
+  ["build", "saas-development", "SaaS Development"],
+  ["build", "web-app-development", "Web App Development"],
+  ["build", "custom-software-development", "Custom Software Development"],
+  ["build", "mvp-development", "MVP Development"],
+  ["build", "full-stack-development", "Full Stack Development"],
+  ["build", "frontend-development", "Frontend Development"],
+  ["build", "backend-development", "Backend Development"],
+  ["build", "api-development", "API Development"],
+  ["build", "dashboard-development", "Dashboard Development"],
+  ["build", "admin-panel-development", "Admin Panel Development"],
+  ["build", "client-portal-development", "Client Portal Development"],
+  ["build", "internal-tool-development", "Internal Tool Development"],
+  ["build", "crm-development", "CRM Development"],
+  ["build", "marketplace-development", "Marketplace Development"],
+  ["build", "subscription-platform-development", "Subscription Platform Development"],
+  ["build", "workflow-automation-software", "Workflow Automation Software"],
+  ["build", "reporting-platform-development", "Reporting Platform Development"],
+  ["build", "business-process-automation", "Business Process Automation"],
+  ["build", "no-code-to-code-migration", "No-Code to Code Migration"],
+  ["build", "legacy-software-modernization", "Legacy Software Modernization"],
+  // AI & Automation
+  ["ai-automation", "ai-saas-development", "AI SaaS Development"],
+  ["ai-automation", "ai-product-development", "AI Product Development"],
+  ["ai-automation", "ai-workflow-automation", "AI Workflow Automation"],
+  ["ai-automation", "chatbot-development", "Chatbot Development"],
+  ["ai-automation", "rag-application-development", "RAG Application Development"],
+  ["ai-automation", "ai-document-processing", "AI Document Processing"],
+  ["ai-automation", "ai-search-systems", "AI Search Systems"],
+  ["ai-automation", "ai-recommendation-systems", "AI Recommendation Systems"],
+  ["ai-automation", "ai-agents-development", "AI Agents Development"],
+  ["ai-automation", "llm-integration", "LLM Integration"],
+  ["ai-automation", "openai-api-integration", "OpenAI API Integration"],
+  ["ai-automation", "custom-ai-tools", "Custom AI Tools"],
+  ["ai-automation", "ai-dashboard-development", "AI Dashboard Development"],
+  ["ai-automation", "ai-data-extraction", "AI-Based Data Extraction"],
+  ["ai-automation", "ai-customer-support-tools", "AI Customer Support Tools"],
+  // Design
+  ["design", "ui-ux-design", "UI/UX Design"],
+  ["design", "product-design", "Product Design"],
+  ["design", "web-app-design", "Web App Design"],
+  ["design", "saas-ui-design", "SaaS UI Design"],
+  ["design", "dashboard-ui-design", "Dashboard UI Design"],
+  ["design", "design-systems", "Design Systems"],
+  ["design", "wireframing", "Wireframing"],
+  ["design", "prototyping", "Prototyping"],
+  ["design", "landing-page-design", "Landing Page Design"],
+  ["design", "mobile-app-ui-design", "Mobile App UI Design"],
+  ["design", "user-flow-design", "User Flow Design"],
+  ["design", "figma-design", "Figma Design"],
+  // Integrations
+  ["integrations-platform", "payment-gateway-integration", "Payment Gateway Integration"],
+  ["integrations-platform", "stripe-integration", "Stripe Integration"],
+  ["integrations-platform", "razorpay-integration", "Razorpay Integration"],
+  ["integrations-platform", "subscription-billing-setup", "Subscription Billing Setup"],
+  ["integrations-platform", "crm-integration", "CRM Integration"],
+  ["integrations-platform", "whatsapp-api-integration", "WhatsApp API Integration"],
+  ["integrations-platform", "email-automation-integration", "Email Automation Integration"],
+  ["integrations-platform", "google-analytics-setup", "Google Analytics Setup"],
+  ["integrations-platform", "cms-integration", "CMS Integration"],
+  ["integrations-platform", "third-party-api-integration", "Third-Party API Integration"],
+  ["integrations-platform", "authentication-setup", "Authentication Setup"],
+  ["integrations-platform", "role-based-access-control", "Role-Based Access Control"],
+  ["integrations-platform", "database-setup", "Database Setup"],
+  ["integrations-platform", "cloud-deployment", "Cloud Deployment"],
+  // Startup Focus
+  ["startup-tech-partner", "startup-mvp", "Startup MVP"],
+  ["startup-tech-partner", "founder-tech-partner", "Founder Tech Partner"],
+  ["startup-tech-partner", "product-strategy", "Product Strategy"],
+  ["startup-tech-partner", "product-consulting", "Product Consulting"],
+  ["startup-tech-partner", "tech-consulting", "Tech Consulting"],
+  ["startup-tech-partner", "saas-launch-partner", "SaaS Launch Partner"],
+  ["startup-tech-partner", "prototype-to-product", "Prototype to Product"],
+  ["startup-tech-partner", "idea-to-mvp", "Idea to MVP"],
+  ["startup-tech-partner", "product-roadmap-planning", "Product Roadmap Planning"],
+  ["startup-tech-partner", "software-architecture-planning", "Software Architecture Planning"],
+];
+
+export const PRIORITY_SERVICE_SLUGS = new Set([
+  "mvp-development",
+  "saas-development",
+  "ai-agents-development",
+  "rag-application-development",
+  "llm-integration",
+  "openai-api-integration",
+  "chatbot-development",
+  "workflow-automation-software",
+  "dashboard-development",
+  "internal-tool-development",
+  "stripe-integration",
+  "subscription-billing-setup",
+  "ui-ux-design",
+  "product-design",
+  "founder-tech-partner",
+]);
+
+const PRIORITY_COPY = {
+  "mvp-development": {
+    hero:
+      "MVPs built to validate fast and scale cleanly.",
+    subhead:
+      "We define the smallest shippable scope, build it end-to-end, and launch with instrumentation from day one.",
+    metaTitle: "MVP Development Services | Launch in Weeks, Not Months",
+    metaDescription:
+      "Build and launch a focused MVP with a senior full-stack pod. Validate quickly, ship reliably, and avoid overbuilding.",
+  },
+  "saas-development": {
+    hero: "SaaS products engineered for growth and reliability.",
+    subhead:
+      "From first release to scale-up, we ship product increments that improve business metrics.",
+    metaTitle: "SaaS Development Services | Full-Stack Product Delivery",
+    metaDescription:
+      "End-to-end SaaS development for startups and growth teams — architecture, frontend, backend, billing, and deployment.",
+  },
+  "ai-agents-development": {
+    hero: "AI agents that do real work, not demos.",
+    subhead:
+      "We design and deploy production-ready agents for ops, support, and internal workflows.",
+    metaTitle: "AI Agents Development | Workflow and Task Automation",
+    metaDescription:
+      "Build AI agents that execute real workflows with guardrails, observability, and measurable outcomes.",
+  },
+  "rag-application-development": {
+    hero: "RAG systems with grounded answers and production controls.",
+    subhead:
+      "We build retrieval pipelines, chunking strategies, and eval loops that keep quality measurable.",
+    metaTitle: "RAG Application Development | Retrieval-Augmented AI Systems",
+    metaDescription:
+      "Build RAG systems with high-quality retrieval, evaluation pipelines, and enterprise-ready safety controls.",
+  },
+  "llm-integration": {
+    hero: "LLM integrations that improve product outcomes.",
+    subhead:
+      "Add generation, summarization, classification, and assistants to your product with clear ROI.",
+    metaTitle: "LLM Integration Services | Add AI to Existing Products",
+    metaDescription:
+      "Integrate LLM capabilities into your SaaS, app, or workflow with secure architecture and performance monitoring.",
+  },
+  "openai-api-integration": {
+    hero: "OpenAI API integrations built for production.",
+    subhead:
+      "We implement, optimize, and monitor OpenAI-powered features inside your real product stack.",
+    metaTitle: "OpenAI API Integration Services | Production Implementation",
+    metaDescription:
+      "Production-grade OpenAI API integration with prompt architecture, fallback handling, and analytics.",
+  },
+  "chatbot-development": {
+    hero: "Chatbots that resolve issues, not frustrate users.",
+    subhead:
+      "We design support and assistant bots that are accurate, fast, and tied to your workflows.",
+    metaTitle: "Chatbot Development Services | AI Support and Assistant Bots",
+    metaDescription:
+      "Build chatbots for customer support and internal teams with context-awareness, guardrails, and escalation paths.",
+  },
+  "workflow-automation-software": {
+    hero: "Workflow automation software that gives teams hours back.",
+    subhead:
+      "We map bottlenecks, automate high-friction steps, and track measurable operational gains.",
+    metaTitle:
+      "Workflow Automation Software Development | Reduce Manual Ops",
+    metaDescription:
+      "Build automation software to remove repetitive tasks, reduce errors, and improve operational throughput.",
+  },
+  "dashboard-development": {
+    hero: "Dashboards that drive decisions, not vanity reporting.",
+    subhead:
+      "We build fast, role-aware dashboards with meaningful metrics and reliable data pipelines.",
+    metaTitle:
+      "Dashboard Development Services | Product and Analytics Dashboards",
+    metaDescription:
+      "Build dashboards for product, operations, and leadership with actionable metrics and clean information architecture.",
+  },
+  "internal-tool-development": {
+    hero: "Internal tools tailored to your operating model.",
+    subhead:
+      "We turn spreadsheets and ad-hoc workflows into secure, scalable internal systems.",
+    metaTitle:
+      "Internal Tool Development Services | Custom Ops Platforms",
+    metaDescription:
+      "Build internal tools for operations, support, and finance to reduce manual processes and increase team velocity.",
+  },
+  "stripe-integration": {
+    hero: "Stripe integrations that keep revenue flowing.",
+    subhead:
+      "We implement checkout, subscriptions, invoicing, and billing logic with production-grade reliability.",
+    metaTitle:
+      "Stripe Integration Services | Payments and Billing Implementation",
+    metaDescription:
+      "Integrate Stripe for payments, subscriptions, webhooks, and billing workflows with robust error handling.",
+  },
+  "subscription-billing-setup": {
+    hero: "Subscription billing setup for predictable recurring revenue.",
+    subhead:
+      "We build billing architecture that supports upgrades, proration, retries, and finance visibility.",
+    metaTitle:
+      "Subscription Billing Setup | SaaS Recurring Revenue Systems",
+    metaDescription:
+      "Set up recurring billing, plans, trials, upgrades, and dunning workflows for SaaS products.",
+  },
+  "ui-ux-design": {
+    hero: "UI/UX design that improves product performance.",
+    subhead:
+      "We redesign critical user flows to remove friction and move activation and conversion metrics.",
+    metaTitle:
+      "UI/UX Design Services | Conversion-Focused Product Design",
+    metaDescription:
+      "UI/UX design for SaaS and web apps focused on usability, conversion, and retention outcomes.",
+  },
+  "product-design": {
+    hero: "Product design from problem framing to shipped interface.",
+    subhead:
+      "We align product goals, user needs, and engineering constraints into execution-ready design.",
+    metaTitle:
+      "Product Design Services | End-to-End UX and Interface Design",
+    metaDescription:
+      "Product design from strategy and user flows to high-fidelity UI and implementation-ready assets.",
+  },
+  "founder-tech-partner": {
+    hero: "A senior tech partner for founders building from zero.",
+    subhead:
+      "We help you prioritize, build, and launch with clarity — without wasting cycles on low-leverage work.",
+    metaTitle:
+      "Founder Tech Partner Services | Idea to MVP to Scale",
+    metaDescription:
+      "Technical partner for founders across product strategy, MVP scope, architecture, and launch execution.",
+  },
+};
+
+export const SERVICES = RAW_SERVICES.map(([categorySlug, slug, title]) => {
+  const category = SERVICE_CATEGORIES.find((item) => item.slug === categorySlug);
+  const copy = PRIORITY_COPY[slug];
+  return {
+    categorySlug,
+    categoryTitle: category?.title ?? "Services",
+    slug,
+    title,
+    path: `/services/${categorySlug}/${slug}`,
+    shortDescription:
+      copy?.metaDescription ??
+      `${title} delivered by a senior Futurebits pod with clear scope, measurable outcomes, and production-grade execution.`,
+    hero:
+      copy?.hero ??
+      `${title} delivered with outcome-first execution.`,
+    subhead:
+      copy?.subhead ??
+      "We scope, build, and ship this service with tight execution loops and direct senior ownership.",
+    metaTitle: copy?.metaTitle ?? `${title} Services | Futurebits`,
+    metaDescription:
+      copy?.metaDescription ??
+      `${title} by Futurebits. Senior pod delivery with practical timelines, measurable outputs, and clear communication.`,
+    isPriority: PRIORITY_SERVICE_SLUGS.has(slug),
+  };
+});
+
+export const SERVICES_BY_CATEGORY = SERVICE_CATEGORIES.map((category) => ({
+  ...category,
+  services: SERVICES.filter((service) => service.categorySlug === category.slug),
+}));
+
+export function getCategoryBySlug(slug) {
+  return SERVICE_CATEGORIES.find((item) => item.slug === slug);
+}
+
+export function getServiceBySlugs(categorySlug, serviceSlug) {
+  return SERVICES.find(
+    (item) => item.categorySlug === categorySlug && item.slug === serviceSlug
+  );
+}
+
+export function getRelatedServices(categorySlug, serviceSlug, limit = 6) {
+  return SERVICES.filter(
+    (item) => item.categorySlug === categorySlug && item.slug !== serviceSlug
+  ).slice(0, limit);
+}
+
+export function getServiceFaq(service) {
+  return [
+    {
+      q: `What outcomes should we expect from ${service.title.toLowerCase()}?`,
+      a: `We align ${service.title.toLowerCase()} work to measurable outcomes such as cycle-time reduction, quality improvements, and conversion or retention gains depending on your use case.`,
+    },
+    {
+      q: "How long does delivery usually take?",
+      a: "Focused scopes usually land in 2-4 weeks. Broader implementations run 8-12 week pod engagements with weekly demos and clear milestones.",
+    },
+    {
+      q: "Can you work with our existing team and stack?",
+      a: "Yes. We typically work inside your stack and repo, follow your review process, and leave your team with clean documentation and handoff clarity.",
+    },
+    {
+      q: "How do you manage risk and quality?",
+      a: "We define acceptance criteria up front, ship in small increments, and track quality with explicit checks, observability, and rollback-safe delivery habits.",
+    },
+  ];
+}
