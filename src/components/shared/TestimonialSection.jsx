@@ -39,12 +39,16 @@ const IMPACT_RULES = [
 ];
 
 const CARD_ANIMATION = {
-  hidden: { opacity: 0, y: 18, scale: 0.985 },
+  hidden: { opacity: 0, y: 16, scale: 0.99 },
   show: (index) => ({
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.42, delay: Math.min(index * 0.05, 0.3), ease: "easeOut" },
+    transition: {
+      duration: 0.42,
+      delay: Math.min(index * 0.045, 0.26),
+      ease: "easeOut",
+    },
   }),
 };
 
@@ -89,43 +93,57 @@ function getImpactScore(item) {
   return score;
 }
 
-function getCardSpec(item, index) {
-  const length = (item.content || "").length;
-  if (index === 0) return { span: "md:col-span-8", clamp: "line-clamp-4", featured: true };
-  if (index === 1) return { span: "md:col-span-4", clamp: "line-clamp-4", featured: true };
-
-  if (item.impact >= 9 && length > 190) {
-    return { span: "md:col-span-6", clamp: "line-clamp-4", featured: false };
-  }
-  if (length <= 150) {
-    return { span: "md:col-span-3", clamp: "line-clamp-3", featured: false };
-  }
-  if (length > 230) {
-    return { span: "md:col-span-6", clamp: "line-clamp-4", featured: false };
-  }
-  return { span: "md:col-span-4", clamp: "line-clamp-4", featured: false };
+function sequenceTestimonials(items) {
+  return [...items]
+    .map((item) => ({
+      ...item,
+      impact: getImpactScore(item),
+      length: (item.content || "").length,
+    }))
+    .sort((a, b) => {
+      if (b.impact !== a.impact) return b.impact - a.impact;
+      return Math.abs(185 - a.length) - Math.abs(185 - b.length);
+    });
 }
 
 function BentoCard({
   item,
   themeClass,
-  className = "",
-  featured = false,
-  contentClampClass = "line-clamp-4",
+  className,
+  variant = "compact",
+  animationIndex = 0,
 }) {
+  const isHero = variant === "hero";
+  const isSupport = variant === "support";
+  const contentClampClass = isHero
+    ? "line-clamp-5"
+    : isSupport
+      ? "line-clamp-4"
+      : "line-clamp-3";
+
+  const shellClass = isHero
+    ? "min-h-[320px] sm:min-h-[340px] p-6"
+    : isSupport
+      ? "min-h-[260px] sm:min-h-[280px] p-5"
+      : "min-h-[220px] sm:min-h-[240px] p-5";
+
+  const copyClass = isHero
+    ? "text-[15px] sm:text-base leading-7 sm:leading-8"
+    : isSupport
+      ? "text-[14px] sm:text-[15px] leading-6 sm:leading-7"
+      : "text-[14px] leading-6";
+
   return (
     <motion.article
       variants={CARD_ANIMATION}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
-      custom={item.animationIndex ?? 0}
+      custom={animationIndex}
       whileHover={{ y: -4 }}
-      className={`flex h-full flex-col justify-between rounded-[24px] border ${featured ? "min-h-[290px] sm:min-h-[310px]" : "min-h-[230px] sm:min-h-[250px]"} p-5 ${themeClass} ${className}`}
+      className={`flex h-full flex-col justify-between rounded-[24px] border ${shellClass} ${themeClass} ${className}`}
     >
-      <p
-        className={`${featured ? "text-[15px] sm:text-base leading-7 sm:leading-8" : "text-[14px] sm:text-[15px] leading-6 sm:leading-7"} text-white/85 ${contentClampClass}`}
-      >
+      <p className={`${copyClass} text-white/85 ${contentClampClass}`}>
         {item.content}
       </p>
       <div className="mt-4 flex items-end justify-between gap-3">
@@ -141,19 +159,10 @@ function BentoCard({
 
 export default function TestimonialSection({ theme = "ai", cta }) {
   const currentTheme = THEME[theme] ?? THEME.ai;
-  const sequencedTestimonials = [...TESTIMONIALS]
-    .map((item) => ({
-      ...item,
-      impact: getImpactScore(item),
-      length: (item.content || "").length,
-    }))
-    .sort((a, b) => {
-      if (b.impact !== a.impact) return b.impact - a.impact;
-      const aDistance = Math.abs(190 - a.length);
-      const bDistance = Math.abs(190 - b.length);
-      return aDistance - bDistance;
-    })
-    .map((item, index) => ({ ...item, animationIndex: index }));
+  const sequenced = sequenceTestimonials(TESTIMONIALS);
+  const hero = sequenced[0];
+  const support = sequenced.slice(1, 4);
+  const compact = sequenced.slice(4);
 
   return (
     <section
@@ -169,21 +178,47 @@ export default function TestimonialSection({ theme = "ai", cta }) {
           <p className={`text-center ${currentTheme.kickerClass}`}>Testimonials</p>
           <h2 className="fb-h2 mt-3 text-center">What people say about us</h2>
 
-          <div className="mt-10 grid grid-cols-1 gap-3 md:auto-rows-fr md:grid-cols-12">
-            {sequencedTestimonials.map((item, index) => {
-              const spec = getCardSpec(item, index);
-              return (
+          {hero ? (
+            <div className="mt-10">
+              <BentoCard
+                item={hero}
+                themeClass={currentTheme.cardClass}
+                className="w-full"
+                variant="hero"
+                animationIndex={0}
+              />
+            </div>
+          ) : null}
+
+          {support.length ? (
+            <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-12 md:auto-rows-fr">
+              {support.map((item, index) => (
                 <BentoCard
                   key={item.id}
                   item={item}
                   themeClass={currentTheme.cardClass}
-                  className={spec.span}
-                  featured={spec.featured}
-                  contentClampClass={spec.clamp}
+                  className="md:col-span-4"
+                  variant="support"
+                  animationIndex={index + 1}
                 />
-              );
-            })}
-          </div>
+              ))}
+            </div>
+          ) : null}
+
+          {compact.length ? (
+            <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-12 md:auto-rows-fr">
+              {compact.map((item, index) => (
+                <BentoCard
+                  key={item.id}
+                  item={item}
+                  themeClass={currentTheme.cardClass}
+                  className="md:col-span-3"
+                  variant="compact"
+                  animationIndex={index + 4}
+                />
+              ))}
+            </div>
+          ) : null}
 
           {cta ? <div className="mt-8 flex justify-center">{cta}</div> : null}
         </div>
