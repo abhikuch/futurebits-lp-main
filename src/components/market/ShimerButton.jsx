@@ -4,7 +4,7 @@ import MarketingButton from "@/components/ui/marketing-button";
 
 const ShimerButton = ({ 
   size = "lg", 
-  children = "Book a 30-min call", 
+  children = "Book a call", 
   variant = "gradient",
   className,
   ...props

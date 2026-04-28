@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 import ContactForm from "./ContactForm";
+import SiteFooter from "@/components/shared/SiteFooter";
+import logo from "@/assets/logo.svg";
 import { CAL, COMPANY, SOCIAL } from "@/config/site";
 
 const promises = [
@@ -67,7 +69,7 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="mt-3 inline-flex h-11 items-center justify-center rounded-full border border-white/30 px-6 text-sm font-medium text-white transition hover:bg-white/10"
             >
-              Book a 30-min slot
+              Book a call
             </Link>
             <p className="mt-4 text-xs text-white/50">
               Or reach us on{" "}
@@ -103,6 +105,7 @@ export default function ContactPage() {
           <ContactForm />
         </div>
       </section>
+      <SiteFooter logo={logo} backgroundClassName="bg-[#060618]" />
     </main>
   );
 }

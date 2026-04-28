@@ -138,13 +138,11 @@ const SupportedBroker = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8 pt-8 sm:pt-16">
+        <div className="grid auto-rows-fr grid-cols-1 gap-12 pt-8 sm:grid-cols-2 sm:gap-8 sm:pt-16 lg:grid-cols-4">
           {categories.map((category, index) => (
             <div
               key={index}
-              className={`flex flex-col items-center sm:items-start mx-auto ${
-                index === 1 ? "mt-[-4rem]" : index === 2 ? "mt-[-3rem]" : ""
-              } sm:mt-0 mb-8 sm:mb-0`}
+              className="mx-auto mb-8 flex h-full flex-col items-center sm:mb-0 sm:items-start"
             >
               {/* Using dynamic class width for non-xl screens, and style for xl screens */}
               <div
@@ -169,9 +167,7 @@ const SupportedBroker = () => {
                   />
                 </div>
 
-                <h3 className={`text-white text-xl font-bold mb-3 sm:mb-4 text-center sm:text-left ${
-                  index === 1 ? "mt-[-3rem] sm:mt-0" : index === 2 ? "mt-[-2rem] sm:mt-0" : ""
-                }`}>
+                <h3 className="mb-3 text-center text-xl font-bold text-white sm:mb-4 sm:text-left">
                   {category.title}
                 </h3>
 
@@ -195,7 +191,7 @@ const SupportedBroker = () => {
             <div className="flex justify-center items-center">
               <div className="relative">
                 <ShimerButton size="lg" href="/book-call" className="text-[20px]">
-                  Book a 30-min markets call
+                  Book a call
                 </ShimerButton>
               </div>
             </div>

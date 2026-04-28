@@ -2,6 +2,7 @@ import { ROUTES, SITE_URL } from "@/config/site";
 import { SERVICE_CATEGORIES, SERVICES } from "@/content/services";
 
 const PRIORITY = {
+  home: 1.0,
   ai: 1.0,
   markets: 0.9,
   design: 0.9,
@@ -12,6 +13,7 @@ const PRIORITY = {
 };
 
 const CHANGE_FREQ = {
+  home: "weekly",
   ai: "weekly",
   markets: "weekly",
   design: "weekly",

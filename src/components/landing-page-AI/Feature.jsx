@@ -42,7 +42,7 @@ export default function Feature() {
             className=" "
           >
             <BeamButton
-              title="Book a 30-min AI working call"
+              title="Book a call"
               className="w-[250px] sm:w-[220px]"
             />
           </Link>

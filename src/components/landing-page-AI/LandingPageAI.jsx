@@ -1,16 +1,33 @@
 "use client";
 
-import Footer from "./Footer";
+import dynamic from "next/dynamic";
 import Hero from "./Hero";
-import ServicesSection from "./services";
-import ProjectsSection from "./ProjectSection";
-import Feature from "./Feature";
-import AboutMe from "./AboutMe";
-import TestimonialsCarousel from "./TestimonialCarousel";
-import EngagementModels from "@/components/shared/EngagementModels";
 import FAQSection from "@/components/shared/FAQSection";
 import ProofBand from "@/components/shared/ProofBand";
 import { CAL } from "@/config/site";
+
+const ServicesSection = dynamic(() => import("./services"), {
+  loading: () => <div className="min-h-[28rem] w-full" aria-hidden />,
+});
+const ProjectsSection = dynamic(() => import("./ProjectSection"), {
+  loading: () => <div className="min-h-[24rem] w-full" aria-hidden />,
+});
+const TestimonialsCarousel = dynamic(() => import("./TestimonialCarousel"), {
+  loading: () => <div className="min-h-[20rem] w-full" aria-hidden />,
+});
+const EngagementModels = dynamic(
+  () => import("@/components/shared/EngagementModels"),
+  { loading: () => <div className="min-h-[18rem] w-full" aria-hidden /> }
+);
+const AboutMe = dynamic(() => import("./AboutMe"), {
+  loading: () => <div className="min-h-[16rem] w-full" aria-hidden />,
+});
+const Feature = dynamic(() => import("./Feature"), {
+  loading: () => <div className="min-h-[24rem] w-full" aria-hidden />,
+});
+const Footer = dynamic(() => import("./Footer"), {
+  loading: () => <div className="min-h-[12rem] w-full" aria-hidden />,
+});
 
 export default function LandingPageAI() {
   return (
@@ -30,7 +47,7 @@ export default function LandingPageAI() {
         <TestimonialsCarousel />
       </div>
 
-      <EngagementModels ctaHref={CAL.ai} ctaLabel="Book a 30-min AI working call" />
+      <EngagementModels ctaHref={CAL.ai} ctaLabel="Book a call" />
 
       <FAQSection vertical="ai" />
 

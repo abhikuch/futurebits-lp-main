@@ -30,11 +30,11 @@ export default function EngagementModels({
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 lg:grid-cols-3">
           {ENGAGEMENT_MODELS.map((model) => (
             <article
               key={model.name}
-              className="group relative flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition duration-300 ease-fb-ease-out hover:border-white/30 hover:bg-white/[0.06]"
+              className="group relative flex flex-col rounded-xl border border-white/10 bg-white/[0.02] p-6 transition duration-300 ease-fb-ease-out hover:border-white/20 hover:bg-white/[0.05]"
             >
               <header>
                 <h3 className="font-montserrat text-2xl font-semibold text-white">
@@ -47,7 +47,7 @@ export default function EngagementModels({
               <p className="mt-4 text-sm leading-relaxed text-white/70">
                 {model.bestFor}
               </p>
-              <ul className="mt-6 space-y-2 text-sm text-white/80">
+              <ul className="mt-6 space-y-2 text-sm text-white/75">
                 {model.deliverables.map((d, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <span aria-hidden="true" className="mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full bg-white/40" />
@@ -59,7 +59,7 @@ export default function EngagementModels({
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col items-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <p className="text-sm text-white/60">
             Not sure which fits? Most teams start with a Sprint and
             graduate.

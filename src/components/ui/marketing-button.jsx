@@ -31,12 +31,12 @@ export default function MarketingButton({
   onClick,
   ...props
 }) {
-  const content = children ?? title ?? "Book a 30-min call";
+  const content = children ?? title ?? "Book a call";
   const toneStyle = toneStyles[tone] ?? toneStyles.ai;
   const sizeStyle = sizeStyles[size] ?? sizeStyles.lg;
   const label =
     analyticsLabel ??
-    (typeof content === "string" ? content : typeof title === "string" ? title : "Book a 30-min call");
+    (typeof content === "string" ? content : typeof title === "string" ? title : "Book a call");
 
   const handleClick = (event) => {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {

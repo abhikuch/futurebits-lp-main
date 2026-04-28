@@ -3,7 +3,7 @@
 import MarketingButton from "@/components/ui/marketing-button";
 
 const BeamButton = ({
-  title = "Book a 30-min AI working call",
+  title = "Book a call",
   className = "w-full sm:w-[240px]",
   children,
   ...props

@@ -16,6 +16,7 @@ import stars from "@/assets/landing-page-AI/stars.webp";
 import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 import Link from "next/link";
 import { useRef } from "react";
+import { SERVICE_CATEGORIES, getServiceBySlugs } from "@/content/services";
 
 const services = [
   {
@@ -41,9 +42,24 @@ const services = [
   { category: "Additional", subcategories: ["Wireframing & Prototyping"] },
 ];
 
+const DESIGN_SERVICE_LINKS = {
+  "UX Design": "ui-ux-design",
+  "App Design": "mobile-app-ui-design",
+  "UI Design": "ui-ux-design",
+  "Web Design": "web-app-design",
+  "Landing Page": "landing-page-design",
+  Dashboard: "dashboard-ui-design",
+  "Wireframing & Prototyping": "wireframing",
+};
+
 const Card = ({ service, className = "" }) => {
+  const serviceSlug = DESIGN_SERVICE_LINKS[service];
+  const href = serviceSlug
+    ? getServiceBySlugs("design", serviceSlug)?.path || "/services/design"
+    : "/services/design";
   return (
-    <div
+    <Link
+      href={href}
       className={`
     ${className} 
     font-medium
@@ -81,7 +97,7 @@ const Card = ({ service, className = "" }) => {
         }}
       />
       {service}
-    </div>
+    </Link>
   );
 };
 
@@ -89,7 +105,10 @@ const Offering = () => {
   const sectionRef = useRef(null);
 
   return (
-    <div className="relative  w-full  lg:px-8 xl:px-0 bg-[#08081E] sm:mb-0 mb-[-60px] mt-[-120px] sm:mt-[-20%] lg:mt-[-5%]">
+    <div
+      id="design-services"
+      className="relative  w-full  lg:px-8 xl:px-0 bg-[#08081E] sm:mb-0 mb-[-60px] mt-[-120px] sm:mt-[-20%] lg:mt-[-5%]"
+    >
       
       
       <div
@@ -182,6 +201,23 @@ const Offering = () => {
                 <Image src={stars} className="w-[40px] h-[40px]" alt="star" />
               </span>
             </p>
+            <div className="flex flex-wrap items-center gap-2">
+              {[
+                SERVICE_CATEGORIES.find((c) => c.slug === "design"),
+                SERVICE_CATEGORIES.find((c) => c.slug === "build"),
+                SERVICE_CATEGORIES.find((c) => c.slug === "startup-tech-partner"),
+              ]
+                .filter(Boolean)
+                .map((category) => (
+                  <Link
+                    key={category.slug}
+                    href={`/services/${category.slug}`}
+                    className="rounded-full border border-white/20 bg-white/[0.03] px-4 py-2 text-sm text-white/80 transition hover:bg-white/[0.08] hover:text-white"
+                  >
+                    {category.title}
+                  </Link>
+                ))}
+            </div>
 
             <div className="hidden lg:flex h-[100px] w-[100px] bg-[#01B0EA] rounded-full blur-[80px]  absolute top-[70px] left-[120px] z-0" />
 

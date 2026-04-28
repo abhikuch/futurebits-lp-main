@@ -29,11 +29,11 @@ export default function FAQSection({ vertical, contactHref = "/contact" }) {
           The questions everyone asks (and our actual answers).
         </Heading>
 
-        <div className="mt-10 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/[0.03]">
+        <div className="mt-10 divide-y divide-white/10 rounded-xl border border-white/10 bg-white/[0.02]">
           {items.map((item, idx) => (
             <details
               key={idx}
-              className="group p-6 transition-colors open:bg-white/[0.04]"
+              className="group p-6 transition-colors open:bg-white/[0.05]"
             >
               <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-montserrat text-base font-semibold text-white sm:text-lg">
                 <span>{item.q}</span>

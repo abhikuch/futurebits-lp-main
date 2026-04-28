@@ -17,6 +17,7 @@ export const COMPANY = {
   legalName: "Futurebits Technologies",
   tagline: "Design, AI, and automation — built by one team.",
   email: "admin@futurebits.tech",
+  phone: "+971585165671",
   founderName: "Futurebits Team",
   founded: "2023",
 };
@@ -48,11 +49,29 @@ export const ASSETS = {
   ogDesign: `${BLOB_BASE}/Futurebits_Design-E1Fc22OUTeWKEw5cZUtEvf281rlfyq.png`,
 };
 
+export const DEFAULT_OG_IMAGE = ASSETS.ogAi;
+
 /**
  * Per-route metadata. Each entry is consumed by the route's `generateMetadata`.
  * `path` is the route path; `cta` is the canonical Cal.com link for that route.
  */
 export const ROUTES = {
+  home: {
+    path: "/",
+    cta: CAL.ai,
+    title: "Futurebits | Design, AI, and Automation",
+    description:
+      "Futurebits is a senior product pod across AI systems, trading infrastructure, and product design with frontend delivery.",
+    keywords: [
+      "Futurebits",
+      "AI automation agency",
+      "product design and development",
+      "trading infrastructure",
+      "software development partner",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits",
+  },
   ai: {
     path: "/ai",
     cta: CAL.ai,
@@ -157,7 +176,6 @@ export const NAV_ITEMS = [
   { label: "AI", url: ROUTES.ai.path },
   { label: "Markets", url: ROUTES.markets.path },
   { label: "Design", url: ROUTES.design.path },
-  { label: "Services", url: ROUTES.services.path },
   { label: "About", url: ROUTES.about.path },
   { label: "Contact", url: ROUTES.contact.path },
 ];
@@ -200,6 +218,7 @@ export function buildRouteMetadata(routeKey) {
     twitter: {
       card: "summary_large_image",
       site: SOCIAL.twitterHandle,
+      creator: SOCIAL.twitterHandle,
       title: route.title,
       description: route.description,
       images: [route.ogImage],

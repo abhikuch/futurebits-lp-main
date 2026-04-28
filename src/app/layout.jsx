@@ -7,7 +7,9 @@ import JsonLd, {
 } from "@/components/seo/JsonLd";
 import {
   ASSETS,
-  buildRouteMetadata,
+  DEFAULT_OG_IMAGE,
+  COMPANY,
+  SOCIAL,
   SITE_URL,
 } from "@/config/site";
 
@@ -30,8 +32,49 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  ...buildRouteMetadata("ai"),
+  title: {
+    default: "Futurebits | Design, AI, and Automation",
+    template: "%s",
+  },
+  description:
+    "Futurebits is a senior product pod across AI systems, trading infrastructure, and product design with frontend delivery.",
+  keywords: [
+    "AI automation",
+    "product design and development",
+    "trading infrastructure",
+    "software development",
+    "Futurebits",
+  ],
   metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: SITE_URL,
+  },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: COMPANY.name,
+    title: "Futurebits | Design, AI, and Automation",
+    description:
+      "Futurebits is a senior product pod across AI systems, trading infrastructure, and product design with frontend delivery.",
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "Futurebits",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: SOCIAL.twitterHandle,
+    creator: SOCIAL.twitterHandle,
+    title: "Futurebits | Design, AI, and Automation",
+    description:
+      "Futurebits is a senior product pod across AI systems, trading infrastructure, and product design with frontend delivery.",
+    images: [DEFAULT_OG_IMAGE],
+  },
   icons: {
     icon: ASSETS.favicon,
   },

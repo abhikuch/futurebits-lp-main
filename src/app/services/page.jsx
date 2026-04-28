@@ -4,11 +4,14 @@ import JsonLd, {
   breadcrumbJsonLd,
   customServiceJsonLd,
 } from "@/components/seo/JsonLd";
+import SiteFooter from "@/components/shared/SiteFooter";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Section from "@/components/ui/section";
+import logo from "@/assets/logo.svg";
 import { COMPANY, SITE_URL } from "@/config/site";
 import { SERVICES_BY_CATEGORY } from "@/content/services";
+import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
 
 const engagementModels = [
   {
@@ -38,7 +41,10 @@ export default function ServicesHubPage() {
   });
 
   return (
-    <main id="main-content" className="min-h-screen bg-[#060618] text-white">
+    <main
+      id="main-content"
+      className={`min-h-screen ${SERVICE_HUB_THEME.pageBgClass} text-white`}
+    >
       <JsonLd data={[breadcrumb, service]} />
 
       <Section className="pb-12 pt-32 sm:pt-36">
@@ -99,7 +105,7 @@ export default function ServicesHubPage() {
 
       <Section className="py-12">
         <Container>
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#2E2688]/35 to-[#01B0EA]/10 p-8 text-center">
+          <div className={SERVICE_HUB_THEME.ctaPanelClass}>
             <Heading as="h2" className="fb-h2">
               Need help choosing the right service path?
             </Heading>
@@ -116,6 +122,7 @@ export default function ServicesHubPage() {
           </div>
         </Container>
       </Section>
+      <SiteFooter logo={logo} backgroundClassName={SERVICE_HUB_THEME.footerBgClass} />
     </main>
   );
 }

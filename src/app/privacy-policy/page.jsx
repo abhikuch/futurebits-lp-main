@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import SiteFooter from "@/components/shared/SiteFooter";
+import logo from "@/assets/logo.svg";
 import { CAL, COMPANY, SITE_URL } from "@/config/site";
 
 function PolicyCard({ title, children }) {
@@ -137,10 +139,11 @@ export default function PrivacyPolicyPage() {
             rel="noopener noreferrer"
             className="mt-6 inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-medium transition hover:bg-blue-500"
           >
-            Book a 30-min call
+            Book a call
           </Link>
         </div>
       </section>
+      <SiteFooter logo={logo} backgroundClassName="bg-black" />
     </main>
   );
 }

@@ -10,7 +10,7 @@ import { ROUTES } from "@/config/site";
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-[75vh] sm:h-[600px] lg:h-[600px] xl:h-screen 2xl:h-full bg-[#080808]">
+    <section className="relative flex min-h-screen w-full items-center bg-[#080808]">
       {/* Background with image and gradient overlay */}
       <motion.div
         className="absolute inset-0 z-10"
@@ -18,7 +18,7 @@ const Hero = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        <div className="absolute z-10 w-full h-[75vh] sm:h-[600px] lg:h-[600px] xl:h-[800px]">
+        <div className="absolute z-10 h-full w-full">
           <WavyBackground />
         </div>
 
@@ -33,10 +33,10 @@ const Hero = () => {
       </motion.div>
 
       {/* Content container */}
-      <div className="max-w-[1180px] w-full flex flex-col z-20 mx-auto py-0  md:py-24  px-0 relative">
+      <div className="relative z-20 mx-auto flex w-full max-w-[1180px] flex-col px-4 pb-12 pt-28 sm:px-8 sm:pt-32 lg:pt-36">
         {/* Headline */}
         <motion.div
-          className="mt-28"
+          className="mt-0"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
@@ -53,7 +53,7 @@ const Hero = () => {
 
         {/* Subtitle */}
         <motion.div
-          className="px-4 sm:px-0 mt-[20px] sm:mt-[20px] lg:mt-5 xl:max-w-[750px] max-w-[700px] w-full mx-auto text-center"
+          className="mx-auto mt-5 w-full max-w-[750px] px-1 text-center"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9 }}
@@ -67,29 +67,29 @@ const Hero = () => {
 
         {/* CTA Buttons */}
         <motion.div
-          className="flex lg:items-center lg:justify-center flex-col sm:flex-row gap-4 sm:gap-8 sm:mt-14 sm:px-0 px-5"
+          className="mt-10 flex flex-col gap-4 px-1 sm:flex-row sm:justify-center sm:gap-6 sm:px-0"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1 }}
         >
-          <div className="flex items-center justify-center w-full gap-4">
+          <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row">
             <Link
               href={ROUTES.contact.path}
-              className="mt-[70px] sm:mt-[20px] lg:mt-0 w-full sm:w-[220px] fb-cta-secondary text-[16px] sm:text-[18px]"
+              className="w-full sm:w-[220px] fb-cta-secondary text-base sm:text-lg"
             >
               Talk to the team
             </Link>
             <Link
               href="https://cal.com/futurebits/markets?duration=30"
               target="_blank"
-              className="mt-[70px] sm:mt-[20px] lg:mt-0"
+              className="w-full sm:w-auto"
             >
               <ShimmerButton
                 size="lg"
                 href="/book-call"
-                className="text-[18px] sm:text-[20px]"
+                className="w-full text-base sm:text-lg"
               >
-                Book a 30-min markets call
+                Book a call
               </ShimmerButton>
             </Link>
           </div>

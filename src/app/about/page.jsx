@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import SiteFooter from "@/components/shared/SiteFooter";
+import logo from "@/assets/logo.svg";
 import { CAL, COMPANY, SOCIAL } from "@/config/site";
 
 const beliefs = [
@@ -112,7 +114,7 @@ export default function AboutPage() {
               rel="noopener noreferrer"
               className="inline-flex h-11 items-center justify-center rounded-full bg-white px-6 text-sm font-medium text-[#060618] transition hover:bg-white/90"
             >
-              Book a 30-min call
+              Book a call
             </Link>
             <Link
               href="/contact"
@@ -144,6 +146,7 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
+      <SiteFooter logo={logo} backgroundClassName="bg-[#060618]" />
     </main>
   );
 }

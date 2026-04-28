@@ -1,4 +1,5 @@
 import {
+  DEFAULT_OG_IMAGE,
   COMPANY,
   ROUTES,
   SITE_URL,
@@ -33,7 +34,19 @@ export function organizationJsonLd() {
     legalName: COMPANY.legalName,
     url: SITE_URL,
     email: COMPANY.email,
+    telephone: COMPANY.phone,
     foundingDate: COMPANY.founded,
+    logo: DEFAULT_OG_IMAGE,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: COMPANY.email,
+        telephone: COMPANY.phone,
+        areaServed: "Worldwide",
+        availableLanguage: ["English"],
+      },
+    ],
     sameAs: [SOCIAL.twitter, SOCIAL.linkedin, SOCIAL.behance, SOCIAL.dribbble],
   };
 }

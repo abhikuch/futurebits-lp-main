@@ -3,59 +3,78 @@ import React from "react";
 import ShimerButton from "./ShimerButton";
 import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 import Link from "next/link";
+import { SERVICE_CATEGORIES, getServiceBySlugs } from "@/content/services";
 
 // Data extracted to top level
 const data = [
   {
-    text: "Backtesting",
-    desc: "Event-driven backtests with slippage, fees, partial fills — so the equity curve isn't a fantasy.",
+    text: "Strategy Backtesting",
+    desc: "Event-driven backtests with realistic costs, slippage, and fills so your edge estimate is grounded.",
   },
   {
-    text: "Forward Testing",
-    desc: "Paper and shadow mode against live feeds before a rupee is at risk.",
+    text: "Forward Testing & Shadow Mode",
+    desc: "Validate behavior on live feeds in paper and shadow environments before real capital goes live.",
   },
   {
-    text: "Live Strategies",
-    desc: "Production execution with retries, idempotency, and audit trails.",
+    text: "Live Trading Execution",
+    desc: "Production execution systems with retries, idempotency, risk gates, and audit-ready order flow.",
   },
   {
-    text: "Real-time Monitor",
-    desc: "Live PnL, exposure, and health checks with alerting that pages a human.",
+    text: "Real-Time PnL Monitor",
+    desc: "Live PnL, exposure, and system-health visibility with alerting tied to intervention workflows.",
   },
   {
-    text: "Advance Reports",
-    desc: "Daily and per-trade analytics — slippage, factor attribution, edge decay — built into the workflow.",
+    text: "Trade Analytics & Reporting",
+    desc: "Daily and per-trade analytics for slippage, attribution, and edge decay tied to strategy decisions.",
   },
   {
-    text: "Research",
-    desc: "Hypothesis-driven research notebooks that turn into production-ready code.",
+    text: "Quant Research Infrastructure",
+    desc: "Reproducible research workflows, versioned datasets, and clear promotion gates into production.",
   },
   {
-    text: "Consulting",
-    desc: "Code and risk audits for existing systems. Findings, severity, fix plan.",
+    text: "System Audits & Consulting",
+    desc: "Independent audits across architecture, execution, and risk with severity-ranked remediation plans.",
   },
   {
-    text: "System Monitoring",
-    desc: "Uptime, latency, and venue-side health, end-to-end.",
+    text: "Stack Observability & Alerting",
+    desc: "Telemetry and alerting for uptime, latency, fill quality, and venue-side health across the stack.",
   },
   {
-    text: "TradingView Customs",
-    desc: "Custom indicators, alerts, and Pine Script tuned to your strategy.",
+    text: "TradingView Automation",
+    desc: "Custom indicators, alerts, and automation flows that connect TradingView signals to execution systems.",
   },
   {
-    text: "Tech Maintenance",
-    desc: "On-call engineering for your trading stack so weekends stay weekends.",
+    text: "Tech Maintenance & On-Call",
+    desc: "Ongoing maintenance and incident response coverage for always-on trading infrastructure.",
   },
   {
     text: "Anything else",
-    desc: "If it's electronic and it trades, we've probably built around it. Tell us.",
+    desc: "Need a custom trading system? We scope edge cases, constraints, and rollout paths with your desk.",
   },
 ];
 
+const MARKET_SERVICE_LINKS = {
+  "Strategy Backtesting": "strategy-backtesting",
+  "Forward Testing & Shadow Mode": "forward-testing-shadow-mode",
+  "Live Trading Execution": "live-trading-execution-systems",
+  "Real-Time PnL Monitor": "real-time-pnl-exposure-monitoring",
+  "Trade Analytics & Reporting": "trade-analytics-reporting",
+  "Quant Research Infrastructure": "quant-research-infrastructure",
+  "System Audits & Consulting": "trading-system-audits-consulting",
+  "Stack Observability & Alerting": "trading-stack-observability-alerting",
+  "TradingView Automation": "tradingview-indicators-automation",
+  "Tech Maintenance & On-Call": "trading-tech-maintenance-on-call",
+};
+
 // Modified card component with responsive zoom animation
 const SolutionCard = ({ item, index }) => {
+  const serviceSlug = MARKET_SERVICE_LINKS[item.text];
+  const href = serviceSlug
+    ? getServiceBySlugs("markets-trading", serviceSlug)?.path || "/services/markets-trading"
+    : "/services/markets-trading";
   return (
-    <div
+    <Link
+      href={href}
       className="w-full mx-auto rounded-xl hover:-translate-y-1 sm:hover:-translate-y-2 hover:-skew-x-1 hover:scale-[1.02] sm:hover:scale-105 transition-all duration-300 ease-in-out border border-transparent group cursor-pointer"
       style={{
         background:
@@ -107,7 +126,7 @@ const SolutionCard = ({ item, index }) => {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -138,7 +157,10 @@ const OurSolutions = () => {
   }, []);
 
   return (
-    <div className="w-full mx-auto px-3 sm:px-4 md:px-16 lg:px-20 py-12 sm:py-16 relative overflow-hidden">
+    <div
+      id="markets-services"
+      className="w-full mx-auto px-3 sm:px-4 md:px-16 lg:px-20 py-12 sm:py-16 relative overflow-hidden"
+    >
       {/* Background glow effects without animation */}
       <div
         className="xl:block hidden absolute left-[-25%] -top-[5%] w-[350px] h-[45px] z-0"
@@ -186,6 +208,23 @@ const OurSolutions = () => {
           <h2 className="fb-h2 text-2xl sm:text-3xl md:text-[38px] leading-[1.3] md:leading-[60px]">
             One stack across the trading lifecycle
           </h2>
+          <div className="mx-auto mt-6 flex max-w-4xl flex-wrap items-center justify-center gap-2 sm:gap-3">
+            {[
+              SERVICE_CATEGORIES.find((c) => c.slug === "markets-trading"),
+              SERVICE_CATEGORIES.find((c) => c.slug === "build"),
+              SERVICE_CATEGORIES.find((c) => c.slug === "integrations-platform"),
+            ]
+              .filter(Boolean)
+              .map((category) => (
+                <Link
+                  key={category.slug}
+                  href={`/services/${category.slug}`}
+                  className="rounded-full border border-white/20 bg-white/[0.03] px-4 py-2 text-sm text-white/80 transition hover:bg-white/[0.08] hover:text-white"
+                >
+                  {category.title}
+                </Link>
+              ))}
+          </div>
         </div>
 
         {/* Cards Grid without animations */}
@@ -209,7 +248,7 @@ const OurSolutions = () => {
             <div className="flex justify-center items-center">
               <div className="relative">
                 <ShimerButton size="lg" href="/book-call" className="text-base sm:text-[20px]">
-                  Book a 30-min markets call
+                  Book a call
                 </ShimerButton>
               </div>
             </div>

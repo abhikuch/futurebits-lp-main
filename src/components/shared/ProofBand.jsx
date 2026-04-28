@@ -4,14 +4,14 @@ import Container from "@/components/ui/container";
 import Section from "@/components/ui/section";
 import { PROOF } from "@/content/inline-modules";
 
-export default function ProofBand({ vertical, ctaHref, ctaLabel = "Book a 30-min call" }) {
+export default function ProofBand({ vertical, ctaHref, ctaLabel = "Book a call" }) {
   const data = PROOF[vertical];
   if (!data) return null;
 
   return (
-    <Section className="bg-[#050512] py-10 sm:py-12">
+    <Section className="bg-[#050512] py-12 sm:py-14">
       <Container>
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
+        <div className="fb-panel p-6 sm:p-8">
           <div className="mb-4 flex items-center justify-between gap-4">
             <p className="font-poppins text-xs uppercase tracking-[0.22em] text-white/60">
               {data.eyebrow}
@@ -28,14 +28,14 @@ export default function ProofBand({ vertical, ctaHref, ctaLabel = "Book a 30-min
             ) : null}
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-3">
             {data.items.map((item) => (
               <div
                 key={item.label}
-                className="rounded-xl border border-white/10 bg-black/20 p-4 transition-colors duration-300 hover:border-white/25 hover:bg-black/30"
+                className="rounded-xl border border-white/10 bg-black/10 p-5 transition-colors duration-300 hover:border-white/20 hover:bg-black/20"
               >
                 <p className="text-xs uppercase tracking-wide text-white/50">{item.label}</p>
-                <p className="mt-2 font-montserrat text-base font-semibold text-white">{item.value}</p>
+                <p className="mt-2 font-montserrat text-lg font-semibold text-white">{item.value}</p>
               </div>
             ))}
           </div>

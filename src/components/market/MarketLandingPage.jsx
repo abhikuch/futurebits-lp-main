@@ -22,7 +22,7 @@ const MarketPage = () => {
         <Navbar />
         <Hero />
       </main>
-      <ProofBand vertical="markets" ctaHref={CAL.markets} ctaLabel="Book a 30-min markets call" />
+      <ProofBand vertical="markets" ctaHref={CAL.markets} ctaLabel="Book a call" />
       <div className="fb-section">
         <OurSolutions />
       </div>
@@ -42,7 +42,7 @@ const MarketPage = () => {
         <BenefitsSection />
       </div>
 
-      <EngagementModels ctaHref={CAL.markets} ctaLabel="Book a 30-min markets call" />
+      <EngagementModels ctaHref={CAL.markets} ctaLabel="Book a call" />
 
       <FAQSection vertical="markets" />
 

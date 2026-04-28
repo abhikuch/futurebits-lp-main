@@ -7,7 +7,7 @@ export const SERVICE_CATEGORIES = [
     shortTitle: "Development",
     description:
       "End-to-end software engineering for SaaS, web apps, internal tooling, and modernization.",
-    ctaLabel: "Book a 30-min build call",
+    ctaLabel: "Book a call",
     ctaHref: CAL.ai,
   },
   {
@@ -16,7 +16,7 @@ export const SERVICE_CATEGORIES = [
     shortTitle: "AI & Automation",
     description:
       "Applied AI systems, agents, retrieval, and workflow automation built for production outcomes.",
-    ctaLabel: "Book a 30-min AI working call",
+    ctaLabel: "Book a call",
     ctaHref: CAL.ai,
   },
   {
@@ -25,8 +25,17 @@ export const SERVICE_CATEGORIES = [
     shortTitle: "Design",
     description:
       "UI/UX and product design focused on activation, conversion, and retention outcomes.",
-    ctaLabel: "Book a 30-min product call",
+    ctaLabel: "Book a call",
     ctaHref: CAL.design,
+  },
+  {
+    slug: "markets-trading",
+    title: "Markets & Trading Systems",
+    shortTitle: "Markets",
+    description:
+      "Execution, backtesting, risk controls, monitoring, and analytics infrastructure for serious trading teams.",
+    ctaLabel: "Book a call",
+    ctaHref: CAL.markets,
   },
   {
     slug: "integrations-platform",
@@ -34,7 +43,7 @@ export const SERVICE_CATEGORIES = [
     shortTitle: "Integrations",
     description:
       "Payments, auth, analytics, APIs, and deployment foundations that keep products reliable.",
-    ctaLabel: "Book a 30-min architecture call",
+    ctaLabel: "Book a call",
     ctaHref: CAL.ai,
   },
   {
@@ -43,7 +52,7 @@ export const SERVICE_CATEGORIES = [
     shortTitle: "Startup Partner",
     description:
       "Founder-focused product strategy, architecture, and delivery from idea to launch.",
-    ctaLabel: "Book a 30-min founder call",
+    ctaLabel: "Book a call",
     ctaHref: CAL.ai,
   },
 ];
@@ -99,6 +108,17 @@ const RAW_SERVICES = [
   ["design", "mobile-app-ui-design", "Mobile App UI Design"],
   ["design", "user-flow-design", "User Flow Design"],
   ["design", "figma-design", "Figma Design"],
+  // Markets & Trading Systems
+  ["markets-trading", "strategy-backtesting", "Strategy Backtesting"],
+  ["markets-trading", "forward-testing-shadow-mode", "Forward Testing & Shadow Mode"],
+  ["markets-trading", "live-trading-execution-systems", "Live Trading Execution Systems"],
+  ["markets-trading", "real-time-pnl-exposure-monitoring", "Real-Time PnL & Exposure Monitoring"],
+  ["markets-trading", "trade-analytics-reporting", "Trade Analytics & Reporting"],
+  ["markets-trading", "quant-research-infrastructure", "Quant Research Infrastructure"],
+  ["markets-trading", "trading-system-audits-consulting", "Trading System Audits & Consulting"],
+  ["markets-trading", "trading-stack-observability-alerting", "Trading Stack Observability & Alerting"],
+  ["markets-trading", "tradingview-indicators-automation", "TradingView Indicators & Automation"],
+  ["markets-trading", "trading-tech-maintenance-on-call", "Trading Tech Maintenance & On-Call"],
   // Integrations
   ["integrations-platform", "payment-gateway-integration", "Payment Gateway Integration"],
   ["integrations-platform", "stripe-integration", "Stripe Integration"],
@@ -143,6 +163,12 @@ export const PRIORITY_SERVICE_SLUGS = new Set([
   "ui-ux-design",
   "product-design",
   "founder-tech-partner",
+  "strategy-backtesting",
+  "forward-testing-shadow-mode",
+  "live-trading-execution-systems",
+  "real-time-pnl-exposure-monitoring",
+  "trade-analytics-reporting",
+  "trading-system-audits-consulting",
 ]);
 
 const PRIORITY_COPY = {
@@ -274,6 +300,54 @@ const PRIORITY_COPY = {
       "Founder Tech Partner Services | Idea to MVP to Scale",
     metaDescription:
       "Technical partner for founders across product strategy, MVP scope, architecture, and launch execution.",
+  },
+  "strategy-backtesting": {
+    hero: "Backtests that survive contact with live markets.",
+    subhead:
+      "We model fees, slippage, partial fills, and execution constraints so your edge estimate is grounded in reality.",
+    metaTitle: "Strategy Backtesting Services | Realistic Trading Backtests",
+    metaDescription:
+      "Build event-driven backtesting systems with realistic costs, execution assumptions, and reproducible research pipelines.",
+  },
+  "forward-testing-shadow-mode": {
+    hero: "Forward testing and shadow mode before real capital.",
+    subhead:
+      "Validate strategy behavior on live feeds in paper and shadow environments with strict promotion criteria.",
+    metaTitle: "Forward Testing & Shadow Mode | Trading Validation Services",
+    metaDescription:
+      "Deploy forward testing and shadow mode workflows to validate trading systems before live deployment.",
+  },
+  "live-trading-execution-systems": {
+    hero: "Live trading execution systems built for failure scenarios.",
+    subhead:
+      "Production execution with retries, idempotency, risk guardrails, and operational runbooks your team can trust.",
+    metaTitle: "Live Trading Execution Systems | Production Trading Infrastructure",
+    metaDescription:
+      "Build resilient live execution systems with risk controls, retries, order lifecycle handling, and auditability.",
+  },
+  "real-time-pnl-exposure-monitoring": {
+    hero: "Real-time monitoring for PnL, exposure, and system health.",
+    subhead:
+      "Get actionable visibility into performance and risk with alerts that page humans before small issues compound.",
+    metaTitle: "Real-Time PnL & Exposure Monitoring | Trading Ops Visibility",
+    metaDescription:
+      "Implement real-time dashboards and alerting for PnL, exposure, latency, and execution health across trading systems.",
+  },
+  "trade-analytics-reporting": {
+    hero: "Trade analytics that expose edge decay and execution drag.",
+    subhead:
+      "Daily and per-trade analytics for slippage, attribution, and performance decomposition tied to strategy decisions.",
+    metaTitle: "Trade Analytics & Reporting | Performance Attribution Systems",
+    metaDescription:
+      "Build trading analytics pipelines for attribution, slippage analysis, and decision-grade reporting.",
+  },
+  "trading-system-audits-consulting": {
+    hero: "Independent audits for trading architecture, risk, and execution quality.",
+    subhead:
+      "We inspect your stack, identify hidden failure modes, and deliver a prioritized remediation plan with owner-ready actions.",
+    metaTitle: "Trading System Audits & Consulting | Risk and Architecture Review",
+    metaDescription:
+      "Audit trading systems for execution reliability, risk controls, and architecture quality with actionable fix plans.",
   },
 };
 

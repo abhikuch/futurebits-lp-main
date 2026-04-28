@@ -166,7 +166,7 @@ const BenefitsSection = () => {
           <div className="flex justify-center items-center mt-16">
             <div className="relative">
               <ShimerButton size="lg" href="/book-call" className="text-[20px]">
-                Book a 30-min markets call
+                Book a call
               </ShimerButton>
             </div>
           </div>

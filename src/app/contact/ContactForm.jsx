@@ -7,9 +7,10 @@ import { submitContact } from "./actions";
 const initialState = { ok: false, errors: {}, message: "" };
 
 const VERTICAL_OPTIONS = [
-  { value: "ai", label: "AI & automation" },
-  { value: "markets", label: "Markets / trading systems" },
-  { value: "design", label: "Design & development" },
+  { value: "ai", label: "AI & Automation" },
+  { value: "markets", label: "Markets & Trading Systems" },
+  { value: "design", label: "Design & Frontend" },
+  { value: "build", label: "Build & Engineering" },
   { value: "other", label: "Something else" },
 ];
 
@@ -27,7 +28,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-[#060618] transition hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-60"
+      className="inline-flex h-12 items-center justify-center rounded-full bg-[#01B0EA] px-6 text-sm font-semibold text-white transition hover:bg-[#11b9ee] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01B0EA]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#060618] disabled:cursor-not-allowed disabled:opacity-60"
     >
       {pending ? "Sending…" : "Send message"}
     </button>

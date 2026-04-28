@@ -14,6 +14,7 @@ import stars from "@/assets/landing-page-AI/stars.webp";
 import { AnimatedShinyText } from "../magicui/animated-shiny-text"; // Adjust the import path as needed
 
 import Link from "next/link";
+import { SERVICE_CATEGORIES, getServiceBySlugs } from "@/content/services";
 
 const ServiceCard = ({
   title,
@@ -21,10 +22,11 @@ const ServiceCard = ({
   icon,
   borderStyle,
   fullWidthImage,
+  href,
 }) => (
-  <div
-    className="p-[1px] sm:p-[2px] rounded-3xl relative z-10 h-full font-poppins card-gred-1 cursor-pointer"
-  
+  <Link
+    href={href}
+    className="p-[1px] sm:p-[2px] rounded-3xl relative z-10 h-full font-poppins card-gred-1 cursor-pointer block"
   >
     <div className="bg-[#0D0D0D] rounded-3xl h-full flex flex-col">
       {/* Pattern in top right */}
@@ -60,7 +62,7 @@ const ServiceCard = ({
         </div>
       </div>
     </div>
-  </div>
+  </Link>
 );
 
 const ServicesSection = () => {
@@ -95,6 +97,7 @@ const ServicesSection = () => {
         "Replace repetitive ops work with measured automations. We track hours saved, not tickets closed.",
       icon: contentIcon,
       borderStyle: borderStyles.card1,
+      href: getServiceBySlugs("ai-automation", "ai-workflow-automation")?.path || "/services/ai-automation",
     },
     {
       id: 2,
@@ -103,6 +106,7 @@ const ServicesSection = () => {
         "Custom models and retrieval pipelines tuned to your data, with evaluations you can defend.",
       icon: llmIcon,
       borderStyle: borderStyles.card2,
+      href: getServiceBySlugs("ai-automation", "llm-integration")?.path || "/services/ai-automation",
     },
     {
       id: 3,
@@ -111,6 +115,7 @@ const ServicesSection = () => {
         "Domain-aware assistants for your team, scoped to one job they can do reliably.",
       icon: chatbotIcon,
       borderStyle: borderStyles.card3,
+      href: getServiceBySlugs("ai-automation", "ai-agents-development")?.path || "/services/ai-automation",
     },
     {
       id: 4,
@@ -119,6 +124,7 @@ const ServicesSection = () => {
         "Production content pipelines with quality gates — tone, accuracy, and brand checks built in.",
       icon: workflowIcon,
       borderStyle: borderStyles.card4,
+      href: getServiceBySlugs("ai-automation", "ai-customer-support-tools")?.path || "/services/ai-automation",
     },
     {
       id: 5,
@@ -127,13 +133,21 @@ const ServicesSection = () => {
         "A two-week diagnostic that ends in a one-page plan: where AI pays back, where it doesn't, and what to build first.",
       icon: aiConsultingIcon,
       borderStyle: borderStyles.card5,
+      href: getServiceBySlugs("startup-tech-partner", "product-strategy")?.path || "/services/startup-tech-partner",
     },
   ];
+
+  const aiCategory = SERVICE_CATEGORIES.find((c) => c.slug === "ai-automation");
+  const buildCategory = SERVICE_CATEGORIES.find((c) => c.slug === "build");
+  const integrationsCategory = SERVICE_CATEGORIES.find((c) => c.slug === "integrations-platform");
 
 
 
   return (
-    <section className="relative py-20 px-6 sm:py-20 sm:px-10 lg:py-28 lg:px-[30px] xl:px-[80px] overflow-x-hidden">
+    <section
+      id="ai-services"
+      className="relative py-20 px-6 sm:py-20 sm:px-10 lg:py-28 lg:px-[30px] xl:px-[80px] overflow-x-hidden"
+    >
       {/* <div className="absolute top-10 left-0 w-[100px] h-[100px] blur-[400px] sm:top-[440px] sm:left-0 sm:w-[550px] sm:h-[550px] rounded-full  bg-[#2E2688] sm:blur-[250px]"></div> */}
       {/* <div className="absolute top-[400px] right-[-100px]  w-[150px] h-[150px] sm:top-[440px] sm:-right-20 sm:w-[550px] sm:h-[550px] rounded-full  bg-[#2E2688] blur-[500px] "></div> */}
 
@@ -182,6 +196,21 @@ const ServicesSection = () => {
           >
             Five problem shapes we solve well
           </h2>
+          <div className="mx-auto mb-6 flex max-w-4xl flex-wrap items-center justify-center gap-2 sm:gap-3">
+            {[
+              { label: aiCategory?.title || "AI & Automation", href: aiCategory ? `/services/${aiCategory.slug}` : "/services/ai-automation" },
+              { label: buildCategory?.title || "Build", href: buildCategory ? `/services/${buildCategory.slug}` : "/services/build" },
+              { label: integrationsCategory?.title || "Integrations & Platform", href: integrationsCategory ? `/services/${integrationsCategory.slug}` : "/services/integrations-platform" },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-full border border-white/20 bg-white/[0.03] px-4 py-2 text-sm text-white/80 transition hover:bg-white/[0.08] hover:text-white"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Services grid - first 2 cards */}
@@ -207,6 +236,7 @@ const ServicesSection = () => {
                   icon={service.icon}
                   borderStyle={service.borderStyle}
                   fullWidthImage={false}
+                  href={service.href}
                 />
               </div>
             );
@@ -232,6 +262,7 @@ const ServicesSection = () => {
                   icon={service.icon}
                   borderStyle={service.borderStyle}
                   fullWidthImage={false}
+                  href={service.href}
                 />
               </div>
             );
@@ -245,7 +276,7 @@ const ServicesSection = () => {
           className=" "
         >
           <div className="w-full flex items-center justify-center mt-16 ">
-            <BeamButton title="Book a 30-min AI working call" className="w-[300px]" />
+            <BeamButton title="Book a call" className="w-[300px]" />
           </div>
         </Link>
       </div>

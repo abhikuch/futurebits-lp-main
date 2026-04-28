@@ -10,7 +10,7 @@ import Offering from "@/components/design/offering";
 import Benefits from "@/components/design/benefits";
 import IntroSection from "@/components/design/intro-section";
 import Footer from "@/components/design/Footer";
-import TestimonialsCarousel from "@/components/design/TestimonialCarousel";
+import TestimonialBento from "@/components/design/TestimonialBento";
 import POVStrip from "@/components/shared/POVStrip";
 import EngagementModels from "@/components/shared/EngagementModels";
 import FAQSection from "@/components/shared/FAQSection";
@@ -70,7 +70,7 @@ export default function DesignPage() {
           <Hero />
         </div>
       </main>
-      <ProofBand vertical="design" ctaHref={CAL.design} ctaLabel="Book a 30-min product call" />
+      <ProofBand vertical="design" ctaHref={CAL.design} ctaLabel="Book a call" />
 
       <div className="w-full fb-section">
         <PortfolioWrapper />
@@ -87,10 +87,10 @@ export default function DesignPage() {
       <POVStrip vertical="design" accent="#01B0EA" />
 
       <div className="w-full py-8 sm:py-10 fb-section">
-        <TestimonialsCarousel />
+        <TestimonialBento />
       </div>
 
-      <EngagementModels ctaHref={CAL.design} ctaLabel="Book a 30-min product call" />
+      <EngagementModels ctaHref={CAL.design} ctaLabel="Book a call" />
 
       <FAQSection vertical="design" />
 

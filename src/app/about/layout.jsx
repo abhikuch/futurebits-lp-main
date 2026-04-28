@@ -1,4 +1,5 @@
 import JsonLd from "@/components/seo/JsonLd";
+import TopNavbar from "@/components/shared/TopNavbar";
 import { buildRouteMetadata, COMPANY, SITE_URL, SOCIAL } from "@/config/site";
 
 export const metadata = buildRouteMetadata("about");
@@ -18,6 +19,7 @@ const aboutPageJsonLd = {
 export default function AboutLayout({ children }) {
   return (
     <>
+      <TopNavbar />
       <JsonLd data={aboutPageJsonLd} />
       {children}
     </>

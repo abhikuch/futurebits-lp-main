@@ -30,11 +30,11 @@ export default function POVStrip({ vertical, accent = "#01B0EA" }) {
         <p className="mt-6 text-pretty text-base text-white/70 sm:text-lg">
           {pov.body}
         </p>
-        <ul className="mt-10 grid gap-4 text-left sm:grid-cols-1">
+        <ul className="mt-10 grid gap-3 text-left sm:grid-cols-1">
           {pov.bullets.map((bullet, idx) => (
             <li
               key={idx}
-              className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+              className="flex items-start gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-5 transition-colors hover:bg-white/[0.04]"
             >
               <span
                 aria-hidden="true"

@@ -81,7 +81,7 @@ const FooterCTA = () => {
                     href="/book-call"
                     className="text-[20px]"
                   >
-                    Book a 30-min markets call
+                    Book a call
                   </ShimerButton>
                 </div>
               </div>

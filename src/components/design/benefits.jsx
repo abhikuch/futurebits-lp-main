@@ -123,38 +123,26 @@ const Benefits = () => {
 
   return (
     <div className="py-0 sm:py-10 max-w-[1250px]  mx-auto w-full bg-[#08081E]">
-      <div className="relative w-fit mx-auto  text-center">
+      <div className="mx-auto flex w-full max-w-[360px] items-center justify-center gap-3 sm:max-w-[480px]">
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/30" />
         <Image
           src={navbarDiamond}
-          width={32}
-          height={32}
+          width={16}
+          height={16}
           alt=""
-          className="w-8 h-8 absolute top-1/2 -translate-y-1/2 -right-[40px]"
+          className="h-3.5 w-3.5 opacity-80"
         />
-        <Image
-          src={navbarDiamond}
-          width={32}
-          height={32}
-          alt=""
-          className="w-8 h-8 absolute top-1/2 -translate-y-1/2 -left-[40px]"
-        />
-        <div
-          className="max-w-[120px] sm:max-w-[150px] absolute top-1/2 -right-[100px] sm:-right-[110px] bg-white opacity-20 w-full h-[2px] -translate-y-1/2"
-          style={{
-            background:
-              "linear-gradient(-90deg, #000000 0%, rgba(255, 255, 255, 1) 47.22%)",
-          }}
-        ></div>
-        <div
-          className="max-w-[120px] sm:max-w-[150px] absolute top-1/2 -left-[100px] sm:-left-[110px] bg-white opacity-20 w-full h-[2px] -translate-y-1/2"
-          style={{
-            background:
-              "linear-gradient(90deg, #000000 0%, rgba(255, 255, 255, 1) 47.22%)",
-          }}
-        ></div>
-        <AnimatedShinyText className="uppercase text-lg font-semibold tracking-[0%] text-[#01B0EA] ">
+        <AnimatedShinyText className="uppercase text-sm sm:text-base font-semibold tracking-[0.08em] text-[#01B0EA]">
           Why teams hire us
         </AnimatedShinyText>
+        <Image
+          src={navbarDiamond}
+          width={16}
+          height={16}
+          alt=""
+          className="h-3.5 w-3.5 opacity-80"
+        />
+        <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/30" />
       </div>
       <h2 className="fb-h2 mt-2 sm:mt-8 text-[30px] sm:text-2xl md:text-3xl lg:text-4xl leading-tight md:leading-[60px] text-center">
         What you get when design and engineering are one pod
