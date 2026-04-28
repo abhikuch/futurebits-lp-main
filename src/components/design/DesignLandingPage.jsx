@@ -10,7 +10,7 @@ import Offering from "@/components/design/offering";
 import Benefits from "@/components/design/benefits";
 import IntroSection from "@/components/design/intro-section";
 import Footer from "@/components/design/Footer";
-import TestimonialBento from "@/components/design/TestimonialBento";
+import TestimonialsCarousel from "@/components/design/TestimonialCarousel";
 import POVStrip from "@/components/shared/POVStrip";
 import EngagementModels from "@/components/shared/EngagementModels";
 import FAQSection from "@/components/shared/FAQSection";
@@ -87,7 +87,7 @@ export default function DesignPage() {
       <POVStrip vertical="design" accent="#01B0EA" />
 
       <div className="w-full py-8 sm:py-10 fb-section">
-        <TestimonialBento />
+        <TestimonialsCarousel />
       </div>
 
       <EngagementModels ctaHref={CAL.design} ctaLabel="Book a call" />

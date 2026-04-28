@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 import quote from "@/assets/landing-page-AI/quote.svg";
 import star from "@/assets/design/star.svg";
@@ -30,15 +31,22 @@ const THEME = {
   },
 };
 
-const BENTO_SPANS = [
-  "md:col-span-4",
-  "md:col-span-4",
-  "md:col-span-4",
-  "md:col-span-3",
-  "md:col-span-3",
-  "md:col-span-3",
-  "md:col-span-3",
+const IMPACT_RULES = [
+  { pattern: /(founder|co-founder|ceo)/i, score: 5 },
+  { pattern: /(professor|post-doc|research)/i, score: 4 },
+  { pattern: /(portfolio manager|director|chairman|head)/i, score: 3 },
+  { pattern: /(author|artist)/i, score: 2 },
 ];
+
+const CARD_ANIMATION = {
+  hidden: { opacity: 0, y: 18, scale: 0.985 },
+  show: (index) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.42, delay: Math.min(index * 0.05, 0.3), ease: "easeOut" },
+  }),
+};
 
 function StarRow({ count }) {
   return (
@@ -70,6 +78,34 @@ function TestimonialMeta({ item }) {
   );
 }
 
+function getImpactScore(item) {
+  let score = Number(item.rating || 0);
+  for (const rule of IMPACT_RULES) {
+    if (rule.pattern.test(item.position || "")) {
+      score += rule.score;
+    }
+  }
+  if ((item.content || "").length > 180) score += 1;
+  return score;
+}
+
+function getCardSpec(item, index) {
+  const length = (item.content || "").length;
+  if (index === 0) return { span: "md:col-span-8", clamp: "line-clamp-4", featured: true };
+  if (index === 1) return { span: "md:col-span-4", clamp: "line-clamp-4", featured: true };
+
+  if (item.impact >= 9 && length > 190) {
+    return { span: "md:col-span-6", clamp: "line-clamp-4", featured: false };
+  }
+  if (length <= 150) {
+    return { span: "md:col-span-3", clamp: "line-clamp-3", featured: false };
+  }
+  if (length > 230) {
+    return { span: "md:col-span-6", clamp: "line-clamp-4", featured: false };
+  }
+  return { span: "md:col-span-4", clamp: "line-clamp-4", featured: false };
+}
+
 function BentoCard({
   item,
   themeClass,
@@ -78,7 +114,13 @@ function BentoCard({
   contentClampClass = "line-clamp-4",
 }) {
   return (
-    <article
+    <motion.article
+      variants={CARD_ANIMATION}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      custom={item.animationIndex ?? 0}
+      whileHover={{ y: -4 }}
       className={`flex h-full flex-col justify-between rounded-[24px] border ${featured ? "min-h-[290px] sm:min-h-[310px]" : "min-h-[230px] sm:min-h-[250px]"} p-5 ${themeClass} ${className}`}
     >
       <p
@@ -93,13 +135,25 @@ function BentoCard({
         </div>
         <Image src={quote} alt="" className="h-8 w-8 opacity-55" />
       </div>
-    </article>
+    </motion.article>
   );
 }
 
 export default function TestimonialSection({ theme = "ai", cta }) {
   const currentTheme = THEME[theme] ?? THEME.ai;
-  const [featured, ...rest] = TESTIMONIALS;
+  const sequencedTestimonials = [...TESTIMONIALS]
+    .map((item) => ({
+      ...item,
+      impact: getImpactScore(item),
+      length: (item.content || "").length,
+    }))
+    .sort((a, b) => {
+      if (b.impact !== a.impact) return b.impact - a.impact;
+      const aDistance = Math.abs(190 - a.length);
+      const bDistance = Math.abs(190 - b.length);
+      return aDistance - bDistance;
+    })
+    .map((item, index) => ({ ...item, animationIndex: index }));
 
   return (
     <section
@@ -115,27 +169,20 @@ export default function TestimonialSection({ theme = "ai", cta }) {
           <p className={`text-center ${currentTheme.kickerClass}`}>Testimonials</p>
           <h2 className="fb-h2 mt-3 text-center">What people say about us</h2>
 
-          {featured ? (
-            <div className="mt-10">
-              <BentoCard
-                item={featured}
-                themeClass={currentTheme.cardClass}
-                featured
-                contentClampClass="line-clamp-4"
-              />
-            </div>
-          ) : null}
-
-          <div className="mt-4 grid grid-cols-1 gap-3 md:auto-rows-fr md:grid-cols-12">
-            {rest.map((item, index) => (
-              <BentoCard
-                key={item.id}
-                item={item}
-                themeClass={currentTheme.cardClass}
-                className={BENTO_SPANS[index % BENTO_SPANS.length]}
-                contentClampClass="line-clamp-4"
-              />
-            ))}
+          <div className="mt-10 grid grid-cols-1 gap-3 md:auto-rows-fr md:grid-cols-12">
+            {sequencedTestimonials.map((item, index) => {
+              const spec = getCardSpec(item, index);
+              return (
+                <BentoCard
+                  key={item.id}
+                  item={item}
+                  themeClass={currentTheme.cardClass}
+                  className={spec.span}
+                  featured={spec.featured}
+                  contentClampClass={spec.clamp}
+                />
+              );
+            })}
           </div>
 
           {cta ? <div className="mt-8 flex justify-center">{cta}</div> : null}
