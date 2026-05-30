@@ -19,7 +19,7 @@ import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 const services = [
   {
     img: P1,
-    title: "Senior pod, paid by sprint",
+    title: "Fixed sprints, one outcome",
     description:
       "Two-to-four week sprints, scoped to one shipped artefact. No retainer trap.",
     span: 1,

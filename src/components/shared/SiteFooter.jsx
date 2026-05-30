@@ -13,7 +13,7 @@ const SERVICE_LINKS = [
   { label: "Build", href: "/services/build" },
   { label: "AI Automation", href: "/services/ai-automation" },
   { label: "Design", href: "/services/design" },
-  { label: "Markets", href: "/services/markets-trading" },
+  { label: "Markets", href: ROUTES.markets.path },
   { label: "Integrations", href: "/services/integrations-platform" },
   { label: "Startup Partner", href: "/services/startup-tech-partner" },
 ];

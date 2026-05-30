@@ -72,7 +72,7 @@ export const ROUTES = {
     cta: CAL.ai,
     title: "Futurebits | Design, AI, and Automation",
     description:
-      "Futurebits is a senior product pod across AI systems, trading infrastructure, and product design with frontend delivery.",
+      "Futurebits is a design and engineering studio across AI systems, trading infrastructure, and product design with frontend delivery.",
     keywords: [
       "Futurebits",
       "AI automation agency",
@@ -88,7 +88,7 @@ export const ROUTES = {
     cta: CAL.ai,
     title: "Production AI for ops, support, and product teams — Futurebits",
     description:
-      "Futurebits ships production AI — retrieval, agents, automations, evals — for ops, support, and product teams. Senior pod. First useful automation in 2–3 weeks.",
+      "Futurebits ships production AI — retrieval, agents, automations, evals — for ops, support, and product teams. One small team. First useful automation in 2–3 weeks.",
     keywords: [
       "AI automation agency",
       "AI chatbots",
@@ -101,6 +101,7 @@ export const ROUTES = {
     ],
     ogImage: ASSETS.ogAi,
     ogImageAlt: "Futurebits AI Solutions",
+    shortLabel: "AI & Automation",
   },
   markets: {
     path: "/markets",
@@ -116,14 +117,15 @@ export const ROUTES = {
       "Automated Strategies",
     ],
     ogImage: ASSETS.ogMarkets,
-    ogImageAlt: "Futurebits Market Automation",
+    ogImageAlt: "Futurebits Markets",
+    shortLabel: "Markets",
   },
   design: {
     path: "/design",
     cta: CAL.design,
     title: "Product design plus frontend that ships in your repo — Futurebits Design",
     description:
-      "Futurebits pairs product design with frontend engineering in one senior pod. Sprints and pods that move activation, conversion, and retention — with code in your repo.",
+      "Futurebits pairs product design with frontend engineering in one small team. Sprints and pods that move activation, conversion, and retention — with code in your repo.",
     keywords: [
       "UI UX design",
       "UX audit",
@@ -136,6 +138,7 @@ export const ROUTES = {
     ],
     ogImage: ASSETS.ogDesign,
     ogImageAlt: "Futurebits Design & Development",
+    shortLabel: "Design",
   },
   services: {
     path: "/services",
@@ -163,7 +166,7 @@ export const ROUTES = {
     cta: CAL.ai,
     title: "About Futurebits | Design, AI, and Automation",
     description:
-      "Meet the team building Futurebits — a senior pod of designers, engineers, and AI builders helping ambitious teams ship faster, smarter, and with taste.",
+      "Meet the team building Futurebits — designers, engineers, and AI builders helping ambitious teams ship faster, smarter, and with taste.",
     keywords: ["About Futurebits", "Team", "Founders", "Design Engineering"],
     ogImage: ASSETS.ogAi,
     ogImageAlt: "About Futurebits",

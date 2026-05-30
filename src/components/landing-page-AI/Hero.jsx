@@ -116,7 +116,7 @@ const Hero = () => {
             <p className="fb-ai-hero-copy-anim fb-hero-copy mt-4 md:mt-6 text-center">
               We build retrieval, automation, and agent systems inside your
               repo. First useful automation lands in 2–3 weeks, full rollout in
-              8–12. Senior pod, no hand-offs.
+              8–12. One team, no hand-offs.
             </p>
           </div>
 

@@ -14,8 +14,8 @@ export const DIRECTORY_PROFILE = {
   teamSize: "10 - 49",
   locations: ["Remote", "Worldwide"],
   shortDescription:
-    "Futurebits is a senior product pod delivering AI automation, UI/UX design, software development, and trading infrastructure for ambitious teams worldwide.",
-  longDescription: `Futurebits Technologies is a design and engineering studio focused on production outcomes — not slide decks. We run senior pods across three tracks:
+    "Futurebits is a design and engineering studio delivering AI automation, UI/UX design, software development, and trading infrastructure for ambitious teams worldwide.",
+  longDescription: `Futurebits Technologies is a design and engineering studio focused on production outcomes — not slide decks. We work across three tracks:
 
 AI & Automation: chatbots, custom GPTs, RAG knowledge bases, AI agents, workflow automation, and content generation systems built with evals and guardrails.
 
@@ -23,7 +23,7 @@ Design & Product: UI/UX design, website UX audits, landing page design, branding
 
 Build & Integrations: SaaS development, MVPs, dashboards, Excel automation, Stripe/billing, and platform integrations.
 
-We work in 2-4 week sprints or 8-12 week pods with weekly demos, clear acceptance criteria, and direct senior ownership.`,
+We work in 2-4 week sprints or 8-12 week pods with weekly demos, clear acceptance criteria, and direct ownership from the same small team.`,
   servicesOffered: [
     "AI Chatbot Development",
     "Custom GPT & Knowledge Base Solutions",

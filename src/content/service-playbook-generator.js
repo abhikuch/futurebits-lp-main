@@ -103,13 +103,31 @@ function hashIndex(seed, modulo) {
   return Math.abs(hash) % modulo;
 }
 
+const DIFFERENTIATOR_POOL = [
+  (seed) => seed.wontDo,
+  (seed) => `Typical window: ${seed.timeline} — stated in writing before we start.`,
+  (seed) => "Weekly demos with written decisions — not status decks.",
+  (seed) =>
+    `Stack-first: we start with ${seed.tools[0]} unless the audit says otherwise.`,
+  () => "Direct access to the people writing code or design files.",
+];
+
+function buildDifferentiators(service, seed) {
+  const start = hashIndex(service.slug, DIFFERENTIATOR_POOL.length);
+  const ordered = [
+    ...DIFFERENTIATOR_POOL.slice(start),
+    ...DIFFERENTIATOR_POOL.slice(0, start),
+  ];
+  return ordered.slice(0, 3).map((fn) => fn(seed));
+}
+
 function buildFaqs(service, seed) {
-  const lower = service.title.toLowerCase();
+  const title = service.title;
   const toolStr = seed.tools.slice(0, 2).join(" or ");
 
   const pools = [
     {
-      q: `What does the first week of ${lower} look like?`,
+      q: `What does the first week of ${title} look like?`,
       a: `Access, repo setup, and a written scope draft. No build until you sign off on cut lines and the metric we're targeting.`,
     },
     {
@@ -117,11 +135,11 @@ function buildFaqs(service, seed) {
       a: `Yes, when it's sane. We audit first and tell you if something needs replacing — we won't rip out working infra for sport.`,
     },
     {
-      q: `What if we already started ${lower} in-house?`,
+      q: `What if we already started ${title} in-house?`,
       a: `We pick up from current state, document what's there, and focus on what's blocking launch — not a rewrite unless necessary.`,
     },
     {
-      q: `How is ${lower} priced?`,
+      q: `How is ${title} priced?`,
       a: `Fixed scope for sprints (${seed.timeline}). Broader work runs as a pod with weekly demos. We quote after a 30-minute scoping call.`,
     },
     {
@@ -129,25 +147,17 @@ function buildFaqs(service, seed) {
       a: `One decision-maker, repo or staging access, and honest constraints (timeline, budget, stack). Existing docs help but aren't required.`,
     },
     {
-      q: `Can you stay on after ${lower} launches?`,
+      q: `Can you stay on after ${title} launches?`,
       a: `Yes — maintenance sprints or a partner retainer. Many teams keep us for the next bottleneck once v1 is stable.`,
     },
     {
-      q: `Who on your team works on ${lower}?`,
+      q: `Who on your team works on ${title}?`,
       a: `The same small team from kickoff to launch — not a rotating bench. You talk to the people writing code or design files.`,
     },
   ];
 
   const start = hashIndex(service.slug, pools.length);
   return [...pools.slice(start), ...pools.slice(0, start)].slice(0, 5);
-}
-
-function buildDifferentiators(seed) {
-  return [
-    seed.contrarian,
-    seed.wontDo,
-    `Typical window: ${seed.timeline} — stated in writing before we start.`,
-  ];
 }
 
 export function generateServicePlaybook(service, category) {
@@ -176,7 +186,7 @@ export function generateServicePlaybook(service, category) {
       typeof entry === "function" ? entry(title, seed.tools) : entry
     ),
     process: processFn(title, seed.timeline, seed.tools),
-    differentiators: buildDifferentiators(seed),
+    differentiators: buildDifferentiators(service, seed),
     faqs: buildFaqs(service, seed),
     ...(markets
       ? {

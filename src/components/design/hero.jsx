@@ -17,30 +17,12 @@ import DesignNavbar from "./DesignNavbar";
 import { CAL, SOCIAL } from "@/config/site";
 
 const PrfolieLists = [
-  {
-    img: POne,
-    alt: "Profile 1",
-  },
-  {
-    img: PTwo,
-    alt: "Profile 2",
-  },
-  {
-    img: PThree,
-    alt: "Profile 3",
-  },
-  {
-    img: PFour,
-    alt: "Profile 4",
-  },
-  {
-    img: PFive,
-    alt: "Profile 5",
-  },
-  {
-    img: PSix,
-    alt: "Profile 6",
-  },
+  { img: POne, alt: "" },
+  { img: PTwo, alt: "" },
+  { img: PThree, alt: "" },
+  { img: PFour, alt: "" },
+  { img: PFive, alt: "" },
+  { img: PSix, alt: "" },
 ];
 
 const Hero = () => {
@@ -125,7 +107,7 @@ const Hero = () => {
           transition={{ duration: 0.4, delay: 0.45 }}
         >
           <span className="fb-hero-copy">
-            We pair product design with frontend engineering in one senior pod.
+            We pair product design with frontend engineering in one small team.
             Onboarding, activation, upgrade — we ship the surfaces that move your
             numbers, in your repo, every week.
           </span>

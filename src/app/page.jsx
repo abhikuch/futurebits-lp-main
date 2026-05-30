@@ -10,6 +10,10 @@ import logo from "@/assets/logo.svg";
 import { buildRouteMetadata, COMPANY, ROUTES, SITE_URL } from "@/config/site";
 import FeaturedServiceLinks from "@/components/shared/FeaturedServiceLinks";
 import { SERVICE_CATEGORIES } from "@/content/services";
+import {
+  getCategoryTheme,
+  getTopicAccentTextClass,
+} from "@/lib/page-theme";
 
 export const metadata = buildRouteMetadata("home");
 
@@ -17,17 +21,17 @@ const VERTICALS = [
   {
     key: "ai",
     route: ROUTES.ai,
-    accent: "from-[#01B0EA] to-[#2E2688]",
+    categorySlug: "ai-automation",
   },
   {
     key: "design",
     route: ROUTES.design,
-    accent: "from-[#01B0EA] to-[#2E2688]",
+    categorySlug: "design",
   },
   {
     key: "markets",
     route: ROUTES.markets,
-    accent: "from-white/80 to-white/40",
+    categorySlug: "markets-trading",
   },
 ];
 
@@ -57,7 +61,7 @@ export default function HomePage() {
               {COMPANY.tagline}
             </Heading>
             <p className="mt-6 max-w-2xl text-lg text-white/70">
-              Senior pods across AI automation, product design, software
+              One small team across AI automation, product design, software
               development, and trading infrastructure. Pick your track — or
               browse every service we ship.
             </p>
@@ -84,16 +88,23 @@ export default function HomePage() {
               Choose your track
             </Heading>
             <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {VERTICALS.map(({ route, accent }) => (
+              {VERTICALS.map(({ route, categorySlug }) => {
+                const categoryTheme = getCategoryTheme(categorySlug);
+                const accentClass = getTopicAccentTextClass(categorySlug);
+                const label =
+                  route.shortLabel ??
+                  route.ogImageAlt.replace("Futurebits ", "");
+
+                return (
                 <Link
                   key={route.path}
                   href={route.path}
-                  className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:bg-white/[0.06]"
+                  className={`${categoryTheme.serviceCardClass} group block p-6`}
                 >
                   <p
-                    className={`inline-block bg-gradient-to-r ${accent} bg-clip-text text-sm font-semibold uppercase tracking-[0.15em] text-transparent`}
+                    className={`text-sm font-semibold uppercase tracking-[0.15em] ${accentClass}`}
                   >
-                    {route.ogImageAlt.replace("Futurebits ", "")}
+                    {label}
                   </p>
                   <h3 className="mt-4 fb-h3 text-xl">{route.title.split(" — ")[0]}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
@@ -103,7 +114,8 @@ export default function HomePage() {
                     Explore →
                   </span>
                 </Link>
-              ))}
+              );
+              })}
             </div>
           </Container>
         </Section>

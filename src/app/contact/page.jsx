@@ -1,9 +1,12 @@
 import Link from "next/link";
 
 import ContactForm from "./ContactForm";
+import PageAccentGlow from "@/components/shared/PageAccentGlow";
 import SiteFooter from "@/components/shared/SiteFooter";
 import logo from "@/assets/logo.svg";
-import { CAL, COMPANY, SOCIAL } from "@/config/site";
+import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
+import { COMPANY, SOCIAL } from "@/config/site";
+import { getCalLinkForPath } from "@/lib/page-theme";
 
 const promises = [
   {
@@ -21,36 +24,30 @@ const promises = [
 ];
 
 export default function ContactPage() {
+  const calLink = getCalLinkForPath("/contact");
+
   return (
     <main
       id="main-content"
-      className="relative min-h-screen overflow-hidden bg-[#060618] text-white"
+      className={`relative min-h-screen overflow-hidden ${SERVICE_HUB_THEME.pageBgClass} text-white`}
     >
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute left-[-10%] top-[10%] h-[500px] w-[500px] rounded-full bg-[#01B0EA]/20 blur-[140px]" />
-        <div className="absolute right-[-10%] top-[40%] h-[500px] w-[500px] rounded-full bg-[#2E2688]/30 blur-[140px]" />
-      </div>
+      <PageAccentGlow themeKey="neutral" />
 
       <section className="mx-auto grid max-w-6xl gap-12 px-6 pb-24 pt-28 sm:pt-32 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
         <div>
-          <p className="font-poppins text-sm uppercase tracking-[0.2em] text-white/50">
-            Contact {COMPANY.name}
-          </p>
-          <h1 className="mt-4 font-montserrat text-display-md font-semibold text-balance">
+          <p className="fb-kicker">Contact {COMPANY.name}</p>
+          <h1 className="mt-6 fb-hero-title max-w-xl">
             Tell us what you're trying to ship.
           </h1>
-          <p className="mt-6 max-w-xl text-pretty text-base text-white/70 sm:text-lg">
-            One short message is enough. You'll hear back from a senior team
-            member, with a sharp read of your problem and what we'd actually
-            do about it.
+          <p className="fb-hero-copy mt-6 max-w-xl">
+            One short message is enough. You'll hear back from someone on the
+            team, with a sharp read of your problem and what we'd actually do
+            about it.
           </p>
 
           <ul className="mt-10 space-y-5">
             {promises.map((p) => (
-              <li
-                key={p.title}
-                className="rounded-2xl border border-white/10 bg-white/5 p-5"
-              >
+              <li key={p.title} className="fb-panel p-5">
                 <div className="font-montserrat text-base font-semibold">
                   {p.title}
                 </div>
@@ -59,15 +56,15 @@ export default function ContactPage() {
             ))}
           </ul>
 
-          <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6">
-            <div className="text-sm uppercase tracking-wider text-white/50">
+          <div className="fb-panel mt-10 p-6">
+            <div className="text-xs uppercase tracking-[0.18em] text-white/45">
               Prefer a call?
             </div>
             <Link
-              href={CAL.ai}
+              href={calLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 inline-flex h-11 items-center justify-center rounded-full border border-white/30 px-6 text-sm font-medium text-white transition hover:bg-white/10"
+              className="fb-cta-secondary mt-3 inline-flex h-11 items-center justify-center px-6 text-sm font-medium"
             >
               Book a call
             </Link>
@@ -101,11 +98,14 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur sm:p-8">
+        <div className="fb-panel p-6 sm:p-8">
           <ContactForm />
         </div>
       </section>
-      <SiteFooter logo={logo} backgroundClassName="bg-[#060618]" />
+      <SiteFooter
+        logo={logo}
+        backgroundClassName={SERVICE_HUB_THEME.footerBgClass}
+      />
     </main>
   );
 }

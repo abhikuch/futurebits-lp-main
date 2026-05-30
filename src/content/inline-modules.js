@@ -60,7 +60,7 @@ export const ENGAGEMENT_MODELS = [
     bestFor:
       "A 0-to-1 launch or a meaningful 1-to-10 jump. We embed alongside your team.",
     deliverables: [
-      "A senior pod (design, engineering, AI) running end-to-end",
+      "One small team (design, engineering, AI) running end-to-end",
       "Weekly demo cycle, fortnightly steering committee",
       "Hand-off docs your team can keep running with",
     ],
@@ -71,7 +71,7 @@ export const ENGAGEMENT_MODELS = [
     bestFor:
       "Long-running product or platform work. Compounding output, not vendor billable hours.",
     deliverables: [
-      "Senior team allocated as a fractional product unit",
+      "The same team allocated as a fractional product unit",
       "Quarterly OKRs tied to your business metrics",
       "Right of first refusal on new bets, shared roadmap ownership",
     ],
@@ -157,7 +157,7 @@ export const PROOF = {
     items: [
       { label: "First useful automation", value: "2-3 weeks" },
       { label: "Typical production rollout", value: "8-12 weeks" },
-      { label: "Delivery model", value: "Senior pod in your repo" },
+      { label: "Delivery model", value: "One small team in your repo" },
     ],
   },
   markets: {

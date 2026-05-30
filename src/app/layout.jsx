@@ -38,7 +38,7 @@ export const metadata = {
     template: "%s",
   },
   description:
-    "Futurebits is a senior product pod across AI systems, trading infrastructure, and product design with frontend delivery.",
+    "Futurebits is a design and engineering studio across AI systems, trading infrastructure, and product design with frontend delivery.",
   keywords: [
     "AI automation",
     "product design and development",
@@ -47,16 +47,13 @@ export const metadata = {
     "Futurebits",
   ],
   metadataBase: new URL(SITE_URL),
-  alternates: {
-    canonical: SITE_URL,
-  },
   openGraph: {
     type: "website",
     url: SITE_URL,
     siteName: COMPANY.name,
     title: "Futurebits | Design, AI, and Automation",
     description:
-      "Futurebits is a senior product pod across AI systems, trading infrastructure, and product design with frontend delivery.",
+      "Futurebits is a design and engineering studio across AI systems, trading infrastructure, and product design with frontend delivery.",
     images: [
       {
         url: DEFAULT_OG_IMAGE,
@@ -73,7 +70,7 @@ export const metadata = {
     creator: SOCIAL.twitterHandle,
     title: "Futurebits | Design, AI, and Automation",
     description:
-      "Futurebits is a senior product pod across AI systems, trading infrastructure, and product design with frontend delivery.",
+      "Futurebits is a design and engineering studio across AI systems, trading infrastructure, and product design with frontend delivery.",
     images: [DEFAULT_OG_IMAGE],
   },
   icons: {

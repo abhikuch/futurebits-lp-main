@@ -2,6 +2,35 @@ import { CAL } from "@/config/site";
 import { lintServiceCopy, lintText } from "@/content/content-voice";
 import { SERVICE_PAGE_COPY } from "@/content/service-copy";
 
+const META_TAIL_VARIANTS = [
+  "Scoped in writing. Weekly demos in your repo.",
+  "One team from kickoff to launch — no hand-offs.",
+  "Fixed window quoted after a 30-minute scoping call.",
+  "Acceptance tests signed before we call it done.",
+  "Ship in your stack with explicit cut lines up front.",
+  "Direct access to the people doing the work.",
+];
+
+const STANDARD_META_TAIL =
+  /Fixed-scope sprints, direct team access, ship in your repo\.?$/;
+
+function hashIndex(seed, modulo) {
+  let hash = 0;
+  for (let i = 0; i < seed.length; i += 1) {
+    hash = (hash << 5) - hash + seed.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash) % modulo;
+}
+
+function varyMetaDescription(slug, description) {
+  if (!description || !STANDARD_META_TAIL.test(description)) {
+    return description;
+  }
+  const tail = META_TAIL_VARIANTS[hashIndex(slug, META_TAIL_VARIANTS.length)];
+  return description.replace(STANDARD_META_TAIL, tail);
+}
+
 export const SERVICE_CATEGORIES = [
   {
     slug: "build",
@@ -197,6 +226,12 @@ export const PRIORITY_SERVICE_SLUGS = new Set([
 export const SERVICES = RAW_SERVICES.map(([categorySlug, slug, title]) => {
   const category = SERVICE_CATEGORIES.find((item) => item.slug === categorySlug);
   const copy = SERVICE_PAGE_COPY[slug];
+  const metaDescription = varyMetaDescription(
+    slug,
+    copy?.metaDescription ??
+      `${title} by Futurebits. Fixed-scope sprints, direct team access, ship in your repo.`
+  );
+
   return lintServiceCopy({
     categorySlug,
     categoryTitle: category?.title ?? "Services",
@@ -204,16 +239,14 @@ export const SERVICES = RAW_SERVICES.map(([categorySlug, slug, title]) => {
     title,
     path: `/services/${categorySlug}/${slug}`,
     shortDescription:
-      copy?.metaDescription ??
+      metaDescription ??
       `${title} — scoped, shipped in your repo, with weekly demos.`,
     hero: copy?.hero ?? `${title} — scoped, shipped, signed off.`,
     subhead:
       copy?.subhead ??
       "We write the scope first, ship in your repo, and demo every week until it's done.",
     metaTitle: copy?.metaTitle ?? `${title} | Futurebits`,
-    metaDescription:
-      copy?.metaDescription ??
-      `${title} by Futurebits. Fixed-scope sprints, direct team access, ship in your repo.`,
+    metaDescription,
     isPriority: PRIORITY_SERVICE_SLUGS.has(slug),
   });
 });
@@ -259,7 +292,7 @@ export function getRelatedServices(categorySlug, serviceSlug, limit = 6) {
 export function getServiceFaq(service) {
   return [
     {
-      q: `What does the first week of ${service.title.toLowerCase()} look like?`,
+      q: `What does the first week of ${service.title} look like?`,
       a: "Access, repo setup, and a written scope draft. We don't start build until you sign off on cut lines and the metric we're targeting.",
     },
     {
