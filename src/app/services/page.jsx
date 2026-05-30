@@ -14,15 +14,15 @@ import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
 const engagementModels = [
   {
     name: "Sprint",
-    detail: "2-4 weeks for one scoped, shipped outcome.",
+    detail: "2–4 weeks. One scoped outcome, signed off with acceptance tests.",
   },
   {
     name: "Pod",
-    detail: "8-12 weeks for cross-functional delivery and rollout.",
+    detail: "8–12 weeks. Design, engineering, or AI in your repo — weekly demos.",
   },
   {
     name: "Partner",
-    detail: "Ongoing senior execution tied to business metrics.",
+    detail: "Quarterly retainer when you want the same team on the next bottleneck.",
   },
 ];
 
@@ -44,12 +44,12 @@ export default function ServicesHubPage() {
           />
           <p className="fb-kicker">Services Hub</p>
           <Heading as="h1" className="mt-6 fb-hero-title max-w-4xl">
-            Software, AI, and product delivery for teams that want outcomes, not overhead.
+            Build, design, and AI — scoped in writing, shipped in your repo.
           </Heading>
           <p className="mt-6 max-w-3xl text-lg text-white/70">
-            Futurebits runs senior pods across build, AI automation, design,
-            integrations, and startup partner tracks. Choose your entry point,
-            and we will scope the fastest path to measurable outcomes.
+            Six tracks, 90 services. Pick a category, read the scope, book a
+            30-minute call. We quote fixed windows — sprints, pods, or partner
+            retainers — with weekly demos and no account-manager layer.
           </p>
         </Container>
       </Section>
@@ -100,11 +100,12 @@ export default function ServicesHubPage() {
         <Container>
           <div className={SERVICE_HUB_THEME.ctaPanelClass}>
             <Heading as="h2" className="fb-h2">
-              Need help choosing the right service path?
+              Not sure where to start?
             </Heading>
             <p className="mx-auto mt-4 max-w-2xl text-white/70">
-              Share your current bottleneck. We will recommend the fastest
-              first scope and delivery model.
+              Describe the bottleneck — broken billing, a chatbot that failed,
+              a landing page that does not convert. We will point you at the
+              right service and a realistic first scope.
             </p>
             <Link
               href="/contact"

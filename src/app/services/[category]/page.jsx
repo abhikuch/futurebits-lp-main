@@ -178,11 +178,9 @@ export default function ServiceCategoryPage({ params }) {
           <p className={theme.kickerClass}>{categoryBundle.shortTitle}</p>
           <div className={theme.dividerClass} />
           <Heading as="h1" className={theme.titleClass}>
-            {categoryBundle.title} services designed for measurable outcomes.
+            {categoryBundle.title} — scoped, shipped, signed off.
           </Heading>
-          <p className={theme.bodyClass}>
-            {categoryBundle.description}
-          </p>
+          <p className={theme.bodyClass}>{categoryBundle.description}</p>
         </Container>
       </Section>
 
@@ -236,8 +234,9 @@ export default function ServiceCategoryPage({ params }) {
               Ready to scope {categoryBundle.shortTitle.toLowerCase()} work?
             </Heading>
             <p className="mt-4 max-w-3xl text-white/70">
-              Bring your current bottleneck and constraints. We will propose a
-              scoped sprint with clear outcomes and realistic delivery timelines.
+              Bring the bottleneck and constraints — timeline, stack, budget.
+              We will propose a written scope with a cut line and a demo
+              cadence you can plan around.
             </p>
             <Link
               href={calHref}

@@ -6,24 +6,24 @@ import { CAL, COMPANY, SOCIAL } from "@/config/site";
 
 const beliefs = [
   {
-    title: "Senior team, no handoffs.",
+    title: "One team, start to finish.",
     body:
-      "Every project is run by a small senior pod — design, engineering, and AI in one team. No outsourcing, no junior hot-swaps, no slide decks pretending to be progress.",
+      "Design, engineering, and AI in one small group. No outsourcing, no junior hot-swaps, no slide decks pretending to be progress. You talk to the people doing the work.",
   },
   {
     title: "Ship the smallest thing that proves the bet.",
     body:
-      "We compress timelines by removing the things that don't move the metric. The first useful version lands inside 30 days, not after a six-month discovery phase.",
+      "We cut scope until one hypothesis is testable. The first useful version should land in weeks — not after a six-month discovery phase that produces a PDF nobody reads.",
   },
   {
-    title: "Design is a forcing function.",
+    title: "Design clarifies — it does not decorate.",
     body:
-      "We use design to clarify product strategy, not to decorate it. The brief that comes out of week one is sharper than the brief that came in.",
+      "We use design to force decisions: what ships, what waits, what gets cut. The brief at the end of week one should be sharper than the one that came in.",
   },
   {
-    title: "AI when it actually helps.",
+    title: "AI when the math works.",
     body:
-      "We build production AI only when it pays back. We say no when it doesn't — and we'll tell you which side of that line you're on before you spend a dollar.",
+      "We build production AI when deflection, speed, or quality gains are measurable. We say no when it is not — and we will tell you which side you are on before you spend.",
   },
 ];
 
@@ -49,13 +49,18 @@ export default function AboutPage() {
           About {COMPANY.name}
         </p>
         <h1 className="mt-4 font-montserrat text-display-md font-semibold text-balance">
-          One senior pod. Three surfaces. Compounding output.
+          A small studio for build, AI, design, and trading systems.
         </h1>
         <p className="mt-6 max-w-2xl text-pretty text-base text-white/70 sm:text-lg">
-          Futurebits is a small senior team. We work across AI, markets, and
-          design — three surfaces that share the same engineering bar. We take a
-          small number of engagements at a time so each one gets a real pod, not
-          a slide deck.
+          Futurebits is a senior team of roughly a dozen people. We work across
+          product engineering, applied AI, UX, and markets infrastructure — same
+          bar everywhere. We take a limited number of engagements so each one
+          gets a real team, weekly demos, and code in your repo.
+        </p>
+        <p className="mt-4 max-w-2xl text-pretty text-base text-white/60">
+          We are not a staff-augmentation bench and we are not a strategy firm
+          that hands off to someone else. If you need slides about digital
+          transformation, we are the wrong call.
         </p>
 
         <div className="mt-10 grid grid-cols-2 gap-6 rounded-2xl border border-white/10 bg-white/5 p-6 sm:grid-cols-4 sm:p-8">
@@ -77,9 +82,9 @@ export default function AboutPage() {
           What we believe
         </h2>
         <p className="mt-3 max-w-2xl text-white/60">
-          A short, opinionated set of beliefs we actually act on. If any of
-          these feel wrong for your team, we're probably not the right fit —
-          and that's a useful thing to learn fast.
+          Opinionated defaults we actually act on. If any of this feels wrong for
+          your team, we are probably not the right fit — and that is worth
+          learning in the first call, not month three.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           {beliefs.map((b) => (
@@ -101,11 +106,11 @@ export default function AboutPage() {
       <section className="mx-auto max-w-5xl px-6 pb-24">
         <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#2E2688]/40 to-[#01B0EA]/10 p-8 text-center sm:p-12">
           <h2 className="font-montserrat text-2xl font-semibold sm:text-3xl">
-            Want to see how we'd work with you?
+            See if we are a fit
           </h2>
           <p className="mt-3 text-white/70">
-            Book a 30-minute call. We'll come prepared with a sharp read of
-            your problem and a one-page plan you can keep, hire us or not.
+            Book 30 minutes. We will come with a read of your problem and a
+            one-page scope sketch — keep it whether you hire us or not.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link

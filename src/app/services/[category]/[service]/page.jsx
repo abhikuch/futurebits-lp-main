@@ -17,6 +17,7 @@ import {
   getServiceFaq,
   SERVICES,
 } from "@/content/services";
+import { lintText } from "@/content/content-voice";
 import {
   buildServiceSections,
   getServicePlaybook,
@@ -225,30 +226,33 @@ export default function ServiceDetailPage({ params }) {
             <div className="relative z-10">
               <p className={`fb-kicker ${theme.accentText}`}>{category.title}</p>
               <Heading as="h1" className={heroPreset.titleClass}>
-                {service.hero}
+                {lintText(service.hero)}
               </Heading>
               <p className={heroPreset.subheadClass}>
-                {service.subhead}
+                {lintText(service.subhead)}
               </p>
-              <div
-                className={`mt-6 flex flex-wrap items-center gap-2 ${
-                  category.slug === "ai-automation" || category.slug === "design"
-                    ? "justify-center"
-                    : ""
-                }`}
-              >
-                <span
-                  className={`inline-flex rounded-full px-3 py-1 text-xs font-medium text-white/90 ${theme.chipBg}`}
+              {sectionData.chips?.length ? (
+                <div
+                  className={`mt-6 flex flex-wrap items-center gap-2 ${
+                    category.slug === "ai-automation" || category.slug === "design"
+                      ? "justify-center"
+                      : ""
+                  }`}
                 >
-                  Outcome-first delivery
-                </span>
-                <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/90">
-                  Senior pod ownership
-                </span>
-                <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/90">
-                  Scoped for measurable impact
-                </span>
-              </div>
+                  {sectionData.chips.map((chip) => (
+                    <span
+                      key={chip}
+                      className={`inline-flex rounded-full px-3 py-1 text-xs font-medium text-white/90 ${
+                        sectionData.chips.indexOf(chip) === 0
+                          ? theme.chipBg
+                          : "bg-white/10"
+                      }`}
+                    >
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
               <div className={heroPreset.ctaRowClass}>
                 <Link
                   href={calHref}
@@ -269,6 +273,33 @@ export default function ServiceDetailPage({ params }) {
           </div>
         </Container>
       </Section>
+
+      {sectionData.intro ? (
+        <Section className="py-8">
+          <Container className="max-w-3xl">
+            <p className="text-base leading-relaxed text-white/75">
+              {sectionData.intro}
+            </p>
+          </Container>
+        </Section>
+      ) : null}
+
+      {sectionData.contrarian || sectionData.wontDo ? (
+        <Section className="py-6">
+          <Container className="max-w-3xl space-y-4">
+            {sectionData.contrarian ? (
+              <p className="border-l-2 border-[#01B0EA]/60 pl-4 text-sm leading-relaxed text-white/80">
+                {sectionData.contrarian}
+              </p>
+            ) : null}
+            {sectionData.wontDo ? (
+              <p className="text-sm leading-relaxed text-white/55">
+                {sectionData.wontDo}
+              </p>
+            ) : null}
+          </Container>
+        </Section>
+      ) : null}
 
       <Section className={rhythm.infoSectionClass}>
         <Container className={rhythm.splitGapClass}>

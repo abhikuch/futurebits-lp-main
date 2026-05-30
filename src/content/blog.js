@@ -1,6 +1,7 @@
 import { SITE_URL } from "@/config/site";
+import { lintBlogPost } from "@/content/content-voice";
 
-export const BLOG_POSTS = [
+const RAW_BLOG_POSTS = [
   {
     slug: "website-ux-audit-cost-guide",
     title: "How Much Does a Website UX Audit Cost in 2026?",
@@ -86,7 +87,7 @@ export const BLOG_POSTS = [
       },
       {
         heading: "Design escalation paths humans trust",
-        body: "Users tolerate AI support when handoff to a human is seamless. Integrate with your CRM or helpdesk, pass conversation context, and set clear expectations in the UI.",
+        body: "Users tolerate AI support when escalation to a human takes one click and passes full context. Integrate with Zendesk or Intercom, attach the transcript, and tell users what happens next.",
       },
       {
         heading: "Launch with evals, not hope",
@@ -345,9 +346,9 @@ export const BLOG_POSTS = [
   },
   {
     slug: "end-to-end-product-development-guide",
-    title: "End-to-End Product Development: Design + Engineering in One Pod",
+    title: "End-to-End Product Development: Design + Engineering in One Team",
     description:
-      "Why combining product design and development in one team reduces handoff loss and speeds shipping.",
+      "Why one team in one repo beats design-to-dev handoffs for zero-to-one and relaunch work.",
     publishedAt: "2026-05-29",
     category: "Product",
     readMinutes: 8,
@@ -367,7 +368,7 @@ export const BLOG_POSTS = [
       },
       {
         heading: "Weekly demos keep stakeholders aligned",
-        body: "End-to-end pods demo working software weekly, not slide decks. Feedback happens on real product, reducing rework cycles.",
+        body: "End-to-end teams demo working software weekly — not slide decks. Feedback on staging reduces rework because stakeholders react to real flows.",
       },
       {
         heading: "Best for zero-to-one and major relaunches",
@@ -376,6 +377,8 @@ export const BLOG_POSTS = [
     ],
   },
 ];
+
+export const BLOG_POSTS = RAW_BLOG_POSTS.map(lintBlogPost);
 
 export function getBlogPost(slug) {
   return BLOG_POSTS.find((post) => post.slug === slug) ?? null;

@@ -1,247 +1,191 @@
-/* Category-aware playbook generation for services without hand-written playbooks. */
+/* Playbook generation with anti-slop structure and voice lint. */
 
-const CATEGORY_CONTEXT = {
-  build: {
-    audiencePool: [
-      "SaaS founders shipping their next product increment.",
-      "Ops teams replacing manual workflows with reliable software.",
-      "Product leaders modernizing legacy internal tooling.",
-      "Growth-stage companies scaling engineering without hiring lag.",
-    ],
-    problemPool: [
-      "Manual processes creating errors, delays, and hidden operational cost.",
-      "Legacy systems that cannot support current product or compliance needs.",
-      "Engineering backlog blocking revenue-critical features for quarters.",
-      "Unclear scope causing overbuild and missed launch windows.",
-      "Fragmented data across tools with no single operational source of truth.",
-    ],
-    deliverablePool: [
-      "Production-ready implementation with clear acceptance criteria.",
-      "Architecture and data model aligned to your growth stage.",
-      "Automated tests and deployment pipeline for safe releases.",
-      "Documentation and handoff materials your team can maintain.",
-      "Instrumentation for usage, errors, and business KPI tracking.",
-      "Phased rollout plan with milestone-based delivery.",
-    ],
-    process: [
-      "Discovery: align on users, constraints, integrations, and success metrics.",
-      "Scope: define the smallest shippable version with measurable outcomes.",
-      "Build: weekly demos inside your repo with incremental delivery.",
-      "Launch: production rollout, monitoring, and structured handoff.",
-    ],
-    differentiators: [
-      "Senior full-stack pod with direct ownership — no handoff chains.",
-      "Outcome-first scoping that avoids overbuild and scope creep.",
-      "Production habits: tests, observability, and rollback-safe releases.",
-    ],
-  },
-  "ai-automation": {
-    audiencePool: [
-      "Product teams adding AI features without risking user trust.",
-      "Support and ops leaders automating high-volume repetitive work.",
-      "Founders exploring where AI creates measurable ROI first.",
-      "Enterprises needing production guardrails, not demo-quality AI.",
-    ],
-    problemPool: [
-      "AI prototypes that fail under real user load or edge cases.",
-      "Hallucinations and inconsistent outputs eroding user confidence.",
-      "No evaluation framework to measure quality before launch.",
-      "Disconnected AI features that do not integrate with existing workflows.",
-      "Unclear data privacy and access boundaries for AI systems.",
-    ],
-    deliverablePool: [
-      "Production AI pipeline with retrieval, prompts, and fallback logic.",
-      "Evaluation suite with test cases tied to business outcomes.",
-      "Guardrails for tone, accuracy, and escalation when confidence is low.",
-      "Observability for latency, cost, and quality drift over time.",
-      "Integration with your product, CRM, or internal tools.",
-      "Runbook for monitoring, retraining, and scope expansion.",
-    ],
-    process: [
-      "Discovery: map workflows, data sources, and ROI hypotheses.",
-      "Scope: define v1 automation with eval criteria and safety boundaries.",
-      "Build: iterate on quality with test sets before user-facing rollout.",
-      "Launch: staged deployment with monitoring and human-in-the-loop where needed.",
-    ],
-    differentiators: [
-      "Production AI with evals and guardrails — not demo-quality outputs.",
-      "Measurable ROI tracking from week one of deployment.",
-      "Senior pod spanning ML integration, backend, and product UX.",
-    ],
-  },
-  design: {
-    audiencePool: [
-      "Product teams preparing for a launch or major UX refresh.",
-      "Founders who need design and frontend shipped in one pod.",
-      "Growth teams optimizing activation, conversion, and retention flows.",
-      "Engineering leads wanting implementation-ready design assets.",
-    ],
-    problemPool: [
-      "Inconsistent UI patterns causing user confusion and support load.",
-      "Design-engineering handoff loss slowing iteration velocity.",
-      "Critical flows with high drop-off and no clear fix priority.",
-      "Stakeholder feedback cycles delaying ship dates without improving outcomes.",
-      "No design system causing duplicated effort across features.",
-    ],
-    deliverablePool: [
-      "User flows and wireframes for priority journeys.",
-      "High-fidelity UI with responsive layouts and interaction states.",
-      "Design system components or extensions to your existing library.",
-      "Developer-ready specs, tokens, and asset exports.",
-      "Design QA on production builds before launch.",
-      "Prioritized backlog for post-launch iteration.",
-    ],
-    process: [
-      "Discovery: align on users, metrics, and constraints with engineering.",
-      "Scope: map critical journeys and define success criteria per flow.",
-      "Build: design sprints with weekly reviews and prototype validation.",
-      "Launch: handoff, design QA, and post-launch measurement support.",
-    ],
-    differentiators: [
-      "Design and frontend in one repo — no handoff loss.",
-      "Conversion and retention metrics drive design decisions.",
-      "Senior designers who understand engineering constraints.",
-    ],
-  },
-  "integrations-platform": {
-    audiencePool: [
-      "SaaS teams launching billing, auth, or analytics foundations.",
-      "Product leaders integrating third-party tools without tech debt.",
-      "Startups needing production-grade payments and subscriptions fast.",
-      "Ops teams connecting CRM, email, and communication channels.",
-    ],
-    problemPool: [
-      "Fragile integrations breaking silently in production.",
-      "Payment or billing edge cases causing revenue leakage.",
-      "Auth flows that create security gaps or poor user experience.",
-      "Webhook and retry logic missing, causing data sync failures.",
-      "No monitoring on integration health until customers complain.",
-    ],
-    deliverablePool: [
-      "Production integration with error handling and retry logic.",
-      "Webhook processing with idempotency and audit trails.",
-      "Sandbox-to-production validation checklist.",
-      "Monitoring and alerting for integration failures.",
-      "Documentation for your team to extend and maintain.",
-      "Security review of credentials, scopes, and access patterns.",
-    ],
-    process: [
-      "Discovery: audit current stack, vendors, and failure modes.",
-      "Scope: define integration requirements and acceptance tests.",
-      "Build: implement, test edge cases, and validate in staging.",
-      "Launch: production cutover with monitoring and rollback plan.",
-    ],
-    differentiators: [
-      "Integration work treated as product infrastructure, not one-off tasks.",
-      "Edge-case handling and observability built in from day one.",
-      "Experience across Stripe, auth providers, CRMs, and analytics stacks.",
-    ],
-  },
-  "startup-tech-partner": {
-    audiencePool: [
-      "First-time founders going from idea to shippable product.",
-      "Startup CEOs needing a senior technical co-pilot without full-time hire.",
-      "Teams post-seed preparing for scale-up architecture decisions.",
-      "Non-technical founders who need clarity on build vs buy tradeoffs.",
-    ],
-    problemPool: [
-      "Unclear product scope causing wasted engineering cycles.",
-      "Architecture decisions that block scale-up six months later.",
-      "No trusted technical partner for investor or board conversations.",
-      "Vendor and agency output that does not compound into a real product.",
-      "Roadmap packed with features but missing revenue-linked prioritization.",
-    ],
-    deliverablePool: [
-      "Product and technical strategy aligned to business milestones.",
-      "MVP scope definition with cut lines and success metrics.",
-      "Architecture plan that supports 10x growth without rewrite.",
-      "Vendor evaluation and build-vs-buy recommendations.",
-      "Sprint or pod delivery for highest-leverage milestones.",
-      "Board-ready progress reporting and risk visibility.",
-    ],
-    process: [
-      "Discovery: understand vision, constraints, and near-term business goals.",
-      "Scope: prioritize bets by revenue impact and execution feasibility.",
-      "Build: ship in focused sprints with weekly stakeholder demos.",
-      "Launch: go-live support and roadmap for the next growth phase.",
-    ],
-    differentiators: [
-      "Founder-aligned partner — we challenge scope, not just execute briefs.",
-      "Strategy and delivery in one senior pod.",
-      "Speed without sacrificing architecture decisions you will not regret.",
-    ],
-  },
+import { lintPlaybook } from "@/content/content-voice";
+import { MARKETS_AUDIENCE } from "@/content/service-copy";
+import { generateServiceSeed } from "@/content/service-content-seeds";
+
+const PROCESS_VARIANTS = [
+  (title, timeline) => [
+    `Week 1: map current state, stack, and what "${title.toLowerCase()}" must change`,
+    `Week 2: lock scope, acceptance tests, and cut lines`,
+    `Weeks 3+: build in your repo with weekly demos`,
+    `Final: launch, monitor, handoff docs`,
+  ],
+  (title) => [
+    `Align: goals, constraints, and who signs off on ${title.toLowerCase()}`,
+    `Cut: smallest version that proves value — write it down`,
+    `Ship: incremental releases with review each week`,
+    `Measure: check the metric we agreed on; iterate or close`,
+  ],
+  (title, _, tools) => [
+    `Audit: existing ${tools[0]} setup and failure modes`,
+    `Design: approach, risks, and test plan before code`,
+    `Implement: focused build with explicit done criteria`,
+    `Validate: staging sign-off, then production with rollback plan`,
+  ],
+  (title, timeline) => [
+    `Kickoff: access, repos, and ${timeline} target`,
+    `Prototype: rough end-to-end path for feedback early`,
+    `Harden: edge cases, monitoring, and docs`,
+    `Release: go-live support and next-step backlog`,
+  ],
+  (title, _, tools) => [
+    `Intake: stakeholders, ${tools[0]} access, and success metric`,
+    `Spec: written scope with in/out and test cases`,
+    `Build: pair with your team or solo in your repo`,
+    `Handoff: docs, runbook, and optional retainer`,
+  ],
+];
+
+const WHO_FOR_BY_CATEGORY = {
+  build: [
+    (t) => `CTOs who need ${t.toLowerCase()} shipped this quarter — not next year.`,
+    (t) => `Ops leads replacing manual work with ${t.toLowerCase()} your team will actually use.`,
+    (t) => `Founders post-PMF adding ${t.toLowerCase()} without hiring three engineers first.`,
+    (t) => `Product teams blocked on ${t.toLowerCase()} because internal capacity is on core roadmap.`,
+  ],
+  "ai-automation": [
+    (t) => `Product leads adding ${t.toLowerCase()} with evals — not demo-day features.`,
+    (t) => `Support or ops managers automating repeat work via ${t.toLowerCase()}.`,
+    (t) => `Teams that tried a chatbot hackathon and need ${t.toLowerCase()} in production.`,
+    (t) => `Founders who need ${t.toLowerCase()} scoped before the next fundraise narrative.`,
+  ],
+  design: [
+    (t) => `Growth leads where ${t.toLowerCase()} should move signup or demo conversion.`,
+    (t) => `Product designers underwater — need ${t.toLowerCase()} for one critical flow.`,
+    (t) => `Founders relaunching and need ${t.toLowerCase()} before paid traffic scales.`,
+    (t) => `Engineering leads who want ${t.toLowerCase()} that builds cleanly in React.`,
+  ],
+  "markets-trading": [
+    (t) => `Quant and systematic teams formalizing ${t.toLowerCase()} before capital allocation.`,
+    (t) => `Prop desks moving from scripts to monitored ${t.toLowerCase()}.`,
+    (t) => `Funds with governance gates between research and ${t.toLowerCase()}.`,
+    (t) => `Trading ops adding ${t.toLowerCase()} after a near-miss or audit finding.`,
+  ],
+  "integrations-platform": [
+    (t) => `SaaS founders who need ${t.toLowerCase()} live before sales can close deals.`,
+    (t) => `Engineering teams scared to touch billing — need ${t.toLowerCase()} done right once.`,
+    (t) => `Products expanding to new markets requiring ${t.toLowerCase()}.`,
+    (t) => `Teams migrating stacks and need ${t.toLowerCase()} without breaking prod.`,
+  ],
+  "startup-tech-partner": [
+    (t) => `First-time founders who need ${t.toLowerCase()} and honest scope pushback.`,
+    (t) => `Pre-seed teams with investor interest but no technical co-founder.`,
+    (t) => `Startups between hires — need ${t.toLowerCase()} for 8–12 weeks.`,
+    (t) => `Founders who burned budget on agencies and want ${t.toLowerCase()} in one repo.`,
+  ],
 };
 
-function hashPick(seed, pool, count) {
+const PROBLEM_VARIANTS = [
+  (t, tools) => `${t} estimates balloon because acceptance criteria were never written.`,
+  (t) => `A previous vendor shipped ${t.toLowerCase()} that broke on edge cases in week two.`,
+  (t) => `Your team lacks bandwidth to own ${t.toLowerCase()} while shipping the core product.`,
+  (t, tools) => `Integrations around ${tools[0]} are fragile and nobody owns on-call.`,
+  (t) => `Stakeholders disagree on what "${t.toLowerCase()} done" means — so nothing ships.`,
+  (t, tools) => `You have ${tools[1]} in place but ${t.toLowerCase()} never got past the backlog.`,
+];
+
+const DELIVERABLE_VARIANTS = [
+  (t) => `Written scope for ${t.toLowerCase()} with explicit in/out of scope`,
+  "Weekly demo — live or recorded — with decisions logged",
+  "Acceptance checklist signed before production launch",
+  "Runbook for the failure modes we expect in month one",
+  "Handoff doc so your team can maintain without us",
+  (t, tools) => `Working implementation in your repo using ${tools.slice(0, 2).join(" and ")}`,
+];
+
+function hashIndex(seed, modulo) {
   let hash = 0;
   for (let i = 0; i < seed.length; i += 1) {
     hash = (hash << 5) - hash + seed.charCodeAt(i);
     hash |= 0;
   }
-  const items = [];
-  const used = new Set();
-  for (let i = 0; items.length < count && i < pool.length * 2; i += 1) {
-    const idx = Math.abs((hash + i * 7) % pool.length);
-    if (!used.has(idx)) {
-      used.add(idx);
-      items.push(pool[idx]);
-    }
-  }
-  return items;
+  return Math.abs(hash) % modulo;
 }
 
-function titleCase(str) {
-  return str.replace(/\b\w/g, (c) => c.toUpperCase());
+function buildFaqs(service, seed) {
+  const lower = service.title.toLowerCase();
+  const toolStr = seed.tools.slice(0, 2).join(" or ");
+
+  const pools = [
+    {
+      q: `What does the first week of ${lower} look like?`,
+      a: `Access, repo setup, and a written scope draft. No build until you sign off on cut lines and the metric we're targeting.`,
+    },
+    {
+      q: `Do you work with our existing ${toolStr} setup?`,
+      a: `Yes, when it's sane. We audit first and tell you if something needs replacing — we won't rip out working infra for sport.`,
+    },
+    {
+      q: `What if we already started ${lower} in-house?`,
+      a: `We pick up from current state, document what's there, and focus on what's blocking launch — not a rewrite unless necessary.`,
+    },
+    {
+      q: `How is ${lower} priced?`,
+      a: `Fixed scope for sprints (${seed.timeline}). Broader work runs as a pod with weekly demos. We quote after a 30-minute scoping call.`,
+    },
+    {
+      q: `What do you need from us to start?`,
+      a: `One decision-maker, repo or staging access, and honest constraints (timeline, budget, stack). Existing docs help but aren't required.`,
+    },
+    {
+      q: `Can you stay on after ${lower} launches?`,
+      a: `Yes — maintenance sprints or a partner retainer. Many teams keep us for the next bottleneck once v1 is stable.`,
+    },
+    {
+      q: `Who on your team works on ${lower}?`,
+      a: `The same small team from kickoff to launch — not a rotating bench. You talk to the people writing code or design files.`,
+    },
+  ];
+
+  const start = hashIndex(service.slug, pools.length);
+  return [...pools.slice(start), ...pools.slice(0, start)].slice(0, 5);
 }
 
-function buildFaqs(service, category) {
-  const title = service.title;
-  const lower = title.toLowerCase();
+function buildDifferentiators(seed) {
   return [
-    {
-      q: `How long does ${lower} typically take?`,
-      a: `Focused ${lower} scopes usually ship in 2-4 weeks. Broader ${category.shortTitle.toLowerCase()} engagements run 8-12 weeks with weekly demos.`,
-    },
-    {
-      q: `What should we prepare before starting ${lower}?`,
-      a: "Share your goals, current stack, constraints, and any existing docs or designs. We will align on scope and success metrics on the first call.",
-    },
-    {
-      q: `Can Futurebits work with our existing ${category.shortTitle.toLowerCase()} team?`,
-      a: "Yes. We embed in your repo and process, pair with your team, and leave clear documentation when the engagement ends.",
-    },
-    {
-      q: `How do you measure success for ${lower}?`,
-      a: "We define acceptance criteria and business metrics up front — cycle time, conversion, reliability, or cost savings depending on your use case.",
-    },
-    {
-      q: `Do you offer ongoing support after ${lower} launches?`,
-      a: "Yes. We offer maintenance, iteration sprints, and partner engagements for teams that want continued senior execution.",
-    },
+    seed.contrarian,
+    seed.wontDo,
+    `Typical window: ${seed.timeline} — stated in writing before we start.`,
   ];
 }
 
 export function generateServicePlaybook(service, category) {
-  const ctx = CATEGORY_CONTEXT[category.slug] ?? CATEGORY_CONTEXT.build;
-  const seed = service.slug;
+  const seed = generateServiceSeed(service, category);
+  const slug = service.slug;
+  const title = service.title;
+  const variantIdx = hashIndex(slug, PROCESS_VARIANTS.length);
+  const processFn = PROCESS_VARIANTS[variantIdx];
+  const whoForFns =
+    WHO_FOR_BY_CATEGORY[category.slug] ?? WHO_FOR_BY_CATEGORY.build;
+  const whoStart = hashIndex(slug, whoForFns.length);
 
-  return {
-    whoFor: hashPick(`${seed}-who`, ctx.audiencePool, 4).map((item) =>
-      item.includes("teams") || item.includes("founders")
-        ? `${titleCase(category.shortTitle)} buyers: ${item.charAt(0).toLowerCase()}${item.slice(1)}`
-        : item
+  const markets = MARKETS_AUDIENCE[slug];
+
+  const playbook = {
+    intro: seed.intro,
+    contrarian: seed.contrarian,
+    wontDo: seed.wontDo,
+    chips: seed.chips,
+    whoFor: [
+      ...whoForFns.slice(whoStart),
+      ...whoForFns.slice(0, whoStart),
+    ].slice(0, 4).map((fn) => fn(title)),
+    problems: PROBLEM_VARIANTS.map((fn) => fn(title, seed.tools)).slice(0, 5),
+    deliverables: DELIVERABLE_VARIANTS.map((entry) =>
+      typeof entry === "function" ? entry(title, seed.tools) : entry
     ),
-    problems: [
-      ...hashPick(`${seed}-prob`, ctx.problemPool, 3),
-      `${service.title} delayed by unclear requirements or missing technical ownership.`,
-    ],
-    deliverables: [
-      `${service.title} scoped to measurable outcomes with defined acceptance criteria.`,
-      ...hashPick(`${seed}-del`, ctx.deliverablePool, 5),
-    ],
-    process: ctx.process,
-    differentiators: ctx.differentiators,
-    faqs: buildFaqs(service, category),
+    process: processFn(title, seed.timeline, seed.tools),
+    differentiators: buildDifferentiators(seed),
+    faqs: buildFaqs(service, seed),
+    ...(markets
+      ? {
+          dominantPersona: markets.dominantPersona,
+          dominantAudience: markets.dominantAudience,
+          secondaryAudiences: markets.secondaryAudiences,
+        }
+      : {}),
   };
+
+  return lintPlaybook(playbook);
 }
