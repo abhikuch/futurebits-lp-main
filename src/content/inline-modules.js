@@ -82,7 +82,7 @@ export const FAQ = {
   ai: [
     {
       q: "What kind of AI projects do you ship?",
-      a: "Production AI systems for support, operations, and product workflows — including retrieval pipelines, evaluations, guardrails, and observability. We prioritize measurable business outcomes over demos.",
+      a: "Production AI systems including chatbots, custom GPTs, knowledge bases, AI agents, content generation, video pipelines, and workflow automation — with evaluations, guardrails, and observability. We prioritize measurable business outcomes over demos.",
     },
     {
       q: "Can you work with our existing engineering team?",
@@ -126,7 +126,7 @@ export const FAQ = {
   design: [
     {
       q: "Do you handle both design and frontend implementation?",
-      a: "Yes. Designers and engineers work in one pod and ship in one repo, reducing handoff loss and accelerating iteration speed.",
+      a: "Yes. Designers and engineers work in one pod and ship in one repo — from UX research and wireframing through branding, UI design, and frontend code.",
     },
     {
       q: "Do you challenge product assumptions or just execute briefs?",
@@ -135,6 +135,10 @@ export const FAQ = {
     {
       q: "Can you work in our design system?",
       a: "Yes — and we'll improve it on the way out. If you don't have one, we'll ship the smallest one that earns its keep.",
+    },
+    {
+      q: "Do you offer UX audits and branding work?",
+      a: "Yes. We run complete website UX audits, product experience reviews, branding and visual identity systems, and UX research — alongside UI design and frontend delivery.",
     },
     {
       q: "What is a typical design engagement timeline?",

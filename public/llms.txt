@@ -1,0 +1,39 @@
+# Futurebits
+
+> Design, AI, and automation — built by one team.
+
+Futurebits is a senior product pod delivering software development, AI automation, product design, and trading infrastructure for ambitious teams worldwide.
+
+## Primary pages
+
+- [AI & Automation](https://www.futurebits.tech/ai): Production AI — chatbots, agents, custom GPTs, workflow automation
+- [Design](https://www.futurebits.tech/design): UI/UX design, UX audits, branding, landing pages, design systems
+- [Markets](https://www.futurebits.tech/markets): Trading execution, backtesting, risk monitoring, analytics
+- [Services Hub](https://www.futurebits.tech/services): Full catalog of 90+ services across 6 categories
+- [Blog / Insights](https://www.futurebits.tech/blog): Guides on UX audits, AI chatbots, custom GPT, landing page conversion
+- [Contact](https://www.futurebits.tech/contact): Start a project conversation
+
+## Core service categories
+
+- Build: https://www.futurebits.tech/services/build
+- AI & Automation: https://www.futurebits.tech/services/ai-automation
+- Design: https://www.futurebits.tech/services/design
+- Markets & Trading: https://www.futurebits.tech/services/markets-trading
+- Integrations & Platform: https://www.futurebits.tech/services/integrations-platform
+- Startup Tech Partner: https://www.futurebits.tech/services/startup-tech-partner
+
+## Priority services
+
+- Website UX Audit: https://www.futurebits.tech/services/design/website-ux-audit
+- AI Chatbot Development: https://www.futurebits.tech/services/ai-automation/chatbot-development
+- Custom GPT & Knowledge Base: https://www.futurebits.tech/services/ai-automation/custom-gpt-knowledge-base
+- AI Agents Development: https://www.futurebits.tech/services/ai-automation/ai-agents-development
+- Landing Page Design: https://www.futurebits.tech/services/design/landing-page-design
+- UI/UX Design: https://www.futurebits.tech/services/design/ui-ux-design
+- End-to-End Product Design & Development: https://www.futurebits.tech/services/startup-tech-partner/end-to-end-product-design-development
+- Excel Automation & Smart Reporting: https://www.futurebits.tech/services/build/excel-automation-smart-reporting
+
+## Contact
+
+- Email: admin@futurebits.tech
+- Website: https://www.futurebits.tech

@@ -124,7 +124,7 @@ const ServicesSection = () => {
         "Production content pipelines with quality gates — tone, accuracy, and brand checks built in.",
       icon: workflowIcon,
       borderStyle: borderStyles.card4,
-      href: getServiceBySlugs("ai-automation", "ai-customer-support-tools")?.path || "/services/ai-automation",
+      href: getServiceBySlugs("ai-automation", "ai-content-generation")?.path || "/services/ai-automation",
     },
     {
       id: 5,

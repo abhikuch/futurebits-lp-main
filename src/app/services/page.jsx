@@ -1,15 +1,12 @@
 import Link from "next/link";
 
-import JsonLd, {
-  breadcrumbJsonLd,
-  customServiceJsonLd,
-} from "@/components/seo/JsonLd";
+import JsonLd, { servicesHubJsonLd } from "@/components/seo/JsonLd";
 import SiteFooter from "@/components/shared/SiteFooter";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Section from "@/components/ui/section";
 import logo from "@/assets/logo.svg";
-import { COMPANY, SITE_URL } from "@/config/site";
+import { COMPANY } from "@/config/site";
 import { SERVICES_BY_CATEGORY } from "@/content/services";
 import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
 
@@ -29,23 +26,12 @@ const engagementModels = [
 ];
 
 export default function ServicesHubPage() {
-  const breadcrumb = breadcrumbJsonLd([
-    { name: "Home", url: SITE_URL },
-    { name: "Services", url: `${SITE_URL}/services` },
-  ]);
-  const service = customServiceJsonLd({
-    title: "Futurebits Services",
-    description:
-      "Software development, AI automation, product design, integrations, and startup technical partnership services.",
-    path: "/services",
-  });
-
   return (
     <main
       id="main-content"
       className={`min-h-screen ${SERVICE_HUB_THEME.pageBgClass} text-white`}
     >
-      <JsonLd data={[breadcrumb, service]} />
+      <JsonLd data={servicesHubJsonLd(SERVICES_BY_CATEGORY)} />
 
       <Section className="pb-12 pt-32 sm:pt-36">
         <Container>
@@ -118,6 +104,12 @@ export default function ServicesHubPage() {
               className="mt-8 inline-flex h-11 items-center justify-center rounded-full border border-white/30 px-6 text-sm font-medium text-white transition hover:bg-white/10"
             >
               Talk to {COMPANY.name}
+            </Link>
+            <Link
+              href="/blog"
+              className="ml-3 inline-flex h-11 items-center justify-center rounded-full border border-white/15 px-6 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white"
+            >
+              Read insights
             </Link>
           </div>
         </Container>

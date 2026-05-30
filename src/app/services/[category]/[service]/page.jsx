@@ -2,11 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
-import JsonLd, {
-  breadcrumbJsonLd,
-  customServiceJsonLd,
-  faqJsonLd,
-} from "@/components/seo/JsonLd";
+import JsonLd, { serviceDetailJsonLd } from "@/components/seo/JsonLd";
+import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import SiteFooter from "@/components/shared/SiteFooter";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
@@ -20,6 +17,11 @@ import {
   getServiceFaq,
   SERVICES,
 } from "@/content/services";
+import {
+  buildServiceSections,
+  getServicePlaybook,
+} from "@/content/service-playbooks";
+import { buildCalUrl } from "@/lib/cal";
 import aiCircle from "@/assets/landing-page-AI/circle.webp";
 import designDiamond from "@/assets/design/navbar.svg";
 import designLight from "@/assets/design/light.webp";
@@ -35,231 +37,11 @@ import {
   VERTICAL_DECOR_CLASSES,
 } from "@/app/services/themeTokens";
 
-const MARKET_AUDIENCE_PLAYBOOK = {
-  "strategy-backtesting": {
-    dominantPersona: "Quant funds",
-    dominantAudience:
-      "Quant funds validating signal stability before allocation decisions and capital allocation reviews.",
-    secondaryAudiences: [
-      "Prop desks testing strategy variants across regimes and liquidity conditions.",
-      "Discretionary teams codifying repeatable playbooks into testable systems.",
-    ],
-    problems: [
-      "Backtests that ignore realistic execution friction and overstate edge.",
-      "Research outputs that cannot be reproduced or promoted safely to live.",
-      "No shared acceptance criteria for strategy go/no-go decisions.",
-    ],
-    deliverables: [
-      "Event-driven backtest framework with realistic slippage, fees, and fill logic.",
-      "Reusable experiment templates and versioned parameter tracking.",
-      "Promotion checklist from research to forward-test readiness.",
-    ],
-  },
-  "forward-testing-shadow-mode": {
-    dominantPersona: "Prop desks",
-    dominantAudience:
-      "Prop desks pressure-testing intraday systems before risking desk capital.",
-    secondaryAudiences: [
-      "Funds with strict deployment governance between research and production.",
-      "Discretionary desks validating model overlays alongside manual execution.",
-    ],
-    problems: [
-      "No controlled step between promising backtests and real-money deployment.",
-      "Weak observability on strategy behavior during live-feed validation.",
-      "Ad-hoc promotion decisions without statistical confidence thresholds.",
-    ],
-    deliverables: [
-      "Paper + shadow mode execution environment mirroring production pathways.",
-      "Validation dashboards for drift, fill-quality, and risk violations.",
-      "Clear promotion criteria and rollback guardrails.",
-    ],
-  },
-  "live-trading-execution-systems": {
-    dominantPersona: "Funds",
-    dominantAudience:
-      "Funds requiring reliable order lifecycle handling at production scale with governance.",
-    secondaryAudiences: [
-      "Prop desks that need fast execution with hard risk stops.",
-      "Discretionary teams automating repeatable execution legs without losing control.",
-    ],
-    problems: [
-      "Execution stacks break under venue/API edge cases and volatile sessions.",
-      "Inconsistent retries/idempotency causing duplicate or missing orders.",
-      "Risk controls and runbooks are too fragile for high-pressure operations.",
-    ],
-    deliverables: [
-      "Production execution engine with idempotent order flow and fail-safe retries.",
-      "Pre-trade and intra-trade risk gates with kill-switch support.",
-      "Operational runbooks, incident workflows, and audit-ready traces.",
-    ],
-  },
-  "real-time-pnl-exposure-monitoring": {
-    dominantPersona: "Prop desks",
-    dominantAudience:
-      "Prop desks monitoring desk-level exposure and strategy health in real time.",
-    secondaryAudiences: [
-      "Funds needing portfolio-wide risk visibility throughout the trading day.",
-      "Discretionary teams tracking automated and manual positions in one surface.",
-    ],
-    problems: [
-      "Delayed risk and PnL visibility prevents timely intervention.",
-      "Fragmented dashboards hide cross-strategy exposure concentration.",
-      "Alerting is noisy, late, or disconnected from actionable runbooks.",
-    ],
-    deliverables: [
-      "Unified real-time monitoring for PnL, exposure, and strategy status.",
-      "Alerting thresholds mapped to practical intervention workflows.",
-      "Role-aware monitoring views for traders, risk, and operations.",
-    ],
-  },
-  "trade-analytics-reporting": {
-    dominantPersona: "Funds",
-    dominantAudience:
-      "Funds that need attribution clarity for PM updates and risk committee reviews.",
-    secondaryAudiences: [
-      "Prop desks optimizing execution quality and strategy-level expectancy.",
-      "Discretionary teams turning journal-style insights into measurable analytics.",
-    ],
-    problems: [
-      "Performance reporting lacks attribution depth for decision-making.",
-      "Slippage and edge decay signals are discovered too late.",
-      "Post-trade analysis is manual and inconsistent across teams.",
-    ],
-    deliverables: [
-      "Per-trade and aggregate analytics with attribution and slippage decomposition.",
-      "Daily/weekly reporting pipelines with strategy-level diagnostics.",
-      "Decision-ready KPI layers for PM, trader, and risk cadences.",
-    ],
-  },
-  "quant-research-infrastructure": {
-    dominantPersona: "Funds",
-    dominantAudience:
-      "Funds scaling strategy research across multiple researchers and model owners.",
-    secondaryAudiences: [
-      "Prop desks formalizing idea-to-production workflows.",
-      "Discretionary teams introducing systematic overlays with clear controls.",
-    ],
-    problems: [
-      "Research pipelines are fragmented and difficult to reproduce.",
-      "No shared standards for data quality, experiment hygiene, and reviews.",
-      "Hand-off from research notebooks to production is unreliable.",
-    ],
-    deliverables: [
-      "Structured research workspace with reproducible experiment pipelines.",
-      "Dataset/version controls and model/strategy auditability.",
-      "Research-to-production handoff protocol and validation gates.",
-    ],
-  },
-  "trading-system-audits-consulting": {
-    dominantPersona: "Funds",
-    dominantAudience:
-      "Funds requiring independent architecture and risk assessment before scaling capital.",
-    secondaryAudiences: [
-      "Prop desks troubleshooting recurring execution or stability failures.",
-      "Discretionary teams modernizing legacy tooling without full rebuild risk.",
-    ],
-    problems: [
-      "Hidden failure modes in execution, risk, or infrastructure layers.",
-      "No objective severity framework for technical and operational debt.",
-      "Fixes are reactive and uncoupled from measurable reliability targets.",
-    ],
-    deliverables: [
-      "System audit across architecture, execution, risk, and observability.",
-      "Severity-ranked findings with practical remediation sequence.",
-      "Advisory support for implementation and verification cycles.",
-    ],
-  },
-  "trading-stack-observability-alerting": {
-    dominantPersona: "Prop desks",
-    dominantAudience:
-      "Prop teams needing low-latency incident detection and escalation during sessions.",
-    secondaryAudiences: [
-      "Funds operating multiple strategy services in production.",
-      "Discretionary teams combining automated alerts with human oversight.",
-    ],
-    problems: [
-      "Incidents are detected late due to weak telemetry coverage.",
-      "Alert fatigue from noisy thresholds and poor signal quality.",
-      "No clear mapping from alerts to response owners and actions.",
-    ],
-    deliverables: [
-      "Observability stack for latency, fills, order states, and infra health.",
-      "Signal-first alerting tuned by severity and operational context.",
-      "Escalation flows and incident response playbooks.",
-    ],
-  },
-  "tradingview-indicators-automation": {
-    dominantPersona: "Discretionary teams",
-    dominantAudience:
-      "Discretionary traders systematizing repeatable setup detection and execution workflows.",
-    secondaryAudiences: [
-      "Funds prototyping rapid indicator-driven workflows.",
-      "Prop desks turning TradingView signals into executable infrastructure hooks.",
-    ],
-    problems: [
-      "Indicator logic is inconsistent across users and sessions.",
-      "Signal-to-execution handoff is manual and error-prone.",
-      "TradingView automation lacks governance and production controls.",
-    ],
-    deliverables: [
-      "Custom indicator and alert architecture aligned to strategy logic.",
-      "Signal pipelines that connect TradingView outputs to downstream systems.",
-      "Operational controls around alert quality and execution triggers.",
-    ],
-  },
-  "trading-tech-maintenance-on-call": {
-    dominantPersona: "Discretionary teams",
-    dominantAudience:
-      "Discretionary teams relying on lean engineering bandwidth for stack reliability.",
-    secondaryAudiences: [
-      "Funds needing dependable support for always-on trading stacks.",
-      "Prop desks requiring rapid response during market sessions.",
-    ],
-    problems: [
-      "Critical maintenance and incidents compete with roadmap delivery.",
-      "No clear on-call structure for high-stakes market windows.",
-      "Recurring reliability issues remain unresolved between sessions.",
-    ],
-    deliverables: [
-      "Maintenance cadence for infrastructure, execution services, and integrations.",
-      "On-call response model with clear ownership and escalation paths.",
-      "Reliability improvement backlog tied to incident learnings.",
-    ],
-  },
+const CATEGORY_OG_IMAGES = {
+  "ai-automation": ASSETS.ogAi,
+  design: ASSETS.ogDesign,
+  "markets-trading": ASSETS.ogMarkets,
 };
-
-function buildServiceSections(service, category) {
-  if (category?.slug === "markets-trading") {
-    const playbook = MARKET_AUDIENCE_PLAYBOOK[service.slug];
-    if (playbook) {
-      return {
-        dominantPersona: playbook.dominantPersona,
-        dominantAudience: playbook.dominantAudience,
-        secondaryAudiences: playbook.secondaryAudiences,
-        whoFor: [playbook.dominantAudience, ...playbook.secondaryAudiences],
-        problems: playbook.problems,
-        deliverables: playbook.deliverables,
-      };
-    }
-  }
-  return {
-    whoFor: [
-      `Teams that need ${service.title.toLowerCase()} delivered with speed and clear ownership.`,
-      "Product leaders balancing timeline pressure with quality requirements.",
-      "Organizations that want senior execution without long onboarding drag.",
-    ],
-    problems: [
-      "Scope and execution drift due to unclear delivery boundaries.",
-      "Slow cycles caused by fragmented ownership across teams.",
-      "Low confidence in production readiness and business impact.",
-    ],
-    deliverables: [
-      `${service.title} implementation scoped to measurable outcomes.`,
-      "Technical and product acceptance criteria before build starts.",
-      "Weekly demos, clear handoff notes, and production-ready rollout support.",
-    ],
-  };
-}
 
 function VerticalDecorations({ categorySlug }) {
   if (categorySlug === "ai-automation") {
@@ -354,6 +136,7 @@ export function generateMetadata({ params }) {
   const service = getServiceBySlugs(params.category, params.service);
   const category = getCategoryBySlug(params.category);
   if (!service) return {};
+  const ogImage = CATEGORY_OG_IMAGES[params.category] ?? ASSETS.ogAi;
   return {
     title: service.metaTitle,
     description: service.metaDescription,
@@ -376,7 +159,7 @@ export function generateMetadata({ params }) {
       description: service.metaDescription,
       images: [
         {
-          url: ASSETS.ogAi,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: service.title,
@@ -389,7 +172,7 @@ export function generateMetadata({ params }) {
       creator: SOCIAL.twitterHandle,
       title: service.metaTitle,
       description: service.metaDescription,
-      images: [ASSETS.ogAi],
+      images: [ogImage],
     },
     robots: {
       index: true,
@@ -407,31 +190,23 @@ export default function ServiceDetailPage({ params }) {
   }
 
   const sectionData = buildServiceSections(service, category);
-  const faqs = getServiceFaq(service);
+  const playbook = getServicePlaybook(service.slug);
+  const faqs = playbook?.faqs ?? getServiceFaq(service);
   const related = getRelatedServices(service.categorySlug, service.slug, 6);
   const theme = DETAIL_VISUAL_THEME[category.slug] ?? DEFAULT_DETAIL_THEME;
   const heroPreset = getHeroStylePreset(category.slug);
   const rhythm = getRhythmPreset(category.slug);
   const pageBgClassName = theme.pageBg;
-
-  const breadcrumb = breadcrumbJsonLd([
-    { name: "Home", url: SITE_URL },
-    { name: "Services", url: `${SITE_URL}/services` },
-    {
-      name: category.title,
-      url: `${SITE_URL}/services/${category.slug}`,
-    },
-    {
-      name: service.title,
-      url: `${SITE_URL}${service.path}`,
-    },
-  ]);
-  const serviceSchema = customServiceJsonLd({
-    title: service.title,
-    description: service.shortDescription,
-    path: service.path,
+  const calHref = buildCalUrl(category.ctaHref, {
+    medium: "service-page",
+    campaign: service.slug,
   });
-  const faqSchema = faqJsonLd(faqs);
+  const breadcrumbNav = [
+    { label: "Home", href: "/" },
+    { label: "Services", href: "/services" },
+    { label: category.title, href: `/services/${category.slug}` },
+    { label: service.title, href: service.path },
+  ];
 
   return (
     <main
@@ -439,10 +214,11 @@ export default function ServiceDetailPage({ params }) {
       className={`min-h-screen ${pageBgClassName} text-white`}
     >
       <VerticalDecorations categorySlug={category.slug} />
-      <JsonLd data={[breadcrumb, serviceSchema, faqSchema]} />
+      <JsonLd data={serviceDetailJsonLd({ service, category, faqs })} />
 
       <Section className={rhythm.heroSectionClass}>
         <Container>
+          <Breadcrumbs items={breadcrumbNav} />
           <div className={heroPreset.shellClass}>
             <div className="pointer-events-none absolute -top-28 right-[-60px] h-56 w-56 rounded-full bg-white/10 blur-[100px]" />
             {heroPreset.bottomRail}
@@ -475,7 +251,7 @@ export default function ServiceDetailPage({ params }) {
               </div>
               <div className={heroPreset.ctaRowClass}>
                 <Link
-                  href={category.ctaHref}
+                  href={calHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex h-11 items-center justify-center rounded-full border px-6 text-sm font-medium text-white transition hover:scale-[1.02] ${theme.accentBorder} ${theme.chipBg}`}
@@ -570,6 +346,43 @@ export default function ServiceDetailPage({ params }) {
           </div>
         </Container>
       </Section>
+
+      {sectionData.process?.length ? (
+        <Section className="py-10">
+          <Container className={rhythm.splitGapClass}>
+            <div className={`${rhythm.compactCardClass} md:col-span-1 ${theme.accentBorder}`}>
+              <Heading as="h2" className="fb-h3">
+                How we work
+              </Heading>
+              <ol className="mt-4 space-y-3 text-sm text-white/70">
+                {sectionData.process.map((step, index) => (
+                  <li key={step} className="flex gap-3">
+                    <span className={`font-semibold ${theme.accentText}`}>
+                      {index + 1}.
+                    </span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            {sectionData.differentiators?.length ? (
+              <div className={`${rhythm.wideCardClass} md:col-span-2`}>
+                <Heading as="h2" className="fb-h3">
+                  Why Futurebits
+                </Heading>
+                <ul className="mt-4 space-y-3 text-sm text-white/70">
+                  {sectionData.differentiators.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className={theme.accentText}>-</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+          </Container>
+        </Section>
+      ) : null}
 
       <Section className={rhythm.faqSectionClass}>
         <Container>

@@ -6,7 +6,7 @@ export const SERVICE_CATEGORIES = [
     title: "Build",
     shortTitle: "Development",
     description:
-      "End-to-end software engineering for SaaS, web apps, internal tooling, and modernization.",
+      "End-to-end software engineering, Excel automation, smart reporting, dashboards, and modernization for SaaS and internal tooling.",
     ctaLabel: "Book a call",
     ctaHref: CAL.ai,
   },
@@ -15,7 +15,7 @@ export const SERVICE_CATEGORIES = [
     title: "AI & Automation",
     shortTitle: "AI & Automation",
     description:
-      "Applied AI systems, agents, retrieval, and workflow automation built for production outcomes.",
+      "Applied AI systems, agents, chatbots, custom GPTs, content generation, video pipelines, and workflow automation built for production outcomes.",
     ctaLabel: "Book a call",
     ctaHref: CAL.ai,
   },
@@ -24,7 +24,7 @@ export const SERVICE_CATEGORIES = [
     title: "Design",
     shortTitle: "Design",
     description:
-      "UI/UX and product design focused on activation, conversion, and retention outcomes.",
+      "UI/UX design, UX audits, branding, wireframing, prototyping, landing pages, and design systems focused on activation, conversion, and retention.",
     ctaLabel: "Book a call",
     ctaHref: CAL.design,
   },
@@ -51,7 +51,7 @@ export const SERVICE_CATEGORIES = [
     title: "Startup Tech Partner",
     shortTitle: "Startup Partner",
     description:
-      "Founder-focused product strategy, architecture, and delivery from idea to launch.",
+      "Founder-focused product strategy, end-to-end design and development, architecture, and delivery from idea to launch.",
     ctaLabel: "Book a call",
     ctaHref: CAL.ai,
   },
@@ -79,6 +79,7 @@ const RAW_SERVICES = [
   ["build", "business-process-automation", "Business Process Automation"],
   ["build", "no-code-to-code-migration", "No-Code to Code Migration"],
   ["build", "legacy-software-modernization", "Legacy Software Modernization"],
+  ["build", "excel-automation-smart-reporting", "Excel Automation & Smart Reporting"],
   // AI & Automation
   ["ai-automation", "ai-saas-development", "AI SaaS Development"],
   ["ai-automation", "ai-product-development", "AI Product Development"],
@@ -95,6 +96,9 @@ const RAW_SERVICES = [
   ["ai-automation", "ai-dashboard-development", "AI Dashboard Development"],
   ["ai-automation", "ai-data-extraction", "AI-Based Data Extraction"],
   ["ai-automation", "ai-customer-support-tools", "AI Customer Support Tools"],
+  ["ai-automation", "custom-gpt-knowledge-base", "Custom GPT & Knowledge Base Solutions"],
+  ["ai-automation", "ai-content-generation", "AI Content Generation Systems"],
+  ["ai-automation", "ai-video-generation", "AI Video Generation"],
   // Design
   ["design", "ui-ux-design", "UI/UX Design"],
   ["design", "product-design", "Product Design"],
@@ -108,6 +112,10 @@ const RAW_SERVICES = [
   ["design", "mobile-app-ui-design", "Mobile App UI Design"],
   ["design", "user-flow-design", "User Flow Design"],
   ["design", "figma-design", "Figma Design"],
+  ["design", "website-ux-audit", "Website UX Audit & Product Experience Audit"],
+  ["design", "ux-research", "UX Research"],
+  ["design", "branding-visual-identity", "Branding & Visual Identity"],
+  ["design", "data-visualization-design", "Data Visualization Design"],
   // Markets & Trading Systems
   ["markets-trading", "strategy-backtesting", "Strategy Backtesting"],
   ["markets-trading", "forward-testing-shadow-mode", "Forward Testing & Shadow Mode"],
@@ -145,6 +153,7 @@ const RAW_SERVICES = [
   ["startup-tech-partner", "idea-to-mvp", "Idea to MVP"],
   ["startup-tech-partner", "product-roadmap-planning", "Product Roadmap Planning"],
   ["startup-tech-partner", "software-architecture-planning", "Software Architecture Planning"],
+  ["startup-tech-partner", "end-to-end-product-design-development", "End-to-End Product Design & Development"],
 ];
 
 export const PRIORITY_SERVICE_SLUGS = new Set([
@@ -162,6 +171,18 @@ export const PRIORITY_SERVICE_SLUGS = new Set([
   "subscription-billing-setup",
   "ui-ux-design",
   "product-design",
+  "landing-page-design",
+  "website-ux-audit",
+  "ux-research",
+  "branding-visual-identity",
+  "data-visualization-design",
+  "design-systems",
+  "custom-gpt-knowledge-base",
+  "ai-content-generation",
+  "ai-video-generation",
+  "excel-automation-smart-reporting",
+  "end-to-end-product-design-development",
+  "product-strategy",
   "founder-tech-partner",
   "strategy-backtesting",
   "forward-testing-shadow-mode",
@@ -192,18 +213,18 @@ const PRIORITY_COPY = {
   "ai-agents-development": {
     hero: "AI agents that do real work, not demos.",
     subhead:
-      "We design and deploy production-ready agents for ops, support, and internal workflows.",
-    metaTitle: "AI Agents Development | Workflow and Task Automation",
+      "We design and deploy production-ready agents for sales, marketing, ed-tech, fintech, support, and internal workflows.",
+    metaTitle: "AI Agents Development | Sales, Marketing, Ed-Tech & FinTech",
     metaDescription:
-      "Build AI agents that execute real workflows with guardrails, observability, and measurable outcomes.",
+      "Build AI agents for sales, marketing, ed-tech, fintech, and personal branding with guardrails, observability, and measurable outcomes.",
   },
   "rag-application-development": {
-    hero: "RAG systems with grounded answers and production controls.",
+    hero: "RAG systems and AI knowledge bases with grounded answers.",
     subhead:
-      "We build retrieval pipelines, chunking strategies, and eval loops that keep quality measurable.",
-    metaTitle: "RAG Application Development | Retrieval-Augmented AI Systems",
+      "We build retrieval pipelines, custom knowledge bases, chunking strategies, and eval loops that keep quality measurable.",
+    metaTitle: "RAG & AI Knowledge Base Development | Custom GPT Solutions",
     metaDescription:
-      "Build RAG systems with high-quality retrieval, evaluation pipelines, and enterprise-ready safety controls.",
+      "Build RAG systems and AI knowledge bases with high-quality retrieval, evaluation pipelines, and enterprise-ready safety controls.",
   },
   "llm-integration": {
     hero: "LLM integrations that improve product outcomes.",
@@ -222,12 +243,12 @@ const PRIORITY_COPY = {
       "Production-grade OpenAI API integration with prompt architecture, fallback handling, and analytics.",
   },
   "chatbot-development": {
-    hero: "Chatbots that resolve issues, not frustrate users.",
+    hero: "AI chatbots for websites and customer support that resolve issues.",
     subhead:
-      "We design support and assistant bots that are accurate, fast, and tied to your workflows.",
-    metaTitle: "Chatbot Development Services | AI Support and Assistant Bots",
+      "Website chatbots and support systems with context-awareness, escalation paths, and integration into your CRM and workflows.",
+    metaTitle: "AI Chatbot Development | Website & Customer Support Systems",
     metaDescription:
-      "Build chatbots for customer support and internal teams with context-awareness, guardrails, and escalation paths.",
+      "AI chatbots for websites and customer support systems — accurate, fast, and integrated with your existing support workflows.",
   },
   "workflow-automation-software": {
     hero: "Workflow automation software that gives teams hours back.",
@@ -348,6 +369,126 @@ const PRIORITY_COPY = {
     metaTitle: "Trading System Audits & Consulting | Risk and Architecture Review",
     metaDescription:
       "Audit trading systems for execution reliability, risk controls, and architecture quality with actionable fix plans.",
+  },
+  "website-ux-audit": {
+    hero: "Complete website UX audits that expose what's blocking growth.",
+    subhead:
+      "We audit navigation, conversion paths, mobile experience, and product friction — then deliver a prioritized fix plan tied to revenue metrics.",
+    metaTitle: "Website UX Audit & Product Experience Audit | Futurebits",
+    metaDescription:
+      "Complete website UX audit and product experience review. Identify conversion blockers, usability gaps, and prioritized fixes for growth.",
+  },
+  "ux-research": {
+    hero: "UX research that informs decisions, not slide decks.",
+    subhead:
+      "User interviews, journey mapping, and usability testing tied to activation, conversion, and retention outcomes.",
+    metaTitle: "UX Research Services | User Interviews & Usability Testing",
+    metaDescription:
+      "UX research including user interviews, journey mapping, and usability testing to inform product and design decisions.",
+  },
+  "branding-visual-identity": {
+    hero: "Branding and visual identity that scales with your product.",
+    subhead:
+      "Logo systems, color palettes, typography, and visual language that work across web, mobile, and marketing touchpoints.",
+    metaTitle: "Branding & Visual Identity Design | Product Identity Creation",
+    metaDescription:
+      "Branding, visual design, and product identity creation — logos, iconography, and scalable brand systems for digital products.",
+  },
+  "data-visualization-design": {
+    hero: "Data visualization and dashboard design that drives action.",
+    subhead:
+      "Role-aware dashboards, charts, and workflow views that turn complex data into decisions your team can act on.",
+    metaTitle: "Data Visualization & Dashboard Design | Workflow Optimization",
+    metaDescription:
+      "Dashboard design, data visualization, and workflow optimization for SaaS, ops, and analytics teams.",
+  },
+  "landing-page-design": {
+    hero: "Landing pages designed for conversion and growth.",
+    subhead:
+      "We design high-converting landing pages with clear value props, social proof, and CTA flows tuned to your acquisition channel.",
+    metaTitle: "Landing Page Design Services | Conversion-Focused Growth Pages",
+    metaDescription:
+      "Landing page design focused on conversion and growth — clear messaging, optimized CTAs, and mobile-first layouts that convert.",
+  },
+  "design-systems": {
+    hero: "Design systems that speed up your entire product team.",
+    subhead:
+      "Component libraries, tokens, and documentation that keep design and engineering aligned as you scale.",
+    metaTitle: "Design Systems & Scalable Product Architecture | Futurebits",
+    metaDescription:
+      "Design systems and scalable product architecture — component libraries, design tokens, and documentation for growing teams.",
+  },
+  "custom-gpt-knowledge-base": {
+    hero: "Custom GPTs and knowledge bases grounded in your business.",
+    subhead:
+      "We build retrieval pipelines, custom GPT assistants, and internal knowledge bases that answer accurately from your docs and data.",
+    metaTitle: "Custom GPT & AI Knowledge Base Solutions | Futurebits",
+    metaDescription:
+      "Custom GPT and AI knowledge base solutions for businesses — grounded answers, document retrieval, and enterprise-ready controls.",
+  },
+  "ai-content-generation": {
+    hero: "AI content generation systems with quality you can trust.",
+    subhead:
+      "Production pipelines for marketing copy, product content, and personalization with tone, accuracy, and brand guardrails built in.",
+    metaTitle: "AI Content Generation & Workflow Automation | Futurebits",
+    metaDescription:
+      "AI workflow automation and content generation systems for marketing, product, and ops teams with quality gates and brand controls.",
+  },
+  "ai-video-generation": {
+    hero: "AI video generation for creators, brands, and content teams.",
+    subhead:
+      "Automated video pipelines for social, ads, and product demos — with templates, brand consistency, and scalable output.",
+    metaTitle: "AI Video Generation Services | Creators, Brands & Content Teams",
+    metaDescription:
+      "AI video generation for creators, brands, and content teams — automated pipelines for social, ads, and product marketing video.",
+  },
+  "excel-automation-smart-reporting": {
+    hero: "Excel automation and smart reporting that replaces manual work.",
+    subhead:
+      "We turn spreadsheet workflows into automated reporting systems with live data, scheduled exports, and dashboard views.",
+    metaTitle: "Excel Automation & Smart Reporting Systems | Futurebits",
+    metaDescription:
+      "Excel automation and smart reporting systems — replace manual spreadsheet work with automated pipelines and live dashboards.",
+  },
+  "end-to-end-product-design-development": {
+    hero: "End-to-end product design and development in one senior pod.",
+    subhead:
+      "From strategy and UX through design, frontend, and backend — one team ships your product without handoff loss.",
+    metaTitle: "End-to-End Product Design & Development Support | Futurebits",
+    metaDescription:
+      "End-to-end product design and development support — strategy, UX, UI, frontend, and backend delivery from one senior pod.",
+  },
+  "product-strategy": {
+    hero: "Product strategy focused on revenue, not roadmap theater.",
+    subhead:
+      "We align product bets to revenue metrics, define success criteria, and prioritize what to build first for maximum business impact.",
+    metaTitle: "Product Strategy & Revenue-Focused UX | Futurebits",
+    metaDescription:
+      "Product strategy and revenue-focused user experiences — prioritize features, define metrics, and align UX to business outcomes.",
+  },
+  "ai-product-development": {
+    hero: "AI-powered product features built for real users.",
+    subhead:
+      "Smart automation, intelligent search, recommendations, and AI-native workflows integrated into your existing product.",
+    metaTitle: "AI-Powered Product Features & Smart Automation | Futurebits",
+    metaDescription:
+      "AI-powered product features and smart automation solutions — retrieval, agents, and intelligent workflows built into your product.",
+  },
+  "mobile-app-ui-design": {
+    hero: "Mobile app UI/UX design for iOS, Android, and cross-platform.",
+    subhead:
+      "Native-feeling mobile interfaces for apps, SaaS platforms, and web products — optimized for touch, onboarding, and retention.",
+    metaTitle: "Mobile App UI/UX Design | Apps, Websites & SaaS Platforms",
+    metaDescription:
+      "UI/UX design for mobile apps, websites, and SaaS platforms — conversion-focused interfaces for iOS, Android, and web.",
+  },
+  "wireframing": {
+    hero: "Wireframing and interactive prototyping to de-risk builds.",
+    subhead:
+      "Low and high-fidelity wireframes and clickable prototypes that validate flows before engineering investment.",
+    metaTitle: "Wireframing & Interactive Prototyping Services | Futurebits",
+    metaDescription:
+      "UX research, wireframing, and interactive prototyping — validate user flows and product concepts before full development.",
   },
 };
 

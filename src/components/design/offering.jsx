@@ -49,6 +49,10 @@ const DESIGN_SERVICE_LINKS = {
   "Web Design": "web-app-design",
   "Landing Page": "landing-page-design",
   Dashboard: "dashboard-ui-design",
+  "UX Research": "ux-research",
+  "UX Auditing": "website-ux-audit",
+  Logos: "branding-visual-identity",
+  Iconography: "branding-visual-identity",
   "Wireframing & Prototyping": "wireframing",
 };
 

@@ -79,11 +79,14 @@ export const ROUTES = {
     description:
       "Futurebits ships production AI — retrieval, agents, automations, evals — for ops, support, and product teams. Senior pod. First useful automation in 2–3 weeks.",
     keywords: [
-      "AI",
-      "Intelligent Automation",
-      "Custom AI Models",
-      "Business Impact",
-      "Workflow Optimization",
+      "AI automation agency",
+      "AI chatbots",
+      "Custom GPT",
+      "AI agents development",
+      "AI content generation",
+      "AI video generation",
+      "Workflow automation",
+      "LLM integration",
     ],
     ogImage: ASSETS.ogAi,
     ogImageAlt: "Futurebits AI Solutions",
@@ -111,11 +114,14 @@ export const ROUTES = {
     description:
       "Futurebits pairs product design with frontend engineering in one senior pod. Sprints and pods that move activation, conversion, and retention — with code in your repo.",
     keywords: [
-      "Design and Development",
-      "UI UX",
-      "Product Design",
-      "Tech Partner",
-      "Growth-Driven Design",
+      "UI UX design",
+      "UX audit",
+      "Landing page design",
+      "Branding and visual identity",
+      "Wireframing and prototyping",
+      "Design systems",
+      "Product design",
+      "Data visualization design",
     ],
     ogImage: ASSETS.ogDesign,
     ogImageAlt: "Futurebits Design & Development",
@@ -125,12 +131,17 @@ export const ROUTES = {
     cta: CAL.ai,
     title: "Software, AI, Design and Integration Services | Futurebits",
     description:
-      "Explore Futurebits services across software development, AI automation, product design, integrations, and startup tech partnership.",
+      "Software development, AI automation, UX audits, chatbots, custom GPTs, product design, branding, integrations, and startup tech partnership.",
     keywords: [
       "Software Development Services",
       "AI Automation Services",
+      "UX Audit Services",
+      "Custom GPT Solutions",
+      "AI Chatbot Development",
+      "Landing Page Design",
+      "Excel Automation",
+      "Branding and Visual Identity",
       "Product Design Services",
-      "SaaS Development",
       "Startup Tech Partner",
     ],
     ogImage: ASSETS.ogAi,
@@ -166,6 +177,22 @@ export const ROUTES = {
     ogImage: ASSETS.ogAi,
     ogImageAlt: "Futurebits Privacy Policy",
   },
+  blog: {
+    path: "/blog",
+    cta: CAL.ai,
+    title: "Insights on UX, AI, and Product Growth | Futurebits Blog",
+    description:
+      "Guides on website UX audits, AI chatbots, custom GPT knowledge bases, landing page conversion, and product delivery from the Futurebits team.",
+    keywords: [
+      "UX audit guide",
+      "AI chatbot development",
+      "Custom GPT knowledge base",
+      "SaaS landing page conversion",
+      "Product design insights",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits Blog",
+  },
 };
 
 /**
@@ -176,6 +203,8 @@ export const NAV_ITEMS = [
   { label: "AI", url: ROUTES.ai.path },
   { label: "Markets", url: ROUTES.markets.path },
   { label: "Design", url: ROUTES.design.path },
+  { label: "Services", url: ROUTES.services.path },
+  { label: "Blog", url: ROUTES.blog.path },
   { label: "About", url: ROUTES.about.path },
   { label: "Contact", url: ROUTES.contact.path },
 ];

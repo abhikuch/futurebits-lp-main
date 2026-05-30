@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import JsonLd, { faqJsonLd } from "@/components/seo/JsonLd";
-import { COMPANY } from "@/config/site";
+import { COMPANY, ROUTES } from "@/config/site";
 import { FAQ } from "@/content/inline-modules";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
@@ -15,12 +15,20 @@ import Section from "@/components/ui/section";
 export default function FAQSection({ vertical, contactHref = "/contact" }) {
   const items = FAQ[vertical];
   if (!items || items.length === 0) return null;
+
+  const faqPathByVertical = {
+    ai: ROUTES.ai.path,
+    design: ROUTES.design.path,
+    markets: ROUTES.markets.path,
+  };
+  const faqPath = faqPathByVertical[vertical];
+
   return (
     <Section
       aria-labelledby={`faq-${vertical}-title`}
       className="bg-[#060618]"
     >
-      <JsonLd data={faqJsonLd(items)} />
+      <JsonLd data={faqJsonLd(items, faqPath)} />
       <Container className="max-w-3xl">
         <p className="font-poppins text-xs uppercase tracking-[0.25em] text-white/50">
           FAQ

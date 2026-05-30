@@ -2,10 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
-import JsonLd, {
-  breadcrumbJsonLd,
-  customServiceJsonLd,
-} from "@/components/seo/JsonLd";
+import JsonLd, { serviceCategoryJsonLd } from "@/components/seo/JsonLd";
 import SiteFooter from "@/components/shared/SiteFooter";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
@@ -25,6 +22,12 @@ import {
   DEFAULT_CATEGORY_THEME,
   VERTICAL_DECOR_CLASSES,
 } from "@/app/services/themeTokens";
+
+const CATEGORY_OG_IMAGES = {
+  "ai-automation": ASSETS.ogAi,
+  design: ASSETS.ogDesign,
+  "markets-trading": ASSETS.ogMarkets,
+};
 
 function VerticalDecorations({ categorySlug }) {
   if (categorySlug === "ai-automation") {
@@ -93,6 +96,7 @@ export function generateMetadata({ params }) {
   const path = `/services/${category.slug}`;
   const title = `${category.title} Services | ${COMPANY.name}`;
   const description = `${category.description} Explore service coverage, delivery model, and implementation paths.`;
+  const ogImage = CATEGORY_OG_IMAGES[category.slug] ?? ASSETS.ogAi;
   return {
     title,
     description,
@@ -115,7 +119,7 @@ export function generateMetadata({ params }) {
       description,
       images: [
         {
-          url: ASSETS.ogAi,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: `${category.title} services`,
@@ -128,7 +132,7 @@ export function generateMetadata({ params }) {
       creator: SOCIAL.twitterHandle,
       title,
       description,
-      images: [ASSETS.ogAi],
+      images: [ogImage],
     },
     robots: {
       index: true,
@@ -146,20 +150,6 @@ export default function ServiceCategoryPage({ params }) {
     notFound();
   }
 
-  const breadcrumb = breadcrumbJsonLd([
-    { name: "Home", url: SITE_URL },
-    { name: "Services", url: `${SITE_URL}/services` },
-    {
-      name: categoryBundle.title,
-      url: `${SITE_URL}/services/${categoryBundle.slug}`,
-    },
-  ]);
-
-  const service = customServiceJsonLd({
-    title: `${categoryBundle.title} Services`,
-    description: categoryBundle.description,
-    path: `/services/${categoryBundle.slug}`,
-  });
   const theme = CATEGORY_VISUAL_THEME[categoryBundle.slug] ?? DEFAULT_CATEGORY_THEME;
 
   return (
@@ -168,7 +158,7 @@ export default function ServiceCategoryPage({ params }) {
       className={`relative min-h-screen overflow-hidden ${theme.pageBg} text-white`}
     >
       <VerticalDecorations categorySlug={categoryBundle.slug} />
-      <JsonLd data={[breadcrumb, service]} />
+      <JsonLd data={serviceCategoryJsonLd(categoryBundle)} />
 
       <Section className="pb-10 pt-32 sm:pt-36">
         <Container>

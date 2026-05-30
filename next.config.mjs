@@ -33,9 +33,6 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Phase 1 IA: home redirects to canonical AI vertical.
-      { source: "/", destination: "/ai", permanent: true },
-      // Old singular `/market` route renamed to plural `/markets`.
       { source: "/market", destination: "/markets", permanent: true },
     ];
   },

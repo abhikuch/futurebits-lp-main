@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Hero from "./Hero";
+import FeaturedServiceLinks from "@/components/shared/FeaturedServiceLinks";
 import FAQSection from "@/components/shared/FAQSection";
 import ProofBand from "@/components/shared/ProofBand";
 import { CAL } from "@/config/site";
@@ -36,6 +37,18 @@ export default function LandingPageAI() {
         <Hero />
       </main>
       <ProofBand vertical="ai" />
+      <FeaturedServiceLinks
+        title="AI services teams hire us for"
+        viewAllHref="/services/ai-automation"
+        services={[
+          { categorySlug: "ai-automation", serviceSlug: "chatbot-development" },
+          { categorySlug: "ai-automation", serviceSlug: "custom-gpt-knowledge-base" },
+          { categorySlug: "ai-automation", serviceSlug: "ai-agents-development" },
+          { categorySlug: "ai-automation", serviceSlug: "ai-content-generation" },
+          { categorySlug: "ai-automation", serviceSlug: "ai-workflow-automation" },
+          { categorySlug: "ai-automation", serviceSlug: "llm-integration" },
+        ]}
+      />
       <div className="fb-section">
         <ServicesSection />
       </div>

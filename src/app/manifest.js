@@ -5,7 +5,7 @@ export default function manifest() {
     name: COMPANY.name,
     short_name: COMPANY.name,
     description: COMPANY.tagline,
-    start_url: "/ai",
+    start_url: "/",
     display: "standalone",
     background_color: "#060618",
     theme_color: "#060618",

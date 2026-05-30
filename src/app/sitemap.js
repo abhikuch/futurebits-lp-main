@@ -1,4 +1,5 @@
 import { ROUTES, SITE_URL } from "@/config/site";
+import { BLOG_POSTS } from "@/content/blog";
 import { SERVICE_CATEGORIES, SERVICES } from "@/content/services";
 
 const PRIORITY = {
@@ -7,6 +8,7 @@ const PRIORITY = {
   markets: 0.9,
   design: 0.9,
   services: 0.8,
+  blog: 0.75,
   about: 0.6,
   contact: 0.6,
   privacy: 0.3,
@@ -18,6 +20,7 @@ const CHANGE_FREQ = {
   markets: "weekly",
   design: "weekly",
   services: "weekly",
+  blog: "weekly",
   about: "monthly",
   contact: "monthly",
   privacy: "yearly",
@@ -47,5 +50,12 @@ export default function sitemap() {
     priority: service.isPriority ? 0.7 : 0.55,
   }));
 
-  return [...coreRoutes, ...serviceCategories, ...serviceDetails];
+  const blogPosts = BLOG_POSTS.map((post) => ({
+    url: `${SITE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.publishedAt),
+    changeFrequency: "monthly",
+    priority: 0.65,
+  }));
+
+  return [...coreRoutes, ...serviceCategories, ...serviceDetails, ...blogPosts];
 }

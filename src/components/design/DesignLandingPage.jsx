@@ -13,6 +13,7 @@ import Footer from "@/components/design/Footer";
 import TestimonialsCarousel from "@/components/design/TestimonialCarousel";
 import POVStrip from "@/components/shared/POVStrip";
 import EngagementModels from "@/components/shared/EngagementModels";
+import FeaturedServiceLinks from "@/components/shared/FeaturedServiceLinks";
 import FAQSection from "@/components/shared/FAQSection";
 import ProofBand from "@/components/shared/ProofBand";
 import { CAL } from "@/config/site";
@@ -71,6 +72,19 @@ export default function DesignPage() {
         </div>
       </main>
       <ProofBand vertical="design" ctaHref={CAL.design} ctaLabel="Book a call" />
+
+      <FeaturedServiceLinks
+        title="Design services teams hire us for"
+        viewAllHref="/services/design"
+        services={[
+          { categorySlug: "design", serviceSlug: "website-ux-audit" },
+          { categorySlug: "design", serviceSlug: "ui-ux-design" },
+          { categorySlug: "design", serviceSlug: "landing-page-design" },
+          { categorySlug: "design", serviceSlug: "branding-visual-identity" },
+          { categorySlug: "design", serviceSlug: "ux-research" },
+          { categorySlug: "design", serviceSlug: "design-systems" },
+        ]}
+      />
 
       <div className="w-full fb-section">
         <PortfolioWrapper />

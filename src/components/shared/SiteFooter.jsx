@@ -13,8 +13,9 @@ const SERVICE_LINKS = [
   { label: "Build", href: "/services/build" },
   { label: "AI Automation", href: "/services/ai-automation" },
   { label: "Design", href: "/services/design" },
-  { label: "Integrate", href: "/services/integrate" },
-  { label: "Scale", href: "/services/scale" },
+  { label: "Markets", href: "/services/markets-trading" },
+  { label: "Integrations", href: "/services/integrations-platform" },
+  { label: "Startup Partner", href: "/services/startup-tech-partner" },
 ];
 
 const LEGAL_LINKS = [
