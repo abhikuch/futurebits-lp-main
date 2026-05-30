@@ -534,9 +534,26 @@ export function getServiceBySlugs(categorySlug, serviceSlug) {
 }
 
 export function getRelatedServices(categorySlug, serviceSlug, limit = 6) {
-  return SERVICES.filter(
+  const sameCategory = SERVICES.filter(
     (item) => item.categorySlug === categorySlug && item.slug !== serviceSlug
-  ).slice(0, limit);
+  );
+
+  const crossCategory = SERVICES.filter(
+    (item) =>
+      item.categorySlug !== categorySlug &&
+      item.isPriority &&
+      item.slug !== serviceSlug
+  );
+
+  const merged = [...sameCategory.slice(0, 4), ...crossCategory.slice(0, 2)];
+  const seen = new Set();
+  return merged
+    .filter((item) => {
+      if (seen.has(item.slug)) return false;
+      seen.add(item.slug);
+      return true;
+    })
+    .slice(0, limit);
 }
 
 export function getServiceFaq(service) {

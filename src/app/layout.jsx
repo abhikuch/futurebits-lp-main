@@ -3,6 +3,7 @@ import { Montserrat, Poppins } from "next/font/google";
 import Analytics from "@/components/analytics/Analytics";
 import JsonLd, {
   organizationJsonLd,
+  siteNavigationJsonLd,
   websiteJsonLd,
 } from "@/components/seo/JsonLd";
 import {
@@ -102,7 +103,7 @@ export default function RootLayout({ children }) {
         <a className="sr-only-focusable" href="#main-content">
           Skip to content
         </a>
-        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
+        <JsonLd data={[organizationJsonLd(), websiteJsonLd(), siteNavigationJsonLd()]} />
         {children}
         <Analytics />
       </body>

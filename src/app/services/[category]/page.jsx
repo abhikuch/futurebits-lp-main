@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 
 import JsonLd, { serviceCategoryJsonLd } from "@/components/seo/JsonLd";
+import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import SiteFooter from "@/components/shared/SiteFooter";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
@@ -13,6 +14,7 @@ import {
   getCategoryBySlug,
   SERVICES_BY_CATEGORY,
 } from "@/content/services";
+import { buildCalUrl } from "@/lib/cal";
 import aiCircle from "@/assets/landing-page-AI/circle.webp";
 import designDiamond from "@/assets/design/navbar.svg";
 import designLight from "@/assets/design/light.webp";
@@ -151,6 +153,16 @@ export default function ServiceCategoryPage({ params }) {
   }
 
   const theme = CATEGORY_VISUAL_THEME[categoryBundle.slug] ?? DEFAULT_CATEGORY_THEME;
+  const popularServices = categoryBundle.services.filter((s) => s.isPriority);
+  const calHref = buildCalUrl(categoryBundle.ctaHref, {
+    medium: "category-page",
+    campaign: categoryBundle.slug,
+  });
+  const breadcrumbNav = [
+    { label: "Home", href: "/" },
+    { label: "Services", href: "/services" },
+    { label: categoryBundle.title, href: `/services/${categoryBundle.slug}` },
+  ];
 
   return (
     <main
@@ -162,6 +174,7 @@ export default function ServiceCategoryPage({ params }) {
 
       <Section className="pb-10 pt-32 sm:pt-36">
         <Container>
+          <Breadcrumbs items={breadcrumbNav} />
           <p className={theme.kickerClass}>{categoryBundle.shortTitle}</p>
           <div className={theme.dividerClass} />
           <Heading as="h1" className={theme.titleClass}>
@@ -172,6 +185,27 @@ export default function ServiceCategoryPage({ params }) {
           </p>
         </Container>
       </Section>
+
+      {popularServices.length > 0 ? (
+        <Section className="py-8">
+          <Container>
+            <Heading as="h2" className="fb-h3">
+              Popular {categoryBundle.shortTitle.toLowerCase()} services
+            </Heading>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {popularServices.map((serviceItem) => (
+                <Link
+                  key={serviceItem.slug}
+                  href={serviceItem.path}
+                  className="rounded-full border border-white/15 bg-white/[0.03] px-4 py-2 text-sm text-white/80 transition hover:border-white/30 hover:bg-white/[0.06] hover:text-white"
+                >
+                  {serviceItem.title}
+                </Link>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      ) : null}
 
       <Section className="py-12">
         <Container>
@@ -206,7 +240,7 @@ export default function ServiceCategoryPage({ params }) {
               scoped sprint with clear outcomes and realistic delivery timelines.
             </p>
             <Link
-              href={categoryBundle.ctaHref}
+              href={calHref}
               target="_blank"
               rel="noopener noreferrer"
               className={theme.ctaButtonClass}

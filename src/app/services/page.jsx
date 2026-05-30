@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import JsonLd, { servicesHubJsonLd } from "@/components/seo/JsonLd";
+import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import SiteFooter from "@/components/shared/SiteFooter";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
@@ -35,6 +36,12 @@ export default function ServicesHubPage() {
 
       <Section className="pb-12 pt-32 sm:pt-36">
         <Container>
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Services", href: "/services" },
+            ]}
+          />
           <p className="fb-kicker">Services Hub</p>
           <Heading as="h1" className="mt-6 fb-hero-title max-w-4xl">
             Software, AI, and product delivery for teams that want outcomes, not overhead.

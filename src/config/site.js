@@ -10,6 +10,8 @@
  *  - any component that needs an external link or contact email
  */
 
+import { buildCalUrl } from "@/lib/cal";
+
 export const SITE_URL = "https://www.futurebits.tech";
 
 export const COMPANY = {
@@ -35,9 +37,18 @@ export const ANALYTICS = {
 };
 
 export const CAL = {
-  ai: "https://cal.com/futurebits/ai?duration=30",
-  markets: "https://cal.com/futurebits/markets?duration=30",
-  design: "https://cal.com/futurebits/design?duration=30",
+  ai: buildCalUrl("https://cal.com/futurebits/ai?duration=30", {
+    medium: "cta",
+    campaign: "ai-vertical",
+  }),
+  markets: buildCalUrl("https://cal.com/futurebits/markets?duration=30", {
+    medium: "cta",
+    campaign: "markets-vertical",
+  }),
+  design: buildCalUrl("https://cal.com/futurebits/design?duration=30", {
+    medium: "cta",
+    campaign: "design-vertical",
+  }),
 };
 
 const BLOB_BASE = "https://67uizwknbuzxqhet.public.blob.vercel-storage.com";

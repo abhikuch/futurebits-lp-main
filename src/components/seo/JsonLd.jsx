@@ -1,6 +1,7 @@
 import {
   DEFAULT_OG_IMAGE,
   COMPANY,
+  NAV_ITEMS,
   ROUTES,
   SITE_URL,
   SOCIAL,
@@ -514,5 +515,19 @@ export function articleJsonLd(post) {
     },
     articleSection: post.category,
     inLanguage: "en",
+  };
+}
+
+export function siteNavigationJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    name: "Main navigation",
+    url: SITE_URL,
+    hasPart: NAV_ITEMS.map((item) => ({
+      "@type": "WebPage",
+      name: item.label,
+      url: `${SITE_URL}${item.url}`,
+    })),
   };
 }

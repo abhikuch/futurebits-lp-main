@@ -8,6 +8,7 @@ import Heading from "@/components/ui/heading";
 import Section from "@/components/ui/section";
 import logo from "@/assets/logo.svg";
 import { buildRouteMetadata, COMPANY, ROUTES, SITE_URL } from "@/config/site";
+import FeaturedServiceLinks from "@/components/shared/FeaturedServiceLinks";
 import { SERVICE_CATEGORIES } from "@/content/services";
 
 export const metadata = buildRouteMetadata("home");
@@ -106,6 +107,21 @@ export default function HomePage() {
             </div>
           </Container>
         </Section>
+
+        <FeaturedServiceLinks
+          title="Top services across AI, design, and build"
+          viewAllHref="/services"
+          services={[
+            { categorySlug: "ai-automation", serviceSlug: "chatbot-development" },
+            { categorySlug: "design", serviceSlug: "website-ux-audit" },
+            { categorySlug: "ai-automation", serviceSlug: "custom-gpt-knowledge-base" },
+            { categorySlug: "design", serviceSlug: "landing-page-design" },
+            { categorySlug: "build", serviceSlug: "mvp-development" },
+            { categorySlug: "startup-tech-partner", serviceSlug: "end-to-end-product-design-development" },
+            { categorySlug: "ai-automation", serviceSlug: "ai-agents-development" },
+            { categorySlug: "build", serviceSlug: "saas-development" },
+          ]}
+        />
 
         <Section className="py-12">
           <Container>

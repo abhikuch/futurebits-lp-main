@@ -11,6 +11,7 @@ import WhyUs from "@/components/market/WhyUs";
 import Testimonials from "@/components/market/Testimonials";
 import POVStrip from "@/components/shared/POVStrip";
 import EngagementModels from "@/components/shared/EngagementModels";
+import FeaturedServiceLinks from "@/components/shared/FeaturedServiceLinks";
 import FAQSection from "@/components/shared/FAQSection";
 import ProofBand from "@/components/shared/ProofBand";
 import { CAL } from "@/config/site";
@@ -23,6 +24,18 @@ const MarketPage = () => {
         <Hero />
       </main>
       <ProofBand vertical="markets" ctaHref={CAL.markets} ctaLabel="Book a call" />
+      <FeaturedServiceLinks
+        title="Markets services teams hire us for"
+        viewAllHref="/services/markets-trading"
+        services={[
+          { categorySlug: "markets-trading", serviceSlug: "strategy-backtesting" },
+          { categorySlug: "markets-trading", serviceSlug: "live-trading-execution-systems" },
+          { categorySlug: "markets-trading", serviceSlug: "trading-system-audits-consulting" },
+          { categorySlug: "markets-trading", serviceSlug: "real-time-pnl-exposure-monitoring" },
+          { categorySlug: "markets-trading", serviceSlug: "trade-analytics-reporting" },
+          { categorySlug: "markets-trading", serviceSlug: "forward-testing-shadow-mode" },
+        ]}
+      />
       <div className="fb-section">
         <OurSolutions />
       </div>

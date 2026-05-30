@@ -1,5 +1,7 @@
 /* Service playbooks for service detail pages. */
 
+import { generateServicePlaybook } from "@/content/service-playbook-generator";
+
 export const SERVICE_PLAYBOOKS = {
   "website-ux-audit": {
     whoFor: [
@@ -1337,14 +1339,688 @@ export const SERVICE_PLAYBOOKS = {
       },
     ],
   },
+  "mvp-development": {
+    whoFor: [
+      "Founders shipping a first product to validate demand.",
+      "Product leads needing a fast, reliable MVP delivery pod.",
+      "Teams replacing fragile prototypes with real infrastructure.",
+      "Investors-backed startups racing toward a launch milestone.",
+    ],
+    problems: [
+      "MVP scope keeps expanding without clear trade-offs.",
+      "Early builds lack the reliability needed for real users.",
+      "Founders lose time coordinating design and engineering.",
+      "No clear plan for what is v1 vs. later.",
+      "Launch dates slip due to unclear ownership.",
+    ],
+    deliverables: [
+      "MVP scope and milestone plan tied to validation goals.",
+      "Production-ready frontend and backend implementation.",
+      "Core user flows with analytics instrumentation.",
+      "Infrastructure, auth, and data models ready to scale.",
+      "QA coverage and launch readiness checklist.",
+      "Post-launch iteration roadmap based on feedback.",
+    ],
+    process: [
+      "Discovery: align on the smallest shippable wedge.",
+      "Scope: lock MVP features, milestones, and success metrics.",
+      "Build: design and engineering in a single pod.",
+      "Launch: QA, deploy, and iterate with real user data.",
+    ],
+    differentiators: [
+      "Founder-grade speed with production-quality delivery.",
+      "Clear scope discipline so you launch on time.",
+      "Senior pod that owns product, design, and build.",
+    ],
+    faqs: [
+      {
+        q: "How fast can you deliver an MVP?",
+        a: "Most MVPs ship in 4-8 weeks depending on scope and integrations.",
+      },
+      {
+        q: "Do you help define the MVP scope?",
+        a: "Yes. We run scoping workshops and lock the smallest viable release.",
+      },
+      {
+        q: "Will the MVP be production-ready?",
+        a: "Yes. We build with real infrastructure, security, and QA.",
+      },
+      {
+        q: "Can you iterate after launch?",
+        a: "Yes. We stay on to ship follow-on features and optimizations.",
+      },
+      {
+        q: "Do you support fundraising timelines?",
+        a: "Yes. We align milestones to demo days, investor updates, or launches.",
+      },
+    ],
+  },
+  "saas-development": {
+    whoFor: [
+      "Founders building a SaaS product from scratch.",
+      "Product teams modernizing a legacy SaaS platform.",
+      "Engineering leaders needing a senior delivery pod.",
+      "Companies launching a new SaaS line in a new market.",
+    ],
+    problems: [
+      "SaaS roadmap is clear but delivery velocity is slow.",
+      "Billing, auth, and multi-tenant logic are hard to get right.",
+      "Design and engineering handoffs create rework.",
+      "Infrastructure choices block scale and reliability.",
+      "Teams lack clear ownership for end-to-end delivery.",
+    ],
+    deliverables: [
+      "SaaS architecture and multi-tenant data model.",
+      "Core product flows with production-grade UI/UX.",
+      "Authentication, roles, and permissioning.",
+      "Billing integration and account lifecycle flows.",
+      "Observability, analytics, and reliability guardrails.",
+      "Launch plan with handoff and iteration roadmap.",
+    ],
+    process: [
+      "Discovery: align on SaaS goals, ICP, and platform needs.",
+      "Scope: define product modules, roles, and data model.",
+      "Build: deliver the core SaaS platform and workflows.",
+      "Launch: QA, deploy, and scale with feedback loops.",
+    ],
+    differentiators: [
+      "Senior SaaS builders who ship full-stack systems.",
+      "Clear ownership across product, design, and engineering.",
+      "Delivery speed without sacrificing reliability.",
+    ],
+    faqs: [
+      {
+        q: "Can you build multi-tenant SaaS platforms?",
+        a: "Yes. We design data models and access control for multi-tenant SaaS.",
+      },
+      {
+        q: "Do you handle billing and subscription logic?",
+        a: "Yes. We implement full billing lifecycles with Stripe or custom systems.",
+      },
+      {
+        q: "What stacks do you build SaaS in?",
+        a: "We use modern web stacks and align to your infrastructure preferences.",
+      },
+      {
+        q: "Can you join our existing team?",
+        a: "Yes. We integrate with your team or operate as a dedicated pod.",
+      },
+      {
+        q: "Do you support post-launch improvements?",
+        a: "Yes. We stay on for iteration, performance, and roadmap delivery.",
+      },
+    ],
+  },
+  "rag-application-development": {
+    whoFor: [
+      "Product teams building AI apps grounded in internal data.",
+      "Founders launching search or support copilots.",
+      "Enterprise teams needing secure RAG workflows.",
+      "Ops teams automating knowledge access for staff.",
+    ],
+    problems: [
+      "LLM outputs are unreliable without grounded context.",
+      "Data sources are fragmented across tools.",
+      "RAG pipelines lack evaluation and quality checks.",
+      "Security and access control are unclear.",
+      "Prototypes do not scale to production.",
+    ],
+    deliverables: [
+      "RAG architecture with ingestion and retrieval layers.",
+      "Document processing and chunking pipelines.",
+      "Vector index setup with evaluation harnesses.",
+      "Secure access controls and data governance.",
+      "Production UI with feedback and analytics loops.",
+      "Monitoring for accuracy, latency, and cost.",
+    ],
+    process: [
+      "Discovery: define use cases, data sources, and success metrics.",
+      "Scope: design retrieval strategy, indexing, and eval plan.",
+      "Build: implement pipelines, app UX, and guardrails.",
+      "Launch: deploy, monitor, and improve answer quality.",
+    ],
+    differentiators: [
+      "Grounded AI systems built for accuracy and trust.",
+      "Evaluation-first approach to reduce hallucinations.",
+      "Senior pod across AI, product, and infrastructure.",
+    ],
+    faqs: [
+      {
+        q: "Can you connect to our internal knowledge sources?",
+        a: "Yes. We integrate with docs, databases, and SaaS knowledge tools.",
+      },
+      {
+        q: "How do you evaluate RAG quality?",
+        a: "We build eval harnesses and track answer accuracy over time.",
+      },
+      {
+        q: "Do you support secure access control?",
+        a: "Yes. We implement role-based access and data governance.",
+      },
+      {
+        q: "Can you scale RAG apps to production traffic?",
+        a: "Yes. We design for latency, reliability, and cost control.",
+      },
+      {
+        q: "Do you optimize for model costs?",
+        a: "Yes. We tune retrieval and caching to reduce LLM spend.",
+      },
+    ],
+  },
+  "llm-integration": {
+    whoFor: [
+      "Product teams adding LLM features to core workflows.",
+      "Founders turning manual processes into AI-assisted flows.",
+      "Ops teams automating customer support or research tasks.",
+      "Enterprises piloting AI features with compliance needs.",
+    ],
+    problems: [
+      "LLM prototypes fail to meet product quality bars.",
+      "No guardrails around AI safety and output reliability.",
+      "Lack of observability into model performance and cost.",
+      "Unclear UX for AI interactions inside the product.",
+      "Engineering teams unsure how to productionize AI flows.",
+    ],
+    deliverables: [
+      "LLM feature strategy with success metrics.",
+      "Prompt, tool, and retrieval architecture.",
+      "User experience design for AI interactions.",
+      "Observability, evaluation, and quality monitoring.",
+      "Safety, compliance, and cost guardrails.",
+      "Production deployment and rollout plan.",
+    ],
+    process: [
+      "Discovery: align on use cases, constraints, and ROI.",
+      "Scope: define model stack, prompts, and tooling.",
+      "Build: implement AI features with guardrails and UX.",
+      "Launch: deploy, monitor, and optimize outcomes.",
+    ],
+    differentiators: [
+      "AI features grounded in product outcomes, not demos.",
+      "Senior pod with deep LLM production experience.",
+      "Guardrails for reliability, safety, and cost control.",
+    ],
+    faqs: [
+      {
+        q: "Which LLM providers do you support?",
+        a: "We work with OpenAI, Anthropic, Google, and open-source models.",
+      },
+      {
+        q: "Can you integrate LLMs into existing products?",
+        a: "Yes. We embed AI into existing workflows and systems.",
+      },
+      {
+        q: "How do you handle AI safety?",
+        a: "We implement guardrails, monitoring, and human oversight workflows.",
+      },
+      {
+        q: "Do you build evaluation frameworks?",
+        a: "Yes. We deliver eval harnesses tied to business outcomes.",
+      },
+      {
+        q: "Can you optimize for cost?",
+        a: "Yes. We tune prompts, caching, and model selection for efficiency.",
+      },
+    ],
+  },
+  "openai-api-integration": {
+    whoFor: [
+      "Product teams shipping OpenAI-powered features quickly.",
+      "Founders building AI workflows on OpenAI models.",
+      "Engineering teams needing production-ready API usage.",
+      "Ops teams automating internal tasks with OpenAI.",
+    ],
+    problems: [
+      "OpenAI prototypes lack reliability and guardrails.",
+      "Cost spikes due to inefficient prompt design.",
+      "No monitoring of quality or failure modes.",
+      "Data privacy and security requirements are unclear.",
+      "Integration timelines slip without clear ownership.",
+    ],
+    deliverables: [
+      "OpenAI API integration plan and model selection.",
+      "Prompt system and tool wiring for core workflows.",
+      "Rate limit handling, retries, and caching.",
+      "Quality evaluation and monitoring dashboards.",
+      "Security and data handling policies.",
+      "Production rollout and optimization roadmap.",
+    ],
+    process: [
+      "Discovery: define use cases, data inputs, and success metrics.",
+      "Scope: choose models, prompts, and integration points.",
+      "Build: implement API flows with guardrails and monitoring.",
+      "Launch: deploy, tune, and optimize for cost and quality.",
+    ],
+    differentiators: [
+      "OpenAI integrations designed for reliability and cost control.",
+      "Senior pod with production AI experience.",
+      "Clear observability for quality and latency.",
+    ],
+    faqs: [
+      {
+        q: "Can you optimize OpenAI costs?",
+        a: "Yes. We tune prompts, caching, and model selection for efficiency.",
+      },
+      {
+        q: "Do you support function calling and tools?",
+        a: "Yes. We implement tool calling and structured outputs.",
+      },
+      {
+        q: "How do you handle data privacy?",
+        a: "We implement data handling policies and secure integrations.",
+      },
+      {
+        q: "Can you integrate with our existing backend?",
+        a: "Yes. We integrate OpenAI into your current systems and APIs.",
+      },
+      {
+        q: "Do you add monitoring and evaluation?",
+        a: "Yes. We deliver quality metrics, logging, and evaluation loops.",
+      },
+    ],
+  },
+  "workflow-automation-software": {
+    whoFor: [
+      "Operations teams eliminating manual cross-tool work.",
+      "RevOps teams needing reliable lead and data flows.",
+      "Founders scaling without adding headcount.",
+      "IT teams modernizing internal processes.",
+    ],
+    problems: [
+      "Critical workflows rely on manual handoffs and spreadsheets.",
+      "Automation tools break when APIs change.",
+      "No visibility into workflow failures or delays.",
+      "Security and access controls are inconsistent.",
+      "Teams do not know where to start automating.",
+    ],
+    deliverables: [
+      "Workflow map and automation priority plan.",
+      "Custom automation services with API integrations.",
+      "Error handling, retries, and alerting.",
+      "Role-based access and audit trails.",
+      "Operational dashboards and metrics.",
+      "Documentation and handoff for ongoing ownership.",
+    ],
+    process: [
+      "Discovery: map current workflows and pain points.",
+      "Scope: define automation targets and success metrics.",
+      "Build: implement workflows, integrations, and monitoring.",
+      "Launch: train teams, monitor performance, and iterate.",
+    ],
+    differentiators: [
+      "Automation built for reliability, not just demos.",
+      "Senior pod that blends ops, product, and engineering.",
+      "Clear ROI focus tied to time saved and quality.",
+    ],
+    faqs: [
+      {
+        q: "Can you integrate with our existing tools?",
+        a: "Yes. We connect CRMs, databases, and internal systems.",
+      },
+      {
+        q: "Do you build custom automation or use no-code tools?",
+        a: "We do both and choose the right stack for reliability and scale.",
+      },
+      {
+        q: "How do you monitor automation failures?",
+        a: "We implement logging, alerts, and recovery workflows.",
+      },
+      {
+        q: "Can you secure sensitive data?",
+        a: "Yes. We implement access controls and audit trails.",
+      },
+      {
+        q: "Will this reduce manual work quickly?",
+        a: "Yes. We prioritize workflows with immediate time savings.",
+      },
+    ],
+  },
+  "dashboard-development": {
+    whoFor: [
+      "Product teams shipping analytics features for customers.",
+      "Ops teams needing real-time KPI visibility.",
+      "Founders preparing investor or leadership reporting.",
+      "Data teams replacing spreadsheet reporting.",
+    ],
+    problems: [
+      "Dashboards are slow, confusing, or unreliable.",
+      "Key metrics live across too many tools.",
+      "Users cannot find insights without manual analysis.",
+      "Data pipelines are brittle and break under load.",
+      "Reporting lacks clear ownership or iteration plan.",
+    ],
+    deliverables: [
+      "Dashboard information architecture and KPI definitions.",
+      "Frontend dashboard UI with filters and drill-downs.",
+      "Backend data pipelines and aggregation layers.",
+      "Performance optimization and caching strategy.",
+      "Role-based access and permissions.",
+      "Analytics instrumentation and usage reporting.",
+    ],
+    process: [
+      "Discovery: align on metrics, users, and decision needs.",
+      "Scope: define data sources, visuals, and performance targets.",
+      "Build: implement dashboards, APIs, and data pipelines.",
+      "Launch: QA, rollout, and iterate on insights usage.",
+    ],
+    differentiators: [
+      "Dashboards designed for decisions, not vanity metrics.",
+      "Full-stack delivery across data, UI, and performance.",
+      "Senior pod that ships reliable analytics products.",
+    ],
+    faqs: [
+      {
+        q: "Can you build real-time dashboards?",
+        a: "Yes. We design for live data streams and low-latency updates.",
+      },
+      {
+        q: "Do you handle data modeling?",
+        a: "Yes. We define metric logic and aggregation layers.",
+      },
+      {
+        q: "Can you integrate with our data warehouse?",
+        a: "Yes. We connect to warehouses or build custom pipelines.",
+      },
+      {
+        q: "Do you build role-based access?",
+        a: "Yes. We implement permissions and secure data access.",
+      },
+      {
+        q: "How fast can dashboards ship?",
+        a: "Most dashboards ship in 4-6 weeks depending on data complexity.",
+      },
+    ],
+  },
+  "internal-tool-development": {
+    whoFor: [
+      "Ops teams that need faster internal workflows.",
+      "Finance teams replacing fragile spreadsheets.",
+      "Sales teams managing pipelines and approvals.",
+      "Product leaders modernizing internal systems.",
+    ],
+    problems: [
+      "Critical workflows depend on manual, error-prone tools.",
+      "Off-the-shelf software does not fit internal needs.",
+      "No clear owner for internal product quality.",
+      "Data access is inconsistent and insecure.",
+      "Internal tools lack UX and adoption.",
+    ],
+    deliverables: [
+      "Internal tool UX and workflow design.",
+      "Custom app with role-based access and audit logs.",
+      "Integration with internal APIs and data sources.",
+      "Admin controls, approvals, and workflow automation.",
+      "Documentation and enablement for teams.",
+      "Maintenance and iteration plan.",
+    ],
+    process: [
+      "Discovery: map workflows, users, and friction points.",
+      "Scope: define tool requirements, data access, and roles.",
+      "Build: implement UI, backend, and integrations.",
+      "Launch: train teams, support rollout, and iterate.",
+    ],
+    differentiators: [
+      "Internal tools built for adoption and speed.",
+      "Senior pod that understands ops complexity.",
+      "Reliable integrations with clear ownership.",
+    ],
+    faqs: [
+      {
+        q: "Can you connect to our internal systems?",
+        a: "Yes. We integrate with databases, CRMs, and internal APIs.",
+      },
+      {
+        q: "Do you build admin and approval workflows?",
+        a: "Yes. We design custom workflows and permissions.",
+      },
+      {
+        q: "How do you ensure internal adoption?",
+        a: "We design for usability and run enablement sessions.",
+      },
+      {
+        q: "Can you replace spreadsheets or Airtable?",
+        a: "Yes. We build reliable replacements with better UX.",
+      },
+      {
+        q: "Do you support ongoing maintenance?",
+        a: "Yes. We offer ongoing support and iteration.",
+      },
+    ],
+  },
+  "stripe-integration": {
+    whoFor: [
+      "SaaS teams launching billing and payments quickly.",
+      "Founders needing a reliable Stripe setup.",
+      "Product teams expanding payment flows and pricing.",
+      "Ops teams automating invoicing and revenue workflows.",
+    ],
+    problems: [
+      "Stripe setup is incomplete or inconsistent across flows.",
+      "Subscription and invoice logic is error-prone.",
+      "Webhook handling is unreliable or missing.",
+      "Payment UX causes drop-off at checkout.",
+      "Finance lacks reporting and reconciliation visibility.",
+    ],
+    deliverables: [
+      "Stripe integration plan with pricing model mapping.",
+      "Checkout, subscription, and invoice flows.",
+      "Webhook handling, retries, and idempotency.",
+      "Revenue reporting and reconciliation support.",
+      "Customer portal and self-serve billing updates.",
+      "Documentation and handoff for ongoing maintenance.",
+    ],
+    process: [
+      "Discovery: align on pricing, billing flows, and edge cases.",
+      "Scope: define Stripe products, webhooks, and lifecycle logic.",
+      "Build: implement payment flows and backend handling.",
+      "Launch: QA, monitor payments, and optimize conversion.",
+    ],
+    differentiators: [
+      "Stripe setups built for reliability and revenue accuracy.",
+      "Senior pod with SaaS billing experience.",
+      "Clear documentation and handoff for finance teams.",
+    ],
+    faqs: [
+      {
+        q: "Can you handle Stripe subscriptions?",
+        a: "Yes. We implement full subscription lifecycles and proration logic.",
+      },
+      {
+        q: "Do you support Stripe webhooks?",
+        a: "Yes. We implement secure, idempotent webhook handling.",
+      },
+      {
+        q: "Can you build a customer billing portal?",
+        a: "Yes. We configure and customize Stripe customer portals.",
+      },
+      {
+        q: "How do you handle failed payments?",
+        a: "We implement retries, dunning flows, and alerting.",
+      },
+      {
+        q: "Can you migrate from another payment system?",
+        a: "Yes. We plan and execute billing migrations safely.",
+      },
+    ],
+  },
+  "subscription-billing-setup": {
+    whoFor: [
+      "SaaS founders launching subscriptions for the first time.",
+      "Product teams adding metered or usage-based pricing.",
+      "Finance teams needing reliable billing operations.",
+      "Ops teams managing renewals and invoicing at scale.",
+    ],
+    problems: [
+      "Subscription logic breaks under edge cases.",
+      "Pricing changes are difficult to roll out safely.",
+      "Billing systems are disconnected from product access.",
+      "No visibility into churn or renewal risk.",
+      "Manual invoicing slows revenue collection.",
+    ],
+    deliverables: [
+      "Subscription billing architecture and lifecycle mapping.",
+      "Plan, pricing, and entitlement configuration.",
+      "Usage tracking and metered billing flows.",
+      "Renewal, cancellation, and dunning workflows.",
+      "Revenue reporting and churn analytics.",
+      "Documentation and operational runbooks.",
+    ],
+    process: [
+      "Discovery: define pricing strategy and billing requirements.",
+      "Scope: map subscription lifecycles and entitlements.",
+      "Build: implement billing logic, automation, and reporting.",
+      "Launch: QA, monitor revenue flows, and optimize retention.",
+    ],
+    differentiators: [
+      "Billing built for accuracy and customer trust.",
+      "Senior pod that understands SaaS revenue operations.",
+      "Operational runbooks that reduce revenue leakage.",
+    ],
+    faqs: [
+      {
+        q: "Can you support usage-based billing?",
+        a: "Yes. We implement metering and usage-based pricing logic.",
+      },
+      {
+        q: "Do you connect billing to product access?",
+        a: "Yes. We align entitlements with subscription status.",
+      },
+      {
+        q: "Can you help with churn reduction?",
+        a: "Yes. We implement cancellation, dunning, and win-back flows.",
+      },
+      {
+        q: "Do you provide billing analytics?",
+        a: "Yes. We deliver dashboards for MRR, churn, and revenue health.",
+      },
+      {
+        q: "Can you migrate existing subscriptions?",
+        a: "Yes. We plan and execute safe billing migrations.",
+      },
+    ],
+  },
+  "product-design": {
+    whoFor: [
+      "Founders needing product design leadership fast.",
+      "Product teams launching new features or workflows.",
+      "Engineering teams lacking design direction.",
+      "Growth teams optimizing conversion moments.",
+    ],
+    problems: [
+      "Product UX is inconsistent or hard to navigate.",
+      "Design decisions are stuck in stakeholder loops.",
+      "New features ship without clear user flows.",
+      "Engineering builds without design clarity.",
+      "Design systems do not scale with product growth.",
+    ],
+    deliverables: [
+      "User journey and flow mapping for core workflows.",
+      "High-fidelity product UI design and interaction states.",
+      "Design system components and usage guidelines.",
+      "Prototype testing and iteration notes.",
+      "Engineering-ready specs and handoff assets.",
+      "Design QA support through launch.",
+    ],
+    process: [
+      "Discovery: align on users, goals, and product constraints.",
+      "Scope: define flows, screens, and success metrics.",
+      "Build: design iterations, prototypes, and handoff assets.",
+      "Launch: support implementation, QA, and optimizations.",
+    ],
+    differentiators: [
+      "Product designers who ship with engineering.",
+      "UX grounded in business outcomes and adoption.",
+      "Fast, senior delivery without design debt.",
+    ],
+    faqs: [
+      {
+        q: "Do you work in our existing design system?",
+        a: "Yes. We extend current systems or create new components as needed.",
+      },
+      {
+        q: "Can you help with product discovery?",
+        a: "Yes. We map flows, test prototypes, and validate decisions.",
+      },
+      {
+        q: "Do you provide design QA?",
+        a: "Yes. We review builds and ensure fidelity to design intent.",
+      },
+      {
+        q: "How fast can you deliver product designs?",
+        a: "Timelines range from 2-6 weeks depending on scope.",
+      },
+      {
+        q: "Can you stay on for ongoing design support?",
+        a: "Yes. We offer embedded design support as needed.",
+      },
+    ],
+  },
+  "founder-tech-partner": {
+    whoFor: [
+      "Non-technical founders building their first product.",
+      "Founders who need a senior technical partner.",
+      "Startups without in-house engineering leadership.",
+      "Teams needing a trusted pod for early delivery.",
+    ],
+    problems: [
+      "No technical owner to translate vision into delivery.",
+      "Founders struggle to scope, prioritize, and ship.",
+      "Hiring a full engineering team is too expensive.",
+      "Product decisions lack technical risk evaluation.",
+      "Roadmaps stall due to unclear execution plans.",
+    ],
+    deliverables: [
+      "Product strategy and MVP roadmap guidance.",
+      "Technical architecture and stack decisions.",
+      "End-to-end product design and engineering delivery.",
+      "Hiring, vendor, and infrastructure advisory support.",
+      "Launch readiness and post-launch iteration plan.",
+      "Ongoing CTO-level mentorship and support.",
+    ],
+    process: [
+      "Discovery: align on vision, market, and milestones.",
+      "Scope: define MVP, timelines, and execution plan.",
+      "Build: deliver product with full-stack ownership.",
+      "Launch: support go-to-market and iteration cycles.",
+    ],
+    differentiators: [
+      "Senior technical leadership without full-time hire.",
+      "Founder-first guidance with clear execution plans.",
+      "End-to-end ownership from idea to launch.",
+    ],
+    faqs: [
+      {
+        q: "Do you act as a fractional CTO?",
+        a: "Yes. We provide CTO-level guidance plus delivery.",
+      },
+      {
+        q: "Can you help refine the product idea?",
+        a: "Yes. We shape the MVP and validate assumptions.",
+      },
+      {
+        q: "Will you handle design and engineering?",
+        a: "Yes. We deliver both with one accountable pod.",
+      },
+      {
+        q: "Can you work alongside future hires?",
+        a: "Yes. We can help hire or hand off to your team.",
+      },
+      {
+        q: "How long do founder tech partnerships last?",
+        a: "Typically 3-6 months, with flexibility based on milestones.",
+      },
+    ],
+  },
 };
 
-export function getServicePlaybook(slug) {
-  return SERVICE_PLAYBOOKS[slug] ?? null;
+export function getServicePlaybook(slug, service, category) {
+  if (SERVICE_PLAYBOOKS[slug]) return SERVICE_PLAYBOOKS[slug];
+  if (service && category) return generateServicePlaybook(service, category);
+  return null;
 }
 
 export function buildServiceSections(service, category) {
-  const playbook = getServicePlaybook(service?.slug);
+  const playbook = getServicePlaybook(service?.slug, service, category);
   if (playbook) {
     if (
       category?.slug === "markets-trading" &&

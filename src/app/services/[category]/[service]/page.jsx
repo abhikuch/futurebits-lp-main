@@ -190,7 +190,7 @@ export default function ServiceDetailPage({ params }) {
   }
 
   const sectionData = buildServiceSections(service, category);
-  const playbook = getServicePlaybook(service.slug);
+  const playbook = getServicePlaybook(service.slug, service, category);
   const faqs = playbook?.faqs ?? getServiceFaq(service);
   const related = getRelatedServices(service.categorySlug, service.slug, 6);
   const theme = DETAIL_VISUAL_THEME[category.slug] ?? DEFAULT_DETAIL_THEME;
