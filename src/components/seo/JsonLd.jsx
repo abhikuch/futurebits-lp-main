@@ -93,6 +93,43 @@ export function organizationJsonLd() {
       },
     ],
     sameAs: [SOCIAL.twitter, SOCIAL.linkedin, SOCIAL.behance, SOCIAL.dribbble],
+    knowsAbout: [
+      "AI automation",
+      "UI/UX design",
+      "Website UX audit",
+      "Custom GPT development",
+      "AI chatbot development",
+      "SaaS development",
+      "Product design",
+      "Landing page design",
+      "Trading system development",
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Futurebits Services",
+      itemListElement: [
+        {
+          "@type": "OfferCatalog",
+          name: "AI & Automation",
+          url: `${SITE_URL}/services/ai-automation`,
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Design",
+          url: `${SITE_URL}/services/design`,
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Build",
+          url: `${SITE_URL}/services/build`,
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Startup Tech Partner",
+          url: `${SITE_URL}/services/startup-tech-partner`,
+        },
+      ],
+    },
   };
 }
 

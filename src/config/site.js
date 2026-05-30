@@ -204,6 +204,35 @@ export const ROUTES = {
     ogImage: ASSETS.ogAi,
     ogImageAlt: "Futurebits Blog",
   },
+  press: {
+    path: "/press",
+    cta: CAL.ai,
+    title: "Press & Media Kit | Futurebits",
+    description:
+      "Futurebits media kit — company boilerplate, logos, contact, service links, and directory profile copy for Clutch, GoodFirms, and partners.",
+    keywords: [
+      "Futurebits media kit",
+      "Futurebits press",
+      "Futurebits company profile",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits Press Kit",
+  },
+  resources: {
+    path: "/resources",
+    cta: CAL.ai,
+    title: "Free UX & Product Resources | Futurebits",
+    description:
+      "Free resources from Futurebits — UX audit checklists, guides, and tools for product teams, designers, and founders.",
+    keywords: [
+      "UX audit checklist",
+      "Free UX resources",
+      "Website audit checklist",
+      "Product design resources",
+    ],
+    ogImage: ASSETS.ogDesign,
+    ogImageAlt: "Futurebits Resources",
+  },
 };
 
 /**

@@ -9,6 +9,8 @@ const PRIORITY = {
   design: 0.9,
   services: 0.8,
   blog: 0.75,
+  press: 0.55,
+  resources: 0.7,
   about: 0.6,
   contact: 0.6,
   privacy: 0.3,
@@ -21,6 +23,8 @@ const CHANGE_FREQ = {
   design: "weekly",
   services: "weekly",
   blog: "weekly",
+  press: "monthly",
+  resources: "monthly",
   about: "monthly",
   contact: "monthly",
   privacy: "yearly",
@@ -57,5 +61,20 @@ export default function sitemap() {
     priority: 0.65,
   }));
 
-  return [...coreRoutes, ...serviceCategories, ...serviceDetails, ...blogPosts];
+  const resourcePages = [
+    {
+      url: `${SITE_URL}/resources/ux-audit-checklist`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.72,
+    },
+  ];
+
+  return [
+    ...coreRoutes,
+    ...serviceCategories,
+    ...serviceDetails,
+    ...blogPosts,
+    ...resourcePages,
+  ];
 }

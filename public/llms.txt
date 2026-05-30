@@ -11,6 +11,8 @@ Futurebits is a senior product pod delivering software development, AI automatio
 - [Markets](https://www.futurebits.tech/markets): Trading execution, backtesting, risk monitoring, analytics
 - [Services Hub](https://www.futurebits.tech/services): Full catalog of 90+ services across 6 categories
 - [Blog / Insights](https://www.futurebits.tech/blog): Guides on UX audits, AI chatbots, custom GPT, landing page conversion
+- [Free Resources](https://www.futurebits.tech/resources): UX audit checklist and linkable tools
+- [Press / Media Kit](https://www.futurebits.tech/press): Company boilerplate, logos, directory profile copy
 - [Contact](https://www.futurebits.tech/contact): Start a project conversation
 
 ## Core service categories
@@ -24,7 +26,8 @@ Futurebits is a senior product pod delivering software development, AI automatio
 
 ## Priority services
 
-- Website UX Audit: https://www.futurebits.tech/services/design/website-ux-audit
+- Website UX Audit Checklist: https://www.futurebits.tech/resources/ux-audit-checklist
+- Website UX Audit Service: https://www.futurebits.tech/services/design/website-ux-audit
 - AI Chatbot Development: https://www.futurebits.tech/services/ai-automation/chatbot-development
 - Custom GPT & Knowledge Base: https://www.futurebits.tech/services/ai-automation/custom-gpt-knowledge-base
 - AI Agents Development: https://www.futurebits.tech/services/ai-automation/ai-agents-development

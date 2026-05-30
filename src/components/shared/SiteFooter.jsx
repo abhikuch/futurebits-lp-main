@@ -19,6 +19,8 @@ const SERVICE_LINKS = [
 ];
 
 const LEGAL_LINKS = [
+  { label: "Press & Media Kit", href: ROUTES.press.path },
+  { label: "Free Resources", href: ROUTES.resources.path },
   { label: "Privacy Policy", href: ROUTES.privacy.path },
   { label: "Contact", href: ROUTES.contact.path },
 ];

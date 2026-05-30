@@ -98,6 +98,10 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="dns-prefetch" href="https://cal.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="me" href="https://x.com/FuturebitsTech" />
+        <link rel="me" href="https://www.linkedin.com/company/futurebitstech/" />
+        <link rel="me" href="https://www.behance.net/futurebits" />
+        <link rel="me" href="https://dribbble.com/futurebits" />
       </head>
       <body className="antialiased font-poppins select-none">
         <a className="sr-only-focusable" href="#main-content">
