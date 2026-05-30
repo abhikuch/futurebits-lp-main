@@ -35,6 +35,7 @@ import {
   DETAIL_HERO_PRESET,
   DETAIL_RHYTHM_PRESET,
   DETAIL_VISUAL_THEME,
+  resolveDetailThemeKey,
   VERTICAL_DECOR_CLASSES,
 } from "@/app/services/themeTokens";
 
@@ -104,11 +105,20 @@ function VerticalDecorations({ categorySlug }) {
     );
   }
 
+  if (categorySlug === "build" || categorySlug === "integrations-platform" || categorySlug === "startup-tech-partner") {
+    return (
+      <>
+        <div className={VERTICAL_DECOR_CLASSES.platform.glowLeft} />
+        <div className={VERTICAL_DECOR_CLASSES.platform.glowRight} />
+      </>
+    );
+  }
+
   return null;
 }
 
-function getHeroStylePreset(categorySlug) {
-  const preset = DETAIL_HERO_PRESET[categorySlug] ?? DEFAULT_DETAIL_HERO_PRESET;
+function getHeroStylePreset(themeKey) {
+  const preset = DETAIL_HERO_PRESET[themeKey] ?? DEFAULT_DETAIL_HERO_PRESET;
   const bottomRail =
     preset.bottomRailType === "ai" ? (
       <div
@@ -122,8 +132,8 @@ function getHeroStylePreset(categorySlug) {
   return { ...preset, bottomRail };
 }
 
-function getRhythmPreset(categorySlug) {
-  return DETAIL_RHYTHM_PRESET[categorySlug] ?? DEFAULT_DETAIL_RHYTHM_PRESET;
+function getRhythmPreset(themeKey) {
+  return DETAIL_RHYTHM_PRESET[themeKey] ?? DEFAULT_DETAIL_RHYTHM_PRESET;
 }
 
 export function generateStaticParams() {
@@ -194,9 +204,10 @@ export default function ServiceDetailPage({ params }) {
   const playbook = getServicePlaybook(service.slug, service, category);
   const faqs = playbook?.faqs ?? getServiceFaq(service);
   const related = getRelatedServices(service.categorySlug, service.slug, 6);
-  const theme = DETAIL_VISUAL_THEME[category.slug] ?? DEFAULT_DETAIL_THEME;
-  const heroPreset = getHeroStylePreset(category.slug);
-  const rhythm = getRhythmPreset(category.slug);
+  const detailKey = resolveDetailThemeKey(category.slug);
+  const theme = (detailKey && DETAIL_VISUAL_THEME[detailKey]) ?? DEFAULT_DETAIL_THEME;
+  const heroPreset = getHeroStylePreset(detailKey ?? category.slug);
+  const rhythm = getRhythmPreset(detailKey ?? category.slug);
   const pageBgClassName = theme.pageBg;
   const calHref = buildCalUrl(category.ctaHref, {
     medium: "service-page",

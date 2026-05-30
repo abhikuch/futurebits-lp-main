@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 import { HiBars3 } from "react-icons/hi2";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "@/assets/logo.svg";
-import { CAL, NAV_ITEMS, ROUTES } from "@/config/site";
+import { NAV_ITEMS, ROUTES } from "@/config/site";
+import { getCalLinkForPath } from "@/lib/page-theme";
 
 function NavDiamond({ isActive }) {
   return (
@@ -57,7 +58,7 @@ function MobileNav({ pathname }) {
           </div>
           <SheetClose asChild>
             <Link
-              href={CAL.ai}
+              href={getCalLinkForPath(pathname)}
               target="_blank"
               rel="noopener noreferrer"
               className="mx-10 inline-flex h-11 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-[#060618] transition hover:bg-white/90"
@@ -73,6 +74,7 @@ function MobileNav({ pathname }) {
 
 export default function TopNavbar() {
   const pathname = usePathname();
+  const calHref = getCalLinkForPath(pathname);
   return (
     <nav className="fixed top-0 z-50 w-full px-3 sm:px-4">
       <div className="mx-auto w-full max-w-[1160px] pt-2">
@@ -118,7 +120,7 @@ export default function TopNavbar() {
               })}
             </div>
             <Link
-              href={CAL.ai}
+              href={calHref}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden h-9 items-center justify-center rounded-full border border-[#5d64ff] bg-[#4c57e6] px-4 text-[13px] font-semibold text-white shadow-[0_6px_22px_rgba(76,87,230,0.5)] transition hover:bg-[#5b66ee] sm:inline-flex sm:h-10 sm:px-5 sm:text-sm"

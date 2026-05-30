@@ -6,6 +6,7 @@ import JsonLd, {
   webPageJsonLd,
 } from "@/components/seo/JsonLd";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
+import PageAccentGlow from "@/components/shared/PageAccentGlow";
 import SiteFooter from "@/components/shared/SiteFooter";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
@@ -13,6 +14,8 @@ import Section from "@/components/ui/section";
 import logo from "@/assets/logo.svg";
 import { SITE_URL } from "@/config/site";
 import { UX_AUDIT_CHECKLIST } from "@/content/link-building";
+import { getTopicCtaPanelClass } from "@/lib/page-theme";
+import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
 
 export const metadata = {
   title: `${UX_AUDIT_CHECKLIST.title} | Futurebits`,
@@ -51,7 +54,11 @@ export default function UxAuditChecklistPage() {
   ];
 
   return (
-    <main id="main-content" className="min-h-screen bg-[#060618] text-white">
+    <main
+      id="main-content"
+      className={`relative min-h-screen ${SERVICE_HUB_THEME.pageBgClass} text-white`}
+    >
+      <PageAccentGlow themeKey="design" />
       <JsonLd
         data={[
           webPageJsonLd({
@@ -65,7 +72,7 @@ export default function UxAuditChecklistPage() {
         ]}
       />
 
-      <Section className="pt-8 pb-16">
+      <Section className="pb-16 pt-32 sm:pt-36">
         <Container className="max-w-3xl">
           <Breadcrumbs items={breadcrumbNav} />
           <p className="fb-kicker">Free resource</p>
@@ -101,10 +108,8 @@ export default function UxAuditChecklistPage() {
             ))}
           </div>
 
-          <div className="mt-14 rounded-2xl border border-[#01B0EA]/30 bg-[#01B0EA]/5 p-6">
-            <h2 className="font-montserrat text-lg font-semibold">
-              Want a expert UX audit instead?
-            </h2>
+          <div className={`mt-14 ${getTopicCtaPanelClass("design")}`}>
+            <h2 className="fb-h3">Want an expert UX audit instead?</h2>
             <p className="mt-3 text-sm text-white/70">
               We deliver prioritized findings with analytics review, annotated
               screenshots, and a fix roadmap tied to conversion metrics.
@@ -123,7 +128,7 @@ export default function UxAuditChecklistPage() {
           </p>
         </Container>
       </Section>
-      <SiteFooter logo={logo} homePath="/" />
+      <SiteFooter logo={logo} backgroundClassName={SERVICE_HUB_THEME.footerBgClass} />
     </main>
   );
 }

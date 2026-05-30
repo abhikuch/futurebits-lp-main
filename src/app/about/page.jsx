@@ -1,8 +1,13 @@
 import Link from "next/link";
 
+import PageAccentGlow from "@/components/shared/PageAccentGlow";
 import SiteFooter from "@/components/shared/SiteFooter";
+import Container from "@/components/ui/container";
+import Section from "@/components/ui/section";
 import logo from "@/assets/logo.svg";
-import { CAL, COMPANY, SOCIAL } from "@/config/site";
+import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
+import { COMPANY, SOCIAL } from "@/config/site";
+import { getCalLinkForPath } from "@/lib/page-theme";
 
 const beliefs = [
   {
@@ -38,120 +43,117 @@ export default function AboutPage() {
   return (
     <main
       id="main-content"
-      className="relative min-h-screen overflow-hidden bg-[#060618] text-white"
+      className={`relative min-h-screen overflow-hidden ${SERVICE_HUB_THEME.pageBgClass} text-white`}
     >
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-[-10%] h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[#2E2688]/40 blur-[140px]" />
+      <PageAccentGlow themeKey="neutral" />
+
+      <Section className="pb-12 pt-32 sm:pt-36">
+        <Container className="max-w-4xl">
+          <p className="fb-kicker">About {COMPANY.name}</p>
+          <h1 className="mt-6 fb-hero-title max-w-3xl">
+            A small studio for build, AI, design, and trading systems.
+          </h1>
+          <p className="fb-hero-copy mt-6">
+            Futurebits is a senior team of roughly a dozen people. We work across
+            product engineering, applied AI, UX, and markets infrastructure — same
+            bar everywhere. We take a limited number of engagements so each one
+            gets a real team, weekly demos, and code in your repo.
+          </p>
+          <p className="mt-4 max-w-2xl text-pretty text-base text-white/60">
+            We are not a staff-augmentation bench and we are not a strategy firm
+            that hands off to someone else. If you need slides about digital
+            transformation, we are the wrong call.
+          </p>
+
+          <div className="fb-panel mt-10 grid grid-cols-2 gap-6 p-6 sm:grid-cols-4 sm:p-8">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <div className="font-montserrat text-3xl font-semibold sm:text-4xl">
+                  {s.value}
+                </div>
+                <div className="mt-2 text-xs uppercase tracking-wider text-white/50">
+                  {s.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <div className="fb-section">
+        <Section className="py-16 sm:py-20">
+          <Container className="max-w-4xl">
+            <h2 className="fb-h2">What we believe</h2>
+            <p className="mt-3 max-w-2xl text-white/60">
+              Opinionated defaults we actually act on. If any of this feels wrong for
+              your team, we are probably not the right fit — and that is worth
+              learning in the first call, not month three.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {beliefs.map((b) => (
+                <div key={b.title} className="fb-panel p-6">
+                  <h3 className="font-montserrat text-lg font-semibold">
+                    {b.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">
+                    {b.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </Section>
       </div>
 
-      <section className="mx-auto max-w-5xl px-6 pb-20 pt-28 sm:pt-32">
-        <p className="font-poppins text-sm uppercase tracking-[0.2em] text-white/50">
-          About {COMPANY.name}
-        </p>
-        <h1 className="mt-4 font-montserrat text-display-md font-semibold text-balance">
-          A small studio for build, AI, design, and trading systems.
-        </h1>
-        <p className="mt-6 max-w-2xl text-pretty text-base text-white/70 sm:text-lg">
-          Futurebits is a senior team of roughly a dozen people. We work across
-          product engineering, applied AI, UX, and markets infrastructure — same
-          bar everywhere. We take a limited number of engagements so each one
-          gets a real team, weekly demos, and code in your repo.
-        </p>
-        <p className="mt-4 max-w-2xl text-pretty text-base text-white/60">
-          We are not a staff-augmentation bench and we are not a strategy firm
-          that hands off to someone else. If you need slides about digital
-          transformation, we are the wrong call.
-        </p>
-
-        <div className="mt-10 grid grid-cols-2 gap-6 rounded-2xl border border-white/10 bg-white/5 p-6 sm:grid-cols-4 sm:p-8">
-          {stats.map((s) => (
-            <div key={s.label}>
-              <div className="font-montserrat text-3xl font-semibold sm:text-4xl">
-                {s.value}
-              </div>
-              <div className="mt-2 text-xs uppercase tracking-wider text-white/50">
-                {s.label}
-              </div>
+      <Section className="pb-24 pt-4">
+        <Container className="max-w-3xl">
+          <div className={SERVICE_HUB_THEME.ctaPanelClass}>
+            <h2 className="fb-h2">See if we are a fit</h2>
+            <p className="mx-auto mt-3 max-w-xl text-white/70">
+              Book 30 minutes. We will come with a read of your problem and a
+              one-page scope sketch — keep it whether you hire us or not.
+            </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link
+                href={getCalLinkForPath("/about")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 items-center justify-center rounded-full bg-white px-6 text-sm font-medium text-[#060618] transition hover:bg-white/90"
+              >
+                Book a call
+              </Link>
+              <Link
+                href="/contact"
+                className="fb-cta-secondary h-11 px-6 text-sm"
+              >
+                Send a message
+              </Link>
             </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-6 pb-20">
-        <h2 className="font-montserrat text-2xl font-semibold sm:text-3xl">
-          What we believe
-        </h2>
-        <p className="mt-3 max-w-2xl text-white/60">
-          Opinionated defaults we actually act on. If any of this feels wrong for
-          your team, we are probably not the right fit — and that is worth
-          learning in the first call, not month three.
-        </p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          {beliefs.map((b) => (
-            <div
-              key={b.title}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
-            >
-              <h3 className="font-montserrat text-lg font-semibold">
-                {b.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/70">
-                {b.body}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-6 pb-24">
-        <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#2E2688]/40 to-[#01B0EA]/10 p-8 text-center sm:p-12">
-          <h2 className="font-montserrat text-2xl font-semibold sm:text-3xl">
-            See if we are a fit
-          </h2>
-          <p className="mt-3 text-white/70">
-            Book 30 minutes. We will come with a read of your problem and a
-            one-page scope sketch — keep it whether you hire us or not.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href={CAL.ai}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-11 items-center justify-center rounded-full bg-white px-6 text-sm font-medium text-[#060618] transition hover:bg-white/90"
-            >
-              Book a call
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex h-11 items-center justify-center rounded-full border border-white/30 px-6 text-sm font-medium text-white transition hover:bg-white/10"
-            >
-              Send a message
-            </Link>
+            <p className="mt-6 text-xs text-white/50">
+              Find us on{" "}
+              <Link
+                href={SOCIAL.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-white"
+              >
+                LinkedIn
+              </Link>{" "}
+              or{" "}
+              <Link
+                href={SOCIAL.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-white"
+              >
+                X
+              </Link>
+              .
+            </p>
           </div>
-          <p className="mt-6 text-xs text-white/50">
-            Find us on{" "}
-            <Link
-              href={SOCIAL.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-white"
-            >
-              LinkedIn
-            </Link>{" "}
-            or{" "}
-            <Link
-              href={SOCIAL.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-white"
-            >
-              X
-            </Link>
-            .
-          </p>
-        </div>
-      </section>
-      <SiteFooter logo={logo} backgroundClassName="bg-[#060618]" />
+        </Container>
+      </Section>
+      <SiteFooter logo={logo} backgroundClassName={SERVICE_HUB_THEME.footerBgClass} />
     </main>
   );
 }

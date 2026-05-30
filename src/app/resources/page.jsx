@@ -5,19 +5,24 @@ import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Section from "@/components/ui/section";
 import logo from "@/assets/logo.svg";
+import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
 import { BLOG_POSTS } from "@/content/blog";
 import { FREE_RESOURCES } from "@/content/link-building";
+import { getTopicCardClass } from "@/lib/page-theme";
 
 export default function ResourcesPage() {
   return (
-    <main id="main-content" className="min-h-screen bg-[#060618] text-white">
-      <Section className="pt-8 pb-16">
+    <main
+      id="main-content"
+      className={`min-h-screen ${SERVICE_HUB_THEME.pageBgClass} text-white`}
+    >
+      <Section className="pb-16 pt-32 sm:pt-36">
         <Container>
           <p className="fb-kicker">Free resources</p>
           <Heading as="h1" className="mt-6 max-w-3xl fb-hero-title">
             Tools and checklists for product teams
           </Heading>
-          <p className="mt-6 max-w-2xl text-lg text-white/70">
+          <p className="fb-hero-copy mt-6">
             Linkable guides and checklists from Futurebits. Use them internally,
             share with your team, or cite them in your own content.
           </p>
@@ -31,7 +36,7 @@ export default function ResourcesPage() {
                 <Link
                   key={resource.slug}
                   href={resource.path}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:bg-white/[0.06]"
+                  className={`${getTopicCardClass(resource.category)} block p-6`}
                 >
                   <p className="text-xs uppercase tracking-[0.18em] text-white/45">
                     {resource.category}
@@ -48,7 +53,7 @@ export default function ResourcesPage() {
             </div>
           </div>
 
-          <div className="mt-16">
+          <div className="fb-section mt-16 pt-16">
             <Heading as="h2" className="fb-h3">
               Guides from the blog
             </Heading>
@@ -57,7 +62,7 @@ export default function ResourcesPage() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="rounded-xl border border-white/10 bg-white/[0.02] px-5 py-4 text-sm text-white/80 transition hover:bg-white/[0.05] hover:text-white"
+                  className={`${getTopicCardClass(post.category)} block px-5 py-4 text-sm text-white/80 hover:text-white`}
                 >
                   {post.title}
                 </Link>
@@ -71,7 +76,7 @@ export default function ResourcesPage() {
             </Link>
           </div>
 
-          <div className="mt-16 rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+          <div className={`mt-16 ${SERVICE_HUB_THEME.ctaPanelClass}`}>
             <Heading as="h2" className="fb-h3 text-lg">
               Need help implementing this?
             </Heading>
@@ -96,7 +101,7 @@ export default function ResourcesPage() {
           </div>
         </Container>
       </Section>
-      <SiteFooter logo={logo} homePath="/" />
+      <SiteFooter logo={logo} backgroundClassName={SERVICE_HUB_THEME.footerBgClass} />
     </main>
   );
 }

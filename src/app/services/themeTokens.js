@@ -1,3 +1,21 @@
+export const PLATFORM_CATEGORY_SLUGS = new Set([
+  "build",
+  "integrations-platform",
+  "startup-tech-partner",
+]);
+
+/** Maps service category slugs to a visual theme key. */
+export function resolveCategoryThemeSlug(categorySlug) {
+  if (PLATFORM_CATEGORY_SLUGS.has(categorySlug)) return "platform";
+  if (categorySlug in CATEGORY_VISUAL_THEME) return categorySlug;
+  return "neutral";
+}
+
+export function resolveDetailThemeKey(categorySlug) {
+  const key = resolveCategoryThemeSlug(categorySlug);
+  return key === "neutral" ? null : key;
+}
+
 export const CATEGORY_VISUAL_THEME = {
   "ai-automation": {
     pageBg: "bg-[#060618]",
@@ -44,6 +62,22 @@ export const CATEGORY_VISUAL_THEME = {
     ctaButtonClass:
       "mt-7 inline-flex h-11 items-center justify-center rounded-full border border-white/35 bg-white/15 px-6 text-sm font-medium text-white transition hover:bg-white/22",
   },
+  /** Build, Integrations, Startup — amber accent (distinct from AI cyan, Design white, Markets teal). */
+  platform: {
+    pageBg: "bg-[#060618]",
+    kickerClass: "fb-kicker text-[#F5B942]",
+    dividerClass:
+      "mt-6 h-px w-28 bg-gradient-to-r from-[#F5B942]/80 via-[#B45309]/60 to-transparent",
+    titleClass:
+      "mt-6 fb-hero-title max-w-4xl text-transparent bg-clip-text bg-gradient-to-r from-white via-[#FEF3C7] to-[#F5B942]",
+    bodyClass: "mt-6 max-w-3xl text-lg text-[#FDE68A]/80",
+    serviceCardClass:
+      "rounded-2xl border border-[#F5B942]/25 bg-gradient-to-b from-[#F5B942]/10 to-white/[0.02] p-5 transition hover:from-[#F5B942]/15 hover:to-white/[0.04]",
+    ctaPanelClass:
+      "rounded-3xl border border-[#F5B942]/25 bg-gradient-to-b from-[#F5B942]/10 to-white/[0.03] p-8",
+    ctaButtonClass:
+      "mt-7 inline-flex h-11 items-center justify-center rounded-full border border-[#F5B942]/40 bg-[#F5B942]/18 px-6 text-sm font-medium text-white transition hover:bg-[#F5B942]/26",
+  },
 };
 
 export const DETAIL_VISUAL_THEME = {
@@ -63,6 +97,12 @@ export const DETAIL_VISUAL_THEME = {
     accentText: "text-white",
     accentBorder: "border-white/30",
     chipBg: "bg-white/18",
+    pageBg: "bg-[#060618]",
+  },
+  platform: {
+    accentText: "text-[#FDE68A]",
+    accentBorder: "border-[#F5B942]/45",
+    chipBg: "bg-[#F5B942]/18",
     pageBg: "bg-[#060618]",
   },
 };
@@ -92,6 +132,14 @@ export const DETAIL_HERO_PRESET = {
     subheadClass: "mt-5 mx-auto max-w-3xl text-lg leading-relaxed text-white/78",
     ctaRowClass: "mt-8 flex flex-wrap justify-center gap-3",
     bottomRailType: "design",
+  },
+  platform: {
+    shellClass:
+      "relative overflow-hidden rounded-3xl border border-[#F5B942]/35 bg-[#0a0a12]/90 p-7 sm:p-10",
+    titleClass: "mt-5 fb-hero-title max-w-4xl",
+    subheadClass: "mt-5 max-w-3xl text-lg leading-relaxed text-[#FEF3C7]/78",
+    ctaRowClass: "mt-8 flex flex-wrap gap-3",
+    bottomRailType: null,
   },
 };
 
@@ -131,6 +179,18 @@ export const DETAIL_RHYTHM_PRESET = {
       "rounded-3xl border bg-white/[0.05] p-6 sm:p-7 backdrop-blur-sm",
     wideCardClass:
       "rounded-3xl border border-white/10 bg-white/[0.05] p-6 sm:p-7 backdrop-blur-sm",
+  },
+  platform: {
+    heroSectionClass: "pb-10 pt-32 sm:pb-12 sm:pt-36",
+    infoSectionClass: "py-9 sm:py-11",
+    deliverSectionClass: "py-9 sm:py-11",
+    faqSectionClass: "py-10 sm:py-12",
+    relatedSectionClass: "py-10 sm:py-12",
+    splitGapClass: "grid gap-6 md:grid-cols-3",
+    compactCardClass:
+      "rounded-2xl border bg-white/[0.04] p-6 sm:p-7 backdrop-blur-sm",
+    wideCardClass:
+      "rounded-2xl border border-white/10 bg-white/[0.04] p-6 sm:p-7 backdrop-blur-sm",
   },
 };
 
@@ -184,8 +244,11 @@ export const AI_BOTTOM_RAIL_GRADIENT =
 export const SERVICE_HUB_THEME = {
   pageBgClass: "bg-[#060618]",
   footerBgClass: "bg-[#060618]",
+  /** Neutral directory — no single vertical accent on the hub itself. */
   ctaPanelClass:
-    "rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.12] to-white/[0.03] p-8 text-center",
+    "rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-8 text-center",
+  hubCardClass:
+    "rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-white/20 hover:bg-white/[0.05]",
 };
 
 export const VERTICAL_DECOR_CLASSES = {
@@ -198,5 +261,11 @@ export const VERTICAL_DECOR_CLASSES = {
   markets: {
     glowLeft:
       "pointer-events-none absolute -left-24 top-28 h-[360px] w-[360px] rounded-full bg-[#267088]/30 blur-[120px]",
+  },
+  platform: {
+    glowLeft:
+      "pointer-events-none absolute -left-28 top-32 h-[340px] w-[340px] rounded-full bg-[#F5B942]/20 blur-[120px]",
+    glowRight:
+      "pointer-events-none absolute -right-20 top-48 h-[280px] w-[280px] rounded-full bg-[#B45309]/15 blur-[100px]",
   },
 };

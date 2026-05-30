@@ -22,6 +22,7 @@ import {
   AI_MARKETS_BEAM_GRADIENT,
   CATEGORY_VISUAL_THEME,
   DEFAULT_CATEGORY_THEME,
+  resolveCategoryThemeSlug,
   VERTICAL_DECOR_CLASSES,
 } from "@/app/services/themeTokens";
 
@@ -81,6 +82,15 @@ function VerticalDecorations({ categorySlug }) {
         <div className="pointer-events-none absolute right-[8%] top-[240px] hidden h-8 w-8 opacity-55 md:block">
           <Image src={designDiamond} alt="" fill className="object-contain" />
         </div>
+      </>
+    );
+  }
+
+  if (categorySlug === "build" || categorySlug === "integrations-platform" || categorySlug === "startup-tech-partner") {
+    return (
+      <>
+        <div className={VERTICAL_DECOR_CLASSES.platform.glowLeft} />
+        <div className={VERTICAL_DECOR_CLASSES.platform.glowRight} />
       </>
     );
   }
@@ -152,7 +162,8 @@ export default function ServiceCategoryPage({ params }) {
     notFound();
   }
 
-  const theme = CATEGORY_VISUAL_THEME[categoryBundle.slug] ?? DEFAULT_CATEGORY_THEME;
+  const themeKey = resolveCategoryThemeSlug(categoryBundle.slug);
+  const theme = CATEGORY_VISUAL_THEME[themeKey] ?? DEFAULT_CATEGORY_THEME;
   const popularServices = categoryBundle.services.filter((s) => s.isPriority);
   const calHref = buildCalUrl(categoryBundle.ctaHref, {
     medium: "category-page",

@@ -10,6 +10,7 @@ import logo from "@/assets/logo.svg";
 import { COMPANY } from "@/config/site";
 import { SERVICES_BY_CATEGORY } from "@/content/services";
 import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
+import { getCategoryTheme } from "@/lib/page-theme";
 
 const engagementModels = [
   {
@@ -60,11 +61,13 @@ export default function ServicesHubPage() {
             Core service tracks
           </Heading>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {SERVICES_BY_CATEGORY.map((category) => (
+            {SERVICES_BY_CATEGORY.map((category) => {
+              const categoryTheme = getCategoryTheme(category.slug);
+              return (
               <Link
                 key={category.slug}
                 href={`/services/${category.slug}`}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:bg-white/[0.06]"
+                className={`${categoryTheme.serviceCardClass} block p-6`}
               >
                 <h3 className="fb-h3">{category.title}</h3>
                 <p className="mt-3 text-sm text-white/70">{category.description}</p>
@@ -72,7 +75,8 @@ export default function ServicesHubPage() {
                   {category.services.length} services
                 </p>
               </Link>
-            ))}
+            );
+            })}
           </div>
         </Container>
       </Section>
@@ -86,7 +90,7 @@ export default function ServicesHubPage() {
             {engagementModels.map((model) => (
               <div
                 key={model.name}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+                className={`${SERVICE_HUB_THEME.hubCardClass}`}
               >
                 <h3 className="fb-h3">{model.name}</h3>
                 <p className="mt-3 text-sm text-white/70">{model.detail}</p>

@@ -5,19 +5,23 @@ import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Section from "@/components/ui/section";
 import logo from "@/assets/logo.svg";
+import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
 import { ASSETS, COMPANY, SITE_URL, SOCIAL } from "@/config/site";
 import { DIRECTORY_PROFILE, LINK_TO_US } from "@/content/link-building";
 
 export default function PressPage() {
   return (
-    <main id="main-content" className="min-h-screen bg-[#060618] text-white">
-      <Section className="pt-8 pb-16">
+    <main
+      id="main-content"
+      className={`min-h-screen ${SERVICE_HUB_THEME.pageBgClass} text-white`}
+    >
+      <Section className="pb-16 pt-32 sm:pt-36">
         <Container className="max-w-3xl">
           <p className="fb-kicker">Press & media</p>
           <Heading as="h1" className="mt-6 fb-hero-title">
             Media kit & directory profile
           </Heading>
-          <p className="mt-6 text-lg text-white/70">
+          <p className="fb-hero-copy mt-6">
             Everything journalists, directories, and partners need to reference
             Futurebits accurately. Copy blocks below are ready for Clutch,
             GoodFirms, DesignRush, and partner listings.
@@ -28,7 +32,7 @@ export default function PressPage() {
               <h2 className="font-montserrat text-xl font-semibold">
                 Short description
               </h2>
-              <p className="mt-4 rounded-xl border border-white/10 bg-white/[0.03] p-5 text-sm leading-relaxed text-white/75">
+              <p className="mt-4 fb-panel p-5 text-sm leading-relaxed text-white/75">
                 {DIRECTORY_PROFILE.shortDescription}
               </p>
             </section>
@@ -37,7 +41,7 @@ export default function PressPage() {
               <h2 className="font-montserrat text-xl font-semibold">
                 Long description
               </h2>
-              <pre className="mt-4 overflow-x-auto whitespace-pre-wrap rounded-xl border border-white/10 bg-white/[0.03] p-5 text-sm leading-relaxed text-white/75">
+              <pre className="fb-panel mt-4 overflow-x-auto whitespace-pre-wrap p-5 text-sm leading-relaxed text-white/75">
                 {DIRECTORY_PROFILE.longDescription}
               </pre>
             </section>
@@ -176,7 +180,7 @@ export default function PressPage() {
               </div>
             </section>
 
-            <section className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+            <section className="fb-panel p-6">
               <h2 className="font-montserrat text-xl font-semibold">
                 Press contact
               </h2>
@@ -193,7 +197,7 @@ export default function PressPage() {
           </div>
         </Container>
       </Section>
-      <SiteFooter logo={logo} homePath="/" />
+      <SiteFooter logo={logo} backgroundClassName={SERVICE_HUB_THEME.footerBgClass} />
     </main>
   );
 }

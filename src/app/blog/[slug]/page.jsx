@@ -7,6 +7,7 @@ import JsonLd, {
   webPageJsonLd,
 } from "@/components/seo/JsonLd";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
+import PageAccentGlow from "@/components/shared/PageAccentGlow";
 import SiteFooter from "@/components/shared/SiteFooter";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
@@ -15,6 +16,11 @@ import logo from "@/assets/logo.svg";
 import { SITE_URL } from "@/config/site";
 import { BLOG_POSTS, getBlogPost } from "@/content/blog";
 import { getServiceBySlugs } from "@/content/services";
+import {
+  getThemeKeyForTopic,
+  getTopicAccentTextClass,
+  getTopicCtaPanelClass,
+} from "@/lib/page-theme";
 
 export function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({ slug: post.slug }));
@@ -65,8 +71,12 @@ export default function BlogPostPage({ params }) {
     })
     .filter(Boolean);
 
+  const themeKey = getThemeKeyForTopic(post.category);
+  const relatedPanelClass = getTopicCtaPanelClass(themeKey);
+
   return (
-    <main id="main-content" className="min-h-screen bg-[#060618] text-white">
+    <main id="main-content" className="relative min-h-screen bg-[#060618] text-white">
+      <PageAccentGlow themeKey={themeKey} />
       <JsonLd
         data={[
           webPageJsonLd({
@@ -81,10 +91,10 @@ export default function BlogPostPage({ params }) {
         ]}
       />
 
-      <Section className="pt-8 pb-16">
+      <Section className="pb-16 pt-32 sm:pt-36">
         <Container className="max-w-3xl">
           <Breadcrumbs items={breadcrumbNav} />
-          <p className="text-xs uppercase tracking-[0.18em] text-white/45">
+          <p className={`text-xs uppercase tracking-[0.18em] ${getTopicAccentTextClass(themeKey)}`}>
             {post.category} · {post.readMinutes} min read ·{" "}
             {new Date(post.publishedAt).toLocaleDateString("en-US", {
               year: "numeric",
@@ -113,10 +123,8 @@ export default function BlogPostPage({ params }) {
           </div>
 
           {relatedServices.length > 0 ? (
-            <div className="mt-14 rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-              <h2 className="font-montserrat text-lg font-semibold">
-                Related services
-              </h2>
+            <div className={`mt-14 ${relatedPanelClass}`}>
+              <h2 className="fb-h3">Related services</h2>
               <div className="mt-4 flex flex-wrap gap-2">
                 {relatedServices.map((service) => (
                   <Link

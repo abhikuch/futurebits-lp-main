@@ -5,18 +5,23 @@ import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Section from "@/components/ui/section";
 import logo from "@/assets/logo.svg";
+import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
 import { BLOG_POSTS } from "@/content/blog";
+import { getTopicCardClass } from "@/lib/page-theme";
 
 export default function BlogIndexPage() {
   return (
-    <main id="main-content" className="min-h-screen bg-[#060618] text-white">
-      <Section className="pt-8 pb-16">
+    <main
+      id="main-content"
+      className={`min-h-screen ${SERVICE_HUB_THEME.pageBgClass} text-white`}
+    >
+      <Section className="pb-16 pt-32 sm:pt-36">
         <Container>
           <p className="fb-kicker">Insights</p>
           <Heading as="h1" className="mt-6 max-w-3xl fb-hero-title">
             Guides on UX, AI, and product growth
           </Heading>
-          <p className="mt-6 max-w-2xl text-lg text-white/70">
+          <p className="fb-hero-copy mt-6">
             Practical articles for teams evaluating UX audits, AI chatbots,
             custom GPTs, landing page design, and product delivery.
           </p>
@@ -26,7 +31,7 @@ export default function BlogIndexPage() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:bg-white/[0.06]"
+                className={`${getTopicCardClass(post.category)} block p-6`}
               >
                 <p className="text-xs uppercase tracking-[0.18em] text-white/45">
                   {post.category} · {post.readMinutes} min read
@@ -45,7 +50,7 @@ export default function BlogIndexPage() {
           </div>
         </Container>
       </Section>
-      <SiteFooter logo={logo} />
+      <SiteFooter logo={logo} backgroundClassName={SERVICE_HUB_THEME.footerBgClass} />
     </main>
   );
 }
