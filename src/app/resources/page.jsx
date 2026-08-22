@@ -1,6 +1,10 @@
 import Link from "next/link";
 
 import SiteFooter from "@/components/shared/SiteFooter";
+import {
+  EditorialBlock,
+  EditorialCardGrid,
+} from "@/components/shared/EditorialPageMotion";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Section from "@/components/ui/section";
@@ -18,25 +22,25 @@ export default function ResourcesPage() {
     >
       <Section className="pb-16 pt-32 sm:pt-36">
         <Container>
-          <p className="fb-kicker">Free resources</p>
-          <Heading as="h1" className="mt-6 max-w-3xl fb-hero-title">
+          <p className="fb-kicker fb-page-hero-enter">Free resources</p>
+          <Heading as="h1" className="mt-6 max-w-3xl fb-hero-title fb-page-hero-enter">
             Tools and checklists for product teams
           </Heading>
-          <p className="fb-hero-copy mt-6">
+          <p className="fb-hero-copy mt-6 fb-page-hero-copy-enter">
             Linkable guides and checklists from Futurebits. Use them internally,
             share with your team, or cite them in your own content.
           </p>
 
-          <div className="mt-12">
+          <EditorialBlock>
             <Heading as="h2" className="fb-h3">
               Checklists & tools
             </Heading>
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <EditorialCardGrid className="mt-6 grid gap-4 md:grid-cols-2">
               {FREE_RESOURCES.map((resource) => (
                 <Link
                   key={resource.slug}
                   href={resource.path}
-                  className={`${getTopicCardClass(resource.category)} block p-6`}
+                  className={`${getTopicCardClass(resource.category)} fb-interactive-surface block p-6`}
                 >
                   <p className="text-xs uppercase tracking-[0.18em] text-white/45">
                     {resource.category}
@@ -50,33 +54,33 @@ export default function ResourcesPage() {
                   </span>
                 </Link>
               ))}
-            </div>
-          </div>
+            </EditorialCardGrid>
+          </EditorialBlock>
 
-          <div className="fb-section mt-16 pt-16">
+          <EditorialBlock className="fb-section mt-16 pt-16">
             <Heading as="h2" className="fb-h3">
               Guides from the blog
             </Heading>
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <EditorialCardGrid className="mt-6 grid gap-4 md:grid-cols-2">
               {BLOG_POSTS.slice(0, 6).map((post) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className={`${getTopicCardClass(post.category)} block px-5 py-4 text-sm text-white/80 hover:text-white`}
+                  className={`${getTopicCardClass(post.category)} fb-interactive-surface block px-5 py-4 text-sm text-white/80 hover:text-white`}
                 >
                   {post.title}
                 </Link>
               ))}
-            </div>
+            </EditorialCardGrid>
             <Link
               href="/blog"
-              className="mt-6 inline-block text-sm text-white/60 underline underline-offset-4 hover:text-white"
+              className="mt-6 inline-block text-sm text-white/60 underline underline-offset-4 transition hover:text-white"
             >
               View all articles →
             </Link>
-          </div>
+          </EditorialBlock>
 
-          <div className={`mt-16 ${SERVICE_HUB_THEME.ctaPanelClass}`}>
+          <EditorialBlock className={`mt-16 ${SERVICE_HUB_THEME.ctaPanelClass}`}>
             <Heading as="h2" className="fb-h3 text-lg">
               Need help implementing this?
             </Heading>
@@ -98,7 +102,7 @@ export default function ResourcesPage() {
                 Contact us
               </Link>
             </div>
-          </div>
+          </EditorialBlock>
         </Container>
       </Section>
       <SiteFooter logo={logo} backgroundClassName={SERVICE_HUB_THEME.footerBgClass} />

@@ -3,8 +3,12 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 
 import JsonLd, { serviceDetailJsonLd } from "@/components/seo/JsonLd";
+import {
+  ServiceDetailOutline,
+} from "@/components/seo/ServicePageOutline";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import SiteFooter from "@/components/shared/SiteFooter";
+import { ServiceDetailRelated } from "@/components/shared/ServicePagesMotion";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Section from "@/components/ui/section";
@@ -235,11 +239,13 @@ export default function ServiceDetailPage({ params }) {
             <div className="pointer-events-none absolute -top-28 right-[-60px] h-56 w-56 rounded-full bg-white/10 blur-[100px]" />
             {heroPreset.bottomRail}
             <div className="relative z-10">
-              <p className={`fb-kicker ${theme.accentText}`}>{category.title}</p>
-              <Heading as="h1" className={heroPreset.titleClass}>
+              <p className={`fb-kicker ${theme.accentText} fb-page-hero-enter`}>
+                {category.title}
+              </p>
+              <Heading as="h1" className={`${heroPreset.titleClass} fb-page-hero-enter`}>
                 {lintText(service.hero)}
               </Heading>
-              <p className={heroPreset.subheadClass}>
+              <p className={`${heroPreset.subheadClass} fb-page-hero-copy-enter`}>
                 {lintText(service.subhead)}
               </p>
               {sectionData.chips?.length ? (
@@ -458,24 +464,22 @@ export default function ServiceDetailPage({ params }) {
       {related.length > 0 ? (
         <Section className={rhythm.relatedSectionClass}>
           <Container>
-            <Heading as="h2" className="fb-h3">
-              Related services
-            </Heading>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {related.map((item) => (
-                <Link
-                  key={item.slug}
-                  href={item.path}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:bg-white/[0.06]"
-                >
-                  <h3 className="fb-h3 text-lg">{item.title}</h3>
-                  <p className="mt-2 text-sm text-white/70">{item.shortDescription}</p>
-                </Link>
-              ))}
-            </div>
+            <ServiceDetailRelated related={related} />
           </Container>
         </Section>
       ) : null}
+      <ServiceDetailOutline
+        service={service}
+        category={category}
+        sections={[
+          sectionData.intro ? "Introduction" : null,
+          sectionData.contrarian ? "Point of view" : null,
+          "What you get",
+          sectionData.process?.length ? "Delivery process" : null,
+          sectionData.differentiators?.length ? "Why Futurebits" : null,
+          faqs.length ? "Frequently asked questions" : null,
+        ]}
+      />
       <SiteFooter logo={logo} backgroundClassName={pageBgClassName} />
     </main>
   );

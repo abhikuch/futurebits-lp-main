@@ -6,7 +6,9 @@ import JsonLd, {
   breadcrumbJsonLd,
   webPageJsonLd,
 } from "@/components/seo/JsonLd";
+import { EditorialPostOutline } from "@/components/seo/ServicePageOutline";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
+import { EditorialBlock } from "@/components/shared/EditorialPageMotion";
 import PageAccentGlow from "@/components/shared/PageAccentGlow";
 import SiteFooter from "@/components/shared/SiteFooter";
 import Container from "@/components/ui/container";
@@ -94,7 +96,7 @@ export default function BlogPostPage({ params }) {
       <Section className="pb-16 pt-32 sm:pt-36">
         <Container className="max-w-3xl">
           <Breadcrumbs items={breadcrumbNav} />
-          <p className={`text-xs uppercase tracking-[0.18em] ${getTopicAccentTextClass(themeKey)}`}>
+          <p className={`text-xs uppercase tracking-[0.18em] fb-page-hero-enter ${getTopicAccentTextClass(themeKey)}`}>
             {post.category} · {post.readMinutes} min read ·{" "}
             {new Date(post.publishedAt).toLocaleDateString("en-US", {
               year: "numeric",
@@ -102,10 +104,10 @@ export default function BlogPostPage({ params }) {
               day: "numeric",
             })}
           </p>
-          <Heading as="h1" className="mt-4 fb-hero-title">
+          <Heading as="h1" className="mt-4 fb-hero-title fb-page-hero-enter">
             {post.title}
           </Heading>
-          <p className="mt-6 text-lg leading-relaxed text-white/75">
+          <p className="mt-6 text-lg leading-relaxed text-white/75 fb-page-hero-copy-enter">
             {post.description}
           </p>
 
@@ -123,7 +125,7 @@ export default function BlogPostPage({ params }) {
           </div>
 
           {relatedServices.length > 0 ? (
-            <div className={`mt-14 ${relatedPanelClass}`}>
+            <EditorialBlock className={`mt-14 ${relatedPanelClass}`}>
               <h2 className="fb-h3">Related services</h2>
               <div className="mt-4 flex flex-wrap gap-2">
                 {relatedServices.map((service) => (
@@ -136,10 +138,15 @@ export default function BlogPostPage({ params }) {
                   </Link>
                 ))}
               </div>
-            </div>
+            </EditorialBlock>
           ) : null}
         </Container>
       </Section>
+      <EditorialPostOutline
+        title={post.title}
+        description={post.description}
+        sectionHeadings={post.sections.map((section) => section.heading)}
+      />
       <SiteFooter logo={logo} />
     </main>
   );

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import SiteFooter from "@/components/shared/SiteFooter";
+import { EditorialSections } from "@/components/shared/EditorialPageMotion";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Section from "@/components/ui/section";
@@ -17,18 +18,18 @@ export default function PressPage() {
     >
       <Section className="pb-16 pt-32 sm:pt-36">
         <Container className="max-w-3xl">
-          <p className="fb-kicker">Press & media</p>
-          <Heading as="h1" className="mt-6 fb-hero-title">
+          <p className="fb-kicker fb-page-hero-enter">Press & media</p>
+          <Heading as="h1" className="mt-6 fb-hero-title fb-page-hero-enter">
             Media kit & directory profile
           </Heading>
-          <p className="fb-hero-copy mt-6">
+          <p className="fb-hero-copy mt-6 fb-page-hero-copy-enter">
             Everything journalists, directories, and partners need to reference
             Futurebits accurately. Copy blocks below are ready for Clutch,
             GoodFirms, DesignRush, and partner listings.
           </p>
 
-          <div className="mt-12 space-y-12">
-            <section>
+          <EditorialSections className="mt-12 space-y-12">
+            <section key="short-description">
               <h2 className="font-montserrat text-xl font-semibold">
                 Short description
               </h2>
@@ -37,7 +38,7 @@ export default function PressPage() {
               </p>
             </section>
 
-            <section>
+            <section key="long-description">
               <h2 className="font-montserrat text-xl font-semibold">
                 Long description
               </h2>
@@ -46,7 +47,7 @@ export default function PressPage() {
               </pre>
             </section>
 
-            <section>
+            <section key="company-facts">
               <h2 className="font-montserrat text-xl font-semibold">
                 Company facts
               </h2>
@@ -72,7 +73,7 @@ export default function PressPage() {
               </dl>
             </section>
 
-            <section>
+            <section key="services-links">
               <h2 className="font-montserrat text-xl font-semibold">
                 Services to list (with links)
               </h2>
@@ -194,7 +195,7 @@ export default function PressPage() {
                 Contact form →
               </Link>
             </section>
-          </div>
+          </EditorialSections>
         </Container>
       </Section>
       <SiteFooter logo={logo} backgroundClassName={SERVICE_HUB_THEME.footerBgClass} />

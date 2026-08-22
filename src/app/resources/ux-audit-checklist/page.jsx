@@ -6,6 +6,7 @@ import JsonLd, {
   webPageJsonLd,
 } from "@/components/seo/JsonLd";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
+import { EditorialBlock, EditorialSections } from "@/components/shared/EditorialPageMotion";
 import PageAccentGlow from "@/components/shared/PageAccentGlow";
 import SiteFooter from "@/components/shared/SiteFooter";
 import Container from "@/components/ui/container";
@@ -75,16 +76,16 @@ export default function UxAuditChecklistPage() {
       <Section className="pb-16 pt-32 sm:pt-36">
         <Container className="max-w-3xl">
           <Breadcrumbs items={breadcrumbNav} />
-          <p className="fb-kicker">Free resource</p>
-          <Heading as="h1" className="mt-4 fb-hero-title">
+          <p className="fb-kicker fb-page-hero-enter">Free resource</p>
+          <Heading as="h1" className="mt-4 fb-hero-title fb-page-hero-enter">
             {UX_AUDIT_CHECKLIST.title}
           </Heading>
-          <p className="mt-6 text-lg leading-relaxed text-white/75">
+          <p className="mt-6 text-lg leading-relaxed text-white/75 fb-page-hero-copy-enter">
             {UX_AUDIT_CHECKLIST.description} Work through each section and mark
             items pass, fail, or needs review.
           </p>
 
-          <div className="mt-12 space-y-10">
+          <EditorialSections className="mt-12 space-y-10">
             {UX_AUDIT_CHECKLIST.categories.map((category) => (
               <section key={category.name}>
                 <h2 className="font-montserrat text-xl font-semibold text-white">
@@ -106,9 +107,9 @@ export default function UxAuditChecklistPage() {
                 </ul>
               </section>
             ))}
-          </div>
+          </EditorialSections>
 
-          <div className={`mt-14 ${getTopicCtaPanelClass("design")}`}>
+          <EditorialBlock className={`mt-14 ${getTopicCtaPanelClass("design")}`}>
             <h2 className="fb-h3">Want an expert UX audit instead?</h2>
             <p className="mt-3 text-sm text-white/70">
               We deliver prioritized findings with analytics review, annotated
@@ -120,7 +121,7 @@ export default function UxAuditChecklistPage() {
             >
               Website UX Audit service →
             </Link>
-          </div>
+          </EditorialBlock>
 
           <p className="mt-8 text-xs text-white/45">
             Cite this page: Futurebits, &ldquo;Website UX Audit Checklist,&rdquo;{" "}

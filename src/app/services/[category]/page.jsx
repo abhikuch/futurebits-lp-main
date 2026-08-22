@@ -3,8 +3,13 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 
 import JsonLd, { serviceCategoryJsonLd } from "@/components/seo/JsonLd";
+import { ServiceCategoryOutline } from "@/components/seo/ServicePageOutline";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import SiteFooter from "@/components/shared/SiteFooter";
+import {
+  ServiceCategoryGrid,
+  ServiceCategoryPopular,
+} from "@/components/shared/ServicePagesMotion";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Section from "@/components/ui/section";
@@ -186,55 +191,36 @@ export default function ServiceCategoryPage({ params }) {
       <Section className="pb-10 pt-32 sm:pt-36">
         <Container>
           <Breadcrumbs items={breadcrumbNav} />
-          <p className={theme.kickerClass}>{categoryBundle.shortTitle}</p>
+          <p className={`${theme.kickerClass} fb-page-hero-enter`}>
+            {categoryBundle.shortTitle}
+          </p>
           <div className={theme.dividerClass} />
-          <Heading as="h1" className={theme.titleClass}>
+          <Heading as="h1" className={`${theme.titleClass} fb-page-hero-enter`}>
             {categoryBundle.title} — scoped, shipped, signed off.
           </Heading>
-          <p className={theme.bodyClass}>{categoryBundle.description}</p>
+          <p className={`${theme.bodyClass} fb-page-hero-copy-enter`}>
+            {categoryBundle.description}
+          </p>
         </Container>
       </Section>
 
       {popularServices.length > 0 ? (
         <Section className="py-8">
           <Container>
-            <Heading as="h2" className="fb-h3">
-              Popular {categoryBundle.shortTitle.toLowerCase()} services
-            </Heading>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {popularServices.map((serviceItem) => (
-                <Link
-                  key={serviceItem.slug}
-                  href={serviceItem.path}
-                  className="rounded-full border border-white/15 bg-white/[0.03] px-4 py-2 text-sm text-white/80 transition hover:border-white/30 hover:bg-white/[0.06] hover:text-white"
-                >
-                  {serviceItem.title}
-                </Link>
-              ))}
-            </div>
+            <ServiceCategoryPopular
+              services={popularServices}
+              shortTitle={categoryBundle.shortTitle}
+            />
           </Container>
         </Section>
       ) : null}
 
       <Section className="py-12">
         <Container>
-          <Heading as="h2" className="fb-h2">
-            Services in this track
-          </Heading>
-          <div className="mt-8 grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {categoryBundle.services.map((serviceItem) => (
-              <Link
-                key={serviceItem.slug}
-                href={serviceItem.path}
-                className={`${theme.serviceCardClass} flex h-full flex-col`}
-              >
-                <h3 className="fb-h3">{serviceItem.title}</h3>
-                <p className="mt-3 text-sm text-white/70">
-                  {serviceItem.shortDescription}
-                </p>
-              </Link>
-            ))}
-          </div>
+          <ServiceCategoryGrid
+            services={categoryBundle.services}
+            theme={theme}
+          />
         </Container>
       </Section>
 
@@ -260,6 +246,10 @@ export default function ServiceCategoryPage({ params }) {
           </div>
         </Container>
       </Section>
+      <ServiceCategoryOutline
+        category={categoryBundle}
+        services={categoryBundle.services}
+      />
       <SiteFooter logo={logo} backgroundClassName={theme.pageBg} />
     </main>
   );

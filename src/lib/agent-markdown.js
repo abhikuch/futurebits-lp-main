@@ -1,4 +1,5 @@
 import { BLOG_POSTS } from "@/content/blog";
+import { FREE_RESOURCES } from "@/content/link-building";
 import { SERVICE_CATEGORIES, SERVICES } from "@/content/services";
 import { COMPANY, ROUTES, SITE_URL } from "@/config/site";
 
@@ -51,6 +52,28 @@ function routeMarkdown(path) {
       `- [Design](${SITE_URL}${ROUTES.design.path})`,
       `- [Markets](${SITE_URL}${ROUTES.markets.path})`
     );
+  }
+
+  if (path === ROUTES.blog.path) {
+    lines.push("", "## Articles");
+    for (const post of BLOG_POSTS) {
+      lines.push(
+        `- [${post.title}](${SITE_URL}/blog/${post.slug}): ${post.description}`
+      );
+    }
+  }
+
+  if (path === ROUTES.resources.path) {
+    lines.push("", "## Free resources");
+    for (const resource of FREE_RESOURCES) {
+      lines.push(
+        `- [${resource.title}](${SITE_URL}${resource.path}): ${resource.description}`
+      );
+    }
+    lines.push("", "## Guides from the blog");
+    for (const post of BLOG_POSTS.slice(0, 6)) {
+      lines.push(`- [${post.title}](${SITE_URL}/blog/${post.slug})`);
+    }
   }
 
   return lines.join("\n");

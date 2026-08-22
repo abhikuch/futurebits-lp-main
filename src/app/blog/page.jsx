@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import SiteFooter from "@/components/shared/SiteFooter";
+import { EditorialCardGrid } from "@/components/shared/EditorialPageMotion";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Section from "@/components/ui/section";
@@ -17,21 +18,21 @@ export default function BlogIndexPage() {
     >
       <Section className="pb-16 pt-32 sm:pt-36">
         <Container>
-          <p className="fb-kicker">Insights</p>
-          <Heading as="h1" className="mt-6 max-w-3xl fb-hero-title">
+          <p className="fb-kicker fb-page-hero-enter">Insights</p>
+          <Heading as="h1" className="mt-6 max-w-3xl fb-hero-title fb-page-hero-enter">
             Guides on UX, AI, and product growth
           </Heading>
-          <p className="fb-hero-copy mt-6">
+          <p className="fb-hero-copy mt-6 fb-page-hero-copy-enter">
             Practical articles for teams evaluating UX audits, AI chatbots,
             custom GPTs, landing page design, and product delivery.
           </p>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <EditorialCardGrid className="mt-12 grid gap-6 md:grid-cols-2">
             {BLOG_POSTS.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className={`${getTopicCardClass(post.category)} block p-6`}
+                className={`${getTopicCardClass(post.category)} fb-interactive-surface block p-6`}
               >
                 <p className="text-xs uppercase tracking-[0.18em] text-white/45">
                   {post.category} · {post.readMinutes} min read
@@ -47,7 +48,7 @@ export default function BlogIndexPage() {
                 </span>
               </Link>
             ))}
-          </div>
+          </EditorialCardGrid>
         </Container>
       </Section>
       <SiteFooter logo={logo} backgroundClassName={SERVICE_HUB_THEME.footerBgClass} />

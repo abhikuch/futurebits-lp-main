@@ -41,9 +41,9 @@ export default function HomePage() {
       <main id="main-content" className="min-h-screen bg-[#060618] text-white">
         <section className="pt-32 pb-16 sm:pt-36">
           <div className="mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-16">
-            <p className="fb-kicker">{COMPANY.name}</p>
-            <h1 className="mt-6 max-w-4xl fb-hero-title">{COMPANY.tagline}</h1>
-            <p className="mt-6 max-w-2xl text-lg text-white/70">
+            <p className="fb-kicker fb-page-hero-enter">{COMPANY.name}</p>
+            <h1 className="mt-6 max-w-4xl fb-hero-title fb-page-hero-enter">{COMPANY.tagline}</h1>
+            <p className="mt-6 max-w-2xl text-lg text-white/70 fb-page-hero-copy-enter">
               One small team across AI automation, product design, software
               development, and trading infrastructure. Pick your track — or
               browse every service we ship.

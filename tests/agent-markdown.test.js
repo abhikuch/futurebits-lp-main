@@ -36,6 +36,22 @@ describe("agent markdown", () => {
     assert.match(body, /sitemap\.xml/);
   });
 
+  it("returns markdown for about and blog index", () => {
+    const about = getMarkdownForPath("/about");
+    assert.ok(about);
+    assert.match(about.body, /About Futurebits/i);
+
+    const blog = getMarkdownForPath("/blog");
+    assert.ok(blog);
+    assert.match(blog.body, /## Articles/);
+  });
+
+  it("returns markdown for service category paths", () => {
+    const result = getMarkdownForPath("/services/build");
+    assert.ok(result);
+    assert.match(result.body, /Build|build/i);
+  });
+
   it("returns null for unknown paths", () => {
     assert.equal(getMarkdownForPath("/does-not-exist"), null);
   });
