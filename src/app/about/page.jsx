@@ -2,6 +2,11 @@ import Link from "next/link";
 
 import PageAccentGlow from "@/components/shared/PageAccentGlow";
 import SiteFooter from "@/components/shared/SiteFooter";
+import {
+  MotionBeliefGrid,
+  MotionStatGrid,
+} from "@/components/shared/MotionContentBlocks";
+import { MotionFadeIn } from "@/components/shared/MotionReveal";
 import Container from "@/components/ui/container";
 import Section from "@/components/ui/section";
 import logo from "@/assets/logo.svg";
@@ -49,11 +54,11 @@ export default function AboutPage() {
 
       <Section className="pb-12 pt-32 sm:pt-36">
         <Container className="max-w-4xl">
-          <p className="fb-kicker">About {COMPANY.name}</p>
-          <h1 className="mt-6 fb-hero-title max-w-3xl">
+          <p className="fb-kicker fb-page-hero-enter">About {COMPANY.name}</p>
+          <h1 className="mt-6 fb-hero-title max-w-3xl fb-page-hero-enter">
             A small studio for build, AI, design, and trading systems.
           </h1>
-          <p className="fb-hero-copy mt-6">
+          <p className="fb-hero-copy mt-6 fb-page-hero-copy-enter">
             Futurebits is a senior team of roughly a dozen people. We work across
             product engineering, applied AI, UX, and markets infrastructure — same
             bar everywhere. We take a limited number of engagements so each one
@@ -65,17 +70,8 @@ export default function AboutPage() {
             transformation, we are the wrong call.
           </p>
 
-          <div className="fb-panel mt-10 grid grid-cols-2 gap-6 p-6 sm:grid-cols-4 sm:p-8">
-            {stats.map((s) => (
-              <div key={s.label}>
-                <div className="font-montserrat text-3xl font-semibold sm:text-4xl">
-                  {s.value}
-                </div>
-                <div className="mt-2 text-xs uppercase tracking-wider text-white/50">
-                  {s.label}
-                </div>
-              </div>
-            ))}
+          <div className="fb-panel mt-10 p-6 sm:p-8">
+            <MotionStatGrid stats={stats} />
           </div>
         </Container>
       </Section>
@@ -83,24 +79,15 @@ export default function AboutPage() {
       <div className="fb-section">
         <Section className="py-16 sm:py-20">
           <Container className="max-w-4xl">
-            <h2 className="fb-h2">What we believe</h2>
-            <p className="mt-3 max-w-2xl text-white/60">
-              Opinionated defaults we actually act on. If any of this feels wrong for
-              your team, we are probably not the right fit — and that is worth
-              learning in the first call, not month three.
-            </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {beliefs.map((b) => (
-                <div key={b.title} className="fb-panel p-6">
-                  <h3 className="font-montserrat text-lg font-semibold">
-                    {b.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-white/70">
-                    {b.body}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <MotionFadeIn>
+              <h2 className="fb-h2">What we believe</h2>
+              <p className="mt-3 max-w-2xl text-white/60">
+                Opinionated defaults we actually act on. If any of this feels wrong for
+                your team, we are probably not the right fit — and that is worth
+                learning in the first call, not month three.
+              </p>
+            </MotionFadeIn>
+            <MotionBeliefGrid beliefs={beliefs} className="mt-8 grid gap-4 sm:grid-cols-2" />
           </Container>
         </Section>
       </div>
@@ -108,11 +95,13 @@ export default function AboutPage() {
       <Section className="pb-24 pt-4">
         <Container className="max-w-3xl">
           <div className={SERVICE_HUB_THEME.ctaPanelClass}>
-            <h2 className="fb-h2">See if we are a fit</h2>
-            <p className="mx-auto mt-3 max-w-xl text-white/70">
-              Book 30 minutes. We will come with a read of your problem and a
-              one-page scope sketch — keep it whether you hire us or not.
-            </p>
+            <MotionFadeIn>
+              <h2 className="fb-h2">See if we are a fit</h2>
+              <p className="mx-auto mt-3 max-w-xl text-white/70">
+                Book 30 minutes. We will come with a read of your problem and a
+                one-page scope sketch — keep it whether you hire us or not.
+              </p>
+            </MotionFadeIn>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
                 href={getCalLinkForPath("/about")}

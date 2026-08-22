@@ -2,6 +2,10 @@ import Link from "next/link";
 
 import JsonLd, { servicesHubJsonLd } from "@/components/seo/JsonLd";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
+import {
+  ServicesHubEngagement,
+  ServicesHubTracks,
+} from "@/components/shared/ServicesHubMotion";
 import SiteFooter from "@/components/shared/SiteFooter";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
@@ -10,7 +14,6 @@ import logo from "@/assets/logo.svg";
 import { COMPANY } from "@/config/site";
 import { SERVICES_BY_CATEGORY } from "@/content/services";
 import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
-import { getCategoryTheme } from "@/lib/page-theme";
 
 const engagementModels = [
   {
@@ -43,11 +46,11 @@ export default function ServicesHubPage() {
               { label: "Services", href: "/services" },
             ]}
           />
-          <p className="fb-kicker">Services Hub</p>
-          <Heading as="h1" className="mt-6 fb-hero-title max-w-4xl">
+          <p className="fb-kicker fb-page-hero-title-enter">Services Hub</p>
+          <Heading as="h1" className="mt-6 fb-hero-title max-w-4xl fb-page-hero-title-enter">
             Build, design, and AI — scoped in writing, shipped in your repo.
           </Heading>
-          <p className="mt-6 max-w-3xl text-lg text-white/70">
+          <p className="fb-page-hero-copy-enter mt-6 max-w-3xl text-lg text-white/70">
             Six tracks, 90 services. Pick a category, read the scope, book a
             30-minute call. We quote fixed windows — sprints, pods, or partner
             retainers — with weekly demos and no account-manager layer.
@@ -57,46 +60,13 @@ export default function ServicesHubPage() {
 
       <Section className="py-12">
         <Container>
-          <Heading as="h2" className="fb-h2">
-            Core service tracks
-          </Heading>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {SERVICES_BY_CATEGORY.map((category) => {
-              const categoryTheme = getCategoryTheme(category.slug);
-              return (
-              <Link
-                key={category.slug}
-                href={`/services/${category.slug}`}
-                className={`${categoryTheme.serviceCardClass} block p-6`}
-              >
-                <h3 className="fb-h3">{category.title}</h3>
-                <p className="mt-3 text-sm text-white/70">{category.description}</p>
-                <p className="mt-4 text-xs uppercase tracking-[0.2em] text-white/45">
-                  {category.services.length} services
-                </p>
-              </Link>
-            );
-            })}
-          </div>
+          <ServicesHubTracks categories={SERVICES_BY_CATEGORY} />
         </Container>
       </Section>
 
       <Section className="py-12">
         <Container>
-          <Heading as="h2" className="fb-h2">
-            Engagement models
-          </Heading>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {engagementModels.map((model) => (
-              <div
-                key={model.name}
-                className={`${SERVICE_HUB_THEME.hubCardClass}`}
-              >
-                <h3 className="fb-h3">{model.name}</h3>
-                <p className="mt-3 text-sm text-white/70">{model.detail}</p>
-              </div>
-            ))}
-          </div>
+          <ServicesHubEngagement models={engagementModels} />
         </Container>
       </Section>
 

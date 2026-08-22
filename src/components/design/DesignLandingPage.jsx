@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Particles from "@/components/ui/particles";
-import { motion } from "framer-motion";
 import ImgHero from "@/assets/design/light.webp";
 import Hero from "@/components/design/hero";
 import PortfolioWrapper from "@/components/design/portfolio-wrapper";
@@ -49,13 +48,8 @@ export default function DesignPage() {
           </LazyMount>
         </div>
 
-        <div className="max-w-[1000px] w-full absolute -top-8 left-1/2 transform -translate-x-1/2 h-full">
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.7, ease: "easeInOut" }}
-            className="absolute top-[85px] sm:top-[70px] xl:top-[75px] left-0 z-[5] w-full h-full"
-          >
+        <div className="max-w-[1000px] w-full absolute -top-8 left-0 right-0 mx-auto h-full">
+          <div className="fb-page-hero-enter absolute top-[85px] sm:top-[70px] xl:top-[75px] left-0 z-[5] w-full h-full">
             <Image
               src={ImgHero.src}
               width={1000}
@@ -65,7 +59,7 @@ export default function DesignPage() {
               className="z-0 w-full"
               priority
             />
-          </motion.div>
+          </div>
         </div>
         <div className="z-10 w-full">
           <Hero />

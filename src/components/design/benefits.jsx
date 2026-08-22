@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useRef } from "react";
+import React from "react";
 import navbarDiamond from "@/assets/design/navbar.svg";
 import CardLineSvg from "@/assets/design/lines.svg";
 import P1 from "@/assets/design/lightnew.webp";
@@ -13,8 +13,12 @@ import Image from "next/image";
 import Particles from "../ui/particles";
 import { BorderBeamDemo } from "../ui/beam";
 
-import { useInView } from "framer-motion";
 import { AnimatedShinyText } from "../magicui/animated-shiny-text";
+import {
+  MotionFadeIn,
+  MotionStagger,
+  MotionStaggerItem,
+} from "@/components/shared/MotionReveal";
 
 const services = [
   {
@@ -79,7 +83,7 @@ const Card = ({ service, index }) => {
         service.type == "NORMAL" ? "" : ""
       }  px-5  sm:px-10 py-6 overflow-hidden border border-solid border-[#383847]/90   relative ${
         service.span == 2 ? "xl:col-span-3" : "xl:col-span-2"
-      } group rounded-3xl h-full cursor-pointer `}
+      } group rounded-3xl h-full cursor-pointer fb-interactive-surface`}
     >
       <Image
         src={CardLineSvg}
@@ -118,11 +122,9 @@ const Card = ({ service, index }) => {
 };
 
 const Benefits = () => {
-  const cardRef = useRef(null);
-  const isInView = useInView(cardRef, { once: true });
-
   return (
     <div className="py-0 sm:py-10 max-w-[1250px]  mx-auto w-full bg-[#08081E]">
+      <MotionFadeIn>
       <div className="mx-auto flex w-full max-w-[360px] items-center justify-center gap-3 sm:max-w-[480px]">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/30" />
         <Image
@@ -147,6 +149,7 @@ const Benefits = () => {
       <h2 className="fb-h2 mt-2 sm:mt-8 text-[30px] sm:text-2xl md:text-3xl lg:text-4xl leading-tight md:leading-[60px] text-center">
         What you get when design and engineering are one pod
       </h2>
+      </MotionFadeIn>
       <div className="relative mt-10">
         <Particles
           quantity={10}
@@ -155,21 +158,20 @@ const Benefits = () => {
           size={0.5}
           className="!z-10 absolute top-0 left-0 w-full h-full"
         />
-        <div
-          ref={cardRef}
+        <MotionStagger
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-7 gap-x-4 gap-y-6"
         >
           {services.map((service, index) => (
-            <div
-              key={index}
+            <MotionStaggerItem
+              key={service.title}
               className={`${
                 service.span == 2 ? "xl:col-span-3" : "xl:col-span-2"
               }`}
             >
               <Card service={service} index={index} />
-            </div>
+            </MotionStaggerItem>
           ))}
-        </div>
+        </MotionStagger>
       </div>
     </div>
   );

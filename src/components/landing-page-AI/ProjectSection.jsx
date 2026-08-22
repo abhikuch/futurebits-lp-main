@@ -9,6 +9,11 @@ import { MagicCard } from "../magicui/magic-card";
 
 import stars from "@/assets/landing-page-AI/stars.webp";
 import { AnimatedShinyText } from "../magicui/animated-shiny-text";
+import {
+  MotionFadeIn,
+  MotionStagger,
+  MotionStaggerItem,
+} from "@/components/shared/MotionReveal";
  
 const ProjectCard = ({ title, description }) => {
 
@@ -95,7 +100,7 @@ const ProjectsSection = () => {
 
       <div className="container mx-auto px-0 relative bg-transparent z-40">
         {/* Section header */}
-        <div className="mb-11 text-center">
+        <MotionFadeIn className="mb-11 text-center">
           <div className="inline-flex items-center justify-center font-poppins">
             <AnimatedShinyText
               className="uppercase text-base sm:text-lg font-semibold tracking-normal bg-clip-text text-transparent bg-gradient-to-r from-[#01B0EA] to-[#2E2688]"
@@ -109,22 +114,22 @@ const ProjectsSection = () => {
           <h2 className="fb-h2 text-[22px] leading-[36px] lg:text-[38px] lg:leading-[60px]">
             What we&apos;ve actually shipped
           </h2>
-        </div>
+        </MotionFadeIn>
 
         {/* Main content area with background image and cards */}
         <div className="relative z-40">
           {/* Project cards with proper padding */}
-          <div className="relative z-10 py-8 sm:px-[60px] px-6 lg:px-[90px] md:py-16 xl:pt-0 xl:pb-10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="relative z-10 px-6 py-8 sm:px-[60px] md:py-16 lg:px-[90px] xl:pb-10 xl:pt-0">
+            <MotionStagger className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {featuredProjects.map((project) => (
-                <div key={project.id} className="h-full">
+                <MotionStaggerItem key={project.id} className="h-full">
                   <ProjectCard
                     title={project.title}
                     description={project.description}
                   />
-                </div>
+                </MotionStaggerItem>
               ))}
-            </div>
+            </MotionStagger>
           </div>
         </div>
       </div>

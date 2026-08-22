@@ -15,6 +15,11 @@ import { AnimatedShinyText } from "../magicui/animated-shiny-text"; // Adjust th
 
 import Link from "next/link";
 import { SERVICE_CATEGORIES, getServiceBySlugs } from "@/content/services";
+import {
+  MotionFadeIn,
+  MotionStagger,
+  MotionStaggerItem,
+} from "@/components/shared/MotionReveal";
 
 const ServiceCard = ({
   title,
@@ -26,7 +31,7 @@ const ServiceCard = ({
 }) => (
   <Link
     href={href}
-    className="p-[1px] sm:p-[2px] rounded-3xl relative z-10 h-full font-poppins card-gred-1 cursor-pointer block"
+    className="fb-interactive-surface card-gred-1 relative z-10 block h-full cursor-pointer rounded-3xl p-[1px] font-poppins sm:p-[2px]"
   >
     <div className="bg-[#0D0D0D] rounded-3xl h-full flex flex-col">
       {/* Pattern in top right */}
@@ -177,7 +182,7 @@ const ServicesSection = () => {
 
       <div className="container mx-auto px-0 relative z-20">
         {/* Section header */}
-        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+        <MotionFadeIn className="mb-8 text-center sm:mb-12 md:mb-16">
           <div className="inline-flex items-center justify-center gap-1 mb-2 sm:mb-4">
             <AnimatedShinyText
               className="uppercase text-base sm:text-lg font-semibold tracking-normal bg-clip-text text-transparent bg-gradient-to-r from-[#01B0EA] to-[#2E2688]"
@@ -211,65 +216,54 @@ const ServicesSection = () => {
               </Link>
             ))}
           </div>
-        </div>
+        </MotionFadeIn>
 
         {/* Services grid - first 2 cards */}
-        <div
-
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-6 mb-4 sm:mb-6 lg:mb-8 px-2 sm:px-0 lg:px-10 xl:px-20 cursor-pointer font-poppins"
+        <MotionStagger
+          className="mb-4 grid cursor-pointer grid-cols-1 gap-4 px-2 font-poppins sm:mb-6 sm:gap-6 sm:px-0 md:grid-cols-2 lg:mb-8 lg:gap-6 lg:px-10 xl:px-20"
         >
-          {services.slice(0, 2).map((service, index) => {
-            // Updated animation - same as Benefits section
-     
-
-            return (
-              <div
-                key={service.id}
-                
-                className={
-                  service.id === 3 ? "sm:col-span-2 md:col-span-1" : ""
-                }
-              >
-                <ServiceCard
-                  title={service.title}
-                  description={service.description}
-                  icon={service.icon}
-                  borderStyle={service.borderStyle}
-                  fullWidthImage={false}
-                  href={service.href}
-                />
-              </div>
-            );
-          })}
-        </div>
+          {services.slice(0, 2).map((service) => (
+            <MotionStaggerItem
+              key={service.id}
+              className={
+                service.id === 3 ? "sm:col-span-2 md:col-span-1" : ""
+              }
+            >
+              <ServiceCard
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+                borderStyle={service.borderStyle}
+                fullWidthImage={false}
+                href={service.href}
+              />
+            </MotionStaggerItem>
+          ))}
+        </MotionStagger>
 
         {/* Services grid - next 3 cards in second row */}
-        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-6 px-2 sm:px-0 lg:px-10 xl:px-16 font-poppins">
-          {services.slice(2).map((service, index) => {
-            // Updated animation - same as Benefits section
-            let initial = { opacity: 0, y: 0, x: 0 };
-
-            return (
-              <div
-                key={service.id}
-                className={
-                  service.id === 3 ? "sm:col-span-2 md:col-span-1" : ""
-                }
-              >
-                <ServiceCard
-                  title={service.title}
-                  description={service.description}
-                  icon={service.icon}
-                  borderStyle={service.borderStyle}
-                  fullWidthImage={false}
-                  href={service.href}
-                />
-              </div>
-            );
-          })}
-        </div>
+        <MotionStagger className="grid grid-cols-1 gap-4 px-2 font-poppins sm:grid-cols-1 sm:gap-6 sm:px-0 lg:grid-cols-3 lg:gap-6 lg:px-10 xl:px-16">
+          {services.slice(2).map((service) => (
+            <MotionStaggerItem
+              key={service.id}
+              className={
+                service.id === 3 ? "sm:col-span-2 md:col-span-1" : ""
+              }
+            >
+              <ServiceCard
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+                borderStyle={service.borderStyle}
+                fullWidthImage={false}
+                href={service.href}
+              />
+            </MotionStaggerItem>
+          ))}
+        </MotionStagger>
 
         {/* CTA Button */}
+        <MotionFadeIn delay={0.06}>
         <Link
           href="https://cal.com/futurebits/ai?duration=30"
           target="_blank"
@@ -279,6 +273,7 @@ const ServicesSection = () => {
             <BeamButton title="Book a call" className="w-[300px]" />
           </div>
         </Link>
+        </MotionFadeIn>
       </div>
     </section>
   );

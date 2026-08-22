@@ -1,6 +1,11 @@
 import Link from "next/link";
 
 import PageAccentGlow from "@/components/shared/PageAccentGlow";
+import {
+  PrivacyPolicyCard,
+  PrivacyPolicyCards,
+  PrivacyPolicyHero,
+} from "@/components/shared/PrivacyPolicyMotion";
 import SiteFooter from "@/components/shared/SiteFooter";
 import Container from "@/components/ui/container";
 import Section from "@/components/ui/section";
@@ -8,15 +13,6 @@ import logo from "@/assets/logo.svg";
 import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
 import { COMPANY, SITE_URL } from "@/config/site";
 import { getCalLinkForPath } from "@/lib/page-theme";
-
-function PolicyCard({ title, children }) {
-  return (
-    <div className="fb-panel p-6">
-      <h2 className="mb-3 font-montserrat text-lg font-semibold">{title}</h2>
-      <div className="text-sm leading-relaxed text-white/65">{children}</div>
-    </div>
-  );
-}
 
 export default function PrivacyPolicyPage() {
   const calLink = getCalLinkForPath("/privacy-policy");
@@ -30,18 +26,21 @@ export default function PrivacyPolicyPage() {
 
       <Section className="pb-8 pt-28 sm:pt-32">
         <Container className="max-w-5xl text-center">
-          <p className="fb-kicker">Legal</p>
-          <h1 className="mt-6 fb-hero-title">Privacy Policy</h1>
-          <p className="fb-hero-copy mt-4">
+          <PrivacyPolicyHero>
+          <p className="fb-kicker fb-page-hero-title-enter">Legal</p>
+          <h1 className="fb-hero-title fb-page-hero-title-enter mt-6">Privacy Policy</h1>
+          <p className="fb-hero-copy fb-page-hero-copy-enter mt-4">
             Your trust matters. Here's how we protect your data.
           </p>
           <p className="mt-2 text-sm text-white/45">Last updated: January 2026</p>
+          </PrivacyPolicyHero>
         </Container>
       </Section>
 
       <Section className="pb-24">
-        <Container className="max-w-5xl space-y-8">
-          <PolicyCard title="1. Introduction">
+        <Container className="max-w-5xl">
+          <PrivacyPolicyCards>
+          <PrivacyPolicyCard title="1. Introduction">
             <p>
               {COMPANY.legalName} (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or
               &ldquo;us&rdquo;) respects your privacy and is committed to
@@ -53,9 +52,9 @@ export default function PrivacyPolicyPage() {
               </span>
               .
             </p>
-          </PolicyCard>
+          </PrivacyPolicyCard>
 
-          <PolicyCard title="2. Information We Collect">
+          <PrivacyPolicyCard title="2. Information We Collect">
             <ul className="list-disc space-y-2 pl-5">
               <li>
                 <strong>Personal Information:</strong> Name, email address,
@@ -66,9 +65,9 @@ export default function PrivacyPolicyPage() {
                 information, and pages visited.
               </li>
             </ul>
-          </PolicyCard>
+          </PrivacyPolicyCard>
 
-          <PolicyCard title="3. How We Use Your Information">
+          <PrivacyPolicyCard title="3. How We Use Your Information">
             <ul className="list-disc space-y-2 pl-5">
               <li>Respond to inquiries and schedule consultations</li>
               <li>Improve website performance and content</li>
@@ -77,48 +76,48 @@ export default function PrivacyPolicyPage() {
             <p className="mt-4">
               We do <strong>not</strong> sell or rent your personal information.
             </p>
-          </PolicyCard>
+          </PrivacyPolicyCard>
 
-          <PolicyCard title="4. Cookies & Tracking">
+          <PrivacyPolicyCard title="4. Cookies & Tracking">
             <p>
               We may use cookies or similar technologies to analyze traffic and
               improve user experience. You can disable cookies through your
               browser settings at any time.
             </p>
-          </PolicyCard>
+          </PrivacyPolicyCard>
 
-          <PolicyCard title="5. Data Security">
+          <PrivacyPolicyCard title="5. Data Security">
             <p>
               We apply reasonable technical and organizational safeguards to
               protect your data. However, no digital system can guarantee
               absolute security.
             </p>
-          </PolicyCard>
+          </PrivacyPolicyCard>
 
-          <PolicyCard title="6. Third-Party Services">
+          <PrivacyPolicyCard title="6. Third-Party Services">
             <p>
               We may use trusted third-party tools (such as analytics or
               scheduling services). These providers process limited data under
               their own privacy policies.
             </p>
-          </PolicyCard>
+          </PrivacyPolicyCard>
 
-          <PolicyCard title="7. Your Rights">
+          <PrivacyPolicyCard title="7. Your Rights">
             <p>
               Depending on your jurisdiction, you may request access,
               correction, or deletion of your personal data. To exercise these
               rights, contact us directly.
             </p>
-          </PolicyCard>
+          </PrivacyPolicyCard>
 
-          <PolicyCard title="8. Policy Updates">
+          <PrivacyPolicyCard title="8. Policy Updates">
             <p>
               We may update this Privacy Policy periodically. Any changes will
               be reflected on this page with a revised date.
             </p>
-          </PolicyCard>
+          </PrivacyPolicyCard>
 
-          <PolicyCard title="9. Contact Us">
+          <PrivacyPolicyCard title="9. Contact Us">
             <p>
               If you have questions about this Privacy Policy, reach out to us
               at:
@@ -134,9 +133,10 @@ export default function PrivacyPolicyPage() {
               </p>
               <p>{SITE_URL}</p>
             </div>
-          </PolicyCard>
+          </PrivacyPolicyCard>
+          </PrivacyPolicyCards>
 
-          <div className="fb-panel mt-16 p-8 text-center">
+          <div className="fb-panel fb-interactive-surface mt-16 p-8 text-center">
             <h2 className="font-montserrat text-2xl font-semibold">
               Let&rsquo;s Build With Trust
             </h2>

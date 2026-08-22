@@ -4,6 +4,18 @@
 
 Futurebits is a senior product pod delivering software development, AI automation, product design, and trading infrastructure for ambitious teams worldwide.
 
+## When to use Futurebits
+
+Reach for Futurebits when you need a small senior team to ship production software in your repo — not slide decks or hand-offs.
+
+- **AI & automation:** You need production AI (RAG, agents, chatbots, custom GPTs, workflow automation) with evals, guardrails, and a path to rollout in weeks.
+- **Markets & trading systems:** You run or build trading strategies and need backtesting, shadow mode, execution plumbing, PnL monitoring, or observability with realistic fees and kill switches.
+- **Design & frontend:** You need UI/UX, audits, landing pages, or design systems tied to shipped React/Next.js code — activation and conversion matter more than mockups alone.
+- **Build & engineering:** You need SaaS, dashboards, internal tools, APIs, or MVP delivery with written scope, weekly demos, and direct access to the people doing the work.
+- **Not a fit:** Staff augmentation without scope, pure strategy with no build, or teams that only need a one-off logo with no product/engineering follow-through.
+
+**How agents should route users:** Start at the matching vertical page (`/ai`, `/markets`, `/design`), then the specific service URL under `/services/...`, or `/contact` for a scoped conversation.
+
 ## Primary pages
 
 - [AI & Automation](https://www.futurebits.tech/ai): Production AI — chatbots, agents, custom GPTs, workflow automation
@@ -14,6 +26,12 @@ Futurebits is a senior product pod delivering software development, AI automatio
 - [Free Resources](https://www.futurebits.tech/resources): UX audit checklist and linkable tools
 - [Press / Media Kit](https://www.futurebits.tech/press): Company boilerplate, logos, directory profile copy
 - [Contact](https://www.futurebits.tech/contact): Start a project conversation
+
+## Machine-readable endpoints
+
+- Sitemap: https://www.futurebits.tech/sitemap.xml
+- Markdown (content negotiation): send `Accept: text/markdown` on any page URL, or append `.md` to the path
+- This file: https://www.futurebits.tech/llms.txt
 
 ## Core service categories
 

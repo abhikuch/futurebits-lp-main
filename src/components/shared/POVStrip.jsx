@@ -1,11 +1,18 @@
+"use client";
+
 import { POV } from "@/content/inline-modules";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Section from "@/components/ui/section";
+import {
+  MotionFadeIn,
+  MotionStagger,
+  MotionStaggerItem,
+} from "./MotionReveal";
 
 /**
  * Inline "point of view" band that anchors each vertical page in a
- * sharp, opinion-led narrative. RSC-only, zero JS shipped.
+ * sharp, opinion-led narrative.
  */
 export default function POVStrip({ vertical, accent = "#01B0EA" }) {
   const pov = POV[vertical];
@@ -21,20 +28,24 @@ export default function POVStrip({ vertical, accent = "#01B0EA" }) {
         style={{ background: accent }}
       />
       <Container className="relative z-10 max-w-4xl text-center">
-        <p className="font-poppins text-xs uppercase tracking-[0.25em] text-white/50">
-          {pov.eyebrow}
-        </p>
-        <Heading id={`pov-${vertical}-title`} className="mt-5 lg:text-5xl">
-          {pov.title}
-        </Heading>
-        <p className="mt-6 text-pretty text-base text-white/70 sm:text-lg">
-          {pov.body}
-        </p>
-        <ul className="mt-10 grid gap-3 text-left sm:grid-cols-1">
-          {pov.bullets.map((bullet, idx) => (
-            <li
-              key={idx}
-              className="flex items-start gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-5 transition-colors hover:bg-white/[0.04]"
+        <MotionFadeIn>
+          <p className="font-poppins text-xs uppercase tracking-[0.25em] text-white/50">
+            {pov.eyebrow}
+          </p>
+          <Heading id={`pov-${vertical}-title`} className="mt-5 lg:text-5xl">
+            {pov.title}
+          </Heading>
+          <p className="mt-6 text-pretty text-base text-white/70 sm:text-lg">
+            {pov.body}
+          </p>
+        </MotionFadeIn>
+
+        <MotionStagger as="ul" className="mt-10 grid gap-3 text-left sm:grid-cols-1">
+          {pov.bullets.map((bullet) => (
+            <MotionStaggerItem
+              key={bullet}
+              as="li"
+              className="fb-interactive-surface flex items-start gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-5"
             >
               <span
                 aria-hidden="true"
@@ -44,9 +55,9 @@ export default function POVStrip({ vertical, accent = "#01B0EA" }) {
               <span className="text-sm leading-relaxed text-white/80 sm:text-base">
                 {bullet}
               </span>
-            </li>
+            </MotionStaggerItem>
           ))}
-        </ul>
+        </MotionStagger>
       </Container>
     </Section>
   );

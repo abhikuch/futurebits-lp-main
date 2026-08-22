@@ -3,6 +3,7 @@ import Link from "next/link";
 import ContactForm from "./ContactForm";
 import PageAccentGlow from "@/components/shared/PageAccentGlow";
 import SiteFooter from "@/components/shared/SiteFooter";
+import { MotionCardList } from "@/components/shared/MotionContentBlocks";
 import logo from "@/assets/logo.svg";
 import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
 import { COMPANY, SOCIAL } from "@/config/site";
@@ -35,26 +36,17 @@ export default function ContactPage() {
 
       <section className="mx-auto grid max-w-6xl gap-12 px-6 pb-24 pt-28 sm:pt-32 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
         <div>
-          <p className="fb-kicker">Contact {COMPANY.name}</p>
-          <h1 className="mt-6 fb-hero-title max-w-xl">
+          <p className="fb-kicker fb-page-hero-enter">Contact {COMPANY.name}</p>
+          <h1 className="mt-6 fb-hero-title max-w-xl fb-page-hero-enter">
             Tell us what you're trying to ship.
           </h1>
-          <p className="fb-hero-copy mt-6 max-w-xl">
+          <p className="fb-hero-copy mt-6 max-w-xl fb-page-hero-copy-enter">
             One short message is enough. You'll hear back from someone on the
             team, with a sharp read of your problem and what we'd actually do
             about it.
           </p>
 
-          <ul className="mt-10 space-y-5">
-            {promises.map((p) => (
-              <li key={p.title} className="fb-panel p-5">
-                <div className="font-montserrat text-base font-semibold">
-                  {p.title}
-                </div>
-                <div className="mt-1 text-sm text-white/65">{p.body}</div>
-              </li>
-            ))}
-          </ul>
+          <MotionCardList items={promises} />
 
           <div className="fb-panel mt-10 p-6">
             <div className="text-xs uppercase tracking-[0.18em] text-white/45">

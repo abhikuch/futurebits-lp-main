@@ -8,6 +8,11 @@ import Image from "next/image";
 import ShimerButton from "./ShimerButton";
 import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 import Link from "next/link";
+import {
+  MotionFadeIn,
+  MotionStagger,
+  MotionStaggerItem,
+} from "@/components/shared/MotionReveal";
 
 const categories = [
   {
@@ -120,7 +125,7 @@ const SupportedBroker = () => {
 
       <div className="container mx-auto px-2 sm:px-4 xl:px-10 relative z-20">
         {/* Section header */}
-        <div className="text-center mb-8 sm:mb-12">
+        <MotionFadeIn className="mb-8 text-center sm:mb-12">
           <div className="inline-flex items-center justify-center mb-2 sm:mb-4">
             <AnimatedShinyText>
               <span className="uppercase text-base sm:text-lg font-semibold tracking-normal bg-clip-text text-transparent bg-gradient-to-r from-[#FFFFFF]/60 to-[#999999]/60">
@@ -136,12 +141,12 @@ const SupportedBroker = () => {
             Indian equities, US equities, FX, and crypto venues — production-grade
             across all four.
           </p>
-        </div>
+        </MotionFadeIn>
 
-        <div className="grid auto-rows-fr grid-cols-1 gap-12 pt-8 sm:grid-cols-2 sm:gap-8 sm:pt-16 lg:grid-cols-4">
-          {categories.map((category, index) => (
-            <div
-              key={index}
+        <MotionStagger className="grid auto-rows-fr grid-cols-1 gap-12 pt-8 sm:grid-cols-2 sm:gap-8 sm:pt-16 lg:grid-cols-4">
+          {categories.map((category) => (
+            <MotionStaggerItem
+              key={category.title}
               className="mx-auto mb-8 flex h-full flex-col items-center sm:mb-0 sm:items-start"
             >
               {/* Using dynamic class width for non-xl screens, and style for xl screens */}
@@ -182,11 +187,11 @@ const SupportedBroker = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </MotionStaggerItem>
           ))}
-        </div>
+        </MotionStagger>
 
-        <div className="flex justify-center mt-10 sm:mt-16 mx-auto">
+        <MotionFadeIn delay={0.08} className="mx-auto mt-10 flex justify-center sm:mt-16">
           <Link href="https://cal.com/futurebits/markets?duration=30" target="_blank" className="">
             <div className="flex justify-center items-center">
               <div className="relative">
@@ -196,7 +201,7 @@ const SupportedBroker = () => {
               </div>
             </div>
           </Link>
-        </div>
+        </MotionFadeIn>
       </div>
     </div>
   );

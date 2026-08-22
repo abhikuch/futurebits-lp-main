@@ -62,6 +62,65 @@
   .fb-ai-hero-cta {
     animation: fb-ai-hero-fade-up 0.65s ease-out 0.2s both;
   }
+
+  /* Design hero: CSS-only entrance (LCP-safe, matches AI rhythm) */
+  .fb-design-hero-social {
+    animation: fb-ai-hero-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.04s both;
+  }
+  .fb-design-hero-kicker {
+    animation: fb-ai-hero-fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+  .fb-design-hero-title {
+    animation: fb-ai-hero-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.14s both;
+  }
+  .fb-design-hero-copy-anim {
+    animation: fb-ai-hero-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+  }
+  .fb-design-hero-cta {
+    animation: fb-ai-hero-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+  }
+
+  /* Static pages: hero blocks without client JS */
+  .fb-page-hero-enter {
+    animation: fb-ai-hero-fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+  }
+  .fb-page-hero-copy-enter {
+    animation: fb-ai-hero-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+  }
+
+  @keyframes fb-hero-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Markets hero: CSS-only entrance (LCP-safe, no Framer on copy) */
+  .fb-markets-hero-bg {
+    animation: fb-hero-fade-in 0.52s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .fb-markets-hero-kicker {
+    animation: fb-ai-hero-fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+  }
+  .fb-markets-hero-title {
+    animation: fb-ai-hero-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+  }
+  .fb-markets-hero-copy-anim {
+    animation: fb-ai-hero-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+  .fb-markets-hero-cta {
+    animation: fb-ai-hero-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.26s both;
+  }
+
+  /* Shared interactive surfaces */
+  .fb-interactive-surface {
+    @apply transition-all duration-300 ease-fb-ease-out;
+  }
+  .fb-interactive-surface:hover {
+    @apply -translate-y-0.5 border-white/20 bg-white/[0.05];
+  }
   .fb-shell {
     @apply mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-16;
   }

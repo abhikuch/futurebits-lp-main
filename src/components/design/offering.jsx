@@ -15,8 +15,10 @@ import BeamButton from "./BeamButton";
 import stars from "@/assets/landing-page-AI/stars.webp";
 import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 import Link from "next/link";
-import { useRef } from "react";
 import { SERVICE_CATEGORIES, getServiceBySlugs } from "@/content/services";
+import {
+  MotionFadeIn,
+} from "@/components/shared/MotionReveal";
 
 const services = [
   {
@@ -106,8 +108,6 @@ const Card = ({ service, className = "" }) => {
 };
 
 const Offering = () => {
-  const sectionRef = useRef(null);
-
   return (
     <div
       id="design-services"
@@ -171,9 +171,8 @@ const Offering = () => {
             <div className="pointer-events-none absolute bottom-0 w-full h-[100px] bg-gradient-to-t from-[#08081E]"></div>
           </div>
 
-          <div
-            ref={sectionRef}
-            className="w-full px-8 sm:pr-10 lg:px-0 xl:px-8 relative flex flex-col gap-6 sm:gap-8 lg:gap-4 xl:gap-8"
+          <MotionFadeIn
+            className="relative flex w-full flex-col gap-6 px-8 sm:pr-10 lg:px-0 xl:px-8 sm:gap-8 lg:gap-4 xl:gap-8"
           >
             <div className="z-10 relative w-fit text-left">
               <Image
@@ -231,7 +230,7 @@ const Offering = () => {
             >
               <BeamButton />
             </Link>
-          </div>
+          </MotionFadeIn>
         </div>
       </div>
     </div>

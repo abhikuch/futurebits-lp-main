@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import quote from "@/assets/landing-page-AI/quote.svg";
 import star from "@/assets/design/star.svg";
+import { MOTION, MOTION_VARIANTS } from "@/lib/motion-tokens";
 import { TESTIMONIALS } from "./testimonialsData";
 
 const THEME = {
@@ -39,15 +40,13 @@ const IMPACT_RULES = [
 ];
 
 const CARD_ANIMATION = {
-  hidden: { opacity: 0, y: 16, scale: 0.99 },
+  hidden: MOTION_VARIANTS.staggerItem.hidden,
   show: (index) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
+    ...MOTION_VARIANTS.staggerItem.show,
     transition: {
-      duration: 0.42,
-      delay: Math.min(index * 0.045, 0.26),
-      ease: "easeOut",
+      duration: MOTION.duration,
+      delay: Math.min(index * MOTION.stagger, 0.26),
+      ease: MOTION.ease,
     },
   }),
 };

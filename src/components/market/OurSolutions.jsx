@@ -4,6 +4,11 @@ import ShimerButton from "./ShimerButton";
 import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 import Link from "next/link";
 import { SERVICE_CATEGORIES, getServiceBySlugs } from "@/content/services";
+import {
+  MotionFadeIn,
+  MotionStagger,
+  MotionStaggerItem,
+} from "@/components/shared/MotionReveal";
 
 // Data extracted to top level
 const data = [
@@ -75,7 +80,7 @@ const SolutionCard = ({ item, index }) => {
   return (
     <Link
       href={href}
-      className="w-full mx-auto rounded-xl hover:-translate-y-1 sm:hover:-translate-y-2 hover:-skew-x-1 hover:scale-[1.02] sm:hover:scale-105 transition-all duration-300 ease-in-out border border-transparent group cursor-pointer"
+      className="fb-interactive-surface group mx-auto w-full cursor-pointer rounded-xl border border-transparent transition-all duration-300 ease-fb-ease-out"
       style={{
         background:
           "linear-gradient(180deg, rgba(27, 27, 27, 0) 0%, rgba(51, 51, 51, 0.6) 100%)",
@@ -132,30 +137,6 @@ const SolutionCard = ({ item, index }) => {
 
 // Main component
 const OurSolutions = () => {
-  // Function to detect current grid columns based on screen size
-  const [totalColumns, setTotalColumns] = React.useState(3);
-  
-  React.useEffect(() => {
-    const updateColumns = () => {
-      if (window.innerWidth >= 1024) {
-        setTotalColumns(3); // lg screens - 3 columns
-      } else if (window.innerWidth >= 768) {
-        setTotalColumns(2); // md screens - 2 columns
-      } else {
-        setTotalColumns(1); // sm screens - 1 column
-      }
-    };
-    
-    // Initial call
-    updateColumns();
-    
-    // Add event listener
-    window.addEventListener('resize', updateColumns);
-    
-    // Cleanup
-    return () => window.removeEventListener('resize', updateColumns);
-  }, []);
-
   return (
     <div
       id="markets-services"
@@ -197,7 +178,7 @@ const OurSolutions = () => {
       ></div>
       <div className="container mx-auto px-2 sm:px-4 xl:px-12 relative z-20">
         {/* Section header */}
-        <div className="text-center mb-8 sm:mb-12">
+        <MotionFadeIn className="mb-8 text-center sm:mb-12">
           <div className="inline-flex items-center justify-center mb-1 sm:mb-4">
             <AnimatedShinyText>
               <span className="uppercase text-base sm:text-lg font-semibold tracking-normal bg-clip-text text-transparent bg-gradient-to-r from-[#FFFFFF]/60 to-[#999999]/60">
@@ -225,25 +206,19 @@ const OurSolutions = () => {
                 </Link>
               ))}
           </div>
-        </div>
+        </MotionFadeIn>
 
-        {/* Cards Grid without animations */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-          style={{
-            columnGap: "24px",
-            rowGap: "32px",
-          }}
-        >
+        {/* Cards Grid */}
+        <MotionStagger className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
           {data.map((item, index) => (
-            <div key={index}>
+            <MotionStaggerItem key={item.text}>
               <SolutionCard item={item} index={index} />
-            </div>
+            </MotionStaggerItem>
           ))}
-        </div>
+        </MotionStagger>
 
         {/* Book a Call Button */}
-        <div className="flex justify-center mt-10 sm:mt-16">
+        <MotionFadeIn delay={0.08} className="mt-10 flex justify-center sm:mt-16">
           <Link href="https://cal.com/futurebits/markets?duration=30" target="_blank" className="">
             <div className="flex justify-center items-center">
               <div className="relative">
@@ -253,7 +228,7 @@ const OurSolutions = () => {
               </div>
             </div>
           </Link>
-        </div>
+        </MotionFadeIn>
       </div>
     </div>
   );
