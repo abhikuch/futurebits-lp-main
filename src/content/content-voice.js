@@ -38,7 +38,7 @@ export const PHRASE_REPLACEMENTS = [
   [/leverage/gi, "use"],
 ];
 
-export const CONTENT_SYSTEM_PROMPT = `You write service page copy for Futurebits (futurebits.tech) — a small design, AI, and engineering studio.
+export const CONTENT_SYSTEM_PROMPT = `You write service page copy for Futurebits (futurebits.tech), a small design, AI, and engineering studio.
 
 VOICE (match the site's POV strips):
 - Direct, slightly opinionated. Short sentences mixed with longer ones.

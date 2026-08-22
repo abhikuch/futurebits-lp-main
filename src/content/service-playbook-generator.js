@@ -13,7 +13,7 @@ const PROCESS_VARIANTS = [
   ],
   (title) => [
     `Align: goals, constraints, and who signs off on ${title.toLowerCase()}`,
-    `Cut: smallest version that proves value — write it down`,
+    `Cut: smallest version that proves value. Write it down`,
     `Ship: incremental releases with review each week`,
     `Measure: check the metric we agreed on; iterate or close`,
   ],
@@ -39,20 +39,20 @@ const PROCESS_VARIANTS = [
 
 const WHO_FOR_BY_CATEGORY = {
   build: [
-    (t) => `CTOs who need ${t.toLowerCase()} shipped this quarter — not next year.`,
+    (t) => `CTOs who need ${t.toLowerCase()} shipped this quarter, not next year.`,
     (t) => `Ops leads replacing manual work with ${t.toLowerCase()} your team will actually use.`,
     (t) => `Founders post-PMF adding ${t.toLowerCase()} without hiring three engineers first.`,
     (t) => `Product teams blocked on ${t.toLowerCase()} because internal capacity is on core roadmap.`,
   ],
   "ai-automation": [
-    (t) => `Product leads adding ${t.toLowerCase()} with evals — not demo-day features.`,
+    (t) => `Product leads adding ${t.toLowerCase()} with evals, not demo-day features.`,
     (t) => `Support or ops managers automating repeat work via ${t.toLowerCase()}.`,
     (t) => `Teams that tried a chatbot hackathon and need ${t.toLowerCase()} in production.`,
     (t) => `Founders who need ${t.toLowerCase()} scoped before the next fundraise narrative.`,
   ],
   design: [
     (t) => `Growth leads where ${t.toLowerCase()} should move signup or demo conversion.`,
-    (t) => `Product designers underwater — need ${t.toLowerCase()} for one critical flow.`,
+    (t) => `Product designers underwater need ${t.toLowerCase()} for one critical flow.`,
     (t) => `Founders relaunching and need ${t.toLowerCase()} before paid traffic scales.`,
     (t) => `Engineering leads who want ${t.toLowerCase()} that builds cleanly in React.`,
   ],
@@ -64,14 +64,14 @@ const WHO_FOR_BY_CATEGORY = {
   ],
   "integrations-platform": [
     (t) => `SaaS founders who need ${t.toLowerCase()} live before sales can close deals.`,
-    (t) => `Engineering teams scared to touch billing — need ${t.toLowerCase()} done right once.`,
+    (t) => `Engineering teams scared to touch billing need ${t.toLowerCase()} done right once.`,
     (t) => `Products expanding to new markets requiring ${t.toLowerCase()}.`,
     (t) => `Teams migrating stacks and need ${t.toLowerCase()} without breaking prod.`,
   ],
   "startup-tech-partner": [
     (t) => `First-time founders who need ${t.toLowerCase()} and honest scope pushback.`,
     (t) => `Pre-seed teams with investor interest but no technical co-founder.`,
-    (t) => `Startups between hires — need ${t.toLowerCase()} for 8–12 weeks.`,
+    (t) => `Startups between hires need ${t.toLowerCase()} for 8–12 weeks.`,
     (t) => `Founders who burned budget on agencies and want ${t.toLowerCase()} in one repo.`,
   ],
 };
@@ -81,13 +81,13 @@ const PROBLEM_VARIANTS = [
   (t) => `A previous vendor shipped ${t.toLowerCase()} that broke on edge cases in week two.`,
   (t) => `Your team lacks bandwidth to own ${t.toLowerCase()} while shipping the core product.`,
   (t, tools) => `Integrations around ${tools[0]} are fragile and nobody owns on-call.`,
-  (t) => `Stakeholders disagree on what "${t.toLowerCase()} done" means — so nothing ships.`,
+  (t) => `Stakeholders disagree on what "${t.toLowerCase()} done" means. Until that is defined, nothing ships.`,
   (t, tools) => `You have ${tools[1]} in place but ${t.toLowerCase()} never got past the backlog.`,
 ];
 
 const DELIVERABLE_VARIANTS = [
   (t) => `Written scope for ${t.toLowerCase()} with explicit in/out of scope`,
-  "Weekly demo — live or recorded — with decisions logged",
+  "Weekly demo, live or recorded, with decisions logged",
   "Acceptance checklist signed before production launch",
   "Runbook for the failure modes we expect in month one",
   "Handoff doc so your team can maintain without us",
@@ -105,8 +105,8 @@ function hashIndex(seed, modulo) {
 
 const DIFFERENTIATOR_POOL = [
   (seed) => seed.wontDo,
-  (seed) => `Typical window: ${seed.timeline} — stated in writing before we start.`,
-  (seed) => "Weekly demos with written decisions — not status decks.",
+  (seed) => `Typical window: ${seed.timeline}, stated in writing before we start.`,
+  (seed) => "Weekly demos with written decisions, not status decks.",
   (seed) =>
     `Stack-first: we start with ${seed.tools[0]} unless the audit says otherwise.`,
   () => "Direct access to the people writing code or design files.",
@@ -132,11 +132,11 @@ function buildFaqs(service, seed) {
     },
     {
       q: `Do you work with our existing ${toolStr} setup?`,
-      a: `Yes, when it's sane. We audit first and tell you if something needs replacing — we won't rip out working infra for sport.`,
+      a: `Yes, when it's sane. We audit first and tell you if something needs replacing. We won't rip out working infra for sport.`,
     },
     {
       q: `What if we already started ${title} in-house?`,
-      a: `We pick up from current state, document what's there, and focus on what's blocking launch — not a rewrite unless necessary.`,
+      a: `We pick up from current state, document what's there, and focus on what's blocking launch. We rewrite only when necessary.`,
     },
     {
       q: `How is ${title} priced?`,
@@ -148,11 +148,11 @@ function buildFaqs(service, seed) {
     },
     {
       q: `Can you stay on after ${title} launches?`,
-      a: `Yes — maintenance sprints or a partner retainer. Many teams keep us for the next bottleneck once v1 is stable.`,
+      a: `Yes. Maintenance sprints or a partner retainer. Many teams keep us for the next bottleneck once v1 is stable.`,
     },
     {
       q: `Who on your team works on ${title}?`,
-      a: `The same small team from kickoff to launch — not a rotating bench. You talk to the people writing code or design files.`,
+      a: `The same small team from kickoff to launch, not a rotating bench. You talk to the people writing code or design files.`,
     },
   ];
 

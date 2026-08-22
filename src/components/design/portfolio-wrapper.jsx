@@ -5,8 +5,6 @@ import { PortfolioCard } from "./portfolio-card";
 import navbarDiamond from "@/assets/design/navbar.svg";
 import Image from "next/image";
 import Particles from "../ui/particles";
-import { AnimatedShinyText } from "../magicui/animated-shiny-text";
-
 const PortfolioWrapper = () => {
   return (
     <section className="relative z-0 py-20 sm:py-20 xl:pt-20 xl:pb-16 bg-[#08081E]">
@@ -39,9 +37,7 @@ const PortfolioWrapper = () => {
               "linear-gradient(90deg, #000000 0%, rgba(255, 255, 255, 1) 47.22%)",
           }}
         ></div>
-        <AnimatedShinyText className="uppercase text-base sm:text-lg font-semibold bg-clip-text text-transparent tracking-[0%] text-[#01B0EA]">
-          OUR PORTFOLIO
-        </AnimatedShinyText>
+        <p className="fb-kicker text-[#01B0EA]">Our portfolio</p>
       </div>
       
       <div className="relative">

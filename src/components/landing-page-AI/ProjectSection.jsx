@@ -8,7 +8,6 @@ import circle from "@/assets/landing-page-AI/circle.webp";
 import { MagicCard } from "../magicui/magic-card";
 
 import stars from "@/assets/landing-page-AI/stars.webp";
-import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 import {
   MotionFadeIn,
   MotionStagger,
@@ -102,13 +101,7 @@ const ProjectsSection = () => {
         {/* Section header */}
         <MotionFadeIn className="mb-11 text-center">
           <div className="inline-flex items-center justify-center font-poppins">
-            <AnimatedShinyText
-              className="uppercase text-base sm:text-lg font-semibold tracking-normal bg-clip-text text-transparent bg-gradient-to-r from-[#01B0EA] to-[#2E2688]"
-              shimmerWidth={150}
-            >
-              Work shipped
-            </AnimatedShinyText>
-            {/* <span className="text-yellow-500 text-lg">✨</span> */}
+            <p className="fb-kicker text-[#01B0EA]">Work shipped</p>
             <Image src={stars} className="w-[30px] h-[30px]" alt="star" />
           </div>
           <h2 className="fb-h2 text-[22px] leading-[36px] lg:text-[38px] lg:leading-[60px]">

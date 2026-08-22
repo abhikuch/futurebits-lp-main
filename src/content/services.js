@@ -4,7 +4,7 @@ import { SERVICE_PAGE_COPY } from "@/content/service-copy";
 
 const META_TAIL_VARIANTS = [
   "Scoped in writing. Weekly demos in your repo.",
-  "One team from kickoff to launch — no hand-offs.",
+  "One team from kickoff to launch. No hand-offs.",
   "Fixed window quoted after a 30-minute scoping call.",
   "Acceptance tests signed before we call it done.",
   "Ship in your stack with explicit cut lines up front.",
@@ -37,7 +37,7 @@ export const SERVICE_CATEGORIES = [
     title: "Build",
     shortTitle: "Development",
     description:
-      "Software engineering in your repo — SaaS, internal tools, dashboards, Excel automation, and legacy modernization with written scope and weekly demos.",
+      "Software engineering in your repo: SaaS, internal tools, dashboards, Excel automation, and legacy modernization with written scope and weekly demos.",
     ctaLabel: "Book a call",
     ctaHref: CAL.ai,
   },
@@ -46,7 +46,7 @@ export const SERVICE_CATEGORIES = [
     title: "AI & Automation",
     shortTitle: "AI & Automation",
     description:
-      "Production AI — agents, RAG, chatbots, custom GPTs, and workflow automation with evals, fallbacks, and human review where it matters.",
+      "Production AI: agents, RAG, chatbots, custom GPTs, and workflow automation with evals, fallbacks, and human review where it matters.",
     ctaLabel: "Book a call",
     ctaHref: CAL.ai,
   },
@@ -55,7 +55,7 @@ export const SERVICE_CATEGORIES = [
     title: "Design",
     shortTitle: "Design",
     description:
-      "UI/UX, audits, research, branding, landing pages, and design systems — focused on flows that move signup, activation, and conversion.",
+      "UI/UX, audits, research, branding, landing pages, and design systems, focused on flows that move signup, activation, and conversion.",
     ctaLabel: "Book a call",
     ctaHref: CAL.design,
   },
@@ -64,7 +64,7 @@ export const SERVICE_CATEGORIES = [
     title: "Markets & Trading Systems",
     shortTitle: "Markets",
     description:
-      "Backtesting, execution, shadow mode, PnL monitoring, and trading infra — with fees, idempotency, and kill switches treated as requirements.",
+      "Backtesting, execution, shadow mode, PnL monitoring, and trading infra. Fees, idempotency, and kill switches treated as requirements.",
     ctaLabel: "Book a call",
     ctaHref: CAL.markets,
   },
@@ -73,7 +73,7 @@ export const SERVICE_CATEGORIES = [
     title: "Integrations & Platform",
     shortTitle: "Integrations",
     description:
-      "Stripe, Razorpay, auth, billing, analytics, and API integrations — idempotent webhooks, sandbox validation, and reconciliation checklists.",
+      "Stripe, Razorpay, auth, billing, analytics, and API integrations. Idempotent webhooks, sandbox validation, and reconciliation checklists.",
     ctaLabel: "Book a call",
     ctaHref: CAL.ai,
   },
@@ -82,7 +82,7 @@ export const SERVICE_CATEGORIES = [
     title: "Startup Tech Partner",
     shortTitle: "Startup Partner",
     description:
-      "Founder tech partner, MVP scope, product strategy, and idea-to-launch pods — one small team, no equity-only deals.",
+      "Founder tech partner, MVP scope, product strategy, and idea-to-launch pods. One small team, no equity-only deals.",
     ctaLabel: "Book a call",
     ctaHref: CAL.ai,
   },
@@ -240,8 +240,8 @@ export const SERVICES = RAW_SERVICES.map(([categorySlug, slug, title]) => {
     path: `/services/${categorySlug}/${slug}`,
     shortDescription:
       metaDescription ??
-      `${title} — scoped, shipped in your repo, with weekly demos.`,
-    hero: copy?.hero ?? `${title} — scoped, shipped, signed off.`,
+      `${title}. Scoped, shipped in your repo, with weekly demos.`,
+    hero: copy?.hero ?? `${title}. Scoped, shipped, signed off.`,
     subhead:
       copy?.subhead ??
       "We write the scope first, ship in your repo, and demo every week until it's done.",

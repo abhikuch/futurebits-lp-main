@@ -15,7 +15,7 @@ export const DIRECTORY_PROFILE = {
   locations: ["Remote", "Worldwide"],
   shortDescription:
     "Futurebits is a design and engineering studio delivering AI automation, UI/UX design, software development, and trading infrastructure for ambitious teams worldwide.",
-  longDescription: `Futurebits Technologies is a design and engineering studio focused on production outcomes — not slide decks. We work across three tracks:
+  longDescription: `Futurebits Technologies is a design and engineering studio focused on production outcomes, not slide decks. We work across three tracks:
 
 AI & Automation: chatbots, custom GPTs, RAG knowledge bases, AI agents, workflow automation, and content generation systems built with evals and guardrails.
 
@@ -72,13 +72,13 @@ export const LINK_TO_US = {
     { text: "Custom GPT development", url: `${SITE_URL}/services/ai-automation/custom-gpt-knowledge-base` },
     { text: "UI/UX design agency", url: `${SITE_URL}/design` },
   ],
-  htmlSnippet: `<a href="${SITE_URL}" title="Futurebits — Design, AI, and Automation">Futurebits</a>`,
+  htmlSnippet: `<a href="${SITE_URL}" title="Futurebits. Design, AI, and Automation">Futurebits</a>`,
 };
 
 export const UX_AUDIT_CHECKLIST = {
   title: "Website UX Audit Checklist (Free)",
   description:
-    "A 24-point checklist for auditing website UX, conversion paths, and product experience — free from Futurebits.",
+    "A 24-point checklist for auditing website UX, conversion paths, and product experience, free from Futurebits.",
   categories: [
     {
       name: "First impression & value prop",
@@ -86,7 +86,7 @@ export const UX_AUDIT_CHECKLIST = {
         "Headline states who the product is for and the outcome they get within 5 seconds.",
         "Primary CTA is visible above the fold on desktop and mobile.",
         "Visual hierarchy guides the eye: headline → proof → CTA.",
-        "Page load (LCP) under 2.5s on mobile — test with PageSpeed Insights.",
+        "Page load (LCP) under 2.5s on mobile. Test with PageSpeed Insights.",
       ],
     },
     {
@@ -102,7 +102,7 @@ export const UX_AUDIT_CHECKLIST = {
     {
       name: "Conversion paths",
       items: [
-        "One primary CTA per page — not competing demo/trial/contact buttons.",
+        "One primary CTA per page. One CTA per page beats competing demo, trial, and contact buttons.",
         "Form fields are minimal; each field has a stated reason to exist.",
         "Pricing page answers: who is each plan for, what is included, what happens next.",
         "Social proof is specific (outcomes/metrics), not generic logo walls only.",

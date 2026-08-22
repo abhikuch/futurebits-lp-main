@@ -40,7 +40,7 @@ export async function submitContact(_prevState, formData) {
   const errors = {};
   if (name.length < 2) errors.name = "Please share your name.";
   if (!isEmail(email)) errors.email = "Use a valid email so we can reply.";
-  if (message.length < 20) errors.message = "Tell us a bit more — at least 20 characters.";
+  if (message.length < 20) errors.message = "Tell us a bit more. At least 20 characters.";
   const vertical = VERTICALS.has(verticalRaw) ? verticalRaw : "other";
   const budget = BUDGETS.has(budgetRaw) ? budgetRaw : "unsure";
 
@@ -60,7 +60,7 @@ export async function submitContact(_prevState, formData) {
 
   return {
     ok: true,
-    message: `Thanks ${name.split(" ")[0]} — we'll reply from ${COMPANY.email} within four working hours.`,
+    message: `Thanks ${name.split(" ")[0]}. We'll reply from ${COMPANY.email} within four working hours.`,
   };
 }
 

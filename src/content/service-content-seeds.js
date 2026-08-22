@@ -25,10 +25,10 @@ const CATEGORY_META = {
       ["Python", "FastAPI", "Docker"],
     ],
     contrarian: [
-      "Most MVPs ship too many features — we cut scope until one hypothesis is testable.",
+      "Most MVPs ship too many features. We cut scope until one hypothesis is testable.",
       "Rewriting from scratch is rarely the answer; we extend what already works first.",
-      "Spreadsheets are fine until they aren't — we automate only when manual cost is measurable.",
-      "No-code is a starting point, not a sin — but we won't pretend it scales forever.",
+      "Spreadsheets are fine until they aren't. We automate only when manual cost is measurable.",
+      "No-code is a starting point, not a sin, but we won't pretend it scales forever.",
     ],
     wontDo: [
       "We won't start build without written acceptance criteria for v1.",
@@ -50,7 +50,7 @@ const CATEGORY_META = {
       ["Azure OpenAI", "Redis", "FastAPI"],
     ],
     contrarian: [
-      "Most chatbots should handle fewer intents, not more — breadth kills accuracy.",
+      "Most chatbots should handle fewer intents, not more. Breadth kills accuracy.",
       "Fine-tuning before retrieval is usually backwards for internal knowledge bases.",
       "If you can't eval it with 50 real questions, it's not ready for customers.",
       "Demos that skip escalation paths fail the first week in production.",
@@ -59,7 +59,7 @@ const CATEGORY_META = {
       "We won't ship AI features without a test set and human fallback.",
       "We won't train on customer data without explicit access boundaries.",
       "We won't promise accuracy numbers without running evals on your docs.",
-      "We won't replace your support team on day one — deflection comes in phases.",
+      "We won't replace your support team on day one. Deflection comes in phases.",
     ],
     timelines: [
       "2-3 weeks for first useful automation",
@@ -75,7 +75,7 @@ const CATEGORY_META = {
       ["Figma", "Vue", "Hotjar"],
     ],
     contrarian: [
-      "More mockups rarely fix a broken signup flow — we fix the flow first.",
+      "More mockups rarely fix a broken signup flow. We fix the flow first.",
       "Rebrands before fixing conversion are expensive distractions.",
       "Design systems should start at 10 components, not 100.",
       "Stakeholder opinions matter less than session recordings on key flows.",
@@ -84,7 +84,7 @@ const CATEGORY_META = {
       "We won't deliver decks without build-ready Figma files.",
       "We won't redesign every page when three flows drive 80% of drop-off.",
       "We won't ignore your existing component library if one exists.",
-      "We won't hand off without a prioritized fix list, not just pretty screens.",
+      "We won't hand off without a prioritized fix list your team can ship from.",
     ],
     timelines: [
       "2 weeks for a focused flow redesign",
@@ -101,15 +101,15 @@ const CATEGORY_META = {
     ],
     contrarian: [
       "Backtests that ignore fees are marketing, not research.",
-      "Live trading without a kill switch is not a system — it's a bet.",
+      "Live trading without a kill switch is not a system. It's a bet.",
       "Most 'AI trading' projects should start with data hygiene, not models.",
-      "Shadow mode should run longer than most teams want — that's the point.",
+      "Shadow mode should run longer than most teams want. That's the point.",
     ],
     wontDo: [
       "We won't go live without paper trading validation criteria in writing.",
       "We won't build execution without idempotent order handling.",
       "We won't skip runbooks because 'the team knows how it works'.",
-      "We won't take PnL share deals — we bill for engineering only.",
+      "We won't take PnL share deals. We bill for engineering only.",
     ],
     timelines: [
       "3-4 weeks for backtest framework v1",
@@ -125,9 +125,9 @@ const CATEGORY_META = {
       ["Supabase Auth", "PostHog", "Resend"],
     ],
     contrarian: [
-      "Webhook handlers without idempotency will duplicate charges — we've seen it twice this year.",
+      "Webhook handlers without idempotency will duplicate charges. We've seen it twice this year.",
       "Billing edge cases (proration, failed payments) matter more than checkout UI.",
-      "Third-party docs lie about rate limits — we load-test before launch.",
+      "Third-party docs lie about rate limits. We load-test before launch.",
     ],
     wontDo: [
       "We won't go live on payments without a reconciliation checklist.",
@@ -147,9 +147,9 @@ const CATEGORY_META = {
       ["Jira", "Figma", "AWS"],
     ],
     contrarian: [
-      "Roadmaps with 40 features are wish lists — we force rank by revenue impact.",
+      "Roadmaps with 40 features are wish lists. We force rank by revenue impact.",
       "Hiring a full-time CTO too early often slows founders down, not speeds them up.",
-      "Investors care about one metric moving — not architecture diagrams.",
+      "Investors care about one metric moving, not architecture diagrams.",
     ],
     wontDo: [
       "We won't pretend to be co-founders on cap tables.",
@@ -166,15 +166,15 @@ const CATEGORY_META = {
 
 const INTRO_TEMPLATES = [
   (starter, title, timeline, tools) =>
-    `${starter} ${title.toLowerCase()} — and the fix isn't another generic agency retainer. We scope to ${timeline}, using ${tools[0]} and ${tools[1]} in your stack where it makes sense. Weekly demos and a written cut line for what ships now versus later.`,
+    `${starter} ${title.toLowerCase()}, and the fix isn't another generic agency retainer. We scope to ${timeline}, using ${tools[0]} and ${tools[1]} in your stack where it makes sense. Weekly demos and a written cut line for what ships now versus later.`,
   (starter, title, timeline, tools) =>
-    `${starter} ${title.toLowerCase()}. Most teams over-scope it. We write acceptance criteria first, then ship in ${timeline} with ${tools[0]} in your repo — not a parallel codebase that rots.`,
+    `${starter} ${title.toLowerCase()}. Most teams over-scope it. We write acceptance criteria first, then ship in ${timeline} with ${tools[0]} in your repo. We work in your repo, not a fork that rots.`,
   (starter, title, timeline, tools) =>
     `You need ${title.toLowerCase()} done properly: ${starter.toLowerCase()} We typically deliver in ${timeline}. Same team from kickoff to launch; ${tools[0]} where your stack already uses it.`,
   (starter, title, timeline, tools) =>
     `${starter} ${title.toLowerCase()} is blocking something else from shipping. We take a fixed window (${timeline}), integrate with ${tools.slice(0, 2).join(" and ")}, and demo progress every week.`,
   (starter, title, timeline) =>
-    `${starter} ${title.toLowerCase()} — scope creep is the enemy. We agree on one metric, one cut line, and ${timeline}. Then we build until that version is signed off.`,
+    `${starter} ${title.toLowerCase()}. Scope creep is the enemy. We agree on one metric, one cut line, and ${timeline}. Then we build until that version is signed off.`,
 ];
 
 const SCENARIO_STARTERS = {

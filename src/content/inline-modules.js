@@ -32,7 +32,7 @@ export const POV = {
   },
   design: {
     eyebrow: "How we think about design",
-    title: "Design should move the metric, not just polish the deck.",
+    title: "Design should move the metric, not polish the deck.",
     body:
       "We use design to clarify product strategy. The brief that comes out of week one is sharper than the brief that came in. Visual taste is table stakes; the work is in the thinking underneath.",
     bullets: [

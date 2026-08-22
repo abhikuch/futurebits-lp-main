@@ -196,7 +196,7 @@ export default function ServiceCategoryPage({ params }) {
           </p>
           <div className={theme.dividerClass} />
           <Heading as="h1" className={`${theme.titleClass} fb-page-hero-enter`}>
-            {categoryBundle.title} — scoped, shipped, signed off.
+            {categoryBundle.title}. Scoped, shipped, signed off.
           </Heading>
           <p className={`${theme.bodyClass} fb-page-hero-copy-enter`}>
             {categoryBundle.description}
@@ -231,7 +231,7 @@ export default function ServiceCategoryPage({ params }) {
               Ready to scope {categoryBundle.shortTitle.toLowerCase()} work?
             </Heading>
             <p className="mt-4 max-w-3xl text-white/70">
-              Bring the bottleneck and constraints — timeline, stack, budget.
+              Bring the bottleneck and constraints. Timeline, stack, budget.
               We will propose a written scope with a cut line and a demo
               cadence you can plan around.
             </p>

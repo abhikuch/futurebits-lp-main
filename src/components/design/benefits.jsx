@@ -13,7 +13,6 @@ import Image from "next/image";
 import Particles from "../ui/particles";
 import { BorderBeamDemo } from "../ui/beam";
 
-import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 import {
   MotionFadeIn,
   MotionStagger,
@@ -134,9 +133,7 @@ const Benefits = () => {
           alt=""
           className="h-3.5 w-3.5 opacity-80"
         />
-        <AnimatedShinyText className="uppercase text-sm sm:text-base font-semibold tracking-[0.08em] text-[#01B0EA]">
-          Why teams hire us
-        </AnimatedShinyText>
+        <p className="fb-kicker text-[#01B0EA]">Why teams hire us</p>
         <Image
           src={navbarDiamond}
           width={16}

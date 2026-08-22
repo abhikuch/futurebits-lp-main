@@ -17,7 +17,7 @@ const RAW_BLOG_POSTS = [
     sections: [
       {
         heading: "What a UX audit actually includes",
-        body: "A proper website UX audit goes beyond \"the button should be bigger.\" It maps your highest-intent user journeys, identifies friction in navigation and conversion paths, reviews mobile experience, and ties findings to metrics you already track — signups, demo requests, checkout completion, or activation rates.",
+        body: "A proper website UX audit goes beyond \"the button should be bigger.\" It maps your highest-intent user journeys, identifies friction in navigation and conversion paths, reviews mobile experience, and ties findings to metrics you already track: signups, demo requests, checkout completion, or activation rates.",
       },
       {
         heading: "Typical pricing ranges",
@@ -25,7 +25,7 @@ const RAW_BLOG_POSTS = [
       },
       {
         heading: "When an audit pays for itself",
-        body: "If your site already drives meaningful traffic but conversion has plateaued, a UX audit is often the highest-ROI design spend. Fixing one broken funnel step — unclear pricing, weak social proof, confusing signup — can recover more pipeline than a full rebrand.",
+        body: "If your site already drives meaningful traffic but conversion has plateaued, a UX audit is often the highest-ROI design spend. Fixing one broken funnel step: unclear pricing, weak social proof, or confusing signup. That can recover more pipeline than a full rebrand.",
       },
       {
         heading: "What to ask before hiring",
@@ -48,7 +48,7 @@ const RAW_BLOG_POSTS = [
     sections: [
       {
         heading: "Start with the job to be done",
-        body: "Most business knowledge base projects need accurate answers grounded in current documents — policies, product docs, support macros, sales decks. That is a retrieval problem first, not a model training problem.",
+        body: "Most business knowledge base projects need accurate answers grounded in current documents: policies, product docs, support macros, sales decks. That is a retrieval problem first, not a model training problem.",
       },
       {
         heading: "When RAG is the right default",
@@ -79,7 +79,7 @@ const RAW_BLOG_POSTS = [
     sections: [
       {
         heading: "Define the top 20 questions first",
-        body: "Support chatbots fail when teams try to automate everything on day one. Start with high-volume, low-risk intents — order status, billing FAQs, account setup — and measure deflection before expanding scope.",
+        body: "Support chatbots fail when teams try to automate everything on day one. Start with high-volume, low-risk intents: order status, billing FAQs, account setup. Measure deflection before expanding scope.",
       },
       {
         heading: "Connect to your real knowledge sources",
@@ -99,7 +99,7 @@ const RAW_BLOG_POSTS = [
     slug: "saas-landing-page-conversion-checklist",
     title: "7 Signs Your SaaS Landing Page Is Killing Conversions",
     description:
-      "Common landing page mistakes that block SaaS signups and demo requests — and how to fix them.",
+      "Common landing page mistakes that block SaaS signups and demo requests, and how to fix them.",
     publishedAt: "2026-05-28",
     category: "Design",
     readMinutes: 7,
@@ -114,7 +114,7 @@ const RAW_BLOG_POSTS = [
       },
       {
         heading: "Social proof is missing or generic",
-        body: "Logos alone are not enough. Use specific outcomes — \"Reduced onboarding time by 40%\" — from customers your ICP recognizes.",
+        body: "Logos alone are not enough. Use specific outcomes. \"Reduced onboarding time by 40%\". from customers your ICP recognizes.",
       },
       {
         heading: "One page, too many CTAs",
@@ -130,7 +130,7 @@ const RAW_BLOG_POSTS = [
     slug: "ai-sales-agents-what-works",
     title: "AI Agents for Sales: What Actually Works in 2026",
     description:
-      "Where AI sales agents deliver real pipeline impact — and where they waste budget.",
+      "Where AI sales agents deliver real pipeline impact, and where they waste budget.",
     publishedAt: "2026-05-10",
     category: "AI",
     readMinutes: 8,
@@ -141,7 +141,7 @@ const RAW_BLOG_POSTS = [
     sections: [
       {
         heading: "Automate research and prep, not relationship building",
-        body: "The highest-ROI sales agents today handle account research, CRM enrichment, follow-up drafts, and meeting prep — tasks with clear inputs and verifiable outputs. Fully autonomous outbound without human review still fails for most B2B products.",
+        body: "The highest-ROI sales agents today handle account research, CRM enrichment, follow-up drafts, and meeting prep: tasks with clear inputs and verifiable outputs. Fully autonomous outbound without human review still fails for most B2B products.",
       },
       {
         heading: "Ground agents in your ICP and playbook",
@@ -149,11 +149,11 @@ const RAW_BLOG_POSTS = [
       },
       {
         heading: "Measure pipeline quality, not activity volume",
-        body: "Track reply rate, meeting acceptance, and stage progression — not emails sent. Agents that inflate activity metrics without improving conversion should be scoped down or killed.",
+        body: "Track reply rate, meeting acceptance, and stage progression, not emails sent. Agents that inflate activity metrics without improving conversion should be scoped down or killed.",
       },
       {
         heading: "Start with one workflow",
-        body: "Pick a single high-friction step — post-demo follow-up, lead qualification, or proposal drafting — and automate that end-to-end before expanding scope.",
+        body: "Pick a single high-friction step: post-demo follow-up, lead qualification, or proposal drafting. Automate that end-to-end before expanding scope.",
       },
     ],
   },
@@ -161,7 +161,7 @@ const RAW_BLOG_POSTS = [
     slug: "excel-automation-dashboard-guide",
     title: "Excel Automation: When to Replace Spreadsheets with Dashboards",
     description:
-      "Signs your team has outgrown Excel — and how to migrate to automated reporting without disruption.",
+      "Signs your team has outgrown Excel, and how to migrate to automated reporting without disruption.",
     publishedAt: "2026-05-12",
     category: "Build",
     readMinutes: 7,
@@ -172,7 +172,7 @@ const RAW_BLOG_POSTS = [
     sections: [
       {
         heading: "You are maintaining spreadsheets like software",
-        body: "When Excel files have version control problems, broken formulas, and a dedicated owner who spends days each month updating them — you are running undeclared software. That is the tipping point for automation.",
+        body: "When Excel files have version control problems, broken formulas, and a dedicated owner who spends days each month updating them, you are running undeclared software. That is the tipping point for automation.",
       },
       {
         heading: "Multiple people need the same data live",
@@ -192,7 +192,7 @@ const RAW_BLOG_POSTS = [
     slug: "design-systems-when-you-need-one",
     title: "Design Systems 101: When Your Product Team Needs One",
     description:
-      "How to know when a design system will speed up your team — and when it is premature.",
+      "How to know when a design system will speed up your team, and when it is premature.",
     publishedAt: "2026-05-14",
     category: "Design",
     readMinutes: 6,
@@ -215,7 +215,7 @@ const RAW_BLOG_POSTS = [
       },
       {
         heading: "Measure velocity, not component count",
-        body: "Success means faster feature shipping and fewer design QA cycles — not how many components exist in the library.",
+        body: "Success means faster feature shipping and fewer design QA cycles, not component count in the library.",
       },
     ],
   },
@@ -235,7 +235,7 @@ const RAW_BLOG_POSTS = [
     sections: [
       {
         heading: "Define the hypothesis, not the feature list",
-        body: "An MVP validates one business hypothesis — \"users will pay for X\" or \"workflow Y saves 5 hours/week.\" Everything in v1 should serve that hypothesis. Everything else is v2.",
+        body: "An MVP validates one business hypothesis. \"users will pay for X\" or \"workflow Y saves 5 hours/week.\" Everything in v1 should serve that hypothesis. Everything else is v2.",
       },
       {
         heading: "Cut scope by risk, not by ease",
@@ -266,7 +266,7 @@ const RAW_BLOG_POSTS = [
     sections: [
       {
         heading: "Templates beat open-ended prompts",
-        body: "Marketing content needs consistent structure — blog outlines, ad variants, email sequences. Define templates with locked sections and variable slots rather than asking the model to invent format each time.",
+        body: "Marketing content needs consistent structure: blog outlines, ad variants, email sequences. Define templates with locked sections and variable slots rather than asking the model to invent format each time.",
       },
       {
         heading: "Build a brand and fact-check layer",
@@ -274,7 +274,7 @@ const RAW_BLOG_POSTS = [
       },
       {
         heading: "Human review stays in the loop for external content",
-        body: "Internal drafts can be more automated. Customer-facing content — ads, landing pages, product copy — needs a human approval step with clear ownership.",
+        body: "Internal drafts can be more automated. Customer-facing content: ads, landing pages, product copy. Those need a human approval step with one owner.",
       },
       {
         heading: "Track quality metrics over time",
@@ -297,7 +297,7 @@ const RAW_BLOG_POSTS = [
     sections: [
       {
         heading: "Five user interviews beat fifty survey responses",
-        body: "At early stage, depth beats breadth. Five 30-minute interviews reveal why users struggle — surveys only tell you what you thought to ask.",
+        body: "At early stage, depth beats breadth. Five 30-minute interviews reveal why users struggle. Surveys only tell you what you thought to ask.",
       },
       {
         heading: "Test prototypes, not opinions",
@@ -309,7 +309,7 @@ const RAW_BLOG_POSTS = [
       },
       {
         heading: "Bake research into sprint cadence",
-        body: "One research session per sprint — even 3 users — compounds into a research habit without a dedicated researcher hire.",
+        body: "One research session per sprint, even 3 users, compounds into a research habit without a dedicated researcher hire.",
       },
     ],
   },
@@ -317,7 +317,7 @@ const RAW_BLOG_POSTS = [
     slug: "saas-branding-logo-vs-identity",
     title: "Branding for SaaS: Logo vs Full Visual Identity System",
     description:
-      "When a logo refresh is enough — and when you need a complete brand system.",
+      "When a logo refresh is enough, and when you need a complete brand system.",
     publishedAt: "2026-05-26",
     category: "Design",
     readMinutes: 6,
@@ -328,7 +328,7 @@ const RAW_BLOG_POSTS = [
     sections: [
       {
         heading: "A logo alone does not fix positioning",
-        body: "If the product value prop is unclear, a new logo will not improve conversion. Fix messaging and UX first; brand identity amplifies clarity — it does not create it.",
+        body: "If the product value prop is unclear, a new logo will not improve conversion. Fix messaging and UX first; brand identity amplifies clarity. It does not create it.",
       },
       {
         heading: "Full identity systems matter when you scale touchpoints",
@@ -360,15 +360,15 @@ const RAW_BLOG_POSTS = [
     sections: [
       {
         heading: "Handoffs are where quality dies",
-        body: "Design-to-engineering handoffs lose context — edge cases, interaction intent, responsive behavior. One pod shipping in one repo eliminates translation loss.",
+        body: "Design-to-engineering handoffs lose context: edge cases, interaction intent, responsive behavior. One pod shipping in one repo eliminates translation loss.",
       },
       {
         heading: "Designers who code make better tradeoffs",
-        body: "When designers understand component constraints, they design what can ship this sprint — not what requires a custom build every time.",
+        body: "When designers understand component constraints, they design what can ship this sprint, not what requires a custom build every time.",
       },
       {
         heading: "Weekly demos keep stakeholders aligned",
-        body: "End-to-end teams demo working software weekly — not slide decks. Feedback on staging reduces rework because stakeholders react to real flows.",
+        body: "End-to-end teams demo working software weekly, not slide decks. Feedback on staging reduces rework because stakeholders react to real flows.",
       },
       {
         heading: "Best for zero-to-one and major relaunches",

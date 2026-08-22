@@ -13,7 +13,6 @@ import partnershipIcon from "@/assets/market/partnership-icon.webp";
 
 import futurebitsLogo from "@/assets/market/futurebits-logo.webp";
 
-import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 import Link from "next/link";
 
 const FeatureCircle = ({ title, description, icon, position, isActive }) => {
@@ -96,7 +95,7 @@ const WhyUs = () => {
       id: 2,
       title: "Asset-class agnostic",
       description:
-        "From Indian equities to crypto perps, the same engineering bar — order safety, observability, recovery.",
+        "From Indian equities to crypto perps, the same engineering bar: order safety, observability, recovery.",
       icon: automationIcon,
       position: "bottom",
     },
@@ -154,11 +153,7 @@ const WhyUs = () => {
           className="lg:hidden block text-center mb-2 sm:mb-6"
           >
           <div className="inline-flex items-center justify-center mb-0 sm:mb-4">
-            <AnimatedShinyText>
-              <span className="uppercase text-lg font-semibold tracking-normal bg-clip-text text-transparent bg-gradient-to-r from-[#FFFFFF]/60 to-[#999999]/60">
-                How we think
-              </span>
-            </AnimatedShinyText>
+            <p className="fb-kicker text-[#7BC3D8]">How we think</p>
           </div>
           <h2 className="fb-h2 text-[26px] md:text-[38px] md:leading-[60px]">
             Three commitments we don&apos;t break
@@ -239,11 +234,7 @@ const WhyUs = () => {
                 className="absolute top-[18%] xl:top-[19%] left-0 text-center z-50 w-full px-8"
               >
                 <div className="inline-flex items-center justify-center mb-4">
-                  <AnimatedShinyText>
-                    <span className="uppercase text-lg font-semibold tracking-normal bg-clip-text text-transparent bg-gradient-to-b from-[#FFFFFF]/60 to-[#999999]/60">
-                      How we think
-                    </span>
-                  </AnimatedShinyText>
+                  <p className="fb-kicker text-[#7BC3D8]">How we think</p>
                 </div>
                 <h2 className="fb-h2 text-3xl md:text-5xl">
                   Three commitments we don&apos;t break

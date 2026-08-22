@@ -11,8 +11,6 @@ import patternImage from "@/assets/landing-page-AI/pattern.webp";
 import BeamButton from "./BeamButton";
 
 import stars from "@/assets/landing-page-AI/stars.webp";
-import { AnimatedShinyText } from "../magicui/animated-shiny-text"; // Adjust the import path as needed
-
 import Link from "next/link";
 import { SERVICE_CATEGORIES, getServiceBySlugs } from "@/content/services";
 import {
@@ -184,13 +182,7 @@ const ServicesSection = () => {
         {/* Section header */}
         <MotionFadeIn className="mb-8 text-center sm:mb-12 md:mb-16">
           <div className="inline-flex items-center justify-center gap-1 mb-2 sm:mb-4">
-            <AnimatedShinyText
-              className="uppercase text-base sm:text-lg font-semibold tracking-normal bg-clip-text text-transparent bg-gradient-to-r from-[#01B0EA] to-[#2E2688]"
-              shimmerWidth={150}
-            >
-              What we ship
-            </AnimatedShinyText>
-            {/* <span className="text-yellow-400">✨</span> */}
+            <p className="fb-kicker text-[#01B0EA]">What we ship</p>
             <Image src={stars} className="w-[30px] h-[30px]" alt="star" />
           </div>
           <h2

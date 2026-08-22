@@ -44,11 +44,7 @@ const IntroSection = () => {
 
         <div>
           <p className="hidden sm:block  mt-16 max-w-[750px] mx-auto font-montserrat font-bold text-[24px] sm:text-[38px] sm:leading-[52px] lg:leading-[60px] text-center text-white mb-[32px] sm:mb-[35px]">
-            Let’s Build Something Powerful — A Design That Engages, Converts,
-            and
-            <span className="inline-block ml-[8px]">
-              <span className="opacity-50">Drives Sales Effortlessly</span>{" "}
-            </span>
+            Design that moves signup, activation, and revenue.
             <span className="inline-block">
               <Image
                 src={stars}
@@ -58,16 +54,12 @@ const IntroSection = () => {
             </span>
           </p>
           <p className="mt-10 sm:hidden max-w-[320px] mx-auto font-montserrat font-bold text-[20px] leading-[34px] text-center text-white mb-[32px]">
-            Let’s Build Something Powerful — A Design That Engages, Converts,
-            and
-            <span className="flex justify-center items-center ">
-              <span className="opacity-50">Drives Sales Effortlessly</span>
-              <Image
-                src={stars}
-                className="w-[28px] h-[28px] rotate-[180deg] ml-2"
-                alt="star"
-              />
-            </span>
+            Design that moves signup, activation, and revenue.
+            <Image
+              src={stars}
+              className="w-[28px] h-[28px] rotate-[180deg] ml-2 inline-block"
+              alt="star"
+            />
           </p>
         </div>
       </div>

@@ -10,22 +10,19 @@ import { TESTIMONIALS } from "./testimonialsData";
 
 const THEME = {
   ai: {
-    kickerClass:
-      "uppercase text-base sm:text-lg font-semibold tracking-normal bg-clip-text text-transparent bg-gradient-to-r from-[#01B0EA] to-[#2E2688]",
+    kickerClass: "fb-kicker text-[#01B0EA]",
     cardClass:
       "border-[#01B0EA]/30 bg-gradient-to-b from-[#01B0EA]/10 to-[#060618]/80",
     glowClass: "from-[#01B0EA]/30 to-[#2E2688]/20",
   },
   markets: {
-    kickerClass:
-      "uppercase text-base sm:text-lg font-semibold tracking-normal bg-clip-text text-transparent bg-gradient-to-r from-white/80 to-white/45",
+    kickerClass: "fb-kicker text-[#7BC3D8]",
     cardClass:
       "border-white/20 bg-gradient-to-b from-white/[0.08] to-[#060618]/85",
     glowClass: "from-[#267088]/30 to-white/10",
   },
   design: {
-    kickerClass:
-      "uppercase text-base sm:text-lg font-semibold tracking-normal bg-clip-text text-transparent bg-gradient-to-r from-[#01B0EA] to-white/90",
+    kickerClass: "fb-kicker text-white/85",
     cardClass:
       "border-white/25 bg-gradient-to-b from-white/[0.12] to-[#060618]/85",
     glowClass: "from-white/20 to-[#01B0EA]/15",

@@ -86,7 +86,7 @@ export default function ResourcesPage() {
             </Heading>
             <p className="mt-3 text-sm text-white/70">
               We run website UX audits, AI implementations, and product design
-              sprints for teams that want senior execution — not just checklists.
+              sprints for teams that want senior execution, not checklists alone.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link

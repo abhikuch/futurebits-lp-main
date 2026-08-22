@@ -6,14 +6,14 @@ export function ServiceCategoryOutline({ category, services }) {
     >
       <div className="mx-auto max-w-[1200px] px-6 sm:px-10 lg:px-16">
         <h2 className="font-montserrat text-lg font-semibold text-white">
-          {category.title} — service overview
+          {category.title}: service overview
         </h2>
         <p className="mt-3 max-w-3xl leading-relaxed">{category.description}</p>
         <ul className="mt-4 list-disc space-y-2 pl-5">
           {services.map((service) => (
             <li key={service.slug}>
               <strong className="text-white/80">{service.title}</strong>
-              {" — "}
+              {": "}
               {service.shortDescription}
             </li>
           ))}
@@ -33,7 +33,7 @@ export function ServiceDetailOutline({ service, category, sections = [] }) {
     >
       <div className="mx-auto max-w-[1200px] px-6 sm:px-10 lg:px-16">
         <h2 className="font-montserrat text-lg font-semibold text-white">
-          {service.title} — page outline
+          {service.title}: page outline
         </h2>
         <p className="mt-3 max-w-3xl leading-relaxed">{service.subhead}</p>
         <p className="mt-3 text-white/55">

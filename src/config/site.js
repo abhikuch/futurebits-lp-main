@@ -166,7 +166,7 @@ export const ROUTES = {
     cta: CAL.ai,
     title: "About Futurebits | Design, AI, and Automation",
     description:
-      "Meet the team building Futurebits — designers, engineers, and AI builders helping ambitious teams ship faster, smarter, and with taste.",
+      "Meet the team building Futurebits: designers, engineers, and AI builders helping ambitious teams ship faster, smarter, and with taste.",
     keywords: ["About Futurebits", "Team", "Founders", "Design Engineering"],
     ogImage: ASSETS.ogAi,
     ogImageAlt: "About Futurebits",
@@ -212,7 +212,7 @@ export const ROUTES = {
     cta: CAL.ai,
     title: "Press & Media Kit | Futurebits",
     description:
-      "Futurebits media kit — company boilerplate, logos, contact, service links, and directory profile copy for Clutch, GoodFirms, and partners.",
+      "Futurebits media kit: company boilerplate, logos, contact, service links, and directory profile copy for Clutch, GoodFirms, and partners.",
     keywords: [
       "Futurebits media kit",
       "Futurebits press",
@@ -226,7 +226,7 @@ export const ROUTES = {
     cta: CAL.ai,
     title: "Free UX & Product Resources | Futurebits",
     description:
-      "Free resources from Futurebits — UX audit checklists, guides, and tools for product teams, designers, and founders.",
+      "Free resources from Futurebits: UX audit checklists, guides, and tools for product teams, designers, and founders.",
     keywords: [
       "UX audit checklist",
       "Free UX resources",

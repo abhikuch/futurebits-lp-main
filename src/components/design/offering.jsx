@@ -13,7 +13,6 @@ import { Marquee } from "../ui/marquee";
 import BeamButton from "./BeamButton";
 
 import stars from "@/assets/landing-page-AI/stars.webp";
-import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 import Link from "next/link";
 import { SERVICE_CATEGORIES, getServiceBySlugs } from "@/content/services";
 import {
@@ -191,15 +190,10 @@ const Offering = () => {
                 }}
               ></div>
 
-              <AnimatedShinyText className="uppercase text-lg font-semibold tracking-[0%] bg-clip-text text-transparent bg-gradient-to-r from-[#01B0EA] to-[#01B0EA]/90">
-                OFFERINGS
-              </AnimatedShinyText>
+              <p className="fb-kicker text-[#01B0EA]">Offerings</p>
             </div>
             <p className="z-0 text-white text-[32px] leading-[44px] sm:text-[40px] lg:text-[32px] xl:text-[40px] sm:leading-[60px]  font-bold font-montserrat lg:max-w-[500px] ">
-              All Your Design Needs, Handled in
-              <span className="relative">
-                <span className="opacity-50 ml-[5px] ">One Place</span>{" "}
-              </span>
+              Design, research, and build in one pod.
               <span className="inline-block">
                 <Image src={stars} className="w-[40px] h-[40px]" alt="star" />
               </span>

@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import ShimerButton from "./ShimerButton";
-import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 import Link from "next/link";
 import { SERVICE_CATEGORIES, getServiceBySlugs } from "@/content/services";
 import {
@@ -180,11 +179,7 @@ const OurSolutions = () => {
         {/* Section header */}
         <MotionFadeIn className="mb-8 text-center sm:mb-12">
           <div className="inline-flex items-center justify-center mb-1 sm:mb-4">
-            <AnimatedShinyText>
-              <span className="uppercase text-base sm:text-lg font-semibold tracking-normal bg-clip-text text-transparent bg-gradient-to-r from-[#FFFFFF]/60 to-[#999999]/60">
-                What we build
-              </span>
-            </AnimatedShinyText>
+            <p className="fb-kicker text-[#7BC3D8]">What we build</p>
           </div>
           <h2 className="fb-h2 text-2xl sm:text-3xl md:text-[38px] leading-[1.3] md:leading-[60px]">
             One stack across the trading lifecycle

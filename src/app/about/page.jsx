@@ -23,17 +23,17 @@ const beliefs = [
   {
     title: "Ship the smallest thing that proves the bet.",
     body:
-      "We cut scope until one hypothesis is testable. The first useful version should land in weeks — not after a six-month discovery phase that produces a PDF nobody reads.",
+      "We cut scope until one hypothesis is testable. The first useful version should land in weeks, not after a six-month discovery phase that produces a PDF nobody reads.",
   },
   {
-    title: "Design clarifies — it does not decorate.",
+    title: "Design clarifies. It does not decorate.",
     body:
       "We use design to force decisions: what ships, what waits, what gets cut. The brief at the end of week one should be sharper than the one that came in.",
   },
   {
     title: "AI when the math works.",
     body:
-      "We build production AI when deflection, speed, or quality gains are measurable. We say no when it is not — and we will tell you which side you are on before you spend.",
+      "We build production AI when deflection, speed, or quality gains are measurable. We say no when it is not. We will tell you which side you are on before you spend.",
   },
 ];
 
@@ -60,7 +60,7 @@ export default function AboutPage() {
           </h1>
           <p className="fb-hero-copy mt-6 fb-page-hero-copy-enter">
             Futurebits is a senior team of roughly a dozen people. We work across
-            product engineering, applied AI, UX, and markets infrastructure — same
+            product engineering, applied AI, UX, and markets infrastructure. Same
             bar everywhere. We take a limited number of engagements so each one
             gets a real team, weekly demos, and code in your repo.
           </p>
@@ -83,7 +83,7 @@ export default function AboutPage() {
               <h2 className="fb-h2">What we believe</h2>
               <p className="mt-3 max-w-2xl text-white/60">
                 Opinionated defaults we actually act on. If any of this feels wrong for
-                your team, we are probably not the right fit — and that is worth
+                your team, we are probably not the right fit. That is worth
                 learning in the first call, not month three.
               </p>
             </MotionFadeIn>
@@ -99,7 +99,7 @@ export default function AboutPage() {
               <h2 className="fb-h2">See if we are a fit</h2>
               <p className="mx-auto mt-3 max-w-xl text-white/70">
                 Book 30 minutes. We will come with a read of your problem and a
-                one-page scope sketch — keep it whether you hire us or not.
+                one-page scope sketch. Keep it whether you hire us or not.
               </p>
             </MotionFadeIn>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
