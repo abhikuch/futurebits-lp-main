@@ -126,7 +126,7 @@ const ServicesSection = () => {
       id: 4,
       title: "Content systems and personalization",
       description:
-        "Production content pipelines with quality gates — tone, accuracy, and brand checks built in.",
+        "Production content pipelines with quality gates: tone, accuracy, and brand checks built in.",
       icon: workflowIcon,
       borderStyle: borderStyles.card4,
       href: getServiceBySlugs("ai-automation", "ai-content-generation")?.path || "/services/ai-automation",

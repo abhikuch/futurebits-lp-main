@@ -45,7 +45,7 @@ export default function HomePage() {
             <h1 className="mt-6 max-w-4xl fb-hero-title fb-page-hero-enter">{COMPANY.tagline}</h1>
             <p className="mt-6 max-w-2xl text-lg text-white/70 fb-page-hero-copy-enter">
               One small team across AI automation, product design, software
-              development, and trading infrastructure. Pick your track — or
+              development, and trading infrastructure. Pick your track, or
               browse every service we ship.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
@@ -152,7 +152,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-3xl px-6 text-white/75 sm:px-10 lg:px-16">
             <h2 className="fb-h2 text-white">How Futurebits works</h2>
             <p className="mt-4 leading-relaxed">
-              Futurebits is a senior product pod — designers, engineers, and AI
+              Futurebits is one small team: designers, engineers, and AI
               builders who ship in your repository with written scope, weekly
               demos, and direct access to the people doing the work. We are not
               a staff-augmentation bench and we do not disappear behind account

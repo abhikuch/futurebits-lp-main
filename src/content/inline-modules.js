@@ -12,11 +12,11 @@ export const POV = {
     eyebrow: "How we think about AI",
     title: "Most AI projects fail because they automate the wrong thing first.",
     body:
-      "We start with the smallest workflow that, if AI does it well, frees up real hours every week. Then we measure those hours back. No demos, no theatre — just the line that moved.",
+      "We start with the smallest workflow that, if AI does it well, frees up real hours every week. Then we measure those hours back. No demos, no theatre. Just the line that moved.",
     bullets: [
       "We map workflows before models. The model is the last decision, not the first.",
       "We refuse projects where the cost of a wrong AI answer is higher than the value of a right one.",
-      "Every AI surface ships with an evaluation harness. If we can't measure it, we don't ship it.",
+      "Every AI surface ships with evals. If we can't measure it, we don't ship it.",
     ],
   },
   markets: {
@@ -26,17 +26,17 @@ export const POV = {
       "We build trading and analytics infrastructure for teams who treat markets as a long game. Edge dies; infrastructure compounds. We bias toward boring code, fast feedback, and ruthless risk hygiene.",
     bullets: [
       "Backtests are evidence, not arguments. We build them to break, then we publish what broke.",
-      "Latency, slippage, and fees are first-class citizens — not appendices in the appendix.",
+      "Latency, slippage, and fees belong in the main spec, not a footnote.",
       "Every system ships with a kill switch and a one-page runbook. If a junior can't shut it down at 2am, it isn't done.",
     ],
   },
   design: {
     eyebrow: "How we think about design",
-    title: "Design is what changes the metric — not what makes the deck pretty.",
+    title: "Design should move the metric, not just polish the deck.",
     body:
       "We use design to clarify product strategy. The brief that comes out of week one is sharper than the brief that came in. Visual taste is table stakes; the work is in the thinking underneath.",
     bullets: [
-      "Every screen earns its place by moving a real number — activation, retention, or revenue.",
+      "Every screen earns its place by moving a real number: activation, retention, or revenue.",
       "We design with code in the loop. Mockups are throwaways; live prototypes are the artefact.",
       "We default to fewer pixels, fewer pages, and fewer features. The hard work is removing things.",
     ],
@@ -49,7 +49,7 @@ export const ENGAGEMENT_MODELS = [
     duration: "2 – 4 weeks",
     bestFor: "A clear, scoped problem. Land one shipped artefact fast.",
     deliverables: [
-      "One shipped surface — a flow, a prototype, an automation",
+      "One shipped surface: a flow, a prototype, or an automation",
       "A short post-mortem with what we'd do next and why",
       "Daily async updates, one weekly working session",
     ],
@@ -60,7 +60,7 @@ export const ENGAGEMENT_MODELS = [
     bestFor:
       "A 0-to-1 launch or a meaningful 1-to-10 jump. We embed alongside your team.",
     deliverables: [
-      "One small team (design, engineering, AI) running end-to-end",
+      "One small team (design, engineering, AI) from kickoff through launch",
       "Weekly demo cycle, fortnightly steering committee",
       "Hand-off docs your team can keep running with",
     ],
@@ -82,11 +82,11 @@ export const FAQ = {
   ai: [
     {
       q: "What kind of AI projects do you ship?",
-      a: "Production AI systems including chatbots, custom GPTs, knowledge bases, AI agents, content generation, video pipelines, and workflow automation — with evaluations, guardrails, and observability. We prioritize measurable business outcomes over demos.",
+      a: "Production AI systems including chatbots, custom GPTs, knowledge bases, AI agents, content generation, video pipelines, and workflow automation, with evals, guardrails, and observability. We ship what you can measure in prod, not demo-day theatre.",
     },
     {
       q: "Can you work with our existing engineering team?",
-      a: "Yes — most of our pods do. We pair with your engineers, write code in your repo, and follow your review process. The goal is your team is stronger when we leave.",
+      a: "Yes, most of our pods do. We pair with your engineers, write code in your repo, and follow your review process. The goal is your team is stronger when we leave.",
     },
     {
       q: "How quickly can we expect ROI from an AI engagement?",
@@ -104,7 +104,7 @@ export const FAQ = {
   markets: [
     {
       q: "Are you a prop trading firm?",
-      a: "No. We build trading and analytics infrastructure for prop firms, funds, and serious traders. We don't run capital ourselves — that keeps incentives clean.",
+      a: "No. We build trading and analytics infrastructure for prop firms, funds, and serious traders. We don't run capital ourselves. That keeps incentives clean.",
     },
     {
       q: "Which broker APIs and venues can you integrate?",
@@ -126,7 +126,7 @@ export const FAQ = {
   design: [
     {
       q: "Do you handle both design and frontend implementation?",
-      a: "Yes. Designers and engineers work in one pod and ship in one repo — from UX research and wireframing through branding, UI design, and frontend code.",
+      a: "Yes. Designers and engineers work in one pod and ship in one repo, from UX research and wireframing through branding, UI design, and frontend code.",
     },
     {
       q: "Do you challenge product assumptions or just execute briefs?",
@@ -134,11 +134,11 @@ export const FAQ = {
     },
     {
       q: "Can you work in our design system?",
-      a: "Yes — and we'll improve it on the way out. If you don't have one, we'll ship the smallest one that earns its keep.",
+      a: "Yes, and we'll improve it on the way out. If you don't have one, we'll ship the smallest one that earns its keep.",
     },
     {
       q: "Do you offer UX audits and branding work?",
-      a: "Yes. We run complete website UX audits, product experience reviews, branding and visual identity systems, and UX research — alongside UI design and frontend delivery.",
+      a: "Yes. We run complete website UX audits, product experience reviews, branding and visual identity systems, and UX research, alongside UI design and frontend delivery.",
     },
     {
       q: "What is a typical design engagement timeline?",

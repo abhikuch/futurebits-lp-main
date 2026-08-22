@@ -138,8 +138,8 @@ const SupportedBroker = () => {
             it.
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-center text-white/60 text-sm sm:text-base px-4">
-            Indian equities, US equities, FX, and crypto venues — production-grade
-            across all four.
+            Indian equities, US equities, FX, and crypto venues. Built to run in
+            prod across all four.
           </p>
         </MotionFadeIn>
 

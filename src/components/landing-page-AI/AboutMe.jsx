@@ -71,8 +71,8 @@ const AboutMe = () => {
             <div className="w-full h-full  lg:w-[60%] xl:w-[70%] font-montserrat flex flex-col justify-center px-[20px] sm:px-[40px] sm:py-[40px] lg:px-[40px]  space-y-6 lg:space-y-16  xl:pl-[70px] xl:pr-[80px] lg:py-[60px]">
               <div className=" flex flex-col space-y-6 text-[13px] lg:text-[14px] lg:leading-[24px] xl:text-[16px] leading-[22px] xl:leading-[30px] font-normal text-white/80 ">
                 <p>
-                  I lead AI at Futurebits. We build production systems —
-                  retrieval, agents, evals — for ops, support, and product teams.
+                  I lead AI at Futurebits. We build production systems:
+                  retrieval, agents, evals for ops, support, and product teams.
                   The work I&apos;m proudest of: LLM behavior research, AI in
                   healthcare, and applied modelling that actually shipped.
                 </p>
@@ -87,7 +87,7 @@ const AboutMe = () => {
                   - Aayush Kucheria
                 </span>
                 <span className="text-[12px] pl-[10px] max-w-[230px] sm:max-w-[300px] xl:max-w-full lg:text-[12px] xl:text-[14px] font-normal leading-[18px] lg:leading-[22px]  sm:pl-4  xl:leading-[30px] text-white/50">
-                  AI Lead, Futurebits — production AI, evals, applied research.
+                  AI Lead, Futurebits. Production AI, evals, applied research.
                 </span>
               </div>
             </div>

@@ -66,7 +66,7 @@ const FooterCTA = () => {
             <h1 
               className="font-montserrat text-center text-[24px] mt-16 md:text-[40px] md:leading-[54px] xl:text-5xl xl:leading-[66px] font-bold text-white sm:mt-20 max-w-[900px]"
             >
-              Markets infrastructure that lets your team focus on edge — not on
+              Markets infrastructure that lets your team focus on edge, not on
               whether the system stayed up overnight.
             </h1>
 

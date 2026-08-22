@@ -90,9 +90,9 @@ const BenefitsSection = () => {
     },
     {
       id: 2,
-      title: "Objective Trading",
+      title: "Rules over reactions",
       description:
-        "Remove human biases and emotions from the equation, ensuring consistent and disciplined trading decisions.",
+        "Strategies follow the rules you wrote. No panic exits, no revenge trades, no second-guessing at 3am.",
       icon: objectiveIcon,
       gradient:
         "linear-gradient(146.26deg, #060618 20.4%, rgba(255, 255, 255, 0.6) 38.27%, rgba(255, 255, 255, 0.8) 44.23%, #FFFFFF 50.19%, rgba(255, 255, 255, 0.8) 56.14%, rgba(255, 255, 255, 0.6) 62.1%, #060618 79.98%)",

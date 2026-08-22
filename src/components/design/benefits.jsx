@@ -41,7 +41,7 @@ const services = [
     img: P3,
     title: "Founders in the loop",
     description:
-      "You talk to the people doing the work — not an account manager between you and the team.",
+      "You talk to the people doing the work, not an account manager between you and the team.",
     span: 1,
     type: "NORMAL",
   },
@@ -49,7 +49,7 @@ const services = [
     img: P4,
     title: "Tied to a metric you care about",
     description:
-      "Every sprint defines a target — activation, conversion, or retention — and reports against it on demo day.",
+      "Every sprint defines a target (activation, conversion, or retention) and reports against it on demo day.",
     span: 2,
     type: "GRADIENT",
   },
@@ -65,7 +65,7 @@ const services = [
     img: P6,
     title: "One number, written down",
     description:
-      "Fixed-scope pricing on a single page. Changes go through a written change-order — no surprises.",
+      "Fixed-scope pricing on a single page. Changes go through a written change-order. No surprises.",
     span: 1,
     type: "GRADIENT",
   },

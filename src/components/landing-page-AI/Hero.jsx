@@ -108,7 +108,7 @@ const Hero = () => {
             </p>
             {/* Main headline */}
             <h1 className="fb-ai-hero-title fb-hero-title leading-[1.15]">
-              Production AI that cuts manual work — shipped in weeks, not
+              Production AI that cuts manual work. Shipped in weeks, not
               quarters.
             </h1>
 

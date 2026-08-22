@@ -17,7 +17,7 @@ export const SITE_URL = "https://www.futurebits.tech";
 export const COMPANY = {
   name: "Futurebits",
   legalName: "Futurebits Technologies",
-  tagline: "Design, AI, and automation — built by one team.",
+  tagline: "Design, AI, and automation. Built by one team.",
   email: "admin@futurebits.tech",
   phone: "+971585165671",
   founderName: "Futurebits Team",
@@ -86,9 +86,9 @@ export const ROUTES = {
   ai: {
     path: "/ai",
     cta: CAL.ai,
-    title: "Production AI for ops, support, and product teams — Futurebits",
+    title: "Production AI for ops, support, and product teams | Futurebits",
     description:
-      "Futurebits ships production AI — retrieval, agents, automations, evals — for ops, support, and product teams. One small team. First useful automation in 2–3 weeks.",
+      "Futurebits ships production AI: retrieval, agents, automations, and evals for ops, support, and product teams. One small team. First useful automation in 2–3 weeks.",
     keywords: [
       "AI automation agency",
       "AI chatbots",
@@ -106,7 +106,7 @@ export const ROUTES = {
   markets: {
     path: "/markets",
     cta: CAL.markets,
-    title: "Trading and risk infrastructure built to last — Futurebits Markets",
+    title: "Trading and risk infrastructure built to last | Futurebits Markets",
     description:
       "Futurebits builds execution, analytics, and risk systems for funds, prop firms, and serious traders. Event-driven backtests, paper-and-shadow, runbooks, kill-switches.",
     keywords: [
@@ -123,9 +123,9 @@ export const ROUTES = {
   design: {
     path: "/design",
     cta: CAL.design,
-    title: "Product design plus frontend that ships in your repo — Futurebits Design",
+    title: "Product design plus frontend that ships in your repo | Futurebits Design",
     description:
-      "Futurebits pairs product design with frontend engineering in one small team. Sprints and pods that move activation, conversion, and retention — with code in your repo.",
+      "Futurebits pairs product design with frontend engineering in one small team. Sprints and pods that move activation, conversion, and retention, with code in your repo.",
     keywords: [
       "UI UX design",
       "UX audit",
