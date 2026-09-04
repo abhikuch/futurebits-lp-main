@@ -51,9 +51,10 @@ export default function ServicesHubPage() {
             Build, design, and AI. Scoped in writing, shipped in your repo.
           </Heading>
           <p className="fb-page-hero-copy-enter mt-6 max-w-3xl text-lg text-white/70">
-            Six tracks, 90 services. Pick a category, read the scope, book a
-            30-minute call. We quote fixed windows: sprints, pods, or partner
-            retainers, with weekly demos and no account-manager layer.
+            Start from AI, Design, or Markets when you can. Category hubs
+            below exist if you already know the offering name. We quote fixed
+            windows: sprints, pods, or partner retainers, with weekly demos and
+            no account-manager layer.
           </p>
         </Container>
       </Section>

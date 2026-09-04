@@ -1,22 +1,44 @@
-"use client";
-
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
 import Particles from "@/components/ui/particles";
 import ImgHero from "@/assets/design/light.webp";
 import Hero from "@/components/design/hero";
-import PortfolioWrapper from "@/components/design/portfolio-wrapper";
-import Offering from "@/components/design/offering";
-import Benefits from "@/components/design/benefits";
-import IntroSection from "@/components/design/intro-section";
-import Footer from "@/components/design/Footer";
-import TestimonialsCarousel from "@/components/design/TestimonialCarousel";
-import POVStrip from "@/components/shared/POVStrip";
-import EngagementModels from "@/components/shared/EngagementModels";
 import FeaturedServiceLinks from "@/components/shared/FeaturedServiceLinks";
-import FAQSection from "@/components/shared/FAQSection";
 import ProofBand from "@/components/shared/ProofBand";
 import { CAL } from "@/config/site";
 import LazyMount from "@/components/ui/lazy-mount";
+
+const PortfolioWrapper = dynamic(
+  () => import("@/components/design/portfolio-wrapper"),
+  { loading: () => <div className="min-h-[24rem] w-full" aria-hidden /> }
+);
+const Offering = dynamic(() => import("@/components/design/offering"), {
+  loading: () => <div className="min-h-[24rem] w-full" aria-hidden />,
+});
+const Benefits = dynamic(() => import("@/components/design/benefits"), {
+  loading: () => <div className="min-h-[18rem] w-full" aria-hidden />,
+});
+const POVStrip = dynamic(() => import("@/components/shared/POVStrip"), {
+  loading: () => <div className="min-h-[8rem] w-full" aria-hidden />,
+});
+const TestimonialsCarousel = dynamic(
+  () => import("@/components/design/TestimonialCarousel"),
+  { loading: () => <div className="min-h-[20rem] w-full" aria-hidden /> }
+);
+const EngagementModels = dynamic(
+  () => import("@/components/shared/EngagementModels"),
+  { loading: () => <div className="min-h-[18rem] w-full" aria-hidden /> }
+);
+const FAQSection = dynamic(() => import("@/components/shared/FAQSection"), {
+  loading: () => <div className="min-h-[16rem] w-full" aria-hidden />,
+});
+const IntroSection = dynamic(() => import("@/components/design/intro-section"), {
+  loading: () => <div className="min-h-[16rem] w-full" aria-hidden />,
+});
+const Footer = dynamic(() => import("@/components/design/Footer"), {
+  loading: () => <div className="min-h-[12rem] w-full" aria-hidden />,
+});
 
 export default function DesignPage() {
   return (

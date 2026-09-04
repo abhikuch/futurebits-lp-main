@@ -14,6 +14,13 @@ import { buildCalUrl } from "@/lib/cal";
 
 export const SITE_URL = "https://www.futurebits.tech";
 
+/**
+ * Stable content revision date for sitemap lastmod.
+ * Bump this when indexed copy or route inventory changes.
+ * Never use `new Date()` in the sitemap — crawlers treat that as a full-site rewrite.
+ */
+export const CONTENT_UPDATED_AT = "2026-09-04";
+
 export const COMPANY = {
   name: "Futurebits",
   legalName: "Futurebits Technologies",

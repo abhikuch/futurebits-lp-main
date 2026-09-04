@@ -531,7 +531,7 @@ export function articleJsonLd(post) {
     description: post.description,
     url: pageUrl(path),
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
     author: {
       "@type": "Organization",
       "@id": ORGANIZATION_ID,

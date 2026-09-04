@@ -5,7 +5,7 @@ import TopNavbar from "@/components/shared/TopNavbar";
 import SiteFooter from "@/components/shared/SiteFooter";
 import FeaturedServiceLinks from "@/components/shared/FeaturedServiceLinks";
 import logo from "@/assets/logo.svg";
-import { buildRouteMetadata, COMPANY, ROUTES, SITE_URL } from "@/config/site";
+import { buildRouteMetadata, CAL, COMPANY, ROUTES, SITE_URL } from "@/config/site";
 import { SERVICE_CATEGORIES } from "@/content/services";
 import {
   getCategoryTheme,
@@ -44,28 +44,30 @@ export default function HomePage() {
             <p className="fb-kicker fb-page-hero-enter">{COMPANY.name}</p>
             <h1 className="mt-6 max-w-4xl fb-hero-title fb-page-hero-enter">{COMPANY.tagline}</h1>
             <p className="mt-6 max-w-2xl text-lg text-white/70 fb-page-hero-copy-enter">
-              One small team across AI automation, product design, software
-              development, and trading infrastructure. Pick your track, or
-              browse every service we ship.
+              One small team across AI automation, product design, and trading
+              infrastructure. Pick your track first. Category pages exist if you
+              already know the offering name.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
-                href={ROUTES.services.path}
+                href={CAL.ai}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-11 items-center justify-center rounded-full border border-white/30 bg-white/[0.06] px-6 text-sm font-medium text-white transition hover:bg-white/10"
               >
-                Browse all services
+                Book a call
               </Link>
               <Link
-                href={ROUTES.contact.path}
+                href="#tracks"
                 className="inline-flex h-11 items-center justify-center rounded-full border border-white/20 px-6 text-sm font-medium text-white/90 transition hover:bg-white/10"
               >
-                Contact us
+                See the tracks
               </Link>
             </div>
           </div>
         </section>
 
-        <section className="py-12">
+        <section id="tracks" className="py-12">
           <div className="mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-16">
             <h2 className="fb-h2">Choose your track</h2>
             <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -104,8 +106,7 @@ export default function HomePage() {
         </section>
 
         <FeaturedServiceLinks
-          title="Top services across AI, design, and build"
-          viewAllHref="/services"
+          title="Work we take on most often"
           services={[
             { categorySlug: "ai-automation", serviceSlug: "chatbot-development" },
             { categorySlug: "design", serviceSlug: "website-ux-audit" },
@@ -123,9 +124,10 @@ export default function HomePage() {
 
         <section className="py-12">
           <div className="mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-16">
-            <h2 className="fb-h2">Service categories</h2>
+            <h2 className="fb-h2">Already know the offering?</h2>
             <p className="mt-4 max-w-3xl text-white/70">
-              {ROUTES.services.description}
+              Start from a track when you can. These category hubs exist for a
+              specific service name, not as the front door.
             </p>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {SERVICE_CATEGORIES.map((category) => (
@@ -166,9 +168,9 @@ export default function HomePage() {
               conversation and ends with merged code, not a handoff deck.
             </p>
             <p className="mt-4 leading-relaxed">
-              Browse the AI, design, or markets vertical for proof and service
-              detail, use the services catalog for specific offerings, or contact
-              us with your timeline and success metric.
+              Start on the AI, design, or markets track for proof and service
+              detail. Book a call with your timeline and success metric when you
+              are ready to scope.
             </p>
           </div>
         </article>

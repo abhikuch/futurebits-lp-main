@@ -19,6 +19,7 @@ import {
   getRelatedServices,
   getServiceBySlugs,
   getServiceFaq,
+  getServiceIndexPolicy,
   SERVICES,
 } from "@/content/services";
 import { lintText } from "@/content/content-voice";
@@ -189,10 +190,7 @@ export function generateMetadata({ params }) {
       description: service.metaDescription,
       images: [ogImage],
     },
-    robots: {
-      index: true,
-      follow: true,
-    },
+    robots: getServiceIndexPolicy(service),
   };
 }
 
