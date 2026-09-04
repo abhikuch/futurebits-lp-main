@@ -32,7 +32,7 @@ export default function PrivacyPolicyPage() {
           <p className="fb-hero-copy fb-page-hero-copy-enter mt-4">
             Your trust matters. Here's how we protect your data.
           </p>
-          <p className="mt-2 text-sm text-white/45">Last updated: January 2026</p>
+          <p className="mt-2 text-sm text-white/45">Last updated: September 2026</p>
           </PrivacyPolicyHero>
         </Container>
       </Section>
@@ -62,7 +62,12 @@ export default function PrivacyPolicyPage() {
               </li>
               <li>
                 <strong>Usage Data:</strong> IP address, browser type, device
-                information, and pages visited.
+                information, and pages visited — via hosting logs, and via
+                Google Analytics only after you accept analytics cookies.
+              </li>
+              <li>
+                <strong>Consent preference:</strong> your accept/reject choice
+                for analytics, stored in your browser (localStorage).
               </li>
             </ul>
           </PrivacyPolicyCard>
@@ -80,9 +85,14 @@ export default function PrivacyPolicyPage() {
 
           <PrivacyPolicyCard title="4. Cookies & Tracking">
             <p>
-              We may use cookies or similar technologies to analyze traffic and
-              improve user experience. You can disable cookies through your
-              browser settings at any time.
+              Analytics cookies are off until you accept them. If you accept,
+              we load Google Analytics 4 (measurement ID configured in our site
+              settings) with IP anonymization. We do not use advertising cookies.
+            </p>
+            <p className="mt-3">
+              Global Privacy Control and Do Not Track signals are treated as a
+              refusal. You can change your choice at any time via Cookie
+              settings in the footer.
             </p>
           </PrivacyPolicyCard>
 
@@ -95,10 +105,33 @@ export default function PrivacyPolicyPage() {
           </PrivacyPolicyCard>
 
           <PrivacyPolicyCard title="6. Third-Party Services">
-            <p>
-              We may use trusted third-party tools (such as analytics or
-              scheduling services). These providers process limited data under
-              their own privacy policies.
+            <ul className="list-disc space-y-2 pl-5">
+              <li>
+                <strong>Google Analytics 4</strong> — only after you accept
+                analytics cookies. Used to understand which pages and booking
+                links are used.
+              </li>
+              <li>
+                <strong>Cal.com</strong> — scheduling. If you book a call, Cal.com
+                processes your name, email, and meeting details under their
+                privacy policy.
+              </li>
+              <li>
+                <strong>Resend</strong> — transactional email so we can receive
+                and reply to contact-form inquiries.
+              </li>
+              <li>
+                <strong>Slack</strong> — optional internal alert when a contact
+                form is submitted, so the team sees it quickly.
+              </li>
+              <li>
+                <strong>Vercel</strong> — hosts this website. Standard request
+                logs may include IP address and user agent.
+              </li>
+            </ul>
+            <p className="mt-4">
+              These providers process limited data under their own privacy
+              policies. We do not sell or rent your personal information.
             </p>
           </PrivacyPolicyCard>
 

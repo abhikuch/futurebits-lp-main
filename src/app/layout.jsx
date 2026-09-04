@@ -1,6 +1,7 @@
 import { Montserrat, Poppins } from "next/font/google";
 
 import Analytics from "@/components/analytics/Analytics";
+import ConsentBanner from "@/components/analytics/ConsentBanner";
 import JsonLd, {
   organizationJsonLd,
   siteNavigationJsonLd,
@@ -100,12 +101,13 @@ export default function RootLayout({ children }) {
         <link rel="me" href="https://www.behance.net/futurebits" />
         <link rel="me" href="https://dribbble.com/futurebits" />
       </head>
-      <body className="antialiased font-poppins select-none">
+      <body className="antialiased font-poppins">
         <a className="sr-only-focusable" href="#main-content">
           Skip to content
         </a>
         <JsonLd data={[organizationJsonLd(), websiteJsonLd(), siteNavigationJsonLd()]} />
         {children}
+        <ConsentBanner />
         <Analytics />
       </body>
     </html>

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FaBehance, FaDribbble, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { MdOutlineEmail } from "react-icons/md";
 import { COMPANY, NAV_ITEMS, ROUTES, SOCIAL } from "@/config/site";
+import { openConsentBanner } from "@/lib/analytics-consent";
 
 const YEAR = new Date().getFullYear();
 
@@ -139,6 +140,15 @@ export default function SiteFooter({
                   </Link>
                 </li>
               ))}
+              <li>
+                <button
+                  type="button"
+                  onClick={openConsentBanner}
+                  className="transition hover:text-white"
+                >
+                  Cookie settings
+                </button>
+              </li>
             </ul>
           </div>
         </div>

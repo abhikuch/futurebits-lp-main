@@ -1,14 +1,37 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Script from "next/script";
 
 import { ANALYTICS } from "@/config/site";
+import {
+  ANALYTICS_CONSENT_EVENT,
+  prefersNoTracking,
+  readStoredConsent,
+} from "@/lib/analytics-consent";
 
 /**
- * Google Analytics gtag.js loaded with `lazyOnload` so it never blocks
- * page interactivity. Tracks Cal.com booking link clicks site-wide.
+ * Google Analytics loads only after explicit consent (or never, if DNT/GPC).
  */
 export default function Analytics() {
   const id = ANALYTICS.gaMeasurementId;
-  if (!id) return null;
+  const [allowed, setAllowed] = useState(false);
+
+  useEffect(() => {
+    const sync = () => {
+      if (prefersNoTracking()) {
+        setAllowed(false);
+        return;
+      }
+      setAllowed(readStoredConsent() === "granted");
+    };
+    sync();
+    window.addEventListener(ANALYTICS_CONSENT_EVENT, sync);
+    return () => window.removeEventListener(ANALYTICS_CONSENT_EVENT, sync);
+  }, []);
+
+  if (!id || !allowed) return null;
+
   return (
     <>
       <Script
@@ -20,6 +43,12 @@ export default function Analytics() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
+          gtag('consent', 'update', {
+            analytics_storage: 'granted',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied'
+          });
           gtag('config', '${id}', { anonymize_ip: true });
 
           document.addEventListener('click', function(e) {

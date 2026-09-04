@@ -44,7 +44,7 @@ export default function ContactForm() {
         <h2 className="font-montserrat text-2xl font-semibold">Got it.</h2>
         <p className="mt-3 text-sm leading-relaxed">
           {state.message ||
-            "Thanks. Your message is in. We'll reply within four working hours."}
+            "Thanks. Your message is in. We'll reply within one business day."}
         </p>
       </div>
     );
@@ -59,6 +59,11 @@ export default function ContactForm() {
       noValidate
       aria-label="Project inquiry form"
     >
+      {state.message && !state.ok ? (
+        <p className="rounded-xl border border-red-300/30 bg-red-400/10 p-4 text-sm text-red-100" role="alert">
+          {state.message}
+        </p>
+      ) : null}
       <input
         type="text"
         name="website"
