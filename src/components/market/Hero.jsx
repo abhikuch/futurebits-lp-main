@@ -1,10 +1,14 @@
 import React from "react";
-
+import dynamic from "next/dynamic";
 import Link from "next/link";
 
 import ShimmerButton from "./ShimerButton";
-import WavyBackground from "./WavyBackground";
 import { ROUTES } from "@/config/site";
+
+const WavyBackground = dynamic(() => import("./WavyBackground"), {
+  ssr: false,
+  loading: () => <div className="h-full w-full" aria-hidden />,
+});
 
 const Hero = () => {
   return (
