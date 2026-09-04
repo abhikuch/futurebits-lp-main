@@ -39,7 +39,7 @@ export const SERVICE_CATEGORIES = [
     description:
       "Software engineering in your repo: SaaS, internal tools, dashboards, Excel automation, and legacy modernization with written scope and weekly demos.",
     ctaLabel: "Book a call",
-    ctaHref: CAL.ai,
+    ctaHref: CAL.build,
   },
   {
     slug: "ai-automation",
@@ -84,7 +84,7 @@ export const SERVICE_CATEGORIES = [
     description:
       "Founder tech partner, MVP scope, product strategy, and idea-to-launch pods. One small team, no equity-only deals.",
     ctaLabel: "Book a call",
-    ctaHref: CAL.ai,
+    ctaHref: CAL.startup,
   },
 ];
 

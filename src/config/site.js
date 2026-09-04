@@ -49,6 +49,14 @@ export const CAL = {
     medium: "cta",
     campaign: "design-vertical",
   }),
+  build: buildCalUrl("https://cal.com/futurebits/build?duration=30", {
+    medium: "cta",
+    campaign: "build-vertical",
+  }),
+  startup: buildCalUrl("https://cal.com/futurebits/build?duration=30", {
+    medium: "cta",
+    campaign: "startup-tech-partner",
+  }),
 };
 
 const BLOB_BASE = "https://67uizwknbuzxqhet.public.blob.vercel-storage.com";

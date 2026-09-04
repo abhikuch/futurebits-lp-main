@@ -98,6 +98,13 @@ export function getCalLinkForPath(pathname) {
     return CAL.markets;
   }
 
+  if (pathname.includes("/services/build")) {
+    return CAL.build;
+  }
+  if (pathname.includes("/services/startup-tech-partner")) {
+    return CAL.startup;
+  }
+
   for (const slug of PLATFORM_CATEGORY_SLUGS) {
     if (pathname.includes(`/services/${slug}`)) {
       return CAL.ai;
