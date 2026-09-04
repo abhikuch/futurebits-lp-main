@@ -5,8 +5,13 @@ import { motion } from "framer-motion";
 
 import quote from "@/assets/landing-page-AI/quote.svg";
 import star from "@/assets/design/star.svg";
+import { assertNever } from "@/lib/assert-never";
 import { MOTION, MOTION_VARIANTS } from "@/lib/motion-tokens";
 import { TESTIMONIALS } from "./testimonialsData";
+
+/**
+ * @typedef {import("@/lib/content-types").VerticalKey} VerticalKey
+ */
 
 const THEME = {
   ai: {
@@ -153,8 +158,22 @@ function BentoCard({
   );
 }
 
+/**
+ * @param {VerticalKey} theme
+ */
+function resolveTestimonialTheme(theme) {
+  switch (theme) {
+    case "ai":
+    case "design":
+    case "markets":
+      return THEME[theme];
+    default:
+      return assertNever(theme);
+  }
+}
+
 export default function TestimonialSection({ theme = "ai", cta }) {
-  const currentTheme = THEME[theme] ?? THEME.ai;
+  const currentTheme = resolveTestimonialTheme(theme);
   const sequenced = sequenceTestimonials(TESTIMONIALS);
   const hero = sequenced[0];
   const support = sequenced.slice(1, 4);

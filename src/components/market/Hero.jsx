@@ -3,9 +3,9 @@ import React from "react";
 
 import Link from "next/link";
 
-import ShimmerButton from "./ShimerButton";
+import MarketingButton from "@/components/ui/marketing-button";
 import WavyBackground from "./WavyBackground";
-import { ROUTES } from "@/config/site";
+import { CAL, ROUTES } from "@/config/site";
 
 const Hero = () => {
   return (
@@ -53,17 +53,18 @@ const Hero = () => {
               Talk to the team
             </Link>
             <Link
-              href="https://cal.com/futurebits/markets?duration=30"
+              href={CAL.markets}
               target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto"
             >
-              <ShimmerButton
+              <MarketingButton
+                tone="markets"
                 size="lg"
-                href="/book-call"
                 className="w-full text-base sm:text-lg"
               >
                 Book a call
-              </ShimmerButton>
+              </MarketingButton>
             </Link>
           </div>
         </div>

@@ -8,7 +8,7 @@ import aiConsultingIcon from "@/assets/landing-page-AI/ai-consulting-demo.webp";
 import circle from "@/assets/landing-page-AI/circle.webp";
 import patternImage from "@/assets/landing-page-AI/pattern.webp";
 
-import BeamButton from "./BeamButton";
+import MarketingButton from "@/components/ui/marketing-button";
 
 import stars from "@/assets/landing-page-AI/stars.webp";
 import Link from "next/link";
@@ -262,7 +262,7 @@ const ServicesSection = () => {
           className=" "
         >
           <div className="w-full flex items-center justify-center mt-16 ">
-            <BeamButton title="Book a call" className="w-[300px]" />
+            <MarketingButton tone="ai" title="Book a call" className="w-[300px]" />
           </div>
         </Link>
         </MotionFadeIn>

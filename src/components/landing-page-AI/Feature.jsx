@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import logo from "@/assets/landing-page-AI/logo.svg";
-import BeamButton from "./BeamButton";
+import MarketingButton from "@/components/ui/marketing-button";
 import Link from "next/link";
 import { MotionFadeIn } from "@/components/shared/MotionReveal";
 
@@ -43,7 +43,8 @@ export default function Feature() {
             target="_blank"
             className=" "
           >
-            <BeamButton
+            <MarketingButton
+              tone="ai"
               title="Book a call"
               className="w-[250px] sm:w-[220px]"
             />

@@ -8,11 +8,32 @@ import { FAQ } from "@/content/inline-modules";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Section from "@/components/ui/section";
+import { assertNever } from "@/lib/assert-never";
 import {
   MotionFadeIn,
   MotionStagger,
   MotionStaggerItem,
 } from "./MotionReveal";
+
+/**
+ * @typedef {import("@/lib/content-types").VerticalKey} VerticalKey
+ */
+
+/**
+ * @param {VerticalKey} vertical
+ */
+function faqPathForVertical(vertical) {
+  switch (vertical) {
+    case "ai":
+      return ROUTES.ai.path;
+    case "design":
+      return ROUTES.design.path;
+    case "markets":
+      return ROUTES.markets.path;
+    default:
+      return assertNever(vertical);
+  }
+}
 
 /**
  * FAQ band with native `<details>` disclosure and scroll reveals.
@@ -21,12 +42,7 @@ export default function FAQSection({ vertical, contactHref = "/contact" }) {
   const items = FAQ[vertical];
   if (!items || items.length === 0) return null;
 
-  const faqPathByVertical = {
-    ai: ROUTES.ai.path,
-    design: ROUTES.design.path,
-    markets: ROUTES.markets.path,
-  };
-  const faqPath = faqPathByVertical[vertical];
+  const faqPath = faqPathForVertical(vertical);
 
   return (
     <Section

@@ -44,7 +44,7 @@ export default function ContactForm() {
         <h2 className="font-montserrat text-2xl font-semibold">Got it.</h2>
         <p className="mt-3 text-sm leading-relaxed">
           {state.message ||
-            "Thanks. Your message is in. We'll reply within four working hours."}
+            "Thanks. Your message is in. We'll reply within one business day."}
         </p>
       </div>
     );

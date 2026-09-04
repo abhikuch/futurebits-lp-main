@@ -1,13 +1,34 @@
+/**
+ * @typedef {import("@/lib/content-types").ThemeKey} ThemeKey
+ * @typedef {import("@/lib/content-types").CategorySlug} CategorySlug
+ */
+
+/** @type {ReadonlySet<CategorySlug>} */
 export const PLATFORM_CATEGORY_SLUGS = new Set([
   "build",
   "integrations-platform",
   "startup-tech-partner",
 ]);
 
-/** Maps service category slugs to a visual theme key. */
+/** @type {readonly ThemeKey[]} */
+export const THEME_KEYS = [
+  "ai-automation",
+  "design",
+  "markets-trading",
+  "platform",
+  "neutral",
+];
+
+/**
+ * Maps service category slugs to a visual theme key.
+ * @param {string | null | undefined} categorySlug
+ * @returns {ThemeKey}
+ */
 export function resolveCategoryThemeSlug(categorySlug) {
   if (PLATFORM_CATEGORY_SLUGS.has(categorySlug)) return "platform";
-  if (categorySlug in CATEGORY_VISUAL_THEME) return categorySlug;
+  if (categorySlug in CATEGORY_VISUAL_THEME) {
+    return /** @type {ThemeKey} */ (categorySlug);
+  }
   return "neutral";
 }
 

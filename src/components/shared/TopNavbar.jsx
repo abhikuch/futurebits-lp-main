@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { HiBars3 } from "react-icons/hi2";
+import { Menu } from "lucide-react";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "@/assets/logo.svg";
 import { NAV_ITEMS, ROUTES } from "@/config/site";
@@ -25,12 +25,12 @@ function MobileNav({ pathname }) {
   return (
     <Sheet>
       <SheetTrigger aria-label="Open menu">
-        <HiBars3 className="h-8 w-8 text-white" />
+        <Menu className="h-8 w-8 text-white" aria-hidden />
       </SheetTrigger>
       <SheetContent side="left" className="border-gray-800 bg-black/95 p-0 text-white">
         <div className="mt-6 flex flex-col gap-5">
           <div className="px-5">
-            <Link href={ROUTES.ai.path} aria-label="Futurebits home">
+            <Link href={ROUTES.home.path} aria-label="Futurebits home">
               <Image
                 src={logo}
                 alt="Futurebits logo"
@@ -94,7 +94,7 @@ export default function TopNavbar() {
               <div className="flex lg:hidden">
                 <MobileNav pathname={pathname} />
               </div>
-              <Link href={ROUTES.ai.path} aria-label="Futurebits home">
+              <Link href={ROUTES.home.path} aria-label="Futurebits home">
                 <Image
                   src={logo}
                   alt="Futurebits logo"

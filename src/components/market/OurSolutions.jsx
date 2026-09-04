@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
-import ShimerButton from "./ShimerButton";
+import MarketingButton from "@/components/ui/marketing-button";
+import { CAL } from "@/config/site";
 import Link from "next/link";
 import { SERVICE_CATEGORIES, getServiceBySlugs } from "@/content/services";
 import {
@@ -214,12 +215,12 @@ const OurSolutions = () => {
 
         {/* Book a Call Button */}
         <MotionFadeIn delay={0.08} className="mt-10 flex justify-center sm:mt-16">
-          <Link href="https://cal.com/futurebits/markets?duration=30" target="_blank" className="">
+          <Link href={CAL.markets} target="_blank" rel="noopener noreferrer" className="">
             <div className="flex justify-center items-center">
               <div className="relative">
-                <ShimerButton size="lg" href="/book-call" className="text-base sm:text-[20px]">
+                <MarketingButton tone="markets" size="lg" className="text-base sm:text-[20px]">
                   Book a call
-                </ShimerButton>
+                </MarketingButton>
               </div>
             </div>
           </Link>

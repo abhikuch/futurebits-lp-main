@@ -41,7 +41,7 @@ const stats = [
   { label: "Engagements run end-to-end", value: "12+" },
   { label: "AI systems in production", value: "20+" },
   { label: "Trading systems live", value: "30+" },
-  { label: "Years operating", value: "5+" },
+  { label: "Operating since", value: COMPANY.founded },
 ];
 
 export default function AboutPage() {

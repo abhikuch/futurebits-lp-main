@@ -8,8 +8,10 @@ import PortfolioWrapper from "@/components/design/portfolio-wrapper";
 import Offering from "@/components/design/offering";
 import Benefits from "@/components/design/benefits";
 import IntroSection from "@/components/design/intro-section";
-import Footer from "@/components/design/Footer";
-import TestimonialsCarousel from "@/components/design/TestimonialCarousel";
+import SiteFooter from "@/components/shared/SiteFooter";
+import TestimonialSection from "@/components/shared/TestimonialSection";
+import MarketingButton from "@/components/ui/marketing-button";
+import logo from "@/assets/logo.svg";
 import POVStrip from "@/components/shared/POVStrip";
 import EngagementModels from "@/components/shared/EngagementModels";
 import FeaturedServiceLinks from "@/components/shared/FeaturedServiceLinks";
@@ -95,7 +97,14 @@ export default function DesignPage() {
       <POVStrip vertical="design" accent="#01B0EA" />
 
       <div className="w-full py-8 sm:py-10 fb-section">
-        <TestimonialsCarousel />
+        <TestimonialSection
+          theme="design"
+          cta={
+            <a href={CAL.design} target="_blank" rel="noopener noreferrer">
+              <MarketingButton tone="design" title="Book a call" />
+            </a>
+          }
+        />
       </div>
 
       <EngagementModels ctaHref={CAL.design} ctaLabel="Book a call" />
@@ -106,7 +115,7 @@ export default function DesignPage() {
         <IntroSection />
       </div>
 
-      <Footer />
+      <SiteFooter logo={logo} backgroundClassName="bg-[#08081E]" />
     </section>
   );
 }

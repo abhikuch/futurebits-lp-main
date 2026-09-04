@@ -1,14 +1,16 @@
 "use client";
 
-import Navbar from "@/components/market/Navbar";
 import BenefitsSection from "@/components/market/Benefits";
-import Footer from "@/components/market/Footer";
 import FooterCTA from "@/components/market/FooterCTA";
 import Hero from "@/components/market/Hero";
 import OurSolutions from "@/components/market/OurSolutions";
 import SupportedBroker from "@/components/market/SupportedBroker";
 import WhyUs from "@/components/market/WhyUs";
-import Testimonials from "@/components/market/Testimonials";
+import SiteFooter from "@/components/shared/SiteFooter";
+import TestimonialSection from "@/components/shared/TestimonialSection";
+import TopNavbar from "@/components/shared/TopNavbar";
+import MarketingButton from "@/components/ui/marketing-button";
+import logo from "@/assets/logo.svg";
 import POVStrip from "@/components/shared/POVStrip";
 import EngagementModels from "@/components/shared/EngagementModels";
 import FeaturedServiceLinks from "@/components/shared/FeaturedServiceLinks";
@@ -20,7 +22,7 @@ const MarketPage = () => {
   return (
     <div className="bg-[#080808] ">
       <main id="main-content" className="relative bg-[#080808]">
-        <Navbar />
+        <TopNavbar />
         <Hero />
       </main>
       <ProofBand vertical="markets" ctaHref={CAL.markets} ctaLabel="Book a call" />
@@ -49,7 +51,20 @@ const MarketPage = () => {
       <POVStrip vertical="markets" accent="#01B0EA" />
 
       <div className="fb-section">
-        <Testimonials />
+        <TestimonialSection
+          theme="markets"
+          cta={
+            <a href={CAL.markets} target="_blank" rel="noopener noreferrer">
+              <MarketingButton
+                tone="markets"
+                size="lg"
+                className="text-base sm:text-[20px]"
+              >
+                Book a call
+              </MarketingButton>
+            </a>
+          }
+        />
       </div>
       <div className="fb-section">
         <BenefitsSection />
@@ -62,7 +77,7 @@ const MarketPage = () => {
       <div className="fb-section">
         <FooterCTA />
       </div>
-      <Footer />
+      <SiteFooter logo={logo} backgroundClassName="bg-transparent" />
     </div>
   );
 };

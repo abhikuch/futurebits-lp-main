@@ -5,7 +5,8 @@ import UsMarket from "@/assets/market/US Markets.svg";
 import Forex from "@/assets/market/Forex.svg";
 import Crypto from "@/assets/market/Crypto.svg";
 import Image from "next/image";
-import ShimerButton from "./ShimerButton";
+import MarketingButton from "@/components/ui/marketing-button";
+import { CAL } from "@/config/site";
 import Link from "next/link";
 import {
   MotionFadeIn,
@@ -187,12 +188,12 @@ const SupportedBroker = () => {
         </MotionStagger>
 
         <MotionFadeIn delay={0.08} className="mx-auto mt-10 flex justify-center sm:mt-16">
-          <Link href="https://cal.com/futurebits/markets?duration=30" target="_blank" className="">
+          <Link href={CAL.markets} target="_blank" rel="noopener noreferrer" className="">
             <div className="flex justify-center items-center">
               <div className="relative">
-                <ShimerButton size="lg" href="/book-call" className="text-[20px]">
+                <MarketingButton tone="markets" size="lg" className="text-[20px]">
                   Book a call
-                </ShimerButton>
+                </MarketingButton>
               </div>
             </div>
           </Link>

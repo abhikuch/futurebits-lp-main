@@ -5,10 +5,11 @@ import TopNavbar from "@/components/shared/TopNavbar";
 import SiteFooter from "@/components/shared/SiteFooter";
 import FeaturedServiceLinks from "@/components/shared/FeaturedServiceLinks";
 import logo from "@/assets/logo.svg";
-import { buildRouteMetadata, COMPANY, ROUTES, SITE_URL } from "@/config/site";
+import { buildRouteMetadata, CAL, COMPANY, ROUTES, SITE_URL } from "@/config/site";
 import { SERVICE_CATEGORIES } from "@/content/services";
 import {
   getCategoryTheme,
+  getThemeKeyForCategorySlug,
   getTopicAccentTextClass,
 } from "@/lib/page-theme";
 
@@ -50,16 +51,18 @@ export default function HomePage() {
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
-                href={ROUTES.services.path}
+                href={CAL.ai}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-11 items-center justify-center rounded-full border border-white/30 bg-white/[0.06] px-6 text-sm font-medium text-white transition hover:bg-white/10"
               >
-                Browse all services
+                Book a call
               </Link>
               <Link
-                href={ROUTES.contact.path}
+                href={ROUTES.services.path}
                 className="inline-flex h-11 items-center justify-center rounded-full border border-white/20 px-6 text-sm font-medium text-white/90 transition hover:bg-white/10"
               >
-                Contact us
+                Browse all services
               </Link>
             </div>
           </div>
@@ -71,7 +74,9 @@ export default function HomePage() {
             <div className="mt-8 grid gap-4 md:grid-cols-3">
               {VERTICALS.map(({ route, categorySlug }) => {
                 const categoryTheme = getCategoryTheme(categorySlug);
-                const accentClass = getTopicAccentTextClass(categorySlug);
+                const accentClass = getTopicAccentTextClass(
+                  getThemeKeyForCategorySlug(categorySlug)
+                );
                 const label =
                   route.shortLabel ??
                   route.ogImageAlt.replace("Futurebits ", "");

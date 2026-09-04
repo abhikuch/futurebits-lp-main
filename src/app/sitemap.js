@@ -30,6 +30,17 @@ const CHANGE_FREQ = {
   privacy: "yearly",
 };
 
+/**
+ * Service detail URLs that should appear in the sitemap.
+ * Thin / non-priority catalog pages stay crawlable via category hubs
+ * but are excluded here to avoid diluting the index.
+ *
+ * @param {typeof SERVICES} [services]
+ */
+export function getIndexedServiceDetails(services = SERVICES) {
+  return services.filter((service) => service.isPriority);
+}
+
 export default function sitemap() {
   const lastModified = new Date();
 
@@ -47,11 +58,11 @@ export default function sitemap() {
     priority: 0.7,
   }));
 
-  const serviceDetails = SERVICES.map((service) => ({
+  const serviceDetails = getIndexedServiceDetails().map((service) => ({
     url: `${SITE_URL}${service.path}`,
     lastModified,
     changeFrequency: "monthly",
-    priority: service.isPriority ? 0.7 : 0.55,
+    priority: 0.7,
   }));
 
   const blogPosts = BLOG_POSTS.map((post) => ({

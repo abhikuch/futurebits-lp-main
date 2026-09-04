@@ -1,11 +1,17 @@
 import { CAL } from "@/config/site";
 import { getBlogPost } from "@/content/blog";
+import { assertNever } from "@/lib/assert-never";
 import {
   CATEGORY_VISUAL_THEME,
   DEFAULT_CATEGORY_THEME,
   PLATFORM_CATEGORY_SLUGS,
   resolveCategoryThemeSlug,
 } from "@/app/services/themeTokens";
+
+/**
+ * @typedef {import("@/lib/content-types").ThemeKey} ThemeKey
+ * @typedef {import("@/lib/content-types").VerticalKey} VerticalKey
+ */
 
 /** Re-export for convenience */
 export { PLATFORM_CATEGORY_SLUGS, resolveCategoryThemeSlug };
@@ -19,11 +25,19 @@ export const TOPIC_TO_THEME_KEY = {
   Markets: "markets-trading",
 };
 
+/**
+ * @param {string | null | undefined} topic
+ * @returns {ThemeKey}
+ */
 export function getThemeKeyForTopic(topic) {
   if (!topic) return "neutral";
   return TOPIC_TO_THEME_KEY[topic] ?? "neutral";
 }
 
+/**
+ * @param {string | null | undefined} categorySlug
+ * @returns {ThemeKey}
+ */
 export function getThemeKeyForCategorySlug(categorySlug) {
   if (!categorySlug) return "neutral";
   return resolveCategoryThemeSlug(categorySlug);
@@ -35,6 +49,9 @@ export function getCategoryTheme(categorySlug) {
   return CATEGORY_VISUAL_THEME[key] ?? DEFAULT_CATEGORY_THEME;
 }
 
+/**
+ * @param {ThemeKey} themeKey
+ */
 export function getTopicAccentTextClass(themeKey) {
   switch (themeKey) {
     case "design":
@@ -45,11 +62,16 @@ export function getTopicAccentTextClass(themeKey) {
       return "text-[#F5B942]";
     case "ai-automation":
       return "text-[#01B0EA]";
-    default:
+    case "neutral":
       return "text-white/45";
+    default:
+      return assertNever(themeKey);
   }
 }
 
+/**
+ * @param {ThemeKey} themeKey
+ */
 export function getTopicCtaPanelClass(themeKey) {
   if (themeKey === "neutral" || !CATEGORY_VISUAL_THEME[themeKey]) {
     return "rounded-2xl border border-white/10 bg-white/[0.03] p-6";
@@ -68,6 +90,9 @@ export function getTopicCardClass(topicOrThemeKey) {
   return CATEGORY_VISUAL_THEME[key].serviceCardClass;
 }
 
+/**
+ * @param {ThemeKey} themeKey
+ */
 export function getCalLinkForThemeKey(themeKey) {
   switch (themeKey) {
     case "design":
@@ -75,10 +100,13 @@ export function getCalLinkForThemeKey(themeKey) {
     case "markets-trading":
       return CAL.markets;
     case "ai-automation":
-    case "platform":
-    case "neutral":
-    default:
       return CAL.ai;
+    case "platform":
+      return CAL.build;
+    case "neutral":
+      return CAL.ai;
+    default:
+      return assertNever(themeKey);
   }
 }
 

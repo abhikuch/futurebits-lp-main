@@ -3,9 +3,14 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaBehance, FaDribbble, FaLinkedin, FaXTwitter } from "react-icons/fa6";
-import { MdOutlineEmail } from "react-icons/md";
+import { Mail } from "lucide-react";
 import { COMPANY, NAV_ITEMS, ROUTES, SOCIAL } from "@/config/site";
+import {
+  IconBehance,
+  IconDribbble,
+  IconLinkedin,
+  IconX,
+} from "@/components/shared/SocialIcons";
 
 const YEAR = new Date().getFullYear();
 
@@ -27,7 +32,7 @@ const LEGAL_LINKS = [
 
 export default function SiteFooter({
   logo,
-  homePath = ROUTES.ai.path,
+  homePath = ROUTES.home.path,
   backgroundClassName = "bg-black",
 }) {
   return (
@@ -94,7 +99,7 @@ export default function SiteFooter({
                 className="text-white/75 transition hover:text-white"
                 aria-label="Futurebits on X"
               >
-                <FaXTwitter className="h-5 w-5" />
+                <IconX className="h-5 w-5" />
               </Link>
               <Link
                 href={SOCIAL.linkedin}
@@ -103,14 +108,14 @@ export default function SiteFooter({
                 className="text-white/75 transition hover:text-white"
                 aria-label="Futurebits on LinkedIn"
               >
-                <FaLinkedin className="h-5 w-5" />
+                <IconLinkedin className="h-5 w-5" />
               </Link>
               <Link
                 href={`mailto:${COMPANY.email}`}
                 className="text-white/75 transition hover:text-white"
                 aria-label="Email Futurebits"
               >
-                <MdOutlineEmail className="h-6 w-6" />
+                <Mail className="h-6 w-6" aria-hidden />
               </Link>
               <Link
                 href={SOCIAL.dribbble}
@@ -119,7 +124,7 @@ export default function SiteFooter({
                 className="text-white/75 transition hover:text-white"
                 aria-label="Futurebits on Dribbble"
               >
-                <FaDribbble className="h-5 w-5" />
+                <IconDribbble className="h-5 w-5" />
               </Link>
               <Link
                 href={SOCIAL.behance}
@@ -128,7 +133,7 @@ export default function SiteFooter({
                 className="text-white/75 transition hover:text-white"
                 aria-label="Futurebits on Behance"
               >
-                <FaBehance className="h-5 w-5" />
+                <IconBehance className="h-5 w-5" />
               </Link>
             </div>
             <ul className="mt-5 space-y-3 text-[13px] leading-6 text-white/70 sm:text-sm">
