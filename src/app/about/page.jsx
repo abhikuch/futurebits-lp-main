@@ -75,6 +75,10 @@ export default function AboutPage() {
             <Link href="/uae" className="underline underline-offset-4 hover:text-white">
               UAE delivery notes
             </Link>
+            {" · "}
+            <Link href="/gulf" className="underline underline-offset-4 hover:text-white">
+              Gulf country hubs
+            </Link>
             .
           </p>
 

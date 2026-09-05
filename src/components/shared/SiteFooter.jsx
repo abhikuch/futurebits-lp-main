@@ -19,7 +19,8 @@ const SERVICE_LINKS = [
 ];
 
 const LEGAL_LINKS = [
-  { label: "UAE & GCC", href: ROUTES.uae.path },
+  { label: "UAE", href: ROUTES.uae.path },
+  { label: "Gulf & GCC", href: ROUTES.gulf.path },
   { label: "Press & Media Kit", href: ROUTES.press.path },
   { label: "Free Resources", href: ROUTES.resources.path },
   { label: "Privacy Policy", href: ROUTES.privacy.path },

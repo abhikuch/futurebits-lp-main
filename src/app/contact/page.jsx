@@ -68,9 +68,13 @@ export default function ContactPage() {
               >
                 {COMPANY.phoneDisplay ?? COMPANY.phone}
               </a>
-              . Looking for a Dubai or Abu Dhabi engagement? See{" "}
+              . Looking for a Dubai, Abu Dhabi, or wider Gulf engagement? See{" "}
               <Link href="/uae" className="underline underline-offset-2 hover:text-white">
                 UAE delivery
+              </Link>
+              {" or "}
+              <Link href="/gulf" className="underline underline-offset-2 hover:text-white">
+                Gulf country hubs
               </Link>
               .
             </p>

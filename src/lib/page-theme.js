@@ -88,10 +88,6 @@ export function getCalLinkForThemeKey(themeKey) {
 export function getCalLinkForPath(pathname) {
   if (!pathname) return CAL.ai;
 
-  if (pathname === "/uae" || pathname.startsWith("/uae/")) {
-    return CAL.ai;
-  }
-
   if (pathname.startsWith("/design") || pathname.includes("/services/design")) {
     return CAL.design;
   }
@@ -115,7 +111,19 @@ export function getCalLinkForPath(pathname) {
     }
   }
 
-  if (pathname.startsWith("/services/ai-automation")) {
+  if (
+    pathname.startsWith("/services/ai-automation") ||
+    pathname.includes("/services/ai-automation")
+  ) {
+    return CAL.ai;
+  }
+
+  if (
+    pathname === "/uae" ||
+    pathname.startsWith("/uae/") ||
+    pathname === "/gulf" ||
+    pathname.startsWith("/gulf/")
+  ) {
     return CAL.ai;
   }
 

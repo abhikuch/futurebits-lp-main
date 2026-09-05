@@ -10,10 +10,12 @@ import Section from "@/components/ui/section";
 import logo from "@/assets/logo.svg";
 import {
   CATEGORY_VISUAL_THEME,
+  resolveCategoryThemeSlug,
   SERVICE_HUB_THEME,
   VERTICAL_DECOR_CLASSES,
 } from "@/app/services/themeTokens";
 import { COMPANY } from "@/config/site";
+import { GULF_COUNTRIES, GULF_PATHS } from "@/content/gulf";
 import { UAE } from "@/content/uae";
 import { buildCalUrl } from "@/lib/cal";
 import { getCalLinkForPath } from "@/lib/page-theme";
@@ -21,8 +23,14 @@ import aiCircle from "@/assets/landing-page-AI/circle.webp";
 import designDiamond from "@/assets/design/navbar.svg";
 import designLight from "@/assets/design/light.webp";
 
-function VerticalDecor({ themeKey }) {
-  if (themeKey === "ai-automation") {
+export function resolveGeoThemeKey(themeKey) {
+  if (themeKey === "neutral") return "neutral";
+  return resolveCategoryThemeSlug(themeKey);
+}
+
+export function GeoVerticalDecor({ themeKey }) {
+  const resolved = resolveGeoThemeKey(themeKey);
+  if (resolved === "ai-automation") {
     return (
       <>
         <div className={VERTICAL_DECOR_CLASSES.ai.glowLeft} />
@@ -34,11 +42,11 @@ function VerticalDecor({ themeKey }) {
     );
   }
 
-  if (themeKey === "markets-trading") {
+  if (resolved === "markets-trading") {
     return <div className={VERTICAL_DECOR_CLASSES.markets.glowLeft} />;
   }
 
-  if (themeKey === "design") {
+  if (resolved === "design") {
     return (
       <>
         <div className="pointer-events-none absolute left-1/2 top-[-120px] h-[520px] w-[920px] -translate-x-1/2 opacity-25">
@@ -54,11 +62,21 @@ function VerticalDecor({ themeKey }) {
     );
   }
 
+  if (resolved === "platform") {
+    return (
+      <>
+        <div className={VERTICAL_DECOR_CLASSES.platform.glowLeft} />
+        <div className={VERTICAL_DECOR_CLASSES.platform.glowRight} />
+      </>
+    );
+  }
+
   return <PageAccentGlow themeKey="neutral" />;
 }
 
-function themeClasses(themeKey) {
-  if (themeKey === "neutral") {
+export function geoThemeClasses(themeKey) {
+  const resolved = resolveGeoThemeKey(themeKey);
+  if (resolved === "neutral") {
     return {
       pageBg: SERVICE_HUB_THEME.pageBgClass,
       kicker: "fb-kicker",
@@ -70,7 +88,7 @@ function themeClasses(themeKey) {
     };
   }
 
-  const theme = CATEGORY_VISUAL_THEME[themeKey];
+  const theme = CATEGORY_VISUAL_THEME[resolved];
   return {
     pageBg: theme.pageBg,
     kicker: theme.kickerClass,
@@ -83,7 +101,7 @@ function themeClasses(themeKey) {
 }
 
 export default function UaeGeoPage({ page }) {
-  const visual = themeClasses(page.themeKey);
+  const visual = geoThemeClasses(page.themeKey);
   const calHref = buildCalUrl(getCalLinkForPath(page.path), {
     medium: "uae-page",
     campaign: `uae-${page.key}`,
@@ -102,7 +120,7 @@ export default function UaeGeoPage({ page }) {
       id="main-content"
       className={`relative min-h-screen overflow-hidden ${visual.pageBg} text-white`}
     >
-      <VerticalDecor themeKey={page.themeKey} />
+      <GeoVerticalDecor themeKey={page.themeKey} />
 
       <Section className="pb-10 pt-32 sm:pt-36">
         <Container className="max-w-5xl">
@@ -186,7 +204,7 @@ export default function UaeGeoPage({ page }) {
               AI, Markets, and Design keep their own visual systems. Pick the
               one that matches the work. The rest of the catalog is listed below.
             </p>
-            <div className="mt-6 grid gap-4 md:grid-cols-3">
+            <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {page.tracks.map((track) => (
                 <Link key={track.href} href={track.href} className={visual.card}>
                   <h3 className="font-montserrat text-base font-semibold">
@@ -194,6 +212,45 @@ export default function UaeGeoPage({ page }) {
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
                     {track.body}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      ) : null}
+
+      {page.key === "hub" ? (
+        <Section className="py-8 sm:py-12">
+          <Container className="max-w-5xl">
+            <Heading as="h2" className="fb-h3">
+              Wider Gulf, without a doorway farm
+            </Heading>
+            <p className="mt-3 max-w-2xl text-sm text-white/60">
+              Country hubs for local buyers, week, and money. Each catalog
+              service still has one geo landing — not a clone per capital.
+            </p>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <Link href={GULF_PATHS.hub} className={visual.card}>
+                <h3 className="font-montserrat text-base font-semibold">
+                  Gulf &amp; GCC
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-white/70">
+                  How we structure UAE + Gulf rankings, and why we refuse 540
+                  thin city URLs.
+                </p>
+              </Link>
+              {GULF_COUNTRIES.map((country) => (
+                <Link
+                  key={country.key}
+                  href={GULF_PATHS[country.key]}
+                  className={visual.card}
+                >
+                  <h3 className="font-montserrat text-base font-semibold">
+                    {country.name}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">
+                    {country.cities.join(", ")} · {country.week} · {country.currency}
                   </p>
                 </Link>
               ))}

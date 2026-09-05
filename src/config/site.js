@@ -356,7 +356,118 @@ export const ROUTES = {
       "x-default": `${SITE_URL}/design`,
     },
   },
+  gulf: {
+    path: "/gulf",
+    cta: CAL.ai,
+    title: "Software, AI, and trading systems for Gulf & GCC teams | Futurebits",
+    description:
+      "Futurebits serves UAE and GCC buyers on a +971 line. One geo landing per service, plus country hubs for Saudi Arabia, Qatar, Kuwait, Bahrain, and Oman. Book a call.",
+    keywords: [
+      "software development GCC",
+      "AI agency Gulf",
+      "software company Saudi Arabia",
+      "software development Qatar",
+      "Futurebits Gulf",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits for Gulf teams",
+    languages: {
+      "en-AE": `${SITE_URL}/uae`,
+      en: `${SITE_URL}/gulf`,
+      "x-default": `${SITE_URL}/gulf`,
+    },
+  },
+  gulfSaudiArabia: {
+    path: "/gulf/saudi-arabia",
+    cta: CAL.ai,
+    title: "Software and AI for Riyadh and Jeddah teams | Futurebits",
+    description:
+      "Remote studio for Saudi teams: Sunday–Thursday, English delivery, Arabic UI when you supply copy, KSA PDPL in writing. +971 58 516 5671. Book a call.",
+    keywords: [
+      "software development Riyadh",
+      "AI agency Saudi Arabia",
+      "software company Jeddah",
+      "KSA PDPL software",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits for Saudi Arabia teams",
+  },
+  gulfQatar: {
+    path: "/gulf/qatar",
+    cta: CAL.ai,
+    title: "Portals and trading infra for Doha and Lusail teams | Futurebits",
+    description:
+      "Client portals, reporting, and trading infrastructure for Qatar family offices and operators. GST hours, +971 line, no invented Doha office. Book a call.",
+    keywords: [
+      "software development Doha",
+      "family office technology Qatar",
+      "trading systems Qatar",
+    ],
+    ogImage: ASSETS.ogMarkets,
+    ogImageAlt: "Futurebits for Qatar teams",
+  },
+  gulfKuwait: {
+    path: "/gulf/kuwait",
+    cta: CAL.ai,
+    title: "Internal tools and CRM for Kuwait City teams | Futurebits",
+    description:
+      "Replace Excel-plus-WhatsApp stacks for Kuwaiti groups. Written scope, GST hours, official WhatsApp API. Remote studio, +971 line. Book a call.",
+    keywords: [
+      "software development Kuwait",
+      "CRM Kuwait",
+      "internal tools Kuwait City",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits for Kuwait teams",
+  },
+  gulfBahrain: {
+    path: "/gulf/bahrain",
+    cta: CAL.ai,
+    title: "Billing, auth, and product for Manama teams | Futurebits",
+    description:
+      "Stripe, auth, and launch pages for Bahrain financial and professional teams. 10% VAT named. We are not your CBB consultant. Book a call.",
+    keywords: [
+      "software development Bahrain",
+      "fintech product Manama",
+      "Stripe integration Bahrain",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits for Bahrain teams",
+  },
+  gulfOman: {
+    path: "/gulf/oman",
+    cta: CAL.ai,
+    title: "MVPs and launch sites for Muscat teams | Futurebits",
+    description:
+      "One hypothesis, a landing page that books a call, or an ops tool for Oman teams. 5% VAT, GST hours, +971 line. Book a call.",
+    keywords: [
+      "software development Muscat",
+      "MVP development Oman",
+      "startup tech partner Oman",
+    ],
+    ogImage: ASSETS.ogDesign,
+    ogImageAlt: "Futurebits for Oman teams",
+  },
 };
+
+const GULF_ROUTE_KEYS = {
+  "saudi-arabia": "gulfSaudiArabia",
+  qatar: "gulfQatar",
+  kuwait: "gulfKuwait",
+  bahrain: "gulfBahrain",
+  oman: "gulfOman",
+};
+
+/**
+ * @param {string} countryKey
+ */
+export function gulfRouteMetadata(countryKey) {
+  const routeKey = GULF_ROUTE_KEYS[countryKey];
+  if (!routeKey) {
+    throw new Error(`Unknown Gulf country key: ${countryKey}`);
+  }
+  return buildRouteMetadata(routeKey);
+}
 
 /**
  * Top-level navigation surface. Consumed by all three navbars.
@@ -367,6 +478,7 @@ export const NAV_ITEMS = [
   { label: "Markets", url: ROUTES.markets.path },
   { label: "Design", url: ROUTES.design.path },
   { label: "UAE", url: ROUTES.uae.path },
+  { label: "Gulf", url: ROUTES.gulf.path },
   { label: "Services", url: ROUTES.services.path },
   { label: "Blog", url: ROUTES.blog.path },
   { label: "About", url: ROUTES.about.path },

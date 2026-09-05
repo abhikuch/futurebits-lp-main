@@ -6,6 +6,7 @@ import {
   SITE_URL,
   SOCIAL,
 } from "@/config/site";
+import { GULF, getGulfPage } from "@/content/gulf";
 import { AREA_SERVED, getUaePage, UAE } from "@/content/uae";
 
 export const ORGANIZATION_ID = `${SITE_URL}#organization`;
@@ -640,5 +641,116 @@ export function uaePageJsonLd(pageKey) {
       items: catalogItems,
     }),
     faqJsonLd(page.faqs, page.path),
+  ]);
+}
+
+const GULF_ROUTE_KEY = {
+  hub: "gulf",
+  "saudi-arabia": "gulfSaudiArabia",
+  qatar: "gulfQatar",
+  kuwait: "gulfKuwait",
+  bahrain: "gulfBahrain",
+  oman: "gulfOman",
+};
+
+/**
+ * @param {import("@/content/gulf").GulfPageKey} pageKey
+ */
+export function gulfPageJsonLd(pageKey) {
+  const page = getGulfPage(pageKey);
+  const route = ROUTES[GULF_ROUTE_KEY[pageKey]];
+  if (!page || !route) return null;
+
+  const serviceId = pageId(page.path, "service");
+  const breadcrumbItems =
+    pageKey === "hub"
+      ? [
+          { name: "Home", url: SITE_URL },
+          { name: "Gulf", url: pageUrl(page.path) },
+        ]
+      : [
+          { name: "Home", url: SITE_URL },
+          { name: "Gulf", url: pageUrl("/gulf") },
+          { name: page.kicker, url: pageUrl(page.path) },
+        ];
+
+  const catalogItems =
+    pageKey === "hub"
+      ? page.categories.flatMap((category) =>
+          category.services.map((service) => ({
+            name: service.title,
+            url: service.path,
+          }))
+        )
+      : page.featured.map((service) => ({
+          name: service.title,
+          url: service.path,
+        }));
+
+  return compactDocs([
+    webPageJsonLd({
+      path: page.path,
+      name: route.title,
+      description: route.description,
+      image: route.ogImage,
+      breadcrumbItems,
+      mainEntityId: serviceId,
+    }),
+    breadcrumbJsonLd(breadcrumbItems, page.path),
+    customServiceJsonLd({
+      title: route.title,
+      description: `${route.description} Serving ${GULF.region}.`,
+      path: page.path,
+      serviceType: route.title,
+      offerUrl: route.cta,
+      image: route.ogImage,
+    }),
+    itemListJsonLd({
+      name: `${page.kicker} services`,
+      description: route.description,
+      path: page.path,
+      items: catalogItems,
+    }),
+    faqJsonLd(page.faqs, page.path),
+  ]);
+}
+
+/**
+ * @param {ReturnType<import("@/content/uae-service-landings").getUaeServiceLanding>} landing
+ */
+export function uaeServiceGeoJsonLd(landing) {
+  if (!landing) return null;
+
+  const path = landing.path;
+  const serviceId = pageId(path, "service");
+  const breadcrumbItems = [
+    { name: "Home", url: SITE_URL },
+    { name: "UAE", url: pageUrl("/uae") },
+    {
+      name: landing.categoryTitle,
+      url: pageUrl(`/services/${landing.categorySlug}`),
+    },
+    { name: landing.title, url: pageUrl(path) },
+  ];
+
+  return compactDocs([
+    webPageJsonLd({
+      path,
+      name: landing.metaTitle,
+      description: landing.metaDescription,
+      breadcrumbItems,
+      mainEntityId: serviceId,
+      inLanguage: "en-AE",
+    }),
+    breadcrumbJsonLd(breadcrumbItems, path),
+    customServiceJsonLd({
+      title: `${landing.title} for UAE & Gulf teams`,
+      description: landing.metaDescription,
+      path,
+      serviceType: landing.title,
+      category: landing.categoryTitle,
+      offerUrl: ROUTES.contact.cta,
+    }),
+    faqJsonLd(landing.faqs, path),
   ]);
 }

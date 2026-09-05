@@ -19,6 +19,7 @@ import {
   getCategoryBySlug,
   SERVICES_BY_CATEGORY,
 } from "@/content/services";
+import { getUaeServicePath } from "@/content/uae";
 import { buildCalUrl } from "@/lib/cal";
 import aiCircle from "@/assets/landing-page-AI/circle.webp";
 import designDiamond from "@/assets/design/navbar.svg";
@@ -221,6 +222,40 @@ export default function ServiceCategoryPage({ params }) {
             services={categoryBundle.services}
             theme={theme}
           />
+        </Container>
+      </Section>
+
+      <Section className="py-8">
+        <Container>
+          <Heading as="h2" className="fb-h3">
+            UAE &amp; Gulf landings
+          </Heading>
+          <p className="mt-3 max-w-2xl text-sm text-white/60">
+            Each service in this category has a dedicated geo page for Dubai,
+            Abu Dhabi, and wider GCC buyers. The global pages stay here.
+          </p>
+          <p className="mt-4 text-sm">
+            <Link
+              href="/uae"
+              className="underline underline-offset-4 hover:text-white"
+            >
+              UAE hub
+            </Link>
+            {" · "}
+            <Link
+              href="/gulf"
+              className="underline underline-offset-4 hover:text-white"
+            >
+              Gulf country hubs
+            </Link>
+            {" · "}
+            <Link
+              href={getUaeServicePath(categoryBundle.services[0])}
+              className="underline underline-offset-4 hover:text-white"
+            >
+              Example: {categoryBundle.services[0].title}
+            </Link>
+          </p>
         </Container>
       </Section>
 

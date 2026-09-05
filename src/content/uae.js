@@ -39,9 +39,38 @@ export const AREA_SERVED = [
   { "@type": "Country", name: "United Arab Emirates" },
   { "@type": "City", name: "Dubai" },
   { "@type": "City", name: "Abu Dhabi" },
+  { "@type": "City", name: "Sharjah" },
+  { "@type": "Country", name: "Saudi Arabia" },
+  { "@type": "City", name: "Riyadh" },
+  { "@type": "City", name: "Jeddah" },
+  { "@type": "Country", name: "Qatar" },
+  { "@type": "City", name: "Doha" },
+  { "@type": "Country", name: "Kuwait" },
+  { "@type": "Country", name: "Bahrain" },
+  { "@type": "Country", name: "Oman" },
   { "@type": "Country", name: "India" },
   { "@type": "Place", name: "Worldwide" },
 ];
+
+/**
+ * Canonical geo landing for one catalog service (UAE + Gulf).
+ * One URL per service — not one URL per country.
+ *
+ * @param {{ categorySlug: string, slug: string }} service
+ */
+export function getUaeServicePath(service) {
+  return `/uae/services/${service.categorySlug}/${service.slug}`;
+}
+
+/**
+ * @param {string} pathname
+ */
+export function parseUaeServicePath(pathname) {
+  const path = pathname.replace(/\/+$/, "") || "/";
+  const match = path.match(/^\/uae\/services\/([^/]+)\/([^/]+)$/);
+  if (!match) return null;
+  return { categorySlug: match[1], serviceSlug: match[2] };
+}
 
 const VERTICAL_CATEGORY = {
   ai: "ai-automation",
@@ -64,7 +93,7 @@ const CATEGORY_UAE_INTRO = {
     "Hub71, in5, and DIFC Innovation Hub teams that need an MVP with cut lines, not a slide about product-market fit.",
 };
 
-const SLUG_ANGLES = {
+export const SLUG_ANGLES = {
   "saas-development":
     "UAE SaaS buyers expect English admin, AED pricing, and VAT-ready invoices from week one.",
   "web-app-development":
@@ -330,7 +359,8 @@ function servicesForCategory(categorySlug) {
   return SERVICES.filter((service) => service.categorySlug === categorySlug).map(
     (service) => ({
       title: service.title,
-      path: service.path,
+      path: getUaeServicePath(service),
+      catalogPath: service.path,
       slug: service.slug,
       angle: getUaeServiceCopy(service).angle,
     })
@@ -360,7 +390,7 @@ const HUB_FAQS = [
   },
   {
     q: "Do you cover all 90 services for UAE companies?",
-    a: "Yes — the same catalog, delivered in GST. Start on this page, pick the vertical (AI, Markets, Design), or jump to the service URL. If two services overlap, we will pick one on the call instead of selling both.",
+    a: "Yes — each service has a dedicated UAE & Gulf landing under /uae/services/… plus the global catalog page. Start here, pick AI / Markets / Design, or open the geo URL. If two services overlap, we will pick one on the call instead of selling both.",
   },
 ];
 
@@ -430,10 +460,11 @@ const PAGES = {
     kicker: "UAE & GCC",
     title: "A small studio for UAE teams that need software, AI, and trading systems.",
     lede:
-      "Futurebits takes work from Dubai, Abu Dhabi, and the rest of the UAE on a +971 line. We ship in your repo, keep GST hours, and travel when a room is faster than another deck.",
+      "Futurebits takes work from Dubai, Abu Dhabi, and the rest of the UAE on a +971 line. Each catalog service has its own UAE & Gulf landing. Country hubs cover KSA, Qatar, Kuwait, Bahrain, and Oman — not 540 thin city clones.",
     body: [
       "Most ‘Dubai agencies’ sell presence. We sell a named team, a written scope, and weekly demos. The phone is UAE. The work is in your GitHub, GitLab, or whatever you already pay for.",
-      "Start from the track you actually need: production AI, markets infrastructure, or design-plus-frontend. The other 90 services sit under those tracks. If two look identical, we will pick one on the call.",
+      "Start from the track you actually need: production AI, markets infrastructure, or design-plus-frontend. Then open the dedicated geo page for that service — unique title, H1, and body for UAE and Gulf buyers. If two services look identical, we will pick one on the call.",
+      "Wider GCC buyers should read /gulf and the country hub that matches them. We do not generate a Riyadh or Doha clone of every service. That is a doorway set; it does not rank and it does not help a real buyer.",
       "We are not a staff-augmentation bench and we are not a local sponsorship. If you need a large on-site crew in Business Bay, we are the wrong call.",
     ],
     points: [
@@ -465,6 +496,11 @@ const PAGES = {
         label: "Design",
         href: UAE_PATHS.design,
         body: "UI/UX, audits, landing pages, and frontend in one team. The page should book a call, not win an award.",
+      },
+      {
+        label: "Gulf & GCC",
+        href: "/gulf",
+        body: "Country hubs for Saudi Arabia, Qatar, Kuwait, Bahrain, and Oman. Same studio, local buyer context, one geo landing per service.",
       },
     ],
     faqs: HUB_FAQS,

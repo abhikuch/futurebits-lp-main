@@ -46,7 +46,12 @@ export default function NotFound() {
             </p>
             <p>
               <Link href={ROUTES.uae.path} className="underline underline-offset-4">
-                UAE &amp; GCC
+                UAE
+              </Link>
+            </p>
+            <p>
+              <Link href={ROUTES.gulf.path} className="underline underline-offset-4">
+                Gulf &amp; GCC
               </Link>
             </p>
             <p>

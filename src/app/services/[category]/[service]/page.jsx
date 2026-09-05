@@ -22,7 +22,7 @@ import {
   SERVICES,
 } from "@/content/services";
 import { lintText } from "@/content/content-voice";
-import { getUaeServiceCopy } from "@/content/uae";
+import { getUaeServiceCopy, getUaeServicePath } from "@/content/uae";
 import {
   buildServiceSections,
   getServicePlaybook,
@@ -153,9 +153,10 @@ export function generateMetadata({ params }) {
   const category = getCategoryBySlug(params.category);
   if (!service) return {};
   const ogImage = CATEGORY_OG_IMAGES[params.category] ?? ASSETS.ogAi;
+  const geoPath = getUaeServicePath(service);
   return {
     title: service.metaTitle,
-    description: service.metaDescription,
+    description: `${service.metaDescription} Also available for UAE and Gulf teams on a +971 line.`,
     metadataBase: new URL(SITE_URL),
     keywords: [
       service.title,
@@ -163,11 +164,17 @@ export function generateMetadata({ params }) {
       "Futurebits",
       "implementation service",
       "product and engineering delivery",
-      "UAE",
-      "Dubai",
+      `${service.title} UAE`,
+      `${service.title} Dubai`,
+      `${service.title} Gulf`,
     ],
     alternates: {
       canonical: `${SITE_URL}${service.path}`,
+      languages: {
+        "en-AE": `${SITE_URL}${geoPath}`,
+        en: `${SITE_URL}${service.path}`,
+        "x-default": `${SITE_URL}${service.path}`,
+      },
     },
     openGraph: {
       type: "website",
@@ -440,17 +447,29 @@ export default function ServiceDetailPage({ params }) {
         <Container className="max-w-3xl">
           <div className={`${rhythm.wideCardClass} ${theme.accentBorder}`}>
             <Heading as="h2" className="fb-h3">
-              For teams in the UAE
+              For teams in the UAE and Gulf
             </Heading>
             <p className="mt-4 text-sm leading-relaxed text-white/75">
               {uaeCopy.delivery}
             </p>
-            <p className="mt-4">
+            <p className="mt-4 flex flex-wrap gap-4">
+              <Link
+                href={getUaeServicePath(service)}
+                className={`text-sm underline underline-offset-4 ${theme.accentText}`}
+              >
+                UAE &amp; Gulf landing
+              </Link>
               <Link
                 href="/uae"
                 className={`text-sm underline underline-offset-4 ${theme.accentText}`}
               >
-                UAE delivery notes
+                UAE hub
+              </Link>
+              <Link
+                href="/gulf"
+                className={`text-sm underline underline-offset-4 ${theme.accentText}`}
+              >
+                Gulf country hubs
               </Link>
             </p>
           </div>

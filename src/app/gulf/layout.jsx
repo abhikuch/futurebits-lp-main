@@ -1,9 +1,9 @@
 import TopNavbar from "@/components/shared/TopNavbar";
 import { buildRouteMetadata } from "@/config/site";
 
-export const metadata = buildRouteMetadata("uae");
+export const metadata = buildRouteMetadata("gulf");
 
-export default function UaeLayout({ children }) {
+export default function GulfLayout({ children }) {
   return (
     <>
       <TopNavbar />
