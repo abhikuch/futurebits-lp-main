@@ -1,4 +1,5 @@
 import { BLOG_POSTS } from "@/content/blog";
+import { getAboutMarkdown } from "@/content/about";
 import { FREE_RESOURCES } from "@/content/link-building";
 import { SERVICE_CATEGORIES, SERVICES } from "@/content/services";
 import { COMPANY, ROUTES, SITE_URL } from "@/config/site";
@@ -38,6 +39,15 @@ export function normalizePath(pathname) {
 function routeMarkdown(path) {
   const route = ROUTE_LIST.find((item) => item.path === path);
   if (!route) return null;
+
+  if (path === ROUTES.about.path) {
+    return getAboutMarkdown({
+      title: route.title,
+      description: route.description,
+      siteUrl: SITE_URL,
+      path: route.path,
+    });
+  }
 
   const lines = [
     `# ${route.title}`,

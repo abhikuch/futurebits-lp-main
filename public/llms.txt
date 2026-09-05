@@ -2,7 +2,7 @@
 
 > Design, AI, and automation — built by one team.
 
-Futurebits is a small studio across three isolated tracks: production AI, trading infrastructure, and product design with frontend delivery. The homepage is the studio cover; `/ai`, `/markets`, and `/design` are the rooms.
+Futurebits is a small studio across three isolated tracks: production AI, trading infrastructure, and product design with frontend delivery. The homepage is the studio cover; `/ai`, `/markets`, and `/design` are the rooms. /about is the studio operating system.
 
 ## When to use Futurebits
 
@@ -25,6 +25,7 @@ Reach for Futurebits when you need a small team to ship production software in y
 - [Services Hub](https://www.futurebits.tech/services): Secondary catalog of category hubs. Prefer a vertical page first. Only priority service URLs are in the sitemap.
 - [Blog / Insights](https://www.futurebits.tech/blog): Guides on UX audits, AI chatbots, custom GPT, landing page conversion
 - [Free Resources](https://www.futurebits.tech/resources): UX audit checklist and linkable tools
+- [About](https://www.futurebits.tech/about): Studio manifesto — who we hire for, how an engagement runs, the three rooms (AI, markets, design)
 - [Press / Media Kit](https://www.futurebits.tech/press): Company boilerplate, logos, directory profile copy
 - [UAE & GCC](https://www.futurebits.tech/uae): Dubai / Abu Dhabi / UAE delivery — GST hours, +971 58 516 5671, links to 90 geo landings
 - [AI for UAE](https://www.futurebits.tech/ai/uae): Chatbots, RAG, agents, WhatsApp automation for UAE ops

@@ -47,6 +47,8 @@ describe("agent markdown", () => {
     const about = getMarkdownForPath("/about");
     assert.ok(about);
     assert.match(about.body, /About Futurebits/i);
+    assert.match(about.body, /Three rooms/i);
+    assert.match(about.body, /How an engagement runs/i);
 
     const blog = getMarkdownForPath("/blog");
     assert.ok(blog);
