@@ -16,6 +16,8 @@ export function getHomeTrackVisual(id) {
         copyClass: "lg:col-span-7",
         asideClass: "lg:col-span-5 lg:pt-20",
         theme: CATEGORY_VISUAL_THEME["ai-automation"],
+        kickerClass: "fb-kicker",
+        kickerColor: "#01B0EA",
         buttonTone: "ai",
       };
     case "markets":
@@ -26,6 +28,8 @@ export function getHomeTrackVisual(id) {
         copyClass: "lg:col-span-7 lg:order-2",
         asideClass: "lg:col-span-5 lg:order-1 lg:pt-8",
         theme: CATEGORY_VISUAL_THEME["markets-trading"],
+        kickerClass: "fb-kicker",
+        kickerColor: "#7BC3D8",
         buttonTone: "markets",
       };
     case "design":
@@ -36,6 +40,8 @@ export function getHomeTrackVisual(id) {
         copyClass: "",
         asideClass: "mx-auto mt-14 max-w-3xl text-left",
         theme: CATEGORY_VISUAL_THEME.design,
+        kickerClass: "fb-kicker",
+        kickerColor: "rgba(255,255,255,0.85)",
         buttonTone: "home",
       };
     default: {

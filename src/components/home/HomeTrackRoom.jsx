@@ -126,7 +126,7 @@ export default function HomeTrackRoom({ track }) {
       <div className="relative z-10 mx-auto w-full max-w-[1200px] px-6 py-24 sm:px-10 sm:py-28 lg:px-16 lg:py-32">
         <div className={visual.innerClass}>
           <MotionFadeIn className={visual.copyClass}>
-            <p className={theme.kickerClass}>
+            <p className={visual.kickerClass} style={{ color: visual.kickerColor }}>
               {track.index} / {track.kicker}
             </p>
             <div className={theme.dividerClass} />

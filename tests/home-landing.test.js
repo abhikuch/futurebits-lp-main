@@ -103,10 +103,16 @@ describe("home landing content", () => {
     const design = JSON.stringify(getHomeTrackVisual("design"));
 
     assert.match(ai, /#01B0EA|#2E2688/);
+    assert.equal(getHomeTrackVisual("ai").kickerColor, "#01B0EA");
     assert.doesNotMatch(markets, /#01B0EA/);
     assert.doesNotMatch(design, /#01B0EA/);
     assert.match(markets, /#267088|#7BC3D8|#080808/);
+    assert.equal(getHomeTrackVisual("markets").kickerColor, "#7BC3D8");
     assert.match(design, /#08081E|white/);
+    assert.equal(
+      getHomeTrackVisual("design").kickerColor,
+      "rgba(255,255,255,0.85)"
+    );
   });
 
   it("does not leak AI cyan into hub chrome files", () => {
