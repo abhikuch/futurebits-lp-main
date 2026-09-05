@@ -19,7 +19,7 @@ export const SITE_URL = "https://www.futurebits.tech";
  * Bump this when indexed copy or route inventory changes.
  * Never use `new Date()` in the sitemap — crawlers treat that as a full-site rewrite.
  */
-export const CONTENT_UPDATED_AT = "2026-09-04";
+export const CONTENT_UPDATED_AT = "2026-09-05";
 
 export const COMPANY = {
   name: "Futurebits",
@@ -27,6 +27,7 @@ export const COMPANY = {
   tagline: "Design, AI, and automation. Built by one team.",
   email: "admin@futurebits.tech",
   phone: "+971585165671",
+  phoneDisplay: "+971 58 516 5671",
   founderName: "Futurebits Team",
   founded: "2023",
 };
@@ -94,9 +95,16 @@ export const ROUTES = {
       "product design and development",
       "trading infrastructure",
       "software development partner",
+      "software development Dubai",
+      "AI agency UAE",
     ],
     ogImage: ASSETS.ogAi,
     ogImageAlt: "Futurebits",
+    languages: {
+      "en-AE": `${SITE_URL}/uae`,
+      en: SITE_URL,
+      "x-default": SITE_URL,
+    },
   },
   ai: {
     path: "/ai",
@@ -117,6 +125,11 @@ export const ROUTES = {
     ogImage: ASSETS.ogAi,
     ogImageAlt: "Futurebits AI Solutions",
     shortLabel: "AI & Automation",
+    languages: {
+      "en-AE": `${SITE_URL}/ai/uae`,
+      en: `${SITE_URL}/ai`,
+      "x-default": `${SITE_URL}/ai`,
+    },
   },
   markets: {
     path: "/markets",
@@ -134,6 +147,11 @@ export const ROUTES = {
     ogImage: ASSETS.ogMarkets,
     ogImageAlt: "Futurebits Markets",
     shortLabel: "Markets",
+    languages: {
+      "en-AE": `${SITE_URL}/markets/uae`,
+      en: `${SITE_URL}/markets`,
+      "x-default": `${SITE_URL}/markets`,
+    },
   },
   design: {
     path: "/design",
@@ -154,6 +172,11 @@ export const ROUTES = {
     ogImage: ASSETS.ogDesign,
     ogImageAlt: "Futurebits Design & Development",
     shortLabel: "Design",
+    languages: {
+      "en-AE": `${SITE_URL}/design/uae`,
+      en: `${SITE_URL}/design`,
+      "x-default": `${SITE_URL}/design`,
+    },
   },
   services: {
     path: "/services",
@@ -191,8 +214,13 @@ export const ROUTES = {
     cta: CAL.ai,
     title: "Contact Futurebits | Start a Conversation",
     description:
-      "Tell us about your project. We respond within one business day during weekdays.",
-    keywords: ["Contact Futurebits", "Hire Futurebits", "Project Inquiry"],
+      "Tell us about your project. We respond within one business day on GST (UAE) weekdays. UAE phone +971 58 516 5671.",
+    keywords: [
+      "Contact Futurebits",
+      "Hire Futurebits",
+      "Project Inquiry",
+      "software agency Dubai",
+    ],
     ogImage: ASSETS.ogAi,
     ogImageAlt: "Contact Futurebits",
   },
@@ -251,7 +279,202 @@ export const ROUTES = {
     ogImage: ASSETS.ogDesign,
     ogImageAlt: "Futurebits Resources",
   },
+  uae: {
+    path: "/uae",
+    cta: CAL.ai,
+    title: "Software, AI, and trading systems for UAE teams | Futurebits",
+    description:
+      "Futurebits takes AI, design, and trading-systems work from Dubai, Abu Dhabi, and the UAE on a +971 line. GST hours, written scope, ship in your repo. Book a call.",
+    keywords: [
+      "software development Dubai",
+      "AI agency UAE",
+      "AI chatbot Dubai",
+      "trading systems DIFC",
+      "UI UX design Abu Dhabi",
+      "software company UAE",
+      "Futurebits UAE",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits for UAE teams",
+    languages: {
+      "en-AE": `${SITE_URL}/uae`,
+      en: SITE_URL,
+      "x-default": SITE_URL,
+    },
+  },
+  uaeAi: {
+    path: "/ai/uae",
+    cta: CAL.ai,
+    title: "AI automation for UAE ops and support teams | Futurebits",
+    description:
+      "Production AI for Dubai and Abu Dhabi teams: chatbots, RAG, agents, and WhatsApp automation with evals, handoff, and a written data map. Book a call.",
+    keywords: [
+      "AI agency Dubai",
+      "chatbot development UAE",
+      "WhatsApp automation Dubai",
+      "RAG application UAE",
+      "custom GPT Dubai",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits AI for UAE teams",
+    languages: {
+      "en-AE": `${SITE_URL}/ai/uae`,
+      en: `${SITE_URL}/ai`,
+      "x-default": `${SITE_URL}/ai`,
+    },
+  },
+  uaeMarkets: {
+    path: "/markets/uae",
+    cta: CAL.markets,
+    title: "Trading infrastructure for DIFC and ADGM desks | Futurebits",
+    description:
+      "Backtesting, shadow mode, execution, and PnL monitoring for UAE desks. Fees and kill switches in the spec. GST overlap. Book a call.",
+    keywords: [
+      "trading systems Dubai",
+      "DIFC trading infrastructure",
+      "ADGM quant systems",
+      "algorithmic trading UAE",
+    ],
+    ogImage: ASSETS.ogMarkets,
+    ogImageAlt: "Futurebits Markets for UAE desks",
+    languages: {
+      "en-AE": `${SITE_URL}/markets/uae`,
+      en: `${SITE_URL}/markets`,
+      "x-default": `${SITE_URL}/markets`,
+    },
+  },
+  uaeDesign: {
+    path: "/design/uae",
+    cta: CAL.design,
+    title: "Product design and frontend for UAE launches | Futurebits",
+    description:
+      "UI/UX, landing pages, and frontend for Dubai and Abu Dhabi products. English first, room for Arabic, code in your repo. Book a call.",
+    keywords: [
+      "UI UX design Dubai",
+      "landing page design UAE",
+      "product design Abu Dhabi",
+      "UX audit Dubai",
+    ],
+    ogImage: ASSETS.ogDesign,
+    ogImageAlt: "Futurebits Design for UAE teams",
+    languages: {
+      "en-AE": `${SITE_URL}/design/uae`,
+      en: `${SITE_URL}/design`,
+      "x-default": `${SITE_URL}/design`,
+    },
+  },
+  gulf: {
+    path: "/gulf",
+    cta: CAL.ai,
+    title: "Software, AI, and trading systems for Gulf & GCC teams | Futurebits",
+    description:
+      "Futurebits serves UAE and GCC buyers on a +971 line. One geo landing per service, plus country hubs for Saudi Arabia, Qatar, Kuwait, Bahrain, and Oman. Book a call.",
+    keywords: [
+      "software development GCC",
+      "AI agency Gulf",
+      "software company Saudi Arabia",
+      "software development Qatar",
+      "Futurebits Gulf",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits for Gulf teams",
+    languages: {
+      "en-AE": `${SITE_URL}/uae`,
+      en: `${SITE_URL}/gulf`,
+      "x-default": `${SITE_URL}/gulf`,
+    },
+  },
+  gulfSaudiArabia: {
+    path: "/gulf/saudi-arabia",
+    cta: CAL.ai,
+    title: "Software and AI for Riyadh and Jeddah teams | Futurebits",
+    description:
+      "Remote studio for Saudi teams: Sunday–Thursday, English delivery, Arabic UI when you supply copy, KSA PDPL in writing. +971 58 516 5671. Book a call.",
+    keywords: [
+      "software development Riyadh",
+      "AI agency Saudi Arabia",
+      "software company Jeddah",
+      "KSA PDPL software",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits for Saudi Arabia teams",
+  },
+  gulfQatar: {
+    path: "/gulf/qatar",
+    cta: CAL.ai,
+    title: "Portals and trading infra for Doha and Lusail teams | Futurebits",
+    description:
+      "Client portals, reporting, and trading infrastructure for Qatar family offices and operators. GST hours, +971 line, no invented Doha office. Book a call.",
+    keywords: [
+      "software development Doha",
+      "family office technology Qatar",
+      "trading systems Qatar",
+    ],
+    ogImage: ASSETS.ogMarkets,
+    ogImageAlt: "Futurebits for Qatar teams",
+  },
+  gulfKuwait: {
+    path: "/gulf/kuwait",
+    cta: CAL.ai,
+    title: "Internal tools and CRM for Kuwait City teams | Futurebits",
+    description:
+      "Replace Excel-plus-WhatsApp stacks for Kuwaiti groups. Written scope, GST hours, official WhatsApp API. Remote studio, +971 line. Book a call.",
+    keywords: [
+      "software development Kuwait",
+      "CRM Kuwait",
+      "internal tools Kuwait City",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits for Kuwait teams",
+  },
+  gulfBahrain: {
+    path: "/gulf/bahrain",
+    cta: CAL.ai,
+    title: "Billing, auth, and product for Manama teams | Futurebits",
+    description:
+      "Stripe, auth, and launch pages for Bahrain financial and professional teams. 10% VAT named. We are not your CBB consultant. Book a call.",
+    keywords: [
+      "software development Bahrain",
+      "fintech product Manama",
+      "Stripe integration Bahrain",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits for Bahrain teams",
+  },
+  gulfOman: {
+    path: "/gulf/oman",
+    cta: CAL.ai,
+    title: "MVPs and launch sites for Muscat teams | Futurebits",
+    description:
+      "One hypothesis, a landing page that books a call, or an ops tool for Oman teams. 5% VAT, GST hours, +971 line. Book a call.",
+    keywords: [
+      "software development Muscat",
+      "MVP development Oman",
+      "startup tech partner Oman",
+    ],
+    ogImage: ASSETS.ogDesign,
+    ogImageAlt: "Futurebits for Oman teams",
+  },
 };
+
+const GULF_ROUTE_KEYS = {
+  "saudi-arabia": "gulfSaudiArabia",
+  qatar: "gulfQatar",
+  kuwait: "gulfKuwait",
+  bahrain: "gulfBahrain",
+  oman: "gulfOman",
+};
+
+/**
+ * @param {string} countryKey
+ */
+export function gulfRouteMetadata(countryKey) {
+  const routeKey = GULF_ROUTE_KEYS[countryKey];
+  if (!routeKey) {
+    throw new Error(`Unknown Gulf country key: ${countryKey}`);
+  }
+  return buildRouteMetadata(routeKey);
+}
 
 /**
  * Top-level navigation surface. Consumed by all three navbars.
@@ -261,6 +484,8 @@ export const NAV_ITEMS = [
   { label: "AI", url: ROUTES.ai.path },
   { label: "Markets", url: ROUTES.markets.path },
   { label: "Design", url: ROUTES.design.path },
+  { label: "UAE", url: ROUTES.uae.path },
+  { label: "Gulf", url: ROUTES.gulf.path },
   { label: "Services", url: ROUTES.services.path },
   { label: "Blog", url: ROUTES.blog.path },
   { label: "About", url: ROUTES.about.path },
@@ -285,6 +510,7 @@ export function buildRouteMetadata(routeKey) {
     metadataBase: new URL(SITE_URL),
     alternates: {
       canonical: url,
+      ...(route.languages ? { languages: route.languages } : {}),
     },
     openGraph: {
       type: "website",
@@ -315,6 +541,7 @@ export function buildRouteMetadata(routeKey) {
     },
     other: {
       "contact:email": COMPANY.email,
+      "contact:phone_number": COMPANY.phone,
       "contact:business": COMPANY.legalName,
     },
   };

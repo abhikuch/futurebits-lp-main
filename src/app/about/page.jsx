@@ -69,6 +69,18 @@ export default function AboutPage() {
             that hands off to someone else. If you need slides about digital
             transformation, we are the wrong call.
           </p>
+          <p className="mt-4 max-w-2xl text-pretty text-base text-white/60">
+            UAE teams book on the same +971 line. Delivery is remote in your
+            repo, with GST hours and travel to Dubai when the work needs a room.{" "}
+            <Link href="/uae" className="underline underline-offset-4 hover:text-white">
+              UAE delivery notes
+            </Link>
+            {" · "}
+            <Link href="/gulf" className="underline underline-offset-4 hover:text-white">
+              Gulf country hubs
+            </Link>
+            .
+          </p>
 
           <div className="fb-panel mt-10 p-6 sm:p-8">
             <MotionStatGrid stats={stats} />

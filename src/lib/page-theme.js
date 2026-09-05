@@ -139,7 +139,19 @@ export function getCalLinkForPath(pathname) {
     }
   }
 
-  if (pathname.startsWith("/services/ai-automation")) {
+  if (
+    pathname.startsWith("/services/ai-automation") ||
+    pathname.includes("/services/ai-automation")
+  ) {
+    return CAL.ai;
+  }
+
+  if (
+    pathname === "/uae" ||
+    pathname.startsWith("/uae/") ||
+    pathname === "/gulf" ||
+    pathname.startsWith("/gulf/")
+  ) {
     return CAL.ai;
   }
 

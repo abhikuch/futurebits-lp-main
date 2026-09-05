@@ -4,6 +4,7 @@ import { describe, it } from "node:test";
 import { CAL } from "../src/config/site.js";
 import { CONTACT_VERTICALS } from "../src/lib/contact-validate.js";
 import { SERVICE_CATEGORIES } from "../src/content/services.js";
+import { buildCalUrl } from "../src/lib/cal.js";
 import {
   getCalLinkForPath,
   getCalLinkForThemeKey,
@@ -77,7 +78,45 @@ describe("Cal.com booking routes", () => {
       getCalLinkForPath("/services/markets-trading"),
       CAL.markets
     );
+    assert.equal(getCalLinkForPath("/uae"), CAL.ai);
+    assert.equal(getCalLinkForPath("/ai/uae"), CAL.ai);
+    assert.equal(getCalLinkForPath("/design/uae"), CAL.design);
+    assert.equal(getCalLinkForPath("/markets/uae"), CAL.markets);
+    assert.equal(
+      getCalLinkForPath("/uae/services/design/ui-ux-design"),
+      CAL.design
+    );
+    assert.equal(
+      getCalLinkForPath("/uae/services/markets-trading/strategy-backtesting"),
+      CAL.markets
+    );
+    assert.equal(
+      getCalLinkForPath("/uae/services/build/saas-development"),
+      CAL.build
+    );
+    assert.equal(getCalLinkForPath("/gulf"), CAL.ai);
+    assert.equal(getCalLinkForPath("/gulf/saudi-arabia"), CAL.ai);
     assert.equal(getCalLinkForPath("/contact"), CAL.ai);
+  });
+
+  it("stamps uae- and gulf- campaign UTMs on geo CTAs", () => {
+    const uaeChat = buildCalUrl(CAL.ai, {
+      medium: "uae-service",
+      campaign: "uae-chatbot-development",
+    });
+    assert.equal(
+      new URL(uaeChat).searchParams.get("utm_campaign"),
+      "uae-chatbot-development"
+    );
+
+    const gulfKsa = buildCalUrl(CAL.ai, {
+      medium: "gulf-page",
+      campaign: "gulf-saudi-arabia",
+    });
+    assert.equal(
+      new URL(gulfKsa).searchParams.get("utm_campaign"),
+      "gulf-saudi-arabia"
+    );
     assert.equal(getCalLinkForPath("/blog"), CAL.ai);
   });
 
