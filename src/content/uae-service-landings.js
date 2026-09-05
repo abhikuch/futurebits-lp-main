@@ -1,7 +1,6 @@
 import { lintText } from "@/content/content-voice";
 import { SERVICE_PAGE_COPY } from "@/content/service-copy";
 import { generateServiceSeed } from "@/content/service-content-seeds";
-import { getServicePlaybook } from "@/content/service-playbooks";
 import {
   getCategoryBySlug,
   getRelatedServices,
@@ -16,7 +15,7 @@ import {
 
 /**
  * Unique UAE + Gulf landings — one per catalog service.
- * Bodies are composed from slug-specific hooks plus service/playbook facts
+ * Bodies are composed from slug-specific hooks plus catalog/seed facts
  * so two pages cannot collapse into the same three paragraphs.
  */
 
@@ -831,7 +830,6 @@ export function getUaeServiceLanding(service) {
   const category = getCategoryBySlug(service.categorySlug);
   const uae = getUaeServiceCopy(service);
   const seed = generateServiceSeed(service, category);
-  const playbook = getServicePlaybook(service.slug, service, category);
   const catalogCopy = SERVICE_PAGE_COPY[service.slug];
   const lens = gulfLens(service.categorySlug);
   const path = getUaeServicePath(service);
@@ -853,13 +851,9 @@ export function getUaeServiceLanding(service) {
     `Book a 30-minute call. We will tell you if ${service.title.toLowerCase()} is the wrong slice. If we continue, you get a written scope, weekly demos, and the work in your repo. ${catalogCopy?.subhead ?? service.subhead} Remote studio, no invented Dubai address, travel when a workshop is the faster path.`
   );
 
-  const playbookIntro = playbook?.intro
-    ? lintText(
-        `On the global catalog this work is framed as: ${playbook.intro} The geo page adds the GST week, ${UAE.phoneDisplay}, and the Gulf constraints above — it is not a city-name swap of that paragraph.`
-      )
-    : lintText(
-        `${service.hero} That is the global promise. This page is the UAE and Gulf delivery of the same work.`
-      );
+  const playbookIntro = lintText(
+    `${catalogCopy?.hero ?? service.hero} That is the global catalog promise. This page is the UAE and Gulf delivery of the same work: ${UAE.timezoneLabel}, ${UAE.phoneDisplay}, and the country hubs on /gulf — not a city-name swap of the catalog paragraph.`
+  );
 
   let body = [
     lintText(hook.buyer),
