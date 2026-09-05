@@ -1,8 +1,12 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
-import { getIndexedServiceDetails } from "../src/app/sitemap.js";
-import { PRIORITY_SERVICE_SLUGS, RAW_SERVICES, SERVICES } from "../src/content/services.js";
+import {
+  PRIORITY_SERVICE_SLUGS,
+  RAW_SERVICES,
+  SERVICES,
+  getIndexedServiceDetails,
+} from "../src/content/services.js";
 import { SERVICE_PAGE_COPY } from "../src/content/service-copy.js";
 import { missingServiceCopySlugs } from "../scripts/build-service-copy.js";
 
