@@ -487,20 +487,30 @@ export function gulfRouteMetadata(countryKey) {
 }
 
 /**
- * Top-level navigation surface. Consumed by all three navbars.
- * Order matters; first item is the implicit home/AI vertical.
+ * Site navigation IA.
+ *
+ * Rooms are the three verticals — the only primary destinations.
+ * Utility sits to the right of the rooms (studio, not a fourth vertical).
+ * Overflow lives in the mobile sheet + footer, never as equal-weight peers.
+ * Logo always points at ROUTES.home (`/`), never `/ai`.
  */
-export const NAV_ITEMS = [
+export const NAV_ROOMS = [
   { label: "AI", url: ROUTES.ai.path },
   { label: "Markets", url: ROUTES.markets.path },
   { label: "Design", url: ROUTES.design.path },
-  { label: "UAE", url: ROUTES.uae.path },
-  { label: "Gulf", url: ROUTES.gulf.path },
+];
+
+export const NAV_UTILITY = [{ label: "About", url: ROUTES.about.path }];
+
+export const NAV_OVERFLOW = [
+  { label: "Contact", url: ROUTES.contact.path },
   { label: "Services", url: ROUTES.services.path },
   { label: "Blog", url: ROUTES.blog.path },
-  { label: "About", url: ROUTES.about.path },
-  { label: "Contact", url: ROUTES.contact.path },
+  { label: "UAE", url: ROUTES.uae.path },
 ];
+
+/** Visible primary navigation — rooms + About. Used by chrome and JSON-LD. */
+export const NAV_ITEMS = [...NAV_ROOMS, ...NAV_UTILITY];
 
 /**
  * Build a full Next.js `Metadata` object for a given route key.

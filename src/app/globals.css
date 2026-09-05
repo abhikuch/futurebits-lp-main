@@ -225,6 +225,79 @@
   .fb-divider {
     @apply border-t border-white/10;
   }
+
+  /* Studio chrome — quiet overlay so hero canvases can breathe */
+  .fb-nav {
+    @apply fixed inset-x-0 top-0 z-50;
+  }
+  .fb-nav-bar {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(
+      180deg,
+      rgba(6, 6, 24, 0.72) 0%,
+      rgba(6, 6, 24, 0.42) 100%
+    );
+    backdrop-filter: blur(16px);
+  }
+  .fb-nav-inner {
+    @apply mx-auto w-full max-w-[1200px] px-5 sm:px-10 lg:px-16;
+  }
+  .fb-nav-link {
+    @apply relative inline-flex h-11 items-center px-2.5 text-[13px] font-medium tracking-[0.08em] text-white/55 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#060618];
+  }
+  .fb-nav-link-active {
+    @apply text-white;
+  }
+  .fb-nav-link.fb-nav-link-active::after {
+    content: "";
+    position: absolute;
+    left: 0.625rem;
+    right: 0.625rem;
+    bottom: 0.55rem;
+    height: 1px;
+    background: var(--fb-nav-accent, #ffffff);
+  }
+  .fb-nav-cta {
+    @apply inline-flex h-9 items-center justify-center rounded-full bg-white px-3.5 text-xs font-semibold text-[#060618] transition hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#060618] sm:h-10 sm:px-5 sm:text-[13px];
+  }
+  .fb-nav-icon-button {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-sm text-white/80 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#060618];
+  }
+  .fb-nav-menu {
+    @apply relative;
+  }
+  .fb-nav-menu > summary {
+    list-style: none;
+  }
+  .fb-nav-menu > summary::-webkit-details-marker {
+    display: none;
+  }
+  .fb-nav-sheet {
+    position: fixed;
+    left: 0.75rem;
+    right: 0.75rem;
+    top: 4.5rem;
+    z-index: 60;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(6, 6, 24, 0.96);
+    backdrop-filter: blur(18px);
+    border-radius: 1rem;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+  .fb-nav-sheet-kicker {
+    @apply text-[11px] font-medium uppercase tracking-[0.18em] text-white/40;
+  }
+  .fb-nav-sheet-link {
+    @apply flex h-11 items-center text-[15px] font-medium tracking-[0.04em] text-white/70 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70;
+  }
+  .fb-nav-sheet-link.fb-nav-link-active {
+    @apply text-white;
+    box-shadow: inset 2px 0 0 var(--fb-nav-accent, #ffffff);
+    padding-left: 0.75rem;
+  }
+  .fb-nav-overflow-link {
+    @apply inline-flex h-10 items-center text-[13px] text-white/50 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70;
+  }
 }
 
 /* Visually hidden, but available to screen readers and keyboard users. */

@@ -10,7 +10,7 @@ import {
   IconLinkedin,
   IconX,
 } from "@/components/shared/SocialIcons";
-import { COMPANY, NAV_ITEMS, ROUTES, SOCIAL } from "@/config/site";
+import { COMPANY, NAV_ROOMS, NAV_UTILITY, ROUTES, SOCIAL } from "@/config/site";
 import { openConsentBanner } from "@/lib/analytics-consent";
 
 const YEAR = new Date().getFullYear();
@@ -24,13 +24,19 @@ const SERVICE_LINKS = [
   { label: "Startup Partner", href: "/services/startup-tech-partner" },
 ];
 
+const EXPLORE_LINKS = [
+  ...NAV_ROOMS,
+  ...NAV_UTILITY,
+  { label: "Contact", url: ROUTES.contact.path },
+];
+
 const LEGAL_LINKS = [
   { label: "UAE", href: ROUTES.uae.path },
   { label: "Gulf & GCC", href: ROUTES.gulf.path },
+  { label: "Blog", href: ROUTES.blog.path },
   { label: "Press & Media Kit", href: ROUTES.press.path },
   { label: "Free Resources", href: ROUTES.resources.path },
   { label: "Privacy Policy", href: ROUTES.privacy.path },
-  { label: "Contact", href: ROUTES.contact.path },
 ];
 
 export default function SiteFooter({
@@ -69,7 +75,7 @@ export default function SiteFooter({
               Explore
             </h2>
             <ul className="mt-4 space-y-3 text-[13px] leading-6 text-white/70 sm:text-sm">
-              {NAV_ITEMS.map((item) => (
+              {EXPLORE_LINKS.map((item) => (
                 <li key={item.label}>
                   <Link href={item.url} className="transition hover:text-white">
                     {item.label}
