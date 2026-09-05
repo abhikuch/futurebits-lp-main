@@ -42,12 +42,11 @@ const PortfolioWrapper = () => {
       
       <div className="relative">
         <div>
-        <Particles 
-          quantity={15} 
-          ease={200} 
-          refresh 
-          size={0.3} 
-          className="absolute max-w-[90vw] inset-0 z-10" 
+        <Particles
+          quantity={10}
+          ease={200}
+          size={0.3}
+          className="absolute max-w-[90vw] inset-0 z-10"
         />
         </div>
         <div className="mt-0 sm:mt-10 relative z-20 w-full">

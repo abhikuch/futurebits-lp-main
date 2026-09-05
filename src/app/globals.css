@@ -306,6 +306,18 @@
 
 
 
+.fb-particle-field {
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, rgba(255, 255, 255, 0.45) 50%, transparent 51%),
+    radial-gradient(1px 1px at 28% 64%, rgba(255, 255, 255, 0.28) 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 46% 22%, rgba(255, 255, 255, 0.35) 50%, transparent 51%),
+    radial-gradient(1px 1px at 63% 78%, rgba(255, 255, 255, 0.22) 50%, transparent 51%),
+    radial-gradient(1px 1px at 81% 36%, rgba(255, 255, 255, 0.4) 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 88% 70%, rgba(255, 255, 255, 0.18) 50%, transparent 51%);
+  background-repeat: no-repeat;
+}
+
+
 .bg-grid-pattern {
   background-size: 50px 50px;
   background-image:

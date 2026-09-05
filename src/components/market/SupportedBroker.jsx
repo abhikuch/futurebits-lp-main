@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import IndianMarket from "@/assets/market/Indian_Markets.svg";
-import UsMarket from "@/assets/market/US Markets.svg";
-import Forex from "@/assets/market/Forex.svg";
-import Crypto from "@/assets/market/Crypto.svg";
+import IndianMarket from "@/assets/market/indian-markets.webp";
+import UsMarket from "@/assets/market/us-markets.webp";
+import Forex from "@/assets/market/forex.webp";
+import Crypto from "@/assets/market/crypto.webp";
 import Image from "next/image";
 import MarketingButton from "@/components/ui/marketing-button";
 import { CAL } from "@/config/site";
@@ -74,7 +74,9 @@ const BrokerCircle = ({ image, title }) => {
         <Image
           src={image}
           alt={title}
-          className="absolute inset-0 w-full h-full object-contain"
+          width={200}
+          height={200}
+          className="absolute inset-0 h-full w-full object-contain"
         />
       </div>
     </div>

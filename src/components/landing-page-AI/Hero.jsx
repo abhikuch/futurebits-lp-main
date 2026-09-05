@@ -21,9 +21,8 @@ const Hero = () => {
       </div>
       <LazyMount fallbackClassName="absolute top-0 left-0 w-full h-1/3">
         <Particles
-          quantity={14}
+          quantity={10}
           ease={200}
-          refresh
           size={0.4}
           staticity={100}
           className="!z-10 absolute top-0 left-0 w-full h-1/3"
