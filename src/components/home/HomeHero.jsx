@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 
-import HomeAtmosphere from "@/components/home/HomeAtmosphere";
+import HomeHeroStage from "@/components/home/HomeHeroStage";
 import MarketingButton from "@/components/ui/marketing-button";
 import { HOME_CAL, HOME_HERO } from "@/content/home";
 
 export default function HomeHero() {
   return (
     <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-[#060618] text-white">
-      <HomeAtmosphere />
+      <HomeHeroStage />
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center px-6 pb-16 pt-32 sm:px-10 sm:pt-36 lg:px-16 lg:pb-20">
         <p className="fb-kicker fb-home-hero-kicker">{HOME_HERO.kicker}</p>

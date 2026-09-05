@@ -118,7 +118,7 @@ describe("home landing content", () => {
   it("does not leak AI cyan into hub chrome files", () => {
     const hubFiles = [
       "src/components/home/HomeHero.jsx",
-      "src/components/home/HomeAtmosphere.jsx",
+      "src/components/home/HomeHeroStage.jsx",
       "src/components/home/HomeBeliefs.jsx",
       "src/components/home/HomeClose.jsx",
       "src/components/home/HomeTracks.jsx",
