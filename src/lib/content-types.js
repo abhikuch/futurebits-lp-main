@@ -10,7 +10,7 @@
  *
  * @typedef {"ai" | "design" | "markets"} VerticalKey
  *
- * @typedef {"ai" | "design" | "markets" | "platform" | "ghost"} MarketingTone
+ * @typedef {"ai" | "design" | "markets" | "platform" | "home" | "ghost"} MarketingTone
  *
  * @typedef {"ai" | "markets" | "design" | "build" | "other"} ContactVertical
  *

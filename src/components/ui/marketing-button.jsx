@@ -34,6 +34,7 @@ function resolveToneStyle(tone) {
     case "design":
     case "markets":
     case "platform":
+    case "home":
     case "ghost":
       return toneStyles[tone];
     default:
