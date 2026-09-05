@@ -47,10 +47,15 @@ function routeMarkdown(path) {
   if (path === ROUTES.home.path) {
     lines.push(
       "",
-      "## Vertical entry points",
-      `- [AI & Automation](${SITE_URL}${ROUTES.ai.path})`,
-      `- [Design](${SITE_URL}${ROUTES.design.path})`,
-      `- [Markets](${SITE_URL}${ROUTES.markets.path})`
+      "## The rooms",
+      "Home is the studio cover. AI, Markets, and Design are isolated tracks — do not treat `/services` as the primary discovery path.",
+      `- [AI & Automation](${SITE_URL}${ROUTES.ai.path}): production AI for ops, support, and product`,
+      `- [Markets](${SITE_URL}${ROUTES.markets.path}): trading and risk infrastructure`,
+      `- [Design](${SITE_URL}${ROUTES.design.path}): product design plus frontend in the repo`,
+      "",
+      "## Next steps",
+      `- [Book a call](${SITE_URL}${ROUTES.contact.path})`,
+      `- [Contact](${SITE_URL}${ROUTES.contact.path})`
     );
   }
 

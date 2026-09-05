@@ -14,6 +14,11 @@ function calCampaign(href) {
 }
 
 describe("Cal.com booking routes", () => {
+  it("keeps a dedicated home campaign on the AI calendar event", () => {
+    assert.equal(calEventPath(CAL.home), "/futurebits/ai");
+    assert.equal(calCampaign(CAL.home), "home-hero");
+  });
+
   it("keeps dedicated events for AI, Design, and Markets verticals", () => {
     assert.equal(calEventPath(CAL.ai), "/futurebits/ai");
     assert.equal(calCampaign(CAL.ai), "ai-vertical");
@@ -73,6 +78,7 @@ describe("Cal.com booking routes", () => {
       getCalLinkForPath("/services/markets-trading"),
       CAL.markets
     );
+    assert.equal(getCalLinkForPath("/"), CAL.home);
     assert.equal(getCalLinkForPath("/contact"), CAL.ai);
     assert.equal(getCalLinkForPath("/blog"), CAL.ai);
   });

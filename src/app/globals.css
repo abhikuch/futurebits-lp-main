@@ -88,6 +88,23 @@
     animation: fb-ai-hero-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
   }
 
+  /* Home studio cover: CSS-only entrance (LCP-safe, no Framer on copy) */
+  .fb-home-hero-kicker {
+    animation: fb-ai-hero-fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.04s both;
+  }
+  .fb-home-hero-title {
+    animation: fb-ai-hero-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+  .fb-home-hero-copy {
+    animation: fb-ai-hero-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+  }
+  .fb-home-hero-cta {
+    animation: fb-ai-hero-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+  .fb-home-hero-index {
+    animation: fb-hero-fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both;
+  }
+
   @keyframes fb-hero-fade-in {
     from {
       opacity: 0;

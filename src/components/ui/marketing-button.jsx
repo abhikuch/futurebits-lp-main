@@ -10,6 +10,7 @@ const toneStyles = {
   design: { background: "#01B0EA", text: "text-white" },
   markets: { background: "#FFFFFF", text: "text-black" },
   platform: { background: "#F5B942", text: "text-[#060618]" },
+  home: { background: "#FFFFFF", text: "text-[#060618]" },
   ghost: { background: "transparent", text: "text-white border-2 border-white" },
 };
 

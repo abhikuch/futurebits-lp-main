@@ -27,6 +27,12 @@ const THEME = {
       "border-white/25 bg-gradient-to-b from-white/[0.12] to-[#060618]/85",
     glowClass: "from-white/20 to-[#01B0EA]/15",
   },
+  home: {
+    kickerClass: "fb-kicker text-white/70",
+    cardClass:
+      "border-white/15 bg-gradient-to-b from-white/[0.07] to-[#060618]/88",
+    glowClass: "from-white/12 to-[#15203a]/30",
+  },
 };
 
 const IMPACT_RULES = [
@@ -153,8 +159,22 @@ function BentoCard({
   );
 }
 
+function resolveTestimonialTheme(theme) {
+  switch (theme) {
+    case "ai":
+    case "markets":
+    case "design":
+    case "home":
+      return THEME[theme];
+    default: {
+      const unhandled = theme;
+      throw new Error(`Unhandled testimonial theme: ${unhandled}`);
+    }
+  }
+}
+
 export default function TestimonialSection({ theme = "ai", cta }) {
-  const currentTheme = THEME[theme] ?? THEME.ai;
+  const currentTheme = resolveTestimonialTheme(theme);
   const sequenced = sequenceTestimonials(TESTIMONIALS);
   const hero = sequenced[0];
   const support = sequenced.slice(1, 4);
