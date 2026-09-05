@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
-import { CONTACT_VERTICALS } from "../src/app/contact/actions.js";
 import { CAL } from "../src/config/site.js";
+import { CONTACT_VERTICALS } from "../src/lib/contact-validate.js";
 import { SERVICE_CATEGORIES } from "../src/content/services.js";
 import {
   getCalLinkForPath,
