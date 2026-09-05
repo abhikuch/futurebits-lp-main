@@ -8,6 +8,8 @@ import {
 const STATIC_FILE = /\.(?:svg|png|jpg|jpeg|gif|webp|ico|txt|xml|json|js|css|woff2?)$/i;
 
 export function middleware(request) {
+  // Do not pass inbound request headers into NextResponse.next()/rewrite().
+  // CVE-2025-57822: reflecting those headers can enable SSRF when self-hosted.
   const { pathname } = request.nextUrl;
 
   if (
