@@ -305,10 +305,12 @@ export function getUaeServiceCopy(service) {
       service.slug
     )}. Scoped in writing.`;
 
+  const extra = categoryConstraint(service.categorySlug, `${service.slug}-x`);
   const delivery = [
     `${service.title} is available to companies in Dubai, Abu Dhabi, and the wider UAE.`,
     `We work in ${UAE.timezoneLabel}, on ${UAE.phoneDisplay}, and we ship in your repo.`,
-    `${angle} ${categoryConstraint(service.categorySlug, `${service.slug}-x`)}.`,
+    angle.endsWith(".") ? angle : `${angle}.`,
+    `We write this into scope: ${extra}.`,
     "Travel to Dubai when a room is the faster path. We will not pretend a local brass-plate office is the product.",
   ].join(" ");
 
