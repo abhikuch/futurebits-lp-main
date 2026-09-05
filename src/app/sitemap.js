@@ -7,7 +7,7 @@ import {
 } from "@/content/services";
 import { getUaeServicePath } from "@/content/uae";
 
-/** Frozen lastmod — do not use `new Date()` on every build. */
+/** Frozen lastmod — do not stamp deploy time on every build. */
 export const SITEMAP_FROZEN_LASTMOD = "2026-09-05";
 
 const PRIORITY = {
