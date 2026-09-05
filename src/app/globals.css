@@ -263,11 +263,26 @@
   .fb-nav-icon-button {
     @apply inline-flex h-11 w-11 items-center justify-center rounded-sm text-white/80 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#060618];
   }
-  .fb-nav-sheet {
-    height: auto !important;
+  .fb-nav-menu {
+    @apply relative;
   }
-  .fb-nav-sheet > button {
-    @apply right-5 top-5 text-white opacity-80 hover:opacity-100 focus:ring-white/70;
+  .fb-nav-menu > summary {
+    list-style: none;
+  }
+  .fb-nav-menu > summary::-webkit-details-marker {
+    display: none;
+  }
+  .fb-nav-sheet {
+    position: fixed;
+    left: 0.75rem;
+    right: 0.75rem;
+    top: 4.5rem;
+    z-index: 60;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(6, 6, 24, 0.96);
+    backdrop-filter: blur(18px);
+    border-radius: 1rem;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
   }
   .fb-nav-sheet-kicker {
     @apply text-[11px] font-medium uppercase tracking-[0.18em] text-white/40;

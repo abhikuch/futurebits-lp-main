@@ -5,13 +5,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 import logo from "@/assets/logo.svg";
 import { NAV_OVERFLOW, NAV_ROOMS, NAV_UTILITY, ROUTES } from "@/config/site";
 import { getNavAccent, getNavTone, isNavItemActive } from "@/lib/nav";
@@ -47,47 +40,31 @@ function BookCallLink({ href, className }) {
 
 function MobileNav({ pathname, calHref, accent }) {
   return (
-    <Sheet>
-      <SheetTrigger
+    <details className="fb-nav-menu md:hidden">
+      <summary
         aria-label="Open menu"
-        className="fb-nav-icon-button md:hidden"
+        className="fb-nav-icon-button"
       >
         <Menu className="h-5 w-5" aria-hidden />
-      </SheetTrigger>
-      <SheetContent
-        side="top"
-        className="fb-nav-sheet border-white/10 bg-[#060618]/96 p-0 text-white backdrop-blur-xl"
+      </summary>
+      <div
+        className="fb-nav-sheet"
         style={{ "--fb-nav-accent": accent }}
       >
-        <SheetTitle className="sr-only">Menu</SheetTitle>
         <div className="fb-nav-inner pb-6 pt-5">
-          <Link
-            href={ROUTES.home.path}
-            aria-label="Futurebits home"
-            data-nav-logo="home"
-            className="inline-flex"
-          >
-            <Image
-              src={logo}
-              alt="Futurebits logo"
-              className="h-7 w-[152px] object-contain"
-            />
-          </Link>
-
-          <div className="mt-8 grid gap-8 sm:grid-cols-2">
+          <p className="sr-only">Menu</p>
+          <div className="grid gap-8 sm:grid-cols-2">
             <nav aria-label="Rooms">
               <p className="fb-nav-sheet-kicker">Rooms</p>
               <ul className="mt-3 space-y-1">
                 {NAV_ROOMS.map((item) => (
                   <li key={item.url}>
-                    <SheetClose asChild>
-                      <NavLink
-                        href={item.url}
-                        label={item.label}
-                        pathname={pathname}
-                        className="fb-nav-sheet-link"
-                      />
-                    </SheetClose>
+                    <NavLink
+                      href={item.url}
+                      label={item.label}
+                      pathname={pathname}
+                      className="fb-nav-sheet-link"
+                    />
                   </li>
                 ))}
               </ul>
@@ -98,25 +75,21 @@ function MobileNav({ pathname, calHref, accent }) {
               <ul className="mt-3 space-y-1">
                 {NAV_UTILITY.map((item) => (
                   <li key={item.url}>
-                    <SheetClose asChild>
-                      <NavLink
-                        href={item.url}
-                        label={item.label}
-                        pathname={pathname}
-                        className="fb-nav-sheet-link"
-                      />
-                    </SheetClose>
-                  </li>
-                ))}
-                <li>
-                  <SheetClose asChild>
                     <NavLink
-                      href={ROUTES.contact.path}
-                      label="Contact"
+                      href={item.url}
+                      label={item.label}
                       pathname={pathname}
                       className="fb-nav-sheet-link"
                     />
-                  </SheetClose>
+                  </li>
+                ))}
+                <li>
+                  <NavLink
+                    href={ROUTES.contact.path}
+                    label="Contact"
+                    pathname={pathname}
+                    className="fb-nav-sheet-link"
+                  />
                 </li>
               </ul>
             </nav>
@@ -128,26 +101,22 @@ function MobileNav({ pathname, calHref, accent }) {
               {NAV_OVERFLOW.filter((item) => item.url !== ROUTES.contact.path).map(
                 (item) => (
                   <li key={item.url}>
-                    <SheetClose asChild>
-                      <NavLink
-                        href={item.url}
-                        label={item.label}
-                        pathname={pathname}
-                        className="fb-nav-overflow-link"
-                      />
-                    </SheetClose>
+                    <NavLink
+                      href={item.url}
+                      label={item.label}
+                      pathname={pathname}
+                      className="fb-nav-overflow-link"
+                    />
                   </li>
                 )
               )}
             </ul>
           </nav>
 
-          <SheetClose asChild>
-            <BookCallLink href={calHref} className="fb-nav-cta mt-8 w-full" />
-          </SheetClose>
+          <BookCallLink href={calHref} className="fb-nav-cta mt-8 w-full" />
         </div>
-      </SheetContent>
-    </Sheet>
+      </div>
+    </details>
   );
 }
 
