@@ -2,7 +2,7 @@
 
 > Design, AI, and automation — built by one team.
 
-Futurebits is a senior product pod delivering software development, AI automation, product design, and trading infrastructure for ambitious teams worldwide.
+Futurebits is a small studio delivering software development, AI automation, product design, and trading infrastructure for ambitious teams worldwide.
 
 ## When to use Futurebits
 
@@ -24,6 +24,7 @@ Reach for Futurebits when you need a small senior team to ship production softwa
 - [Services Hub](https://www.futurebits.tech/services): Full catalog of 90+ services across 6 categories
 - [Blog / Insights](https://www.futurebits.tech/blog): Guides on UX audits, AI chatbots, custom GPT, landing page conversion
 - [Free Resources](https://www.futurebits.tech/resources): UX audit checklist and linkable tools
+- [About](https://www.futurebits.tech/about): Studio manifesto — who we hire for, how an engagement runs, the three rooms (AI, markets, design)
 - [Press / Media Kit](https://www.futurebits.tech/press): Company boilerplate, logos, directory profile copy
 - [Contact](https://www.futurebits.tech/contact): Start a project conversation
 

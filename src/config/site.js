@@ -172,10 +172,16 @@ export const ROUTES = {
   about: {
     path: "/about",
     cta: CAL.ai,
-    title: "About Futurebits | Design, AI, and Automation",
+    title: "About Futurebits | A small studio for AI, markets, and design",
     description:
-      "Meet the team building Futurebits: designers, engineers, and AI builders helping ambitious teams ship faster, smarter, and with taste.",
-    keywords: ["About Futurebits", "Team", "Founders", "Design Engineering"],
+      "Futurebits is a roughly dozen-person studio founded in 2023. One team across production AI, trading infrastructure, and product design. No staff-aug bench. No slide decks.",
+    keywords: [
+      "About Futurebits",
+      "Futurebits studio",
+      "AI engineering studio",
+      "trading infrastructure team",
+      "product design studio",
+    ],
     ogImage: ASSETS.ogAi,
     ogImageAlt: "About Futurebits",
   },
