@@ -1,11 +1,16 @@
 "use client";
-import React from "react";
 
+import React from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 
 import MarketingButton from "@/components/ui/marketing-button";
-import WavyBackground from "./WavyBackground";
 import { CAL, ROUTES } from "@/config/site";
+
+const WavyBackground = dynamic(() => import("./WavyBackground"), {
+  ssr: false,
+  loading: () => <div className="h-full w-full" aria-hidden />,
+});
 
 const Hero = () => {
   return (

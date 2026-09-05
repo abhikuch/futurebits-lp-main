@@ -263,6 +263,17 @@ export const SERVICES_BY_CATEGORY = SERVICE_CATEGORIES.map((category) => ({
   services: SERVICES.filter((service) => service.categorySlug === category.slug),
 }));
 
+export function getIndexedServiceDetails() {
+  return SERVICES.filter((service) => service.isPriority);
+}
+
+export function getServiceIndexPolicy(service) {
+  return {
+    index: Boolean(service?.isPriority),
+    follow: true,
+  };
+}
+
 export function getCategoryBySlug(slug) {
   return SERVICE_CATEGORIES.find((item) => item.slug === slug);
 }

@@ -45,6 +45,7 @@ export function generateMetadata({ params }) {
       title,
       description: post.description,
       publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt ?? post.publishedAt,
     },
   };
 }
@@ -103,6 +104,12 @@ export default function BlogPostPage({ params }) {
               month: "long",
               day: "numeric",
             })}
+            {post.updatedAt && post.updatedAt !== post.publishedAt
+              ? ` · Updated ${new Date(post.updatedAt).toLocaleDateString(
+                  "en-US",
+                  { year: "numeric", month: "long", day: "numeric" }
+                )}`
+              : ""}
           </p>
           <Heading as="h1" className="mt-4 fb-hero-title fb-page-hero-enter">
             {post.title}

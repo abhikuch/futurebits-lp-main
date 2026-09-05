@@ -1,5 +1,20 @@
 import { SITE_URL } from "@/config/site";
+import { BLOG_DEPTH, BLOG_DEPTH_UPDATED_AT } from "@/content/blog-depth";
 import { lintBlogPost } from "@/content/content-voice";
+
+function withEditorialDepth(post) {
+  const depth = BLOG_DEPTH[post.slug];
+  if (!depth) {
+    throw new Error(`Missing editorial depth for blog slug: ${post.slug}`);
+  }
+
+  return {
+    ...post,
+    updatedAt: BLOG_DEPTH_UPDATED_AT,
+    readMinutes: depth.readMinutes,
+    sections: [...post.sections, ...depth.sections],
+  };
+}
 
 const RAW_BLOG_POSTS = [
   {
@@ -378,7 +393,9 @@ const RAW_BLOG_POSTS = [
   },
 ];
 
-export const BLOG_POSTS = RAW_BLOG_POSTS.map(lintBlogPost);
+export const BLOG_POSTS = RAW_BLOG_POSTS.map(withEditorialDepth).map(
+  lintBlogPost
+);
 
 export function getBlogPost(slug) {
   return BLOG_POSTS.find((post) => post.slug === slug) ?? null;

@@ -1,22 +1,43 @@
 "use client";
 
-import BenefitsSection from "@/components/market/Benefits";
-import FooterCTA from "@/components/market/FooterCTA";
+import dynamic from "next/dynamic";
+
+import logo from "@/assets/logo.svg";
 import Hero from "@/components/market/Hero";
-import OurSolutions from "@/components/market/OurSolutions";
-import SupportedBroker from "@/components/market/SupportedBroker";
-import WhyUs from "@/components/market/WhyUs";
+import FeaturedServiceLinks from "@/components/shared/FeaturedServiceLinks";
+import ProofBand from "@/components/shared/ProofBand";
 import SiteFooter from "@/components/shared/SiteFooter";
 import TestimonialSection from "@/components/shared/TestimonialSection";
 import TopNavbar from "@/components/shared/TopNavbar";
 import MarketingButton from "@/components/ui/marketing-button";
-import logo from "@/assets/logo.svg";
-import POVStrip from "@/components/shared/POVStrip";
-import EngagementModels from "@/components/shared/EngagementModels";
-import FeaturedServiceLinks from "@/components/shared/FeaturedServiceLinks";
-import FAQSection from "@/components/shared/FAQSection";
-import ProofBand from "@/components/shared/ProofBand";
 import { CAL } from "@/config/site";
+
+const OurSolutions = dynamic(() => import("@/components/market/OurSolutions"), {
+  loading: () => <div className="min-h-[24rem] w-full" aria-hidden />,
+});
+const SupportedBroker = dynamic(
+  () => import("@/components/market/SupportedBroker"),
+  { loading: () => <div className="min-h-[16rem] w-full" aria-hidden /> }
+);
+const WhyUs = dynamic(() => import("@/components/market/WhyUs"), {
+  loading: () => <div className="min-h-[20rem] w-full" aria-hidden />,
+});
+const POVStrip = dynamic(() => import("@/components/shared/POVStrip"), {
+  loading: () => <div className="min-h-[8rem] w-full" aria-hidden />,
+});
+const BenefitsSection = dynamic(() => import("@/components/market/Benefits"), {
+  loading: () => <div className="min-h-[18rem] w-full" aria-hidden />,
+});
+const EngagementModels = dynamic(
+  () => import("@/components/shared/EngagementModels"),
+  { loading: () => <div className="min-h-[18rem] w-full" aria-hidden /> }
+);
+const FAQSection = dynamic(() => import("@/components/shared/FAQSection"), {
+  loading: () => <div className="min-h-[16rem] w-full" aria-hidden />,
+});
+const FooterCTA = dynamic(() => import("@/components/market/FooterCTA"), {
+  loading: () => <div className="min-h-[12rem] w-full" aria-hidden />,
+});
 
 const MarketPage = () => {
   return (

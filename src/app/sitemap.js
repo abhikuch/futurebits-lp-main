@@ -1,6 +1,9 @@
-import { ROUTES, SITE_URL } from "@/config/site";
+import { CONTENT_UPDATED_AT, ROUTES, SITE_URL } from "@/config/site";
 import { BLOG_POSTS } from "@/content/blog";
-import { SERVICE_CATEGORIES, SERVICES } from "@/content/services";
+import {
+  SERVICE_CATEGORIES,
+  getIndexedServiceDetails,
+} from "@/content/services";
 
 const PRIORITY = {
   home: 1.0,
@@ -30,19 +33,12 @@ const CHANGE_FREQ = {
   privacy: "yearly",
 };
 
-/**
- * Service detail URLs that should appear in the sitemap.
- * Thin / non-priority catalog pages stay crawlable via category hubs
- * but are excluded here to avoid diluting the index.
- *
- * @param {typeof SERVICES} [services]
- */
-export function getIndexedServiceDetails(services = SERVICES) {
-  return services.filter((service) => service.isPriority);
+function stableDate(isoDate) {
+  return new Date(`${isoDate}T00:00:00.000Z`);
 }
 
 export default function sitemap() {
-  const lastModified = new Date();
+  const lastModified = stableDate(CONTENT_UPDATED_AT);
 
   const coreRoutes = Object.entries(ROUTES).map(([key, route]) => ({
     url: `${SITE_URL}${route.path}`,
@@ -67,7 +63,7 @@ export default function sitemap() {
 
   const blogPosts = BLOG_POSTS.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
+    lastModified: stableDate(post.updatedAt ?? post.publishedAt),
     changeFrequency: "monthly",
     priority: 0.65,
   }));

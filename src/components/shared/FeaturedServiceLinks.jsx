@@ -11,7 +11,12 @@ import {
 /**
  * SEO internal-linking band for vertical landing pages.
  */
-export default function FeaturedServiceLinks({ title, services, viewAllHref }) {
+export default function FeaturedServiceLinks({
+  title,
+  services,
+  viewAllHref,
+  viewAllLabel = "See this category",
+}) {
   const links = services
     .map(({ categorySlug, serviceSlug, label }) => {
       const service = getServiceBySlugs(categorySlug, serviceSlug);
@@ -42,7 +47,7 @@ export default function FeaturedServiceLinks({ title, services, viewAllHref }) {
               href={viewAllHref}
               className="text-sm text-white/70 underline underline-offset-4 transition hover:text-white"
             >
-              View all services
+              {viewAllLabel}
             </Link>
           ) : null}
         </MotionFadeIn>

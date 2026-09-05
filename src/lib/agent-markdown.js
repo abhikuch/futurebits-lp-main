@@ -38,7 +38,9 @@ function routeMarkdown(path) {
     `Canonical URL: ${SITE_URL}${route.path}`,
     "",
     "## Related links",
-    `- [Services](${SITE_URL}/services)`,
+    `- [AI & Automation](${SITE_URL}${ROUTES.ai.path})`,
+    `- [Design](${SITE_URL}${ROUTES.design.path})`,
+    `- [Markets](${SITE_URL}${ROUTES.markets.path})`,
     `- [Contact](${SITE_URL}${ROUTES.contact.path})`,
     `- [LLMs guidance](${SITE_URL}/llms.txt)`,
     `- [Sitemap](${SITE_URL}/sitemap.xml)`,
@@ -47,7 +49,8 @@ function routeMarkdown(path) {
   if (path === ROUTES.home.path) {
     lines.push(
       "",
-      "## Vertical entry points",
+      "## Start with a track",
+      "Vertical pages are the primary entry. Category hubs exist if you already know the offering name.",
       `- [AI & Automation](${SITE_URL}${ROUTES.ai.path})`,
       `- [Design](${SITE_URL}${ROUTES.design.path})`,
       `- [Markets](${SITE_URL}${ROUTES.markets.path})`
@@ -92,6 +95,8 @@ function categoryMarkdown(path) {
   const services = SERVICES.filter(
     (service) => service.categorySlug === category.slug
   );
+  const primary = services.filter((service) => service.isPriority);
+  const supportingCount = services.length - primary.length;
 
   const lines = [
     `# ${category.title}`,
@@ -100,15 +105,18 @@ function categoryMarkdown(path) {
     "",
     `URL: ${SITE_URL}${path}`,
     "",
-    "## Services in this category",
-    ...services.slice(0, 12).map(
+    "## Primary services in this category",
+    ...primary.map(
       (service) =>
         `- [${service.title}](${SITE_URL}${service.path}): ${service.shortDescription}`
     ),
   ];
 
-  if (services.length > 12) {
-    lines.push(`- …and ${services.length - 12} more on the services hub.`);
+  if (supportingCount > 0) {
+    lines.push(
+      "",
+      `${supportingCount} supporting pages exist for specific offering names. They are not the primary catalog.`
+    );
   }
 
   return lines.join("\n");
@@ -154,9 +162,10 @@ function blogMarkdown(path) {
     post.description,
     "",
     `Published: ${post.publishedAt}`,
+    post.updatedAt ? `Updated: ${post.updatedAt}` : null,
     `URL: ${SITE_URL}${path}`,
     "",
-  ];
+  ].filter((line) => line !== null);
 
   for (const section of post.sections ?? []) {
     lines.push(`## ${section.heading}`, "", section.body, "");
