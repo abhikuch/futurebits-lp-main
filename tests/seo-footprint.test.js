@@ -100,7 +100,11 @@ describe("SEO footprint", () => {
   });
 
   it("keeps home vertical-first instead of pushing /services as the primary CTA", () => {
-    const home = repoFile("../src/app/page.jsx");
+    const home = [
+      repoFile("../src/app/page.jsx"),
+      repoFile("../src/components/home/HomeHero.jsx"),
+      repoFile("../src/content/home.js"),
+    ].join("\n");
     assert.doesNotMatch(home, /Browse all services/);
     assert.doesNotMatch(home, /browse every service we ship/);
     assert.match(home, /Book a call/);

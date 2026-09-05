@@ -13,6 +13,13 @@ describe("agent markdown", () => {
     assert.equal(normalizePath("/"), "/");
   });
 
+  it("returns studio-cover markdown for home", () => {
+    const result = getMarkdownForPath("/");
+    assert.ok(result);
+    assert.match(result.body, /The rooms/);
+    assert.match(result.body, /Book a call/);
+  });
+
   it("returns markdown for core routes", () => {
     const result = getMarkdownForPath("/ai");
     assert.ok(result);

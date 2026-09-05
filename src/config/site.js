@@ -45,6 +45,10 @@ export const ANALYTICS = {
 };
 
 export const CAL = {
+  home: buildCalUrl("https://cal.com/futurebits/ai?duration=30", {
+    medium: "cta",
+    campaign: "home-hero",
+  }),
   ai: buildCalUrl("https://cal.com/futurebits/ai?duration=30", {
     medium: "cta",
     campaign: "ai-vertical",
@@ -85,10 +89,10 @@ export const DEFAULT_OG_IMAGE = ASSETS.ogAi;
 export const ROUTES = {
   home: {
     path: "/",
-    cta: CAL.ai,
-    title: "Futurebits | Design, AI, and Automation",
+    cta: CAL.home,
+    title: "Futurebits | A studio for AI, markets, and design",
     description:
-      "Futurebits is a design and engineering studio across AI systems, trading infrastructure, and product design with frontend delivery.",
+      "Futurebits is one small team across three isolated tracks: production AI, trading infrastructure, and product design with frontend in your repo. Pick a room. Book a call.",
     keywords: [
       "Futurebits",
       "AI automation agency",

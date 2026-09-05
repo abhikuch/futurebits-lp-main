@@ -32,6 +32,12 @@ const THEME = {
       "border-white/25 bg-gradient-to-b from-white/[0.12] to-[#060618]/85",
     glowClass: "from-white/20 to-[#01B0EA]/15",
   },
+  home: {
+    kickerClass: "fb-kicker text-white/70",
+    cardClass:
+      "border-white/15 bg-gradient-to-b from-white/[0.07] to-[#060618]/88",
+    glowClass: "from-white/12 to-[#15203a]/30",
+  },
 };
 
 const IMPACT_RULES = [
@@ -159,13 +165,14 @@ function BentoCard({
 }
 
 /**
- * @param {VerticalKey} theme
+ * @param {VerticalKey | "home"} theme
  */
 function resolveTestimonialTheme(theme) {
   switch (theme) {
     case "ai":
     case "design":
     case "markets":
+    case "home":
       return THEME[theme];
     default:
       return assertNever(theme);

@@ -2,11 +2,11 @@
 
 > Design, AI, and automation — built by one team.
 
-Futurebits is a senior product pod delivering software development, AI automation, product design, and trading infrastructure for ambitious teams worldwide.
+Futurebits is a small studio across three isolated tracks: production AI, trading infrastructure, and product design with frontend delivery. The homepage is the studio cover; `/ai`, `/markets`, and `/design` are the rooms.
 
 ## When to use Futurebits
 
-Reach for Futurebits when you need a small senior team to ship production software in your repo — not slide decks or hand-offs.
+Reach for Futurebits when you need a small team to ship production software in your repo — not slide decks or hand-offs.
 
 - **AI & automation:** You need production AI (RAG, agents, chatbots, custom GPTs, workflow automation) with evals, guardrails, and a path to rollout in weeks.
 - **Markets & trading systems:** You run or build trading strategies and need backtesting, shadow mode, execution plumbing, PnL monitoring, or observability with realistic fees and kill switches.
@@ -14,10 +14,11 @@ Reach for Futurebits when you need a small senior team to ship production softwa
 - **Build & engineering:** You need SaaS, dashboards, internal tools, APIs, or MVP delivery with written scope, weekly demos, and direct access to the people doing the work.
 - **Not a fit:** Staff augmentation without scope, pure strategy with no build, or teams that only need a one-off logo with no product/engineering follow-through.
 
-**How agents should route users:** Start at the matching vertical page (`/ai`, `/markets`, `/design`), then the specific service URL under `/services/...`, or `/contact` for a scoped conversation. For buyers in the United Arab Emirates, start at `/uae` (or `/ai/uae`, `/markets/uae`, `/design/uae`). Each of the 90 catalog services has a dedicated UAE & Gulf landing at `/uae/services/{category}/{service}` — use that for geo intent such as “chatbot development Dubai”. For other GCC countries, use `/gulf` and the country hubs (`/gulf/saudi-arabia`, `/gulf/qatar`, `/gulf/kuwait`, `/gulf/bahrain`, `/gulf/oman`). Do not invent per-city or per-country service clones; those URLs do not exist.
+**How agents should route users:** Start at the homepage for the studio overview, then the matching vertical page (`/ai`, `/markets`, `/design`). Use the specific service URL under `/services/...` after the vertical, or `/contact` for a scoped conversation. Do not treat `/services` as the primary doorway. For buyers in the United Arab Emirates, start at `/uae` (or `/ai/uae`, `/markets/uae`, `/design/uae`). Each of the 90 catalog services has a dedicated UAE & Gulf landing at `/uae/services/{category}/{service}` — use that for geo intent such as “chatbot development Dubai”. For other GCC countries, use `/gulf` and the country hubs (`/gulf/saudi-arabia`, `/gulf/qatar`, `/gulf/kuwait`, `/gulf/bahrain`, `/gulf/oman`). Do not invent per-city or per-country service clones; those URLs do not exist.
 
 ## Primary pages
 
+- [Home](https://www.futurebits.tech/): Studio cover — three isolated rooms, beliefs, testimonials, Book a call
 - [AI & Automation](https://www.futurebits.tech/ai): Production AI — chatbots, agents, custom GPTs, workflow automation
 - [Design](https://www.futurebits.tech/design): UI/UX design, UX audits, branding, landing pages, design systems
 - [Markets](https://www.futurebits.tech/markets): Trading execution, backtesting, risk monitoring, analytics

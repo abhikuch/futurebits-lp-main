@@ -116,6 +116,10 @@ export function getCalLinkForThemeKey(themeKey) {
 export function getCalLinkForPath(pathname) {
   if (!pathname) return CAL.ai;
 
+  if (pathname === "/" || pathname === "") {
+    return CAL.home;
+  }
+
   if (pathname.startsWith("/design") || pathname.includes("/services/design")) {
     return CAL.design;
   }

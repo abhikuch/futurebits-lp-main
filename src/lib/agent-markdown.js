@@ -58,15 +58,19 @@ function routeMarkdown(path) {
   if (path === ROUTES.home.path) {
     lines.push(
       "",
-      "## Start with a track",
-      "Vertical pages are the primary entry. Category hubs exist if you already know the offering name.",
-      `- [AI & Automation](${SITE_URL}${ROUTES.ai.path})`,
-      `- [Design](${SITE_URL}${ROUTES.design.path})`,
-      `- [Markets](${SITE_URL}${ROUTES.markets.path})`,
+      "## The rooms",
+      "Home is the studio cover. AI, Markets, and Design are isolated tracks — do not treat `/services` as the primary discovery path.",
+      `- [AI & Automation](${SITE_URL}${ROUTES.ai.path}): production AI for ops, support, and product`,
+      `- [Markets](${SITE_URL}${ROUTES.markets.path}): trading and risk infrastructure`,
+      `- [Design](${SITE_URL}${ROUTES.design.path}): product design plus frontend in the repo`,
       "",
       "## UAE & GCC",
       `- [UAE hub](${SITE_URL}${ROUTES.uae.path}): GST hours, +971 line, dedicated geo landing per service`,
-      `- [Gulf hub](${SITE_URL}/gulf): country hubs for KSA, Qatar, Kuwait, Bahrain, Oman — not 90×country clones`
+      `- [Gulf hub](${SITE_URL}/gulf): country hubs for KSA, Qatar, Kuwait, Bahrain, Oman — not 90×country clones`,
+      "",
+      "## Next steps",
+      `- [Book a call](${SITE_URL}${ROUTES.contact.path})`,
+      `- [Contact](${SITE_URL}${ROUTES.contact.path})`
     );
   }
 
