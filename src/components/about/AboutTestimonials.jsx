@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import quote from "@/assets/landing-page-AI/quote.svg";
 import star from "@/assets/design/star.svg";
 import { TESTIMONIALS } from "@/components/shared/testimonialsData";
-import { assertNever } from "@/lib/assert-never";
+import { assertNever } from "@/components/about/assert-never";
 import { MOTION, MOTION_VARIANTS } from "@/lib/motion-tokens";
 
 const IMPACT_RULES = [

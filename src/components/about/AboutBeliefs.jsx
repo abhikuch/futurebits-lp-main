@@ -3,7 +3,7 @@
 import Container from "@/components/ui/container";
 import Section from "@/components/ui/section";
 import { ABOUT_BELIEFS } from "@/content/about";
-import { assertNever } from "@/lib/assert-never";
+import { assertNever } from "@/components/about/assert-never";
 import {
   MotionFadeIn,
   MotionStagger,

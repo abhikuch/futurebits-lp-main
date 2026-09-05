@@ -2,7 +2,7 @@ import {
   CATEGORY_VISUAL_THEME,
   VERTICAL_DECOR_CLASSES,
 } from "@/app/services/themeTokens";
-import { assertNever } from "@/lib/assert-never";
+import { assertNever } from "@/components/about/assert-never";
 
 /**
  * Isolated visual tokens for one About "room".

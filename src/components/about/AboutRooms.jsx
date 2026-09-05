@@ -6,7 +6,7 @@ import Container from "@/components/ui/container";
 import Section from "@/components/ui/section";
 import { ABOUT_ROOMS } from "@/content/about";
 import { getAboutRoomVisual } from "@/components/about/about-theme";
-import { assertNever } from "@/lib/assert-never";
+import { assertNever } from "@/components/about/assert-never";
 import {
   MotionFadeIn,
   MotionStagger,
