@@ -19,6 +19,7 @@ const SERVICE_LINKS = [
 ];
 
 const LEGAL_LINKS = [
+  { label: "UAE & GCC", href: ROUTES.uae.path },
   { label: "Press & Media Kit", href: ROUTES.press.path },
   { label: "Free Resources", href: ROUTES.resources.path },
   { label: "Privacy Policy", href: ROUTES.privacy.path },
@@ -49,6 +50,10 @@ export default function SiteFooter({
             </p>
             <p className="mt-4 text-sm text-white/60">
               {COMPANY.email}
+              <br />
+              <a href={`tel:${COMPANY.phone}`} className="transition hover:text-white">
+                {COMPANY.phoneDisplay ?? COMPANY.phone}
+              </a>
             </p>
           </div>
 

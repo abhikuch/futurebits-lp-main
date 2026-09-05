@@ -88,6 +88,10 @@ export function getCalLinkForThemeKey(themeKey) {
 export function getCalLinkForPath(pathname) {
   if (!pathname) return CAL.ai;
 
+  if (pathname === "/uae" || pathname.startsWith("/uae/")) {
+    return CAL.ai;
+  }
+
   if (pathname.startsWith("/design") || pathname.includes("/services/design")) {
     return CAL.design;
   }

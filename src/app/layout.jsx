@@ -45,6 +45,8 @@ export const metadata = {
     "trading infrastructure",
     "software development",
     "Futurebits",
+    "software development Dubai",
+    "AI agency UAE",
   ],
   metadataBase: new URL(SITE_URL),
   openGraph: {

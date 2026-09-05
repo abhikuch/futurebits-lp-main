@@ -14,6 +14,10 @@ const PRIORITY = {
   about: 0.6,
   contact: 0.6,
   privacy: 0.3,
+  uae: 0.85,
+  uaeAi: 0.8,
+  uaeMarkets: 0.8,
+  uaeDesign: 0.8,
 };
 
 const CHANGE_FREQ = {
@@ -28,6 +32,10 @@ const CHANGE_FREQ = {
   about: "monthly",
   contact: "monthly",
   privacy: "yearly",
+  uae: "weekly",
+  uaeAi: "weekly",
+  uaeMarkets: "weekly",
+  uaeDesign: "weekly",
 };
 
 export default function sitemap() {

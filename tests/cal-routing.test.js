@@ -73,6 +73,10 @@ describe("Cal.com booking routes", () => {
       getCalLinkForPath("/services/markets-trading"),
       CAL.markets
     );
+    assert.equal(getCalLinkForPath("/uae"), CAL.ai);
+    assert.equal(getCalLinkForPath("/ai/uae"), CAL.ai);
+    assert.equal(getCalLinkForPath("/design/uae"), CAL.design);
+    assert.equal(getCalLinkForPath("/markets/uae"), CAL.markets);
     assert.equal(getCalLinkForPath("/contact"), CAL.ai);
     assert.equal(getCalLinkForPath("/blog"), CAL.ai);
   });

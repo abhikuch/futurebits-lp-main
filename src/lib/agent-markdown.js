@@ -2,6 +2,12 @@ import { BLOG_POSTS } from "@/content/blog";
 import { FREE_RESOURCES } from "@/content/link-building";
 import { SERVICE_CATEGORIES, SERVICES } from "@/content/services";
 import { COMPANY, ROUTES, SITE_URL } from "@/config/site";
+import {
+  getUaePage,
+  getUaePageKeyForPath,
+  getUaeServiceCopy,
+  UAE,
+} from "@/content/uae";
 
 const ROUTE_LIST = Object.values(ROUTES);
 
@@ -50,7 +56,10 @@ function routeMarkdown(path) {
       "## Vertical entry points",
       `- [AI & Automation](${SITE_URL}${ROUTES.ai.path})`,
       `- [Design](${SITE_URL}${ROUTES.design.path})`,
-      `- [Markets](${SITE_URL}${ROUTES.markets.path})`
+      `- [Markets](${SITE_URL}${ROUTES.markets.path})`,
+      "",
+      "## UAE & GCC",
+      `- [UAE hub](${SITE_URL}${ROUTES.uae.path}): GST hours, +971 line, full catalog`
     );
   }
 
@@ -131,11 +140,76 @@ function serviceMarkdown(path) {
     `Category: ${service.categoryTitle}`,
     `URL: ${SITE_URL}${service.path}`,
     "",
+    "## For UAE teams",
+    getUaeServiceCopy(service).delivery,
+    "",
     "## Next steps",
     `- [Book a call](${SITE_URL}${ROUTES.contact.path})`,
+    `- [UAE delivery](${SITE_URL}/uae)`,
     `- [All ${service.categoryTitle} services](${SITE_URL}/services/${service.categorySlug})`,
     `- [Services hub](${SITE_URL}${ROUTES.services.path})`,
   ].join("\n");
+}
+
+/**
+ * @param {string} path
+ */
+function uaeMarkdown(path) {
+  const key = getUaePageKeyForPath(path);
+  if (!key) return null;
+
+  const page = getUaePage(key);
+  if (!page) return null;
+
+  const lines = [
+    `# ${page.title}`,
+    "",
+    page.lede,
+    "",
+    `Canonical URL: ${SITE_URL}${page.path}`,
+    `Phone: ${UAE.phoneDisplay} · ${UAE.timezoneLabel}`,
+    "",
+    ...page.body.flatMap((paragraph) => [paragraph, ""]),
+    "## How we work with UAE companies",
+    ...page.points.flatMap((point) => [
+      `### ${point.title}`,
+      "",
+      point.body,
+      "",
+    ]),
+  ];
+
+  if (page.tracks?.length) {
+    lines.push("## Tracks");
+    for (const track of page.tracks) {
+      lines.push(`- [${track.label}](${SITE_URL}${track.href}): ${track.body}`);
+    }
+    lines.push("");
+  }
+
+  for (const category of page.categories) {
+    lines.push(`## ${category.title}`, "", category.intro, "");
+    for (const service of category.services) {
+      lines.push(
+        `- [${service.title}](${SITE_URL}${service.path}): ${service.angle}`
+      );
+    }
+    lines.push("");
+  }
+
+  lines.push("## FAQ");
+  for (const item of page.faqs) {
+    lines.push(`### ${item.q}`, "", item.a, "");
+  }
+
+  lines.push(
+    "## Next steps",
+    `- [Book a call](${SITE_URL}${ROUTES.contact.path})`,
+    `- [UAE hub](${SITE_URL}/uae)`,
+    `- [Contact](${SITE_URL}${ROUTES.contact.path})`
+  );
+
+  return lines.join("\n");
 }
 
 /**
@@ -198,6 +272,7 @@ export function getMarkdownForPath(pathname) {
   const path = normalizePath(pathname);
 
   const body =
+    uaeMarkdown(path) ??
     routeMarkdown(path) ??
     categoryMarkdown(path) ??
     serviceMarkdown(path) ??
@@ -221,6 +296,7 @@ export function getNotFoundMarkdown(pathname) {
     "",
     "## Start here",
     `- [Home](${SITE_URL}/)`,
+    `- [UAE & GCC](${SITE_URL}/uae)`,
     `- [Sitemap](${SITE_URL}/sitemap.xml)`,
     `- [LLMs / agent guidance](${SITE_URL}/llms.txt)`,
   ].join("\n");

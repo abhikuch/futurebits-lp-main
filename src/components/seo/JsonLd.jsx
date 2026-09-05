@@ -6,9 +6,11 @@ import {
   SITE_URL,
   SOCIAL,
 } from "@/config/site";
+import { AREA_SERVED, getUaePage, UAE } from "@/content/uae";
 
 export const ORGANIZATION_ID = `${SITE_URL}#organization`;
 export const WEBSITE_ID = `${SITE_URL}#website`;
+export { AREA_SERVED };
 
 function pageUrl(path) {
   return path.startsWith("http") ? path : `${SITE_URL}${path}`;
@@ -81,17 +83,30 @@ export function organizationJsonLd() {
         contactType: "sales",
         email: COMPANY.email,
         telephone: COMPANY.phone,
-        areaServed: "Worldwide",
+        areaServed: AREA_SERVED,
         availableLanguage: ["English"],
+        hoursAvailable: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+          ],
+          opens: "09:00",
+          closes: "18:00",
+        },
       },
       {
         "@type": "ContactPoint",
         contactType: "customer support",
         email: COMPANY.email,
-        areaServed: "Worldwide",
+        areaServed: AREA_SERVED,
         availableLanguage: ["English"],
       },
     ],
+    areaServed: AREA_SERVED,
     sameAs: [SOCIAL.twitter, SOCIAL.linkedin, SOCIAL.behance, SOCIAL.dribbble],
     knowsAbout: [
       "AI automation",
@@ -172,6 +187,7 @@ export function webPageJsonLd({
   image,
   breadcrumbItems,
   mainEntityId,
+  inLanguage = "en",
 }) {
   if (!path || !name) return null;
 
@@ -190,7 +206,7 @@ export function webPageJsonLd({
     isPartOf: { "@id": WEBSITE_ID },
     about: { "@id": ORGANIZATION_ID },
     publisher: { "@id": ORGANIZATION_ID },
-    inLanguage: "en",
+    inLanguage,
     ...(image
       ? {
           primaryImageOfPage: {
@@ -259,10 +275,7 @@ export function serviceJsonLd(routeKey) {
     url: pageUrl(route.path),
     serviceType: route.title,
     provider: { "@id": ORGANIZATION_ID },
-    areaServed: {
-      "@type": "Place",
-      name: "Worldwide",
-    },
+    areaServed: AREA_SERVED,
     offers: defaultOffer(route.cta),
     ...(route.ogImage
       ? {
@@ -297,10 +310,7 @@ export function customServiceJsonLd({
     url: pageUrl(path),
     serviceType: serviceType ?? title,
     provider: { "@id": ORGANIZATION_ID },
-    areaServed: {
-      "@type": "Place",
-      name: "Worldwide",
-    },
+    areaServed: AREA_SERVED,
     ...(category ? { category } : {}),
     offers: defaultOffer(offerUrl ?? ROUTES.contact.cta),
     ...(image
@@ -567,4 +577,68 @@ export function siteNavigationJsonLd() {
       url: `${SITE_URL}${item.url}`,
     })),
   };
+}
+
+const UAE_ROUTE_KEY = {
+  hub: "uae",
+  ai: "uaeAi",
+  markets: "uaeMarkets",
+  design: "uaeDesign",
+};
+
+/**
+ * @param {"hub" | "ai" | "markets" | "design"} pageKey
+ */
+export function uaePageJsonLd(pageKey) {
+  const page = getUaePage(pageKey);
+  const route = ROUTES[UAE_ROUTE_KEY[pageKey]];
+  if (!page || !route) return null;
+
+  const serviceId = pageId(page.path, "service");
+  const breadcrumbItems =
+    pageKey === "hub"
+      ? [
+          { name: "Home", url: SITE_URL },
+          { name: "UAE", url: pageUrl(page.path) },
+        ]
+      : [
+          { name: "Home", url: SITE_URL },
+          { name: page.parent.label, url: pageUrl(page.parent.href) },
+          { name: "UAE", url: pageUrl(page.path) },
+        ];
+
+  const catalogItems = page.categories.flatMap((category) =>
+    category.services.map((service) => ({
+      name: service.title,
+      url: service.path,
+    }))
+  );
+
+  return compactDocs([
+    webPageJsonLd({
+      path: page.path,
+      name: route.title,
+      description: route.description,
+      image: route.ogImage,
+      breadcrumbItems,
+      mainEntityId: serviceId,
+      inLanguage: "en-AE",
+    }),
+    breadcrumbJsonLd(breadcrumbItems, page.path),
+    customServiceJsonLd({
+      title: route.title,
+      description: `${route.description} Serving ${UAE.cities.join(", ")}.`,
+      path: page.path,
+      serviceType: route.title,
+      offerUrl: route.cta,
+      image: route.ogImage,
+    }),
+    itemListJsonLd({
+      name: `${page.kicker} services`,
+      description: route.description,
+      path: page.path,
+      items: catalogItems,
+    }),
+    faqJsonLd(page.faqs, page.path),
+  ]);
 }

@@ -22,6 +22,7 @@ import {
   SERVICES,
 } from "@/content/services";
 import { lintText } from "@/content/content-voice";
+import { getUaeServiceCopy } from "@/content/uae";
 import {
   buildServiceSections,
   getServicePlaybook,
@@ -162,6 +163,8 @@ export function generateMetadata({ params }) {
       "Futurebits",
       "implementation service",
       "product and engineering delivery",
+      "UAE",
+      "Dubai",
     ],
     alternates: {
       canonical: `${SITE_URL}${service.path}`,
@@ -206,7 +209,8 @@ export default function ServiceDetailPage({ params }) {
 
   const sectionData = buildServiceSections(service, category);
   const playbook = getServicePlaybook(service.slug, service, category);
-  const faqs = playbook?.faqs ?? getServiceFaq(service);
+  const uaeCopy = getUaeServiceCopy(service);
+  const faqs = [...(playbook?.faqs ?? getServiceFaq(service)), uaeCopy.faq];
   const related = getRelatedServices(service.categorySlug, service.slug, 6);
   const detailKey = resolveDetailThemeKey(category.slug);
   const theme = (detailKey && DETAIL_VISUAL_THEME[detailKey]) ?? DEFAULT_DETAIL_THEME;
@@ -431,6 +435,27 @@ export default function ServiceDetailPage({ params }) {
           </Container>
         </Section>
       ) : null}
+
+      <Section className="py-8 sm:py-10">
+        <Container className="max-w-3xl">
+          <div className={`${rhythm.wideCardClass} ${theme.accentBorder}`}>
+            <Heading as="h2" className="fb-h3">
+              For teams in the UAE
+            </Heading>
+            <p className="mt-4 text-sm leading-relaxed text-white/75">
+              {uaeCopy.delivery}
+            </p>
+            <p className="mt-4">
+              <Link
+                href="/uae"
+                className={`text-sm underline underline-offset-4 ${theme.accentText}`}
+              >
+                UAE delivery notes
+              </Link>
+            </p>
+          </div>
+        </Container>
+      </Section>
 
       <Section className={rhythm.faqSectionClass}>
         <Container>

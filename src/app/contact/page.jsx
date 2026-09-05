@@ -12,7 +12,7 @@ import { getCalLinkForPath } from "@/lib/page-theme";
 const promises = [
   {
     title: "Reply within one business day",
-    body: "Weekdays, India time. We won't ghost you, even if we're not the right fit.",
+    body: "Weekdays, GST (UAE, UTC+4). India overlap is late morning GST. We won't ghost you, even if we're not the right fit.",
   },
   {
     title: "A real human will read this",
@@ -61,6 +61,20 @@ export default function ContactPage() {
               Book a call
             </Link>
             <p className="mt-4 text-xs text-white/50">
+              UAE / GST:{" "}
+              <a
+                href={`tel:${COMPANY.phone}`}
+                className="underline underline-offset-2 hover:text-white"
+              >
+                {COMPANY.phoneDisplay ?? COMPANY.phone}
+              </a>
+              . Looking for a Dubai or Abu Dhabi engagement? See{" "}
+              <Link href="/uae" className="underline underline-offset-2 hover:text-white">
+                UAE delivery
+              </Link>
+              .
+            </p>
+            <p className="mt-3 text-xs text-white/50">
               Or reach us on{" "}
               <Link
                 href={SOCIAL.linkedin}

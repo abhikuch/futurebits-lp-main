@@ -12,7 +12,7 @@ export const DIRECTORY_PROFILE = {
   minProjectSize: "$10,000+",
   hourlyRate: "$50 - $99 / hr",
   teamSize: "10 - 49",
-  locations: ["Remote", "Worldwide"],
+  locations: ["Dubai, UAE", "Remote", "Worldwide"],
   shortDescription:
     "Futurebits is a design and engineering studio delivering AI automation, UI/UX design, software development, and trading infrastructure for ambitious teams worldwide.",
   longDescription: `Futurebits Technologies is a design and engineering studio focused on production outcomes, not slide decks. We work across three tracks:

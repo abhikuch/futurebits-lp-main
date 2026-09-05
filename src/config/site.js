@@ -20,6 +20,7 @@ export const COMPANY = {
   tagline: "Design, AI, and automation. Built by one team.",
   email: "admin@futurebits.tech",
   phone: "+971585165671",
+  phoneDisplay: "+971 58 516 5671",
   founderName: "Futurebits Team",
   founded: "2023",
 };
@@ -87,9 +88,16 @@ export const ROUTES = {
       "product design and development",
       "trading infrastructure",
       "software development partner",
+      "software development Dubai",
+      "AI agency UAE",
     ],
     ogImage: ASSETS.ogAi,
     ogImageAlt: "Futurebits",
+    languages: {
+      "en-AE": `${SITE_URL}/uae`,
+      en: SITE_URL,
+      "x-default": SITE_URL,
+    },
   },
   ai: {
     path: "/ai",
@@ -110,6 +118,11 @@ export const ROUTES = {
     ogImage: ASSETS.ogAi,
     ogImageAlt: "Futurebits AI Solutions",
     shortLabel: "AI & Automation",
+    languages: {
+      "en-AE": `${SITE_URL}/ai/uae`,
+      en: `${SITE_URL}/ai`,
+      "x-default": `${SITE_URL}/ai`,
+    },
   },
   markets: {
     path: "/markets",
@@ -127,6 +140,11 @@ export const ROUTES = {
     ogImage: ASSETS.ogMarkets,
     ogImageAlt: "Futurebits Markets",
     shortLabel: "Markets",
+    languages: {
+      "en-AE": `${SITE_URL}/markets/uae`,
+      en: `${SITE_URL}/markets`,
+      "x-default": `${SITE_URL}/markets`,
+    },
   },
   design: {
     path: "/design",
@@ -147,6 +165,11 @@ export const ROUTES = {
     ogImage: ASSETS.ogDesign,
     ogImageAlt: "Futurebits Design & Development",
     shortLabel: "Design",
+    languages: {
+      "en-AE": `${SITE_URL}/design/uae`,
+      en: `${SITE_URL}/design`,
+      "x-default": `${SITE_URL}/design`,
+    },
   },
   services: {
     path: "/services",
@@ -184,8 +207,13 @@ export const ROUTES = {
     cta: CAL.ai,
     title: "Contact Futurebits | Start a Conversation",
     description:
-      "Tell us about your project. We respond within one business day during weekdays.",
-    keywords: ["Contact Futurebits", "Hire Futurebits", "Project Inquiry"],
+      "Tell us about your project. We respond within one business day on GST (UAE) weekdays. UAE phone +971 58 516 5671.",
+    keywords: [
+      "Contact Futurebits",
+      "Hire Futurebits",
+      "Project Inquiry",
+      "software agency Dubai",
+    ],
     ogImage: ASSETS.ogAi,
     ogImageAlt: "Contact Futurebits",
   },
@@ -244,6 +272,90 @@ export const ROUTES = {
     ogImage: ASSETS.ogDesign,
     ogImageAlt: "Futurebits Resources",
   },
+  uae: {
+    path: "/uae",
+    cta: CAL.ai,
+    title: "Software, AI, and trading systems for UAE teams | Futurebits",
+    description:
+      "Futurebits takes AI, design, and trading-systems work from Dubai, Abu Dhabi, and the UAE on a +971 line. GST hours, written scope, ship in your repo. Book a call.",
+    keywords: [
+      "software development Dubai",
+      "AI agency UAE",
+      "AI chatbot Dubai",
+      "trading systems DIFC",
+      "UI UX design Abu Dhabi",
+      "software company UAE",
+      "Futurebits UAE",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits for UAE teams",
+    languages: {
+      "en-AE": `${SITE_URL}/uae`,
+      en: SITE_URL,
+      "x-default": SITE_URL,
+    },
+  },
+  uaeAi: {
+    path: "/ai/uae",
+    cta: CAL.ai,
+    title: "AI automation for UAE ops and support teams | Futurebits",
+    description:
+      "Production AI for Dubai and Abu Dhabi teams: chatbots, RAG, agents, and WhatsApp automation with evals, handoff, and a written data map. Book a call.",
+    keywords: [
+      "AI agency Dubai",
+      "chatbot development UAE",
+      "WhatsApp automation Dubai",
+      "RAG application UAE",
+      "custom GPT Dubai",
+    ],
+    ogImage: ASSETS.ogAi,
+    ogImageAlt: "Futurebits AI for UAE teams",
+    languages: {
+      "en-AE": `${SITE_URL}/ai/uae`,
+      en: `${SITE_URL}/ai`,
+      "x-default": `${SITE_URL}/ai`,
+    },
+  },
+  uaeMarkets: {
+    path: "/markets/uae",
+    cta: CAL.markets,
+    title: "Trading infrastructure for DIFC and ADGM desks | Futurebits",
+    description:
+      "Backtesting, shadow mode, execution, and PnL monitoring for UAE desks. Fees and kill switches in the spec. GST overlap. Book a call.",
+    keywords: [
+      "trading systems Dubai",
+      "DIFC trading infrastructure",
+      "ADGM quant systems",
+      "algorithmic trading UAE",
+    ],
+    ogImage: ASSETS.ogMarkets,
+    ogImageAlt: "Futurebits Markets for UAE desks",
+    languages: {
+      "en-AE": `${SITE_URL}/markets/uae`,
+      en: `${SITE_URL}/markets`,
+      "x-default": `${SITE_URL}/markets`,
+    },
+  },
+  uaeDesign: {
+    path: "/design/uae",
+    cta: CAL.design,
+    title: "Product design and frontend for UAE launches | Futurebits",
+    description:
+      "UI/UX, landing pages, and frontend for Dubai and Abu Dhabi products. English first, room for Arabic, code in your repo. Book a call.",
+    keywords: [
+      "UI UX design Dubai",
+      "landing page design UAE",
+      "product design Abu Dhabi",
+      "UX audit Dubai",
+    ],
+    ogImage: ASSETS.ogDesign,
+    ogImageAlt: "Futurebits Design for UAE teams",
+    languages: {
+      "en-AE": `${SITE_URL}/design/uae`,
+      en: `${SITE_URL}/design`,
+      "x-default": `${SITE_URL}/design`,
+    },
+  },
 };
 
 /**
@@ -254,6 +366,7 @@ export const NAV_ITEMS = [
   { label: "AI", url: ROUTES.ai.path },
   { label: "Markets", url: ROUTES.markets.path },
   { label: "Design", url: ROUTES.design.path },
+  { label: "UAE", url: ROUTES.uae.path },
   { label: "Services", url: ROUTES.services.path },
   { label: "Blog", url: ROUTES.blog.path },
   { label: "About", url: ROUTES.about.path },
@@ -278,6 +391,7 @@ export function buildRouteMetadata(routeKey) {
     metadataBase: new URL(SITE_URL),
     alternates: {
       canonical: url,
+      ...(route.languages ? { languages: route.languages } : {}),
     },
     openGraph: {
       type: "website",
@@ -308,6 +422,7 @@ export function buildRouteMetadata(routeKey) {
     },
     other: {
       "contact:email": COMPANY.email,
+      "contact:phone_number": COMPANY.phone,
       "contact:business": COMPANY.legalName,
     },
   };
