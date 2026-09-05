@@ -4,9 +4,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRightIcon } from "lucide-react";
-import Navbar from "./Navbar";
-
-import BeamButton from "./BeamButton";
+import TopNavbar from "@/components/shared/TopNavbar";
+import MarketingButton from "@/components/ui/marketing-button";
 import LeftDecoration from "@/assets/landing-page-AI/LeftRectangle.svg";
 import RightDecoration from "@/assets/landing-page-AI/RightRectangle.svg";
 import LazyMount from "@/components/ui/lazy-mount";
@@ -18,7 +17,7 @@ const Hero = () => {
   return (
     <section className="relative flex min-h-screen w-full flex-col overflow-hidden text-white">
       <div className="">
-        <Navbar />
+        <TopNavbar />
       </div>
       <LazyMount fallbackClassName="absolute top-0 left-0 w-full h-1/3">
         <Particles
@@ -136,7 +135,7 @@ const Hero = () => {
               rel="noopener noreferrer"
               className=" "
             >
-              <BeamButton title="Book a call" />
+              <MarketingButton tone="ai" title="Book a call" />
             </Link>
           </div>
         </div>

@@ -1,9 +1,13 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
+import { CONTACT_VERTICALS } from "../src/app/contact/actions.js";
 import { CAL } from "../src/config/site.js";
 import { SERVICE_CATEGORIES } from "../src/content/services.js";
-import { getCalLinkForPath } from "../src/lib/page-theme.js";
+import {
+  getCalLinkForPath,
+  getCalLinkForThemeKey,
+} from "../src/lib/page-theme.js";
 
 function calEventPath(href) {
   return new URL(href).pathname;
@@ -76,4 +80,13 @@ describe("Cal.com booking routes", () => {
     assert.equal(getCalLinkForPath("/contact"), CAL.ai);
     assert.equal(getCalLinkForPath("/blog"), CAL.ai);
   });
+
+  it("routes the platform theme to the build calendar", () => {
+    assert.equal(getCalLinkForThemeKey("platform"), CAL.build);
+  });
+
+  it("includes build in CONTACT_VERTICALS", () => {
+    assert.ok(CONTACT_VERTICALS.has("build"));
+  });
 });
+

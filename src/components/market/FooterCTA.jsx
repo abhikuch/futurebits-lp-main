@@ -4,7 +4,8 @@ import React from "react";
 import Image from "next/image";
 import CtaLogo from "@/assets/logo.svg";
 import BgCta from "@/assets/market/bg_footer_cta.webp";
-import ShimerButton from "./ShimerButton";
+import MarketingButton from "@/components/ui/marketing-button";
+import { CAL } from "@/config/site";
 import Link from "next/link";
 
 const FooterCTA = () => {
@@ -71,18 +72,15 @@ const FooterCTA = () => {
             </h1>
 
             <Link
-              href="https://cal.com/futurebits/markets?duration=30"
+              href={CAL.markets}
               target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="flex justify-center items-center mt-8 sm:mt-16">
                 <div className="relative">
-                  <ShimerButton
-                    size="lg"
-                    href="/book-call"
-                    className="text-[20px]"
-                  >
+                  <MarketingButton tone="markets" size="lg" className="text-[20px]">
                     Book a call
-                  </ShimerButton>
+                  </MarketingButton>
                 </div>
               </div>
             </Link>

@@ -5,6 +5,8 @@ import Hero from "./Hero";
 import FeaturedServiceLinks from "@/components/shared/FeaturedServiceLinks";
 import FAQSection from "@/components/shared/FAQSection";
 import ProofBand from "@/components/shared/ProofBand";
+import SiteFooter from "@/components/shared/SiteFooter";
+import logo from "@/assets/landing-page-AI/logo.svg";
 import { CAL } from "@/config/site";
 
 const ServicesSection = dynamic(() => import("./services"), {
@@ -13,9 +15,10 @@ const ServicesSection = dynamic(() => import("./services"), {
 const ProjectsSection = dynamic(() => import("./ProjectSection"), {
   loading: () => <div className="min-h-[24rem] w-full" aria-hidden />,
 });
-const TestimonialsCarousel = dynamic(() => import("./TestimonialCarousel"), {
-  loading: () => <div className="min-h-[20rem] w-full" aria-hidden />,
-});
+const TestimonialSection = dynamic(
+  () => import("@/components/shared/TestimonialSection"),
+  { loading: () => <div className="min-h-[20rem] w-full" aria-hidden /> }
+);
 const EngagementModels = dynamic(
   () => import("@/components/shared/EngagementModels"),
   { loading: () => <div className="min-h-[18rem] w-full" aria-hidden /> }
@@ -25,9 +28,6 @@ const AboutMe = dynamic(() => import("./AboutMe"), {
 });
 const Feature = dynamic(() => import("./Feature"), {
   loading: () => <div className="min-h-[24rem] w-full" aria-hidden />,
-});
-const Footer = dynamic(() => import("./Footer"), {
-  loading: () => <div className="min-h-[12rem] w-full" aria-hidden />,
 });
 
 export default function LandingPageAI() {
@@ -57,7 +57,7 @@ export default function LandingPageAI() {
       </div>
 
       <div className="fb-section">
-        <TestimonialsCarousel />
+        <TestimonialSection theme="ai" />
       </div>
 
       <EngagementModels ctaHref={CAL.ai} ctaLabel="Book a call" />
@@ -70,7 +70,7 @@ export default function LandingPageAI() {
       <div className="fb-section">
         <Feature />
       </div>
-      <Footer />
+      <SiteFooter logo={logo} backgroundClassName="bg-black" />
     </div>
   );
 }

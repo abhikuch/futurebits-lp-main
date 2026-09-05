@@ -10,7 +10,7 @@ import Particles from "../ui/particles";
 
 import { Marquee } from "../ui/marquee";
 
-import BeamButton from "./BeamButton";
+import MarketingButton from "@/components/ui/marketing-button";
 
 import stars from "@/assets/landing-page-AI/stars.webp";
 import Link from "next/link";
@@ -222,7 +222,7 @@ const Offering = () => {
               href="https://cal.com/futurebits/design?duration=30"
               target="_blank"
             >
-              <BeamButton />
+              <MarketingButton tone="design" title="Book a call" />
             </Link>
           </MotionFadeIn>
         </div>

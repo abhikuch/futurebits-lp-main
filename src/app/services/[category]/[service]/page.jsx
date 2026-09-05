@@ -190,7 +190,7 @@ export function generateMetadata({ params }) {
       images: [ogImage],
     },
     robots: {
-      index: true,
+      index: service.isPriority,
       follow: true,
     },
   };

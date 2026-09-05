@@ -1,4 +1,13 @@
-/** Auto-generated service page copy. regenerate via scripts/build-service-copy.js */
+/**
+ * Service page copy keyed by RAW_SERVICES slug.
+ *
+ * Check coverage (default):
+ *   node --import ./tests/register-loader.mjs scripts/build-service-copy.js
+ *   node --import ./tests/register-loader.mjs scripts/build-service-copy.js --check
+ *
+ * Regenerate SERVICE_PAGE_COPY from seeds (preserves MARKETS_AUDIENCE):
+ *   node --import ./tests/register-loader.mjs scripts/build-service-copy.js --write
+ */
 
 export const SERVICE_PAGE_COPY = {
   "saas-development": {

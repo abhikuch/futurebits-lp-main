@@ -2,6 +2,12 @@ import { CAL } from "@/config/site";
 import { lintServiceCopy, lintText } from "@/content/content-voice";
 import { SERVICE_PAGE_COPY } from "@/content/service-copy";
 
+/**
+ * @typedef {import("@/lib/content-types").CategorySlug} CategorySlug
+ * @typedef {import("@/lib/content-types").ServiceCategory} ServiceCategory
+ * @typedef {import("@/lib/content-types").ServiceRecord} ServiceRecord
+ */
+
 const META_TAIL_VARIANTS = [
   "Scoped in writing. Weekly demos in your repo.",
   "One team from kickoff to launch. No hand-offs.",
@@ -88,7 +94,8 @@ export const SERVICE_CATEGORIES = [
   },
 ];
 
-const RAW_SERVICES = [
+/** @type {Array<[CategorySlug, string, string]>} */
+export const RAW_SERVICES = [
   // Development
   ["build", "saas-development", "SaaS Development"],
   ["build", "web-app-development", "Web App Development"],

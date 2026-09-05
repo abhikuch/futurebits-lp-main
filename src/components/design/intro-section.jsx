@@ -4,7 +4,7 @@ import React from "react";
 import LogoImg from "@/assets/design/futurebits_logo.webp";
 import Image from "next/image";
 import Particles from "../ui/particles";
-import BeamButton from "./BeamButton";
+import MarketingButton from "@/components/ui/marketing-button";
 import stars from "@/assets/landing-page-AI/stars.webp";
 import Link from "next/link";
 import { LampIntro } from "./LampIntro";
@@ -68,7 +68,7 @@ const IntroSection = () => {
           href="https://cal.com/futurebits/design?duration=30"
           target="_blank"
         >
-          <BeamButton />
+          <MarketingButton tone="design" title="Book a call" />
         </Link>
       </div>
     </div>

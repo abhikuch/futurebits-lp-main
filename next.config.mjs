@@ -27,11 +27,6 @@ const nextConfig = {
         hostname: "67uizwknbuzxqhet.public.blob.vercel-storage.com",
         pathname: "/**",
       },
-      {
-        protocol: "https",
-        hostname: "plus.unsplash.com",
-        pathname: "/**",
-      },
     ],
   },
   async redirects() {

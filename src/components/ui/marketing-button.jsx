@@ -3,7 +3,12 @@
 import { ChevronRightIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { assertNever } from "@/lib/assert-never";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
+
+/**
+ * @typedef {import("@/lib/content-types").MarketingTone} MarketingTone
+ */
 
 const toneStyles = {
   ai: { background: "#2E2688", text: "text-white" },
@@ -19,6 +24,22 @@ const sizeStyles = {
   lg: "h-[55px] px-6 text-[18px]",
 };
 
+/**
+ * @param {MarketingTone} tone
+ */
+function resolveToneStyle(tone) {
+  switch (tone) {
+    case "ai":
+    case "design":
+    case "markets":
+    case "platform":
+    case "ghost":
+      return toneStyles[tone];
+    default:
+      return assertNever(tone);
+  }
+}
+
 export default function MarketingButton({
   title,
   children,
@@ -33,7 +54,7 @@ export default function MarketingButton({
   ...props
 }) {
   const content = children ?? title ?? "Book a call";
-  const toneStyle = toneStyles[tone] ?? toneStyles.ai;
+  const toneStyle = resolveToneStyle(tone);
   const sizeStyle = sizeStyles[size] ?? sizeStyles.lg;
   const label =
     analyticsLabel ??

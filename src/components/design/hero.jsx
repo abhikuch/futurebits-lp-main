@@ -11,8 +11,8 @@ import PFive from "@/assets/design/profile5.png";
 import PSix from "@/assets/design/profile6.png";
 import StarImg from "@/assets/design/star.svg";
 import { ChevronRightIcon } from "lucide-react";
-import BeamButton from "./BeamButton";
-import DesignNavbar from "./DesignNavbar";
+import TopNavbar from "@/components/shared/TopNavbar";
+import MarketingButton from "@/components/ui/marketing-button";
 import { CAL, SOCIAL } from "@/config/site";
 
 const PrfolieLists = [
@@ -27,7 +27,7 @@ const PrfolieLists = [
 const Hero = () => {
   return (
     <section className="z-10 mx-auto flex min-h-screen w-full flex-col gap-5">
-      <DesignNavbar />
+      <TopNavbar />
 
       <div className="mx-auto mt-[96px] w-full max-w-[1250px] px-4 sm:px-8 lg:mt-[140px]">
         <div
@@ -93,7 +93,7 @@ const Hero = () => {
           <ChevronRightIcon strokeWidth={3} className="h-4 w-4 ml-1" />
         </Link>
         <Link href={CAL.design} target="_blank" rel="noopener noreferrer">
-          <BeamButton title="Book a call" />
+          <MarketingButton tone="design" title="Book a call" />
         </Link>
       </div>
     </section>

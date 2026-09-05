@@ -4,8 +4,10 @@ import { headers } from "next/headers";
 
 import { COMPANY } from "@/config/site";
 import { deliverContact } from "@/lib/contact-deliver";
-import { parseContactForm } from "@/lib/contact-validate";
+import { CONTACT_VERTICALS, parseContactForm } from "@/lib/contact-validate";
 import { consumeRateLimit } from "@/lib/rate-limit";
+
+export { CONTACT_VERTICALS };
 
 function clientIp() {
   const requestHeaders = headers();

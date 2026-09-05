@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import ShimerButton from "./ShimerButton";
+import MarketingButton from "@/components/ui/marketing-button";
+import { CAL } from "@/config/site";
 // Import placeholder images - replace with your actual paths
 import speedIcon from "@/assets/market/speed-icon.webp";
 import objectiveIcon from "@/assets/market/objective-icon.webp";
@@ -160,14 +161,15 @@ const BenefitsSection = () => {
 
         {/* CTA Button */}
         <Link
-          href="https://cal.com/futurebits/markets?duration=30"
+          href={CAL.markets}
           target="_blank"
+          rel="noopener noreferrer"
         >
           <div className="flex justify-center items-center mt-16">
             <div className="relative">
-              <ShimerButton size="lg" href="/book-call" className="text-[20px]">
+              <MarketingButton tone="markets" size="lg" className="text-[20px]">
                 Book a call
-              </ShimerButton>
+              </MarketingButton>
             </div>
           </div>
         </Link>
