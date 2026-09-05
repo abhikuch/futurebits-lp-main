@@ -306,20 +306,15 @@
 
 
 
-.custom-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: gray;
-  border-radius: 50%;
-  opacity: 0.5;
-  margin: 0 5px;
-  display: inline-block;
-  transition: opacity 0.3s ease, background-color 0.3s ease;
-}
-
-.custom-bullet.swiper-pagination-bullet-active {
-  background-color: white;
-  opacity: 1;
+.fb-particle-field {
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, rgba(255, 255, 255, 0.45) 50%, transparent 51%),
+    radial-gradient(1px 1px at 28% 64%, rgba(255, 255, 255, 0.28) 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 46% 22%, rgba(255, 255, 255, 0.35) 50%, transparent 51%),
+    radial-gradient(1px 1px at 63% 78%, rgba(255, 255, 255, 0.22) 50%, transparent 51%),
+    radial-gradient(1px 1px at 81% 36%, rgba(255, 255, 255, 0.4) 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 88% 70%, rgba(255, 255, 255, 0.18) 50%, transparent 51%);
+  background-repeat: no-repeat;
 }
 
 

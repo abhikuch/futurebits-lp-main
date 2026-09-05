@@ -126,18 +126,10 @@ const Offering = () => {
       
       <div className="max-w-[1250px] relative  w-full  mx-auto overflow-hidden">
         <Particles
-          quantity={30}
+          quantity={12}
           ease={200}
-          refresh
-          size={0.7}
-          className="!z-40 hidden sm:block absolute top-0 left-0 w-full h-full"
-        />
-        <Particles
-          quantity={10}
-          ease={200}
-          refresh
-          size={0.3}
-          className="!z-40 sm:hidden absolute top-0 left-0 w-full h-full"
+          size={0.4}
+          className="!z-40 absolute top-0 left-0 w-full h-full"
         />
         <div className="flex flex-col-reverse sm:px-20 lg:px-0 lg:flex-row relative gap-16 sm:gap-16 lg:gap-12 xl:gap-16 w-full justify-center items-center">
 

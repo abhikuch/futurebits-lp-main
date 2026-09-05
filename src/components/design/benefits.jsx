@@ -149,10 +149,9 @@ const Benefits = () => {
       </MotionFadeIn>
       <div className="relative mt-10">
         <Particles
-          quantity={10}
+          quantity={8}
           ease={200}
-          refresh
-          size={0.5}
+          size={0.4}
           className="!z-10 absolute top-0 left-0 w-full h-full"
         />
         <MotionStagger

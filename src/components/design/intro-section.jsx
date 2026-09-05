@@ -18,18 +18,10 @@ const IntroSection = () => {
       <div className="">
         <div className="absolute left-0 top-0 !z-10 w-full  max-h-[40%] overflow-hidden">
           <Particles
-            quantity={20}
+            quantity={12}
             ease={200}
-            refresh
             size={0.2}
-            className="!z-10 hidden sm:block"
-          />
-          <Particles
-            quantity={10}
-            ease={200}
-            refresh
-            size={0.2}
-            className="!z-10 block sm:hidden"
+            className="!z-10"
           />
         </div>
         <div className="max-w-[1250px] mx-auto flex justify-center items-center w-full z-20 ">
