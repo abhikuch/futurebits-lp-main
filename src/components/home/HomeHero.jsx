@@ -30,7 +30,7 @@ export default function HomeHero() {
           </div>
         </div>
         <nav aria-label="Practice index" className="fb-editorial-index">
-          <p className="fb-home-index-label">Choose the room that matches the constraint</p>
+          <p className="fb-home-index-label">Design / Software / Automation</p>
           <ol>
             {HOME_HERO.index.map((item) => (
               <li key={item.n}>

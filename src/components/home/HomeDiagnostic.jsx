@@ -15,7 +15,7 @@ export default function HomeDiagnostic() {
           <p>{HOME_DIAGNOSTIC.kicker}</p>
           <div><h2>{HOME_DIAGNOSTIC.title}</h2><p>{HOME_DIAGNOSTIC.lede}</p></div>
         </MotionFadeIn>
-        <MotionStagger as="ul" className="fb-diagnostic-list">
+        <MotionStagger as="ul" aria-label="Futurebits capabilities" className="fb-diagnostic-list">
           {HOME_DIAGNOSTIC.routes.map((route) => (
             <MotionStaggerItem as="li" key={route.n}>
               <Link href={route.href}>
