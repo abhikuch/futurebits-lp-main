@@ -1,12 +1,13 @@
 import Link from "next/link";
 
+import HomeHeroAtom from "@/components/home/HomeHeroAtom";
 import { HOME_CAL, HOME_HERO } from "@/content/home";
 
 export default function HomeHero() {
   return (
     <section className="fb-editorial-hero">
       <div className="fb-home-hero-glow" aria-hidden="true" />
-      <div className="fb-home-hero-frame" aria-hidden="true" />
+      <HomeHeroAtom />
       <div className="fb-editorial-shell fb-home-hero-inner">
         <div className="fb-editorial-title-wrap">
           <p className="fb-kicker fb-home-kicker">{HOME_HERO.kicker}</p>
