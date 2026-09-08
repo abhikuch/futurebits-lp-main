@@ -18,25 +18,25 @@ export const ABOUT_BELIEFS = [
     variant: "lead",
     title: "One team, start to finish.",
     body:
-      "Design, engineering, and AI in one small group. No outsourcing, no junior hot-swaps, no slide decks pretending to be progress. You talk to the people doing the work — the same names from the first call to the last merge.",
+      "Design, engineering, and AI work in one small group. You talk directly to the people doing the work, from the first call to the last merge.",
   },
   {
     variant: "offset",
     title: "Ship the smallest thing that proves the bet.",
     body:
-      "We cut scope until one hypothesis is testable. The first useful version should land in weeks, not after a six-month discovery phase that produces a PDF nobody reads.",
+      "We cut scope until one hypothesis is testable. The proposal names the first useful version and what has been deferred.",
   },
   {
     variant: "split",
     title: "Design clarifies. It does not decorate.",
     body:
-      "We use design to force decisions: what ships, what waits, what gets cut. The brief at the end of week one should be sharper than the one that came in. Taste is assumed. The work is the thinking underneath.",
+      "Design forces decisions about what ships, waits, or gets cut. The work includes the reasoning underneath the interface.",
   },
   {
     variant: "close",
     title: "AI when the math works.",
     body:
-      "We build production AI when deflection, speed, or quality gains are measurable. We say no when it is not. We will tell you which side you are on before you spend.",
+      "AI is useful when changes in speed, quality, or workload can be checked. The first scope establishes that check before a larger build.",
   },
 ];
 
@@ -50,11 +50,11 @@ export const ABOUT_ROOMS = [
     kicker: "The AI room",
     title: "Production systems. Not a demo reel.",
     body:
-      "Retrieval, agents, automations, evals. We start with the smallest workflow that, if it holds, frees real hours every week. The model is the last decision, not the first.",
+      "Retrieval, agents, automations, and evals for a narrow workflow with representative inputs. Model choice follows the workflow and its failure cases.",
     points: [
-      "First useful automation in 2–3 weeks when the problem is honest.",
-      "We refuse work where a wrong answer costs more than a right one saves.",
-      "If we cannot measure it in prod, we do not ship it.",
+      "A test set and review path are part of the build.",
+      "The cost of a wrong answer shapes the scope.",
+      "Quality, latency, and cost are visible in production.",
     ],
     cta: "Enter the AI room",
   },
@@ -64,11 +64,11 @@ export const ABOUT_ROOMS = [
     kicker: "The markets room",
     title: "Infrastructure that survives the next regime.",
     body:
-      "Execution, analytics, and risk for funds, prop desks, and serious traders. Edge dies. Plumbing compounds. We bias toward boring code, realistic costs, and a kill switch a junior can hit at 2am.",
+      "Execution, analytics, and risk for funds, prop desks, and serious traders. The work favors explicit costs, observable behavior, and controls that operators can use under pressure.",
     points: [
       "Event-driven backtests with fees, slippage, and partial fills in the spec.",
-      "Paper and shadow before cutover. No hero go-lives.",
-      "We do not run your capital. Incentives stay clean.",
+      "Paper and shadow operation provide evidence before cutover.",
+      "Futurebits builds systems and does not run client capital.",
     ],
     cta: "Enter the markets room",
   },
@@ -78,11 +78,11 @@ export const ABOUT_ROOMS = [
     kicker: "The design room",
     title: "Screens that ship in your repo.",
     body:
-      "Product design plus frontend, one team. We use design to decide what ships. Mockups are throwaways. Live prototypes and merged code are the artefact.",
+      "Product design and frontend stay in the same working loop. The output can include prototypes, component decisions, and merged code.",
     points: [
       "Every screen earns its place on activation, conversion, or retention.",
-      "We default to fewer pages and fewer features. The hard work is removal.",
-      "Your design system leaves stronger than it arrived. Or we ship the smallest one that earns its keep.",
+      "Scope favors the journeys that affect activation, conversion, or retention.",
+      "Existing components are reused and extended where they still work.",
     ],
     cta: "Enter the design room",
   },
@@ -97,35 +97,35 @@ export const ABOUT_ENGAGEMENT_STEPS = [
     numeral: "01",
     title: "Access",
     body:
-      "Slack or email to the people writing the code. No ticket portal, no account manager translating you. If a question sits more than a day, something is broken and we say so.",
+      "Slack or email reaches the people writing the code and design files. Questions and decisions stay close to the work.",
   },
   {
     variant: "pair",
     numeral: "02",
     title: "Written scope",
     body:
-      "A one-page scope before kickoff: hypothesis, success check, out-of-scope list. You keep the page whether you hire us or not. If we cannot write it in a page, we do not understand it yet.",
+      "A short scope records the hypothesis, success check, dependencies, and exclusions before kickoff.",
   },
   {
     variant: "pair",
     numeral: "03",
     title: "Weekly demos",
     body:
-      "Working software on a weekly cadence. Not status slides. If a week produced no demoable change, we treat that as a miss and say what we cut to recover.",
+      "Working software is reviewed on a regular cadence. The update includes decisions, unresolved risks, and any scope change.",
   },
   {
     variant: "full",
     numeral: "04",
     title: "Your repo",
     body:
-      "Code lands in your repository from week one. Your review process, your CI, your branch rules. We do not hostage work in a private sandbox and toss a zip at the end.",
+      "Code lands in your repository and follows your review process, CI, and branch rules.",
   },
   {
     variant: "cut",
     numeral: "05",
     title: "Cut lines",
     body:
-      "What we will not do is written before we start: no staff-aug without a problem, no strategy-only retainers, no fake AI when a script is enough. The cut list is part of the contract, not a vibe.",
+      "The proposal records what is outside the scope and which assumptions could change it.",
   },
 ];
 
@@ -148,10 +148,10 @@ export const ABOUT_FIT = {
     },
   ],
   leave: [
-    "If you need slides about digital transformation, leave.",
-    "If you need a 40-person Bay bench to park headcount, leave.",
-    "If you want staff-augmentation with no written problem, leave.",
-    "If you want us to nod at a vague AI program, leave.",
+    "Staff augmentation without a defined product problem",
+    "A large bench used mainly to park headcount",
+    "Strategy decks with no path to implementation",
+    "An AI brief with no workflow, inputs, or owner",
   ],
 };
 
@@ -159,11 +159,11 @@ export const ABOUT_PEOPLE = {
   name: "Aayush Kucheria",
   role: "AI Lead, Futurebits. Production AI, evals, applied research.",
   paragraphs: [
-    "I lead AI at Futurebits. We build production systems: retrieval, agents, evals for ops, support, and product teams. The work I am proudest of: LLM behavior research, AI in healthcare, and applied modelling that actually shipped.",
-    "We take engagements where AI clearly pays back. If your problem is better solved another way, we will tell you on the first call. No theatre.",
+    "I lead AI at Futurebits. My work covers retrieval, agents, and evals for operations, support, and product teams, alongside LLM behavior research, healthcare AI, and applied modelling.",
+    "We take on AI work with a defined workflow and a way to check whether it helped. Sometimes that review points to a simpler automation.",
   ],
   studio:
-    "The rest of the studio is a small group — roughly a dozen people — across design, engineering, and markets. You get a named counterpart. We do not rotate juniors onto your Slack. We do not publish a fake org chart.",
+    "The studio is a small group of roughly a dozen people across design, engineering, and markets. Each engagement has a named counterpart who stays close to the work.",
 };
 
 export function getAboutMarkdown({ title, description, siteUrl, path }) {
@@ -175,7 +175,7 @@ export function getAboutMarkdown({ title, description, siteUrl, path }) {
     `Canonical URL: ${siteUrl}${path}`,
     "",
     "## Studio",
-    `${COMPANY.name} is a roughly dozen-person studio founded in ${COMPANY.founded}. One team across production AI, trading infrastructure, and product design. Not a staff-augmentation bench. Not a strategy firm that hands off.`,
+    `${COMPANY.name} is a roughly dozen-person studio founded in ${COMPANY.founded}, working across production AI, trading infrastructure, and product design.`,
     "",
     "## Three rooms",
     `- [AI](${siteUrl}/ai): production AI — retrieval, agents, automations, evals.`,

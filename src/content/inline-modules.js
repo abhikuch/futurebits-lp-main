@@ -1,18 +1,9 @@
-/**
- * Vertical-specific copy for the inline POV / Engagement Models / FAQ
- * modules embedded inside `/ai`, `/markets`, and `/design`.
- *
- * Designed so all three pages share one component shell with different
- * content. When we add the content layer in the next phase, this file
- * is the canonical seed.
- */
-
 export const POV = {
   ai: {
     eyebrow: "How we think about AI",
     title: "Most AI projects fail because they automate the wrong thing first.",
     body:
-      "We start with the smallest workflow that, if AI does it well, frees up real hours every week. Then we measure those hours back. No demos, no theatre. Just the line that moved.",
+      "We start with a narrow workflow and representative inputs. The first decision is where review belongs; model choice comes later.",
     bullets: [
       "We map workflows before models. The model is the last decision, not the first.",
       "We refuse projects where the cost of a wrong AI answer is higher than the value of a right one.",
@@ -23,7 +14,7 @@ export const POV = {
     eyebrow: "How we think about markets",
     title: "Trading systems that survive the next regime change.",
     body:
-      "We build trading and analytics infrastructure for teams who treat markets as a long game. Edge dies; infrastructure compounds. We bias toward boring code, fast feedback, and ruthless risk hygiene.",
+      "We build trading and analytics infrastructure around explicit assumptions, observable execution, and controls an operator can use under pressure.",
     bullets: [
       "Backtests are evidence, not arguments. We build them to break, then we publish what broke.",
       "Latency, slippage, and fees belong in the main spec, not a footnote.",
@@ -34,7 +25,7 @@ export const POV = {
     eyebrow: "How we think about design",
     title: "Design should move the metric, not polish the deck.",
     body:
-      "We use design to clarify product strategy. The brief that comes out of week one is sharper than the brief that came in. Visual taste is table stakes; the work is in the thinking underneath.",
+      "We use design to clarify the critical journey and the decisions around it. Approved states stay connected to implementation.",
     bullets: [
       "Every screen earns its place by moving a real number: activation, retention, or revenue.",
       "We design with code in the loop. Mockups are throwaways; live prototypes are the artefact.",
@@ -46,34 +37,31 @@ export const POV = {
 export const ENGAGEMENT_MODELS = [
   {
     name: "Sprint",
-    duration: "2 – 4 weeks",
-    bestFor: "A clear, scoped problem. Land one shipped artefact fast.",
+    duration: "Focused scope",
+    bestFor: "One clear problem with a working path that can be reviewed independently.",
     deliverables: [
       "One shipped surface: a flow, a prototype, or an automation",
-      "A short post-mortem with what we'd do next and why",
-      "Daily async updates, one weekly working session",
+      "A short record of decisions, results, and next steps",
     ],
   },
   {
     name: "Pod",
-    duration: "8 – 12 weeks",
+    duration: "Multi-part build",
     bestFor:
-      "A 0-to-1 launch or a meaningful 1-to-10 jump. We embed alongside your team.",
+      "A launch or product change that needs design and engineering in the same working loop.",
     deliverables: [
-      "One small team (design, engineering, AI) from kickoff through launch",
-      "Weekly demo cycle, fortnightly steering committee",
-      "Hand-off docs your team can keep running with",
+      "A named team working in your repository",
+      "Reviewable releases plus the tests and operating notes they need",
     ],
   },
   {
     name: "Partner",
-    duration: "Ongoing",
+    duration: "Long-running work",
     bestFor:
-      "Long-running product or platform work. Compounding output, not vendor billable hours.",
+      "A product or platform with a continuing backlog and a stable internal owner.",
     deliverables: [
-      "The same team allocated as a fractional product unit",
-      "Quarterly OKRs tied to your business metrics",
-      "Right of first refusal on new bets, shared roadmap ownership",
+      "A consistent team and planning cadence",
+      "A shared backlog with explicit priorities and cut lines",
     ],
   },
 ];
@@ -89,16 +77,12 @@ export const FAQ = {
       a: "Yes, most of our pods do. We pair with your engineers, write code in your repo, and follow your review process. The goal is your team is stronger when we leave.",
     },
     {
-      q: "How quickly can we expect ROI from an AI engagement?",
-      a: "Most teams see first useful automation in 2-3 weeks. Full production rollouts typically land in 8-12 weeks depending on integrations and governance requirements.",
+      q: "How do you estimate an AI engagement?",
+      a: "We review representative inputs, integrations, review requirements, and the cost of failure before proposing a scope. The first release is narrowed around one testable workflow.",
     },
     {
       q: "What does an AI engagement usually cost?",
-      a: "Sprints typically start in the low five figures USD; pods scale with scope and complexity. We share indicative pricing on the first call and a fixed proposal within a week.",
-    },
-    {
-      q: "Do you replace our existing engineering team?",
-      a: "No. We pair with your engineers in your repo, follow your review process, and aim to leave your team stronger than we found it.",
+      a: "Price follows a written scope covering the workflow, integrations, review path, and acceptance checks. The first call establishes whether there is enough information to quote.",
     },
   ],
   markets: [
@@ -142,7 +126,7 @@ export const FAQ = {
     },
     {
       q: "What is a typical design engagement timeline?",
-      a: "2-4 week sprints for focused wins, 8-12 week pods for major launches, and ongoing partner setups for compounding product work.",
+      a: "It depends on the number of journeys, research access, and whether frontend implementation is included. We quote against a written scope rather than a standard timeline.",
     },
     {
       q: "Will you ship code, or only design files?",
@@ -155,9 +139,9 @@ export const PROOF = {
   ai: {
     eyebrow: "What teams get",
     items: [
-      { label: "First useful automation", value: "2-3 weeks" },
-      { label: "Typical production rollout", value: "8-12 weeks" },
-      { label: "Delivery model", value: "One small team in your repo" },
+      { label: "Quality check", value: "Representative test set" },
+      { label: "Failure path", value: "Human review and fallback" },
+      { label: "Delivery", value: "Code in your repository" },
     ],
   },
   markets: {

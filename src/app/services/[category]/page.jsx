@@ -55,7 +55,6 @@ function VerticalDecorations({ categorySlug }) {
     return (
       <>
         <div className={VERTICAL_DECOR_CLASSES.markets.glowLeft} />
-        <div className="pointer-events-none absolute -right-24 top-44 h-[360px] w-[360px] rounded-full bg-white/10 blur-[130px]" />
         <div
           className="pointer-events-none absolute left-[-25%] top-14 hidden h-[45px] w-[360px] xl:block"
           style={{
@@ -197,7 +196,7 @@ export default function ServiceCategoryPage({ params }) {
           </p>
           <div className={theme.dividerClass} />
           <Heading as="h1" className={`${theme.titleClass} fb-page-hero-enter`}>
-            {categoryBundle.title}. Scoped, shipped, signed off.
+            {categoryBundle.title} services
           </Heading>
           <p className={`${theme.bodyClass} fb-page-hero-copy-enter`}>
             {categoryBundle.description}
@@ -266,9 +265,8 @@ export default function ServiceCategoryPage({ params }) {
               Ready to scope {categoryBundle.shortTitle.toLowerCase()} work?
             </Heading>
             <p className="mt-4 max-w-3xl text-white/70">
-              Bring the bottleneck and constraints. Timeline, stack, budget.
-              We will propose a written scope with a cut line and a demo
-              cadence you can plan around.
+              Bring the blocked path and its constraints. The proposal records
+              the working scope, dependencies, and review points.
             </p>
             <Link
               href={calHref}

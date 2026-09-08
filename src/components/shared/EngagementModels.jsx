@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 import { ENGAGEMENT_MODELS } from "@/content/inline-modules";
@@ -7,15 +5,10 @@ import { ROUTES } from "@/config/site";
 import Container from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Section from "@/components/ui/section";
-import {
-  MotionFadeIn,
-  MotionStagger,
-  MotionStaggerItem,
-} from "./MotionReveal";
 
 export default function EngagementModels({
   ctaHref,
-  ctaLabel = "Talk to us",
+  ctaLabel = "Book a call",
 }) {
   const fallbackHref = ROUTES.contact.path;
   return (
@@ -24,25 +17,24 @@ export default function EngagementModels({
       className="bg-[#08081E]"
     >
       <Container>
-        <MotionFadeIn className="max-w-2xl">
+        <div className="max-w-2xl">
           <p className="font-poppins text-xs uppercase tracking-[0.25em] text-white/50">
             Ways to work with us
           </p>
           <Heading id="engagement-models-title" className="mt-4">
-            Three ways in. All senior, all scoped.
+            Choose the scope that fits the problem
           </Heading>
           <p className="mt-4 text-pretty text-base text-white/70">
-            Pick the smallest one that proves the bet. We'll tell you on the
-            first call which model actually fits.
+            Start with the smallest useful scope. The first call is for
+            deciding whether that is a sprint, a multi-part build, or ongoing work.
           </p>
-        </MotionFadeIn>
+        </div>
 
-        <MotionStagger className="mt-12 grid gap-4 lg:grid-cols-3">
+        <div className="mt-12 grid border-t border-white/10 lg:grid-cols-3">
           {ENGAGEMENT_MODELS.map((model) => (
-            <MotionStaggerItem
+            <article
               key={model.name}
-              as="article"
-              className="group fb-interactive-surface relative flex flex-col rounded-xl border border-white/10 bg-white/[0.02] p-6"
+              className="flex flex-col border-b border-white/10 py-7 lg:border-b-0 lg:border-r lg:px-7 lg:first:pl-0 lg:last:border-r-0"
             >
               <header>
                 <h3 className="font-montserrat text-2xl font-semibold text-white">
@@ -66,14 +58,13 @@ export default function EngagementModels({
                   </li>
                 ))}
               </ul>
-            </MotionStaggerItem>
+            </article>
           ))}
-        </MotionStagger>
+        </div>
 
-        <MotionFadeIn delay={0.12} className="mt-12">
-          <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+        <div className="mt-12 flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
             <p className="text-sm text-white/60">
-              Not sure which fits? Most teams start with a Sprint and graduate.
+              Bring the blocked path and the constraints. We will help narrow it.
             </p>
             <Link
               href={ctaHref || fallbackHref}
@@ -83,8 +74,7 @@ export default function EngagementModels({
             >
               {ctaLabel}
             </Link>
-          </div>
-        </MotionFadeIn>
+        </div>
       </Container>
     </Section>
   );
