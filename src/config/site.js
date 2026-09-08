@@ -19,7 +19,7 @@ export const SITE_URL = "https://www.futurebits.tech";
  * Bump this when indexed copy or route inventory changes.
  * Never use `new Date()` in the sitemap — crawlers treat that as a full-site rewrite.
  */
-export const CONTENT_UPDATED_AT = "2026-09-08";
+export const CONTENT_UPDATED_AT = "2026-09-05";
 
 export const COMPANY = {
   name: "Futurebits",
