@@ -17,7 +17,7 @@ export default function HomePage() {
     <>
       <JsonLd data={[webPageJsonLd({ path: ROUTES.home.path, name: ROUTES.home.title, description: ROUTES.home.description, image: ROUTES.home.ogImage, breadcrumbItems }), breadcrumbJsonLd(breadcrumbItems, ROUTES.home.path)]} />
       <TopNavbar />
-      <main id="main-content" className="min-h-screen bg-[#060618] text-white">
+      <main id="main-content" className="fb-home-page min-h-screen bg-[#060618] text-white">
         <HomeHero /><HomeDiagnostic /><HomeTracks /><HomeBeliefs /><HomeClose />
       </main>
       <SiteFooter logo={logo} homePath={ROUTES.home.path} backgroundClassName="bg-[#050512]" />

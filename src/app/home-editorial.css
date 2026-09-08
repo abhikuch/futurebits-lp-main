@@ -800,6 +800,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .fb-home-page [style*="opacity"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
   .fb-home-kicker,
   .fb-editorial-title-line,
   .fb-editorial-hero-foot,
