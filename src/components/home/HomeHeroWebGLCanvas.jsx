@@ -5,11 +5,13 @@ import { useEffect, useRef } from "react";
 import { capHeroDpr } from "@/lib/home-hero-stage";
 import { mountHomeHeroWebGL } from "./home-hero-webgl";
 
-export default function HomeHeroWebGLCanvas({ onReady }) {
+export default function HomeHeroWebGLCanvas({ onFailure, onReady }) {
   const hostRef = useRef(null);
   const canvasRef = useRef(null);
   const onReadyRef = useRef(onReady);
+  const onFailureRef = useRef(onFailure);
   onReadyRef.current = onReady;
+  onFailureRef.current = onFailure;
 
   useEffect(() => {
     const host = hostRef.current;
@@ -21,9 +23,11 @@ export default function HomeHeroWebGLCanvas({ onReady }) {
         canvas,
         host,
         dpr: capHeroDpr(window.devicePixelRatio, "full"),
+        onFailure: () => onFailureRef.current?.(),
         onReady: () => onReadyRef.current?.(),
       });
     } catch {
+      onFailureRef.current?.();
       return undefined;
     }
   }, []);

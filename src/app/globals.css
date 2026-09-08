@@ -88,11 +88,23 @@
     animation: fb-ai-hero-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
   }
 
-  /* Home studio cover: CSS-only entrance (LCP-safe, no Framer on copy) */
+  /* Home studio instrument: copy stays LCP-safe; WebGL is an idle-loaded island. */
+  .fb-home-hero {
+    background:
+      radial-gradient(circle at 77% 38%, rgba(75, 76, 91, 0.18), transparent 29%),
+      linear-gradient(135deg, #060618 0%, #080816 46%, #05050f 100%);
+  }
   .fb-home-hero-kicker {
+    width: fit-content;
+    border-radius: 0;
+    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.025);
     animation: fb-ai-hero-fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.04s both;
   }
   .fb-home-hero-title {
+    font-size: clamp(3rem, 5.5vw, 5.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
     animation: fb-ai-hero-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
   }
   .fb-home-hero-copy {
@@ -105,48 +117,132 @@
     animation: fb-hero-fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both;
   }
 
-  .fb-home-hero-rooms {
+  .fb-home-instrument {
     position: absolute;
-    inset: 14% -2% 16% 36%;
-    perspective: 1400px;
+    top: 10%;
+    right: 1%;
+    width: min(58vw, 800px);
+    aspect-ratio: 1.12;
+    filter: drop-shadow(0 42px 70px rgba(0, 0, 0, 0.42));
     pointer-events: none;
-    transition: opacity 0.45s ease;
+    transition: opacity 0.55s ease;
   }
-  .fb-home-hero-rooms.is-replaced {
+  .fb-home-instrument.is-replaced {
     opacity: 0;
   }
-  .fb-home-hero-room {
+  .fb-instrument-halo {
     position: absolute;
-    top: 8%;
-    width: 28%;
-    height: 78%;
-    border-radius: 2px;
-    transform-style: preserve-3d;
+    inset: 14%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 247, 225, 0.12), transparent 66%);
+    filter: blur(22px);
   }
-  .fb-home-hero-room.is-glass {
-    left: 6%;
-    background: linear-gradient(
-      180deg,
-      rgba(220, 228, 236, 0.28),
-      rgba(160, 172, 184, 0.08)
-    );
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-    transform: rotateY(18deg) rotateX(4deg);
+  .fb-instrument-rail {
+    position: absolute;
+    border: 1px solid rgba(199, 201, 207, 0.5);
+    border-radius: 50%;
+    transform: rotate(-22deg);
   }
-  .fb-home-hero-room.is-metal {
-    left: 36%;
-    background: linear-gradient(145deg, #d0d4da 0%, #8a9098 45%, #b8bdc4 100%);
-    box-shadow: 0 28px 64px rgba(0, 0, 0, 0.4);
-    transform: rotateY(4deg);
+  .fb-instrument-rail.is-outer {
+    inset: 7% 4% 15% 7%;
+    border-right-color: transparent;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.04);
   }
-  .fb-home-hero-room.is-paper {
-    left: 66%;
-    top: 14%;
-    height: 70%;
-    background: linear-gradient(180deg, #f3efe6, #d2c8b4);
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.32);
-    transform: rotateY(-14deg) rotateX(3deg);
+  .fb-instrument-rail.is-inner {
+    inset: 16% 13% 24% 17%;
+    border-width: 2px 0 0 1px;
+    opacity: 0.55;
+    transform: rotate(34deg);
+  }
+  .fb-instrument-spine {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    width: 8%;
+    height: 58%;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: linear-gradient(90deg, #111219, #6f7279 50%, #15161d);
+    clip-path: polygon(32% 0, 68% 0, 100% 9%, 76% 100%, 24% 100%, 0 9%);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55);
+    transform: rotate(4deg);
+  }
+  .fb-instrument-specimen {
+    position: absolute;
+    width: 23%;
+    height: 43%;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.42);
+  }
+  .fb-instrument-specimen.is-glass {
+    left: 19%;
+    top: 25%;
+    background:
+      repeating-linear-gradient(12deg, transparent 0 25px, rgba(255,255,255,.1) 26px),
+      linear-gradient(145deg, rgba(230, 236, 240, 0.27), rgba(83, 88, 101, 0.07));
+    backdrop-filter: blur(4px);
+    transform: perspective(700px) rotateY(24deg) rotateZ(-8deg);
+  }
+  .fb-instrument-specimen.is-metal {
+    left: 42%;
+    top: 31%;
+    background:
+      linear-gradient(90deg, transparent 0 64%, rgba(10, 10, 16, .88) 64% 88%, transparent 88%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.08) 0 1px, transparent 1px 27px),
+      linear-gradient(135deg, #33353c, #aaa9a5 48%, #24262d);
+    transform: perspective(700px) rotateY(-7deg) rotateZ(3deg);
+  }
+  .fb-instrument-specimen.is-paper {
+    left: 65%;
+    top: 22%;
+    background: linear-gradient(145deg, #f2ecde, #bfb9ad);
+    border-color: rgba(255, 255, 255, 0.4);
+    border-radius: 1px 10px 1px 1px;
+    clip-path: polygon(0 0, 94% 2%, 100% 12%, 96% 100%, 0 97%);
+    transform: perspective(700px) rotateY(-25deg) rotateZ(9deg);
+  }
+  .fb-instrument-specimen.is-paper span {
+    position: absolute;
+    left: 18%;
+    bottom: 18%;
+    width: 50%;
+    height: 1px;
+    background: rgba(34, 34, 40, 0.5);
+    box-shadow: 0 7px rgba(34, 34, 40, 0.3);
+  }
+  .fb-instrument-core {
+    position: absolute;
+    left: 51.9%;
+    top: 32%;
+    width: 1.25%;
+    height: 35%;
+    border-radius: 50%;
+    background: #fff6dc;
+    box-shadow:
+      0 0 9px rgba(255, 246, 220, 0.9),
+      0 0 34px rgba(255, 235, 183, 0.45);
+    transform: rotate(4deg);
+  }
+  .fb-instrument-caption {
+    position: absolute;
+    right: 9%;
+    bottom: 8%;
+    display: flex;
+    gap: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: var(--font-montserrat), sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .fb-instrument-caption span:first-child {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .fb-home-hero-grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.13;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+    mix-blend-mode: soft-light;
   }
   .fb-home-hero-scrim {
     position: absolute;
@@ -155,31 +251,44 @@
       linear-gradient(
         90deg,
         #060618 0%,
-        rgba(6, 6, 24, 0.9) 34%,
-        rgba(6, 6, 24, 0.45) 56%,
-        transparent 78%
+        rgba(6, 6, 24, 0.94) 30%,
+        rgba(6, 6, 24, 0.55) 49%,
+        transparent 72%
       ),
       linear-gradient(
         180deg,
-        rgba(6, 6, 24, 0.22) 0%,
-        transparent 28%,
-        transparent 70%,
-        rgba(6, 6, 24, 0.5) 100%
+        rgba(6, 6, 24, 0.1) 0%,
+        transparent 58%,
+        rgba(6, 6, 24, 0.82) 100%
       );
   }
 
   @media (max-width: 767px) {
-    .fb-home-hero-rooms {
-      inset: 6% 2% 46% 12%;
-      opacity: 0.55;
+    .fb-home-hero-title {
+      font-size: clamp(2.6rem, 12vw, 3.5rem);
+    }
+    .fb-home-instrument {
+      top: 5rem;
+      left: 50%;
+      right: auto;
+      width: 29rem;
+      max-width: 124vw;
+      transform: translateX(-45%);
+    }
+    .fb-instrument-caption {
+      display: none;
     }
     .fb-home-hero-scrim {
-      background: linear-gradient(
-        180deg,
-        rgba(6, 6, 24, 0.28) 0%,
-        rgba(6, 6, 24, 0.72) 40%,
-        #060618 78%
-      );
+      background:
+        linear-gradient(180deg, transparent 0%, rgba(6, 6, 24, 0.05) 20%, #060618 52%),
+        linear-gradient(90deg, rgba(6, 6, 24, 0.28), transparent 50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fb-home-instrument {
+      transition: none;
+    }
     }
   }
 
