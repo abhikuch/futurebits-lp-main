@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import POne from "@/assets/design/profile1.png";
@@ -67,15 +66,15 @@ const Hero = () => {
             <span className="fb-kicker">Product design plus frontend delivery</span>
           </p>
           <h1 className="fb-design-hero-title fb-hero-title mt-8 sm:mt-16 text-center xl:mt-8">
-            Design that moves the metric, not the deck.
+            Product journeys people can finish.
           </h1>
         </div>
 
         <div className="fb-design-hero-copy-anim mx-auto mt-6 w-full max-w-[650px] px-6 text-center sm:mt-16 lg:mt-16">
           <span className="fb-hero-copy">
-            We pair product design with frontend engineering in one small team.
-            Onboarding, activation, upgrade. We ship the surfaces that move your
-            numbers, in your repo, every week.
+            Product design and frontend engineering stay in the same working
+            loop. We focus on the journey causing friction and carry approved
+            states into the product.
           </span>
         </div>
       </div>

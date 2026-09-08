@@ -1,4 +1,3 @@
-import React from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
@@ -41,9 +40,8 @@ const Hero = () => {
 
         <div className="fb-markets-hero-copy-anim mx-auto mt-5 w-full max-w-[750px] px-1 text-center">
           <span className="fb-hero-copy">
-            Backtests with realistic costs. Paper-and-shadow before production.
-            Runbooks and kill-switches that a junior can run at 2am. We build the
-            boring layer that makes alpha survive.
+            Research assumptions, execution behavior, and risk controls stay
+            visible from backtest through live operation.
           </span>
         </div>
 

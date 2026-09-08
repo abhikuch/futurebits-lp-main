@@ -71,7 +71,6 @@ function VerticalDecorations({ categorySlug }) {
     return (
       <>
         <div className={VERTICAL_DECOR_CLASSES.markets.glowLeft} />
-        <div className="pointer-events-none absolute -right-24 top-44 h-[360px] w-[360px] rounded-full bg-white/10 blur-[130px]" />
         <div
           className="pointer-events-none absolute left-[-25%] top-14 hidden h-[45px] w-[360px] xl:block"
           style={{
@@ -245,7 +244,6 @@ export default function ServiceDetailPage({ params }) {
         <Container>
           <Breadcrumbs items={breadcrumbNav} />
           <div className={heroPreset.shellClass}>
-            <div className="pointer-events-none absolute -top-28 right-[-60px] h-56 w-56 rounded-full bg-white/10 blur-[100px]" />
             {heroPreset.bottomRail}
             <div className="relative z-10">
               <p className={`fb-kicker ${theme.accentText} fb-page-hero-enter`}>
@@ -334,7 +332,7 @@ export default function ServiceDetailPage({ params }) {
           >
             <Heading as="h2" className="fb-h3">
               {category.slug === "markets-trading"
-                ? "Primary buyer fit"
+                ? "Best fit"
                 : "Who this is for"}
             </Heading>
             {category.slug === "markets-trading" && sectionData.dominantAudience ? (
@@ -342,13 +340,13 @@ export default function ServiceDetailPage({ params }) {
                 <p
                   className={`mt-2 text-xs uppercase tracking-[0.16em] ${theme.accentText}`}
                 >
-                  Dominant persona: {sectionData.dominantPersona}
+                  {sectionData.dominantPersona}
                 </p>
                 <p className="mt-4 text-sm leading-relaxed text-white/85">
                   {sectionData.dominantAudience}
                 </p>
                 <p className="mt-5 text-xs uppercase tracking-[0.16em] text-white/55">
-                  Also relevant for
+                  Also useful for
                 </p>
                 <ul className="mt-2 space-y-2 text-sm text-white/70">
                   {sectionData.secondaryAudiences?.map((item) => (
@@ -477,17 +475,15 @@ export default function ServiceDetailPage({ params }) {
       <Section className={rhythm.faqSectionClass}>
         <Container>
           <Heading as="h2" className="fb-h3">
-            Frequently asked questions
+            Questions before starting
           </Heading>
           <div
-            className={`mt-6 divide-y divide-white/10 border border-white/10 bg-white/[0.04] backdrop-blur-sm ${
-              category.slug === "design" ? "rounded-3xl" : "rounded-2xl"
-            }`}
+            className="mt-6 divide-y divide-white/10 border-y border-white/10"
           >
             {faqs.map((item) => (
               <details
                 key={item.q}
-                className={`open:bg-white/[0.07] ${
+                className={`${
                   category.slug === "markets-trading"
                     ? "p-5 sm:p-6"
                     : "p-5"
