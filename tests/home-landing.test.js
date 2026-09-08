@@ -70,6 +70,18 @@ describe("home editorial landing", () => {
     assert.equal(JSON.parse(source("package.json")).dependencies.three, undefined);
   });
 
+  it("keeps the atom decorative, visibility-aware, and static for reduced motion", () => {
+    const atom = source("src/components/home/HomeHeroAtom.jsx");
+    const styles = source("src/app/home-editorial.css");
+
+    assert.match(atom, /aria-hidden="true"/);
+    assert.match(atom, /IntersectionObserver/);
+    assert.match(atom, /document\.hidden/);
+    assert.doesNotMatch(atom, /<canvas|WebGL|from\s+["']three/i);
+    assert.match(styles, /\.fb-home-atom\s*\{[\s\S]*?pointer-events:\s*none/);
+    assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.fb-home-atom-rotor[\s\S]*?animation:\s*none/);
+  });
+
   it("keeps SSR content, metadata, and markdown aligned", () => {
     const result = getMarkdownForPath("/");
     const metadata = buildRouteMetadata("home");
