@@ -1,4 +1,3 @@
-import AboutAtmosphere from "@/components/about/AboutAtmosphere";
 import AboutBeliefs from "@/components/about/AboutBeliefs";
 import AboutClose from "@/components/about/AboutClose";
 import AboutEngagement from "@/components/about/AboutEngagement";
@@ -10,15 +9,14 @@ import AboutRooms from "@/components/about/AboutRooms";
 import AboutTestimonials from "@/components/about/AboutTestimonials";
 import SiteFooter from "@/components/shared/SiteFooter";
 import logo from "@/assets/logo.svg";
-import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
 
 export default function AboutPage() {
   return (
     <main
       id="main-content"
-      className={`relative min-h-screen overflow-hidden ${SERVICE_HUB_THEME.pageBgClass} text-white`}
+      className="fb-editorial-page relative min-h-screen overflow-hidden"
+      data-editorial-vertical="neutral"
     >
-      <AboutAtmosphere />
       <AboutHero />
       <div className="fb-section">
         <AboutBeliefs />
@@ -40,7 +38,7 @@ export default function AboutPage() {
         <AboutTestimonials />
       </div>
       <AboutClose />
-      <SiteFooter logo={logo} backgroundClassName={SERVICE_HUB_THEME.footerBgClass} />
+      <SiteFooter logo={logo} backgroundClassName="bg-[#11110f]" />
     </main>
   );
 }

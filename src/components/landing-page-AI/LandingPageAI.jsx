@@ -30,8 +30,12 @@ const Feature = dynamic(() => import("./Feature"), {
 
 export default function LandingPageAI() {
   return (
-    <div className="bg-[#060719]" id="ai">
-      <main id="main-content" className="bg-[#000000] ">
+    <div
+      className="fb-editorial-page bg-[#060719]"
+      data-editorial-vertical="ai"
+      id="ai"
+    >
+      <main id="main-content">
         <Hero />
       </main>
       <ProofBand vertical="ai" />

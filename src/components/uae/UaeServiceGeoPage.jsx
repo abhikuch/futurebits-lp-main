@@ -44,7 +44,8 @@ export default function UaeServiceGeoPage({ landing }) {
   return (
     <main
       id="main-content"
-      className={`relative min-h-screen overflow-hidden ${visual.pageBg} text-white`}
+      className={`fb-editorial-page relative min-h-screen overflow-hidden ${visual.pageBg} text-white`}
+      data-editorial-vertical={resolved}
     >
       <GeoVerticalDecor themeKey={landing.themeKey} />
       <JsonLd data={uaeServiceGeoJsonLd(landing)} />
@@ -74,7 +75,7 @@ export default function UaeServiceGeoPage({ landing }) {
             </Link>
             <Link
               href={landing.catalogPath}
-              className="inline-flex h-11 items-center justify-center rounded-full border border-white/20 px-6 text-sm font-medium text-white/90 transition hover:bg-white/10"
+              className="inline-flex h-11 items-center justify-center border border-white/20 px-6 text-sm font-medium text-white/90 transition hover:bg-white/10"
             >
               Global catalog page
             </Link>
@@ -149,7 +150,7 @@ export default function UaeServiceGeoPage({ landing }) {
           <Heading as="h2" className="fb-h3">
             Frequently asked questions
           </Heading>
-          <div className="mt-6 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/[0.04]">
+          <div className="mt-6 divide-y divide-white/10 border border-white/10 bg-transparent">
             {landing.faqs.map((item) => (
               <details key={item.q} className="p-5 open:bg-white/[0.07]">
                 <summary className="cursor-pointer list-none font-montserrat text-base font-semibold">

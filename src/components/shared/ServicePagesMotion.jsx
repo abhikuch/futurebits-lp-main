@@ -22,7 +22,7 @@ export function ServiceCategoryPopular({ services, shortTitle }) {
           <Link
             key={serviceItem.slug}
             href={serviceItem.path}
-            className="fb-interactive-surface rounded-full border border-white/15 bg-white/[0.03] px-4 py-2 text-sm text-white/80 transition hover:border-white/30 hover:bg-white/[0.06] hover:text-white"
+            className="fb-interactive-surface border border-white/20 bg-transparent px-4 py-2 text-sm text-white/80 transition hover:border-white/40 hover:bg-white/[0.06] hover:text-white"
           >
             {serviceItem.title}
           </Link>
@@ -70,7 +70,7 @@ export function ServiceDetailRelated({ related }) {
           <MotionStaggerItem key={item.slug} className="h-full">
             <Link
               href={item.path}
-              className="fb-interactive-surface block h-full rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:bg-white/[0.06]"
+              className="fb-interactive-surface block h-full border-t border-white/20 bg-transparent p-5 transition hover:bg-white/[0.06]"
             >
               <h3 className="fb-h3 text-lg">{item.title}</h3>
               <p className="mt-2 text-sm text-white/70">{item.shortDescription}</p>

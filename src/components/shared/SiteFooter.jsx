@@ -46,7 +46,7 @@ export default function SiteFooter({
 }) {
   return (
     <footer className={`${backgroundClassName} border-t border-white/10 text-white`}>
-      <div className="mx-auto w-full max-w-[1200px] px-6 py-12 sm:px-10 lg:px-16">
+      <div className="mx-auto w-full max-w-[1312px] px-6 py-12 sm:px-10">
         <div className="grid gap-10 lg:grid-cols-[1.25fr_1fr_1fr_1fr]">
           <div>
             <Link href={homePath} aria-label="Futurebits home">
