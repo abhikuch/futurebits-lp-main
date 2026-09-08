@@ -3,9 +3,9 @@
 import { useEffect, useRef } from "react";
 
 const ORBITS = [
-  { className: "is-wide", bitClassName: "is-square" },
-  { className: "is-tall", bitClassName: "is-round" },
-  { className: "is-offset", bitClassName: "is-bar" },
+  { className: "is-primary", bitClassName: "is-square" },
+  { className: "is-secondary", bitClassName: "is-round" },
+  { className: "is-tertiary", bitClassName: "is-bar" },
 ];
 
 export default function HomeHeroAtom() {
@@ -45,6 +45,7 @@ export default function HomeHeroAtom() {
   return (
     <div ref={atomRef} className="fb-home-atom is-paused" aria-hidden="true">
       <div className="fb-home-atom-field">
+        <span className="fb-home-atom-register" />
         <span className="fb-home-atom-axis is-horizontal" />
         <span className="fb-home-atom-axis is-vertical" />
         {ORBITS.map((orbit) => (
@@ -55,10 +56,13 @@ export default function HomeHeroAtom() {
           </span>
         ))}
         <span className="fb-home-atom-core">
-          <span />
-          <span />
-          <span />
-          <span />
+          <span className="fb-home-atom-core-halo" />
+          <span className="fb-home-atom-core-grid">
+            <span />
+            <span />
+            <span />
+            <span />
+          </span>
         </span>
       </div>
     </div>
