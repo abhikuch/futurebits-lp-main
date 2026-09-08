@@ -16,13 +16,13 @@ function source(relativePath) {
 }
 
 describe("home hero stage", () => {
-  it("keeps Book a call and See the tracks in the hero module", () => {
+  it("keeps Book a call and Choose a track in the hero module", () => {
     const hero = source("src/components/home/HomeHero.jsx");
     assert.match(hero, /HOME_HERO\.primaryCta/);
     assert.match(hero, /HOME_HERO\.secondaryCta/);
     assert.match(hero, /href="#tracks"/);
     assert.equal(HOME_HERO.primaryCta, "Book a call");
-    assert.equal(HOME_HERO.secondaryCta, "See the tracks");
+    assert.equal(HOME_HERO.secondaryCta, "Choose a track");
   });
 
   it("does not import three from server or hero chrome modules", () => {

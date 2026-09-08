@@ -4,11 +4,13 @@ import { describe, it } from "node:test";
 
 import { BANNED_PHRASES } from "../src/content/content-voice.js";
 import {
-  HOME_BELIEFS,
   HOME_CAL,
   HOME_CLOSE,
-  HOME_FEATURED_SERVICES,
+  HOME_DELIVERY,
+  HOME_FIT,
   HOME_HERO,
+  HOME_PROOF,
+  HOME_SIGNALS,
   HOME_TRACKS,
   HOME_TRACKS_INTRO,
 } from "../src/content/home.js";
@@ -42,8 +44,8 @@ function assertNoBannedVoice(text) {
 describe("home landing content", () => {
   it("keeps Book a call as the primary label and tracks as the secondary", () => {
     assert.equal(HOME_HERO.primaryCta, "Book a call");
-    assert.equal(HOME_HERO.secondaryCta, "See the tracks");
-    assert.equal(HOME_CLOSE.title.includes("wishlist"), true);
+    assert.equal(HOME_HERO.secondaryCta, "Choose a track");
+    assert.equal(HOME_CLOSE.title, "Bring one failure you want fixed.");
   });
 
   it("uses dedicated home Cal campaigns on the correct events", () => {
@@ -75,12 +77,14 @@ describe("home landing content", () => {
   });
 
   it("does not dump the catalog or use Browse all services as the hero CTA", () => {
-    assert.ok(HOME_FEATURED_SERVICES.length <= 6);
     const blob = collectCopy({
       HOME_HERO,
+      HOME_SIGNALS,
       HOME_TRACKS_INTRO,
       HOME_TRACKS,
-      HOME_BELIEFS,
+      HOME_DELIVERY,
+      HOME_PROOF,
+      HOME_FIT,
       HOME_CLOSE,
     }).join("\n");
     assert.doesNotMatch(blob, /Browse all services/);
@@ -89,9 +93,12 @@ describe("home landing content", () => {
   it("stays inside the content voice rules", () => {
     const blob = collectCopy({
       HOME_HERO,
+      HOME_SIGNALS,
       HOME_TRACKS_INTRO,
       HOME_TRACKS,
-      HOME_BELIEFS,
+      HOME_DELIVERY,
+      HOME_PROOF,
+      HOME_FIT,
       HOME_CLOSE,
     }).join("\n");
     assertNoBannedVoice(blob);
@@ -118,8 +125,10 @@ describe("home landing content", () => {
   it("does not leak AI cyan into hub chrome files", () => {
     const hubFiles = [
       "src/components/home/HomeHero.jsx",
-      "src/components/home/HomeHeroStage.jsx",
-      "src/components/home/HomeBeliefs.jsx",
+      "src/components/home/HomeBuyerSignals.jsx",
+      "src/components/home/HomeDelivery.jsx",
+      "src/components/home/HomeFit.jsx",
+      "src/components/home/HomeProof.jsx",
       "src/components/home/HomeClose.jsx",
       "src/components/home/HomeTracks.jsx",
     ];
@@ -133,10 +142,12 @@ describe("home landing content", () => {
     }
   });
 
-  it("describes the three rooms in agent markdown", () => {
+  it("describes the buyer signals and delivery controls in agent markdown", () => {
     const result = getMarkdownForPath("/");
     assert.ok(result);
-    assert.match(result.body, /The rooms/);
+    assert.match(result.body, /Choose by failure state/);
+    assert.match(result.body, /written scope/i);
+    assert.match(result.body, /runbook/i);
     assert.match(result.body, /\/ai/);
     assert.match(result.body, /\/markets/);
     assert.match(result.body, /\/design/);

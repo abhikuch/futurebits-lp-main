@@ -179,7 +179,12 @@ function resolveTestimonialTheme(theme) {
   }
 }
 
-export default function TestimonialSection({ theme = "ai", cta }) {
+export default function TestimonialSection({
+  theme = "ai",
+  cta,
+  eyebrow = "Testimonials",
+  title = "What people say about us",
+}) {
   const currentTheme = resolveTestimonialTheme(theme);
   const sequenced = sequenceTestimonials(TESTIMONIALS);
   const hero = sequenced[0];
@@ -197,8 +202,8 @@ export default function TestimonialSection({ theme = "ai", cta }) {
 
       <div className="relative z-10 fb-shell">
         <div className="mx-auto w-full max-w-[1120px]">
-          <p className={`text-center ${currentTheme.kickerClass}`}>Testimonials</p>
-          <h2 className="fb-h2 mt-3 text-center">What people say about us</h2>
+          <p className={`text-center ${currentTheme.kickerClass}`}>{eyebrow}</p>
+          <h2 className="fb-h2 mt-3 text-center">{title}</h2>
 
           {hero ? (
             <div className="mt-10">
