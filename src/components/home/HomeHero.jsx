@@ -29,7 +29,7 @@ export default function HomeHero() {
             </Link>
           </div>
         </div>
-        <nav aria-label="Practice index" className="fb-editorial-index">
+        <nav aria-label="What Futurebits makes" className="fb-editorial-index">
           <p className="fb-home-index-label">Design / Software / Automation</p>
           <ol>
             {HOME_HERO.index.map((item) => (

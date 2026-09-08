@@ -1,5 +1,13 @@
 import { BLOG_POSTS } from "@/content/blog";
 import { getAboutMarkdown } from "@/content/about";
+import {
+  HOME_BELIEFS,
+  HOME_CLOSE,
+  HOME_DIAGNOSTIC,
+  HOME_FIT,
+  HOME_HERO,
+  HOME_TRACKS,
+} from "@/content/home";
 import { FREE_RESOURCES } from "@/content/link-building";
 import { SERVICE_CATEGORIES, SERVICES } from "@/content/services";
 import { COMPANY, ROUTES, SITE_URL } from "@/config/site";
@@ -68,34 +76,66 @@ function routeMarkdown(path) {
   if (path === ROUTES.home.path) {
     lines.push(
       "",
-      "## We make the bits your business runs on",
-      "Digital design, software, and automation are planned, built, and shipped by one accountable maker team.",
-      "- Design makes the interface understandable.",
-      "- Software makes the product and its systems work.",
-      "- Automation removes repeat work and connects systems.",
+      `## ${HOME_HERO.kicker}`,
+      HOME_HERO.title.join(" "),
       "",
-      "## Choose a practice",
-      `- [Design](${SITE_URL}${ROUTES.design.path}): product journeys, interfaces, design systems, and frontend delivery`,
-      `- [AI & Automation](${SITE_URL}${ROUTES.ai.path}): repeated work tested against real inputs, review paths, and operating constraints`,
-      `- [Markets](${SITE_URL}${ROUTES.markets.path}): the specialized systems practice for research, execution, observability, and risk controls`,
-      `- [Build](${SITE_URL}/services/build): a secondary route for SaaS, dashboards, internal tools, and APIs`,
+      HOME_HERO.lede,
       "",
-      "## Why one maker team",
-      "- Written scope and acceptance checks",
-      "- Code and decisions in the client repo",
-      "- Demos of working paths",
-      "- Acceptance notes and a runbook that stay with the client",
+      ...HOME_HERO.index.map(
+        (item) => `- [${item.label}](${SITE_URL}${item.href}): ${item.line}`
+      ),
       "",
-      "## Fit",
-      "A good fit starts with an interface, system, or repeated task that needs to work better, access to the real inputs, and one person able to make scope decisions. Futurebits is not a fit when the deck is the main deliverable or the brief is a 40-feature wishlist.",
+      `## ${HOME_DIAGNOSTIC.title}`,
+      HOME_DIAGNOSTIC.lede,
       "",
-      "## UAE & GCC",
-      `- [UAE hub](${SITE_URL}${ROUTES.uae.path}): GST hours, +971 line, dedicated geo landing per service`,
-      `- [Gulf hub](${SITE_URL}/gulf): country hubs for KSA, Qatar, Kuwait, Bahrain, Oman — not 90×country clones`,
+      ...HOME_DIAGNOSTIC.routes.map(
+        (route) => `- [${route.answer}](${SITE_URL}${route.href}): ${route.label}`
+      ),
       "",
-      "## Next steps",
-      `- [Book a call](${SITE_URL}${ROUTES.contact.path})`,
-      `- [Contact](${SITE_URL}${ROUTES.contact.path})`
+      "## Areas of work"
+    );
+
+    for (const track of HOME_TRACKS) {
+      lines.push(
+        "",
+        `### ${track.title}`,
+        track.lede,
+        "",
+        `**What we usually find:** ${track.painfulState}`,
+        "",
+        `**Scope:** ${track.scopeNote}`,
+        "",
+        "**What reaches your repo:**",
+        ...track.artifacts.map((artifact) => `- ${artifact}`),
+        "",
+        `**First release:** ${track.milestone}`,
+        "",
+        `[${track.enterLabel}](${SITE_URL}${track.href})`
+      );
+    }
+
+    lines.push(
+      "",
+      `## ${HOME_BELIEFS.title}`,
+      HOME_BELIEFS.lede,
+      "",
+      ...HOME_BELIEFS.items.map(
+        (item) => `- **${item.title}:** ${item.body}`
+      ),
+      "",
+      `## ${HOME_FIT.kicker}`,
+      `### ${HOME_FIT.fit.title}`,
+      ...HOME_FIT.fit.items.map((item) => `- ${item}`),
+      "",
+      `### ${HOME_FIT.notFit.title}`,
+      ...HOME_FIT.notFit.items.map((item) => `- ${item}`),
+      "",
+      `## ${HOME_CLOSE.title}`,
+      HOME_CLOSE.lede,
+      "",
+      HOME_CLOSE.phoneNote,
+      "",
+      `[${HOME_HERO.primaryCta}](${SITE_URL}${ROUTES.contact.path})`
     );
   }
 

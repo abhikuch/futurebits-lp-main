@@ -13,7 +13,7 @@ export default function HomeClose() {
       <section className="fb-home-neutral fb-fit">
         <div className="fb-editorial-shell">
           <MotionFadeIn>
-            <p className="fb-fit-kicker">Before we start</p>
+            <p className="fb-fit-kicker">{HOME_FIT.kicker}</p>
             <div className="fb-fit-grid"><FitColumn data={HOME_FIT.fit} marker="+" /><FitColumn data={HOME_FIT.notFit} marker="−" /></div>
           </MotionFadeIn>
         </div>
