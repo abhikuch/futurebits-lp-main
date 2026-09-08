@@ -17,12 +17,27 @@ const HomeHeroWebGLCanvas = dynamic(() => import("./HomeHeroWebGLCanvas"), {
 function HomeHeroStageFallback({ replaced }) {
   return (
     <div
-      className={`fb-home-hero-rooms${replaced ? " is-replaced" : ""}`}
+      className={`fb-home-instrument${replaced ? " is-replaced" : ""}`}
       data-home-hero-fallback={replaced ? "replaced" : "visible"}
     >
-      <div className="fb-home-hero-room is-glass" />
-      <div className="fb-home-hero-room is-metal" />
-      <div className="fb-home-hero-room is-paper" />
+      <div className="fb-instrument-halo" />
+      <div className="fb-instrument-rail is-outer" />
+      <div className="fb-instrument-rail is-inner" />
+      <div className="fb-instrument-spine" />
+      <div className="fb-instrument-specimen is-glass">
+        <span />
+      </div>
+      <div className="fb-instrument-specimen is-metal">
+        <span />
+      </div>
+      <div className="fb-instrument-specimen is-paper">
+        <span />
+      </div>
+      <div className="fb-instrument-core" />
+      <p className="fb-instrument-caption">
+        <span>FB—01</span>
+        <span>One studio / three systems</span>
+      </p>
     </div>
   );
 }
@@ -32,6 +47,10 @@ export default function HomeHeroStage() {
   const [mountWebGL, setMountWebGL] = useState(false);
   const [webglReady, setWebglReady] = useState(false);
   const handleReady = useCallback(() => setWebglReady(true), []);
+  const handleFailure = useCallback(() => {
+    setWebglReady(false);
+    setMountWebGL(false);
+  }, []);
 
   useEffect(() => {
     let idleId;
@@ -95,12 +114,15 @@ export default function HomeHeroStage() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-x-0 top-0 bottom-[9.5rem] overflow-hidden lg:bottom-[8.5rem]"
+      className="pointer-events-none absolute inset-x-0 top-0 bottom-[12rem] overflow-hidden lg:bottom-[7.75rem]"
       data-hero-stage={mode}
       data-hero-webgl={webglReady ? "ready" : mountWebGL ? "loading" : "off"}
     >
       <HomeHeroStageFallback replaced={webglReady} />
-      {mountWebGL ? <HomeHeroWebGLCanvas onReady={handleReady} /> : null}
+      {mountWebGL ? (
+        <HomeHeroWebGLCanvas onFailure={handleFailure} onReady={handleReady} />
+      ) : null}
+      <div className="fb-home-hero-grain" />
       <div className="fb-home-hero-scrim" />
     </div>
   );
