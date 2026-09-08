@@ -1,193 +1,169 @@
-/* Playbook generation with anti-slop structure and voice lint. */
-
 import { lintPlaybook } from "@/content/content-voice";
 import { MARKETS_AUDIENCE } from "@/content/service-copy";
-import { generateServiceSeed } from "@/content/service-content-seeds";
 
-const PROCESS_VARIANTS = [
-  (title, timeline) => [
-    `Week 1: map current state, stack, and what "${title.toLowerCase()}" must change`,
-    `Week 2: lock scope, acceptance tests, and cut lines`,
-    `Weeks 3+: build in your repo with weekly demos`,
-    `Final: launch, monitor, handoff docs`,
-  ],
-  (title) => [
-    `Align: goals, constraints, and who signs off on ${title.toLowerCase()}`,
-    `Cut: smallest version that proves value. Write it down`,
-    `Ship: incremental releases with review each week`,
-    `Measure: check the metric we agreed on; iterate or close`,
-  ],
-  (title, _, tools) => [
-    `Audit: existing ${tools[0]} setup and failure modes`,
-    `Design: approach, risks, and test plan before code`,
-    `Implement: focused build with explicit done criteria`,
-    `Validate: staging sign-off, then production with rollback plan`,
-  ],
-  (title, timeline) => [
-    `Kickoff: access, repos, and ${timeline} target`,
-    `Prototype: rough end-to-end path for feedback early`,
-    `Harden: edge cases, monitoring, and docs`,
-    `Release: go-live support and next-step backlog`,
-  ],
-  (title, _, tools) => [
-    `Intake: stakeholders, ${tools[0]} access, and success metric`,
-    `Spec: written scope with in/out and test cases`,
-    `Build: pair with your team or solo in your repo`,
-    `Handoff: docs, runbook, and optional retainer`,
-  ],
-];
+const CATEGORY_COPY = {
+  build: {
+    intro: (title) =>
+      `${title} should remove a specific bottleneck, not create another platform to maintain. We agree on the working path and its edge cases before code lands in your repository.`,
+    whoFor: (title) => [
+      `Product teams with a defined ${title.toLowerCase()} backlog item`,
+      "Operations leads replacing a manual workflow",
+      "Founders extending a product that already has users",
+      "Engineering teams blocked by a load-bearing feature",
+    ],
+    problems: (title) => [
+      `${title} has no agreed acceptance criteria`,
+      "A manual workflow is creating errors or slowing delivery",
+      "The current implementation fails on known edge cases",
+      "Internal capacity is committed to the core roadmap",
+      "Ownership after launch is unclear",
+    ],
+    deliverables: (title) => [
+      `Working ${title.toLowerCase()} in your repository`,
+      "Written scope and acceptance checks",
+      "Tests for the critical path and known failure cases",
+      "Deployment notes and an operating runbook",
+      "A short record of decisions and deferred work",
+    ],
+  },
+  "ai-automation": {
+    intro: (title) =>
+      `${title} starts with the workflow and the cost of a wrong answer. We use real examples to define what the system may automate, what needs review, and when it must stop.`,
+    whoFor: (title) => [
+      `Product teams with a named use case for ${title.toLowerCase()}`,
+      "Support teams with repeat questions and a reliable knowledge source",
+      "Operations leads who can supply representative inputs",
+      "Engineering teams that need an AI feature inside an existing product",
+    ],
+    problems: () => [
+      "A promising demo has no test set or review path",
+      "Answers cannot be traced to a source",
+      "Manual triage consumes time but exceptions are poorly documented",
+      "Model behavior changes without anyone noticing",
+      "The product has no safe fallback when confidence is low",
+    ],
+    deliverables: (title) => [
+      `Working ${title.toLowerCase()} in your repository`,
+      "A test set built from representative inputs",
+      "Review, escalation, and fallback paths",
+      "Logs for quality, latency, and cost",
+      "Access boundaries and deployment notes",
+    ],
+  },
+  design: {
+    intro: (title) =>
+      `${title} is useful when it resolves a product decision or removes friction from a critical journey. We work from observed behavior and product constraints, then carry the approved direction into frontend implementation where needed.`,
+    whoFor: (title) => [
+      `Product teams improving a specific journey through ${title.toLowerCase()}`,
+      "Founders preparing a product or site for real traffic",
+      "Growth leads with evidence of a conversion problem",
+      "Engineering teams that need buildable states and components",
+    ],
+    problems: () => [
+      "The critical journey is unclear or needlessly long",
+      "Screens omit empty, loading, and error states",
+      "Research findings are not reflected in the product",
+      "Design and implementation keep drifting apart",
+      "The component library no longer matches the live interface",
+    ],
+    deliverables: (title) => [
+      `${title} files with annotated states and behavior`,
+      "A prioritized journey or usability diagnosis",
+      "Prototype of the critical path",
+      "Component and content decisions",
+      "Frontend implementation or a build-ready handoff",
+    ],
+  },
+  "markets-trading": {
+    intro: (title) =>
+      `${title} has to account for fees, latency, partial fills, and bad data before it reaches live capital. We make those assumptions visible and give operators a controlled path from research to production.`,
+    whoFor: (title) => [
+      `Systematic teams formalizing ${title.toLowerCase()}`,
+      "Prop desks moving beyond unmonitored scripts",
+      "Funds with review gates between research and execution",
+      "Trading operations teams addressing an audit or reliability gap",
+    ],
+    problems: () => [
+      "Research and live behavior disagree",
+      "Fees, slippage, or partial fills are missing from tests",
+      "Orders are not idempotent across retries",
+      "Risk controls depend on one operator",
+      "Failures cannot be reconstructed from logs",
+    ],
+    deliverables: (title) => [
+      `Working ${title.toLowerCase()} with explicit assumptions`,
+      "Validation criteria for paper or shadow operation",
+      "Risk limits and an operator-controlled stop path",
+      "Monitoring for orders, positions, and failures",
+      "Runbook for normal and degraded operation",
+    ],
+  },
+};
 
-const WHO_FOR_BY_CATEGORY = {
-  build: [
-    (t) => `CTOs who need ${t.toLowerCase()} shipped this quarter, not next year.`,
-    (t) => `Ops leads replacing manual work with ${t.toLowerCase()} your team will actually use.`,
-    (t) => `Founders post-PMF adding ${t.toLowerCase()} without hiring three engineers first.`,
-    (t) => `Product teams blocked on ${t.toLowerCase()} because internal capacity is on core roadmap.`,
+const DEFAULT_COPY = {
+  intro: (title) =>
+    `${title} starts with the current system, the blocked path, and a written definition of done. The implementation stays in your repository with the operating details your team needs after launch.`,
+  whoFor: (title) => [
+    `Teams with a defined need for ${title.toLowerCase()}`,
+    "Owners who can make scope decisions",
+    "Engineering teams with repository and staging access",
+    "Operators who can validate the working path",
   ],
-  "ai-automation": [
-    (t) => `Product leads adding ${t.toLowerCase()} with evals, not demo-day features.`,
-    (t) => `Support or ops managers automating repeat work via ${t.toLowerCase()}.`,
-    (t) => `Teams that tried a chatbot hackathon and need ${t.toLowerCase()} in production.`,
-    (t) => `Founders who need ${t.toLowerCase()} scoped before the next fundraise narrative.`,
+  problems: () => [
+    "The current path is fragile or incomplete",
+    "Success has not been defined in testable terms",
+    "Known edge cases keep delaying release",
+    "System ownership is split across vendors",
+    "Documentation does not match production",
   ],
-  design: [
-    (t) => `Growth leads where ${t.toLowerCase()} should move signup or demo conversion.`,
-    (t) => `Product designers underwater need ${t.toLowerCase()} for one critical flow.`,
-    (t) => `Founders relaunching and need ${t.toLowerCase()} before paid traffic scales.`,
-    (t) => `Engineering leads who want ${t.toLowerCase()} that builds cleanly in React.`,
-  ],
-  "markets-trading": [
-    (t) => `Quant and systematic teams formalizing ${t.toLowerCase()} before capital allocation.`,
-    (t) => `Prop desks moving from scripts to monitored ${t.toLowerCase()}.`,
-    (t) => `Funds with governance gates between research and ${t.toLowerCase()}.`,
-    (t) => `Trading ops adding ${t.toLowerCase()} after a near-miss or audit finding.`,
-  ],
-  "integrations-platform": [
-    (t) => `SaaS founders who need ${t.toLowerCase()} live before sales can close deals.`,
-    (t) => `Engineering teams scared to touch billing need ${t.toLowerCase()} done right once.`,
-    (t) => `Products expanding to new markets requiring ${t.toLowerCase()}.`,
-    (t) => `Teams migrating stacks and need ${t.toLowerCase()} without breaking prod.`,
-  ],
-  "startup-tech-partner": [
-    (t) => `First-time founders who need ${t.toLowerCase()} and honest scope pushback.`,
-    (t) => `Pre-seed teams with investor interest but no technical co-founder.`,
-    (t) => `Startups between hires need ${t.toLowerCase()} for 8–12 weeks.`,
-    (t) => `Founders who burned budget on agencies and want ${t.toLowerCase()} in one repo.`,
+  deliverables: (title) => [
+    `Working ${title.toLowerCase()} in your repository`,
+    "Written scope and acceptance checks",
+    "Validation of the critical path",
+    "Deployment and operating notes",
+    "A record of decisions and deferred work",
   ],
 };
 
-const PROBLEM_VARIANTS = [
-  (t, tools) => `${t} estimates balloon because acceptance criteria were never written.`,
-  (t) => `A previous vendor shipped ${t.toLowerCase()} that broke on edge cases in week two.`,
-  (t) => `Your team lacks bandwidth to own ${t.toLowerCase()} while shipping the core product.`,
-  (t, tools) => `Integrations around ${tools[0]} are fragile and nobody owns on-call.`,
-  (t) => `Stakeholders disagree on what "${t.toLowerCase()} done" means. Until that is defined, nothing ships.`,
-  (t, tools) => `You have ${tools[1]} in place but ${t.toLowerCase()} never got past the backlog.`,
+const PROCESS = [
+  "Review the current path, constraints, and available evidence",
+  "Write the smallest useful scope and its acceptance checks",
+  "Ship reviewable increments in the existing repository",
+  "Validate the working path and document how to operate it",
 ];
 
-const DELIVERABLE_VARIANTS = [
-  (t) => `Written scope for ${t.toLowerCase()} with explicit in/out of scope`,
-  "Weekly demo, live or recorded, with decisions logged",
-  "Acceptance checklist signed before production launch",
-  "Runbook for the failure modes we expect in month one",
-  "Handoff doc so your team can maintain without us",
-  (t, tools) => `Working implementation in your repo using ${tools.slice(0, 2).join(" and ")}`,
-];
-
-function hashIndex(seed, modulo) {
-  let hash = 0;
-  for (let i = 0; i < seed.length; i += 1) {
-    hash = (hash << 5) - hash + seed.charCodeAt(i);
-    hash |= 0;
-  }
-  return Math.abs(hash) % modulo;
-}
-
-const DIFFERENTIATOR_POOL = [
-  (seed) => seed.wontDo,
-  (seed) => `Typical window: ${seed.timeline}, stated in writing before we start.`,
-  (seed) => "Weekly demos with written decisions, not status decks.",
-  (seed) =>
-    `Stack-first: we start with ${seed.tools[0]} unless the audit says otherwise.`,
-  () => "Direct access to the people writing code or design files.",
-];
-
-function buildDifferentiators(service, seed) {
-  const start = hashIndex(service.slug, DIFFERENTIATOR_POOL.length);
-  const ordered = [
-    ...DIFFERENTIATOR_POOL.slice(start),
-    ...DIFFERENTIATOR_POOL.slice(0, start),
-  ];
-  return ordered.slice(0, 3).map((fn) => fn(seed));
-}
-
-function buildFaqs(service, seed) {
-  const title = service.title;
-  const toolStr = seed.tools.slice(0, 2).join(" or ");
-
-  const pools = [
+function buildFaqs(title) {
+  return [
     {
-      q: `What does the first week of ${title} look like?`,
-      a: `Access, repo setup, and a written scope draft. No build until you sign off on cut lines and the metric we're targeting.`,
+      q: `Can you continue an existing ${title} project?`,
+      a: "Yes. We review the current state first and keep working parts in place. Rewrites need a concrete technical reason.",
     },
     {
-      q: `Do you work with our existing ${toolStr} setup?`,
-      a: `Yes, when it's sane. We audit first and tell you if something needs replacing. We won't rip out working infra for sport.`,
+      q: "What do you need before starting?",
+      a: "One person who can make scope decisions, access to the relevant repository or files, and examples of the current problem.",
     },
     {
-      q: `What if we already started ${title} in-house?`,
-      a: `We pick up from current state, document what's there, and focus on what's blocking launch. We rewrite only when necessary.`,
+      q: "How is scope agreed?",
+      a: "The proposal names the working path, acceptance checks, exclusions, and dependencies. Timing follows from that scope rather than a standard package.",
     },
     {
-      q: `How is ${title} priced?`,
-      a: `Fixed scope for sprints (${seed.timeline}). Broader work runs as a pod with weekly demos. We quote after a 30-minute scoping call.`,
-    },
-    {
-      q: `What do you need from us to start?`,
-      a: `One decision-maker, repo or staging access, and honest constraints (timeline, budget, stack). Existing docs help but aren't required.`,
-    },
-    {
-      q: `Can you stay on after ${title} launches?`,
-      a: `Yes. Maintenance sprints or a partner retainer. Many teams keep us for the next bottleneck once v1 is stable.`,
-    },
-    {
-      q: `Who on your team works on ${title}?`,
-      a: `The same small team from kickoff to launch, not a rotating bench. You talk to the people writing code or design files.`,
+      q: "What remains with our team?",
+      a: "Code and design files stay in your systems. We also leave the tests, operating notes, and decisions needed to continue the work.",
     },
   ];
-
-  const start = hashIndex(service.slug, pools.length);
-  return [...pools.slice(start), ...pools.slice(0, start)].slice(0, 5);
 }
 
 export function generateServicePlaybook(service, category) {
-  const seed = generateServiceSeed(service, category);
-  const slug = service.slug;
-  const title = service.title;
-  const variantIdx = hashIndex(slug, PROCESS_VARIANTS.length);
-  const processFn = PROCESS_VARIANTS[variantIdx];
-  const whoForFns =
-    WHO_FOR_BY_CATEGORY[category.slug] ?? WHO_FOR_BY_CATEGORY.build;
-  const whoStart = hashIndex(slug, whoForFns.length);
+  const copy = CATEGORY_COPY[category.slug] ?? DEFAULT_COPY;
+  const markets = MARKETS_AUDIENCE[service.slug];
 
-  const markets = MARKETS_AUDIENCE[slug];
-
-  const playbook = {
-    intro: seed.intro,
-    contrarian: seed.contrarian,
-    wontDo: seed.wontDo,
-    chips: seed.chips,
-    whoFor: [
-      ...whoForFns.slice(whoStart),
-      ...whoForFns.slice(0, whoStart),
-    ].slice(0, 4).map((fn) => fn(title)),
-    problems: PROBLEM_VARIANTS.map((fn) => fn(title, seed.tools)).slice(0, 5),
-    deliverables: DELIVERABLE_VARIANTS.map((entry) =>
-      typeof entry === "function" ? entry(title, seed.tools) : entry
-    ),
-    process: processFn(title, seed.timeline, seed.tools),
-    differentiators: buildDifferentiators(service, seed),
-    faqs: buildFaqs(service, seed),
+  return lintPlaybook({
+    intro: copy.intro(service.title),
+    whoFor: copy.whoFor(service.title),
+    problems: copy.problems(service.title),
+    deliverables: copy.deliverables(service.title),
+    process: PROCESS,
+    faqs: buildFaqs(service.title),
     ...(markets
       ? {
           dominantPersona: markets.dominantPersona,
@@ -195,7 +171,5 @@ export function generateServicePlaybook(service, category) {
           secondaryAudiences: markets.secondaryAudiences,
         }
       : {}),
-  };
-
-  return lintPlaybook(playbook);
+  });
 }

@@ -115,7 +115,7 @@ export const ROUTES = {
     cta: CAL.ai,
     title: "Production AI for ops, support, and product teams | Futurebits",
     description:
-      "Futurebits ships production AI: retrieval, agents, automations, and evals for ops, support, and product teams. One small team. First useful automation in 2–3 weeks.",
+      "Futurebits builds retrieval, agent, and automation systems around real inputs, human review, and observable behavior in production.",
     keywords: [
       "AI automation agency",
       "AI chatbots",

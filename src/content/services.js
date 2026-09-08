@@ -8,35 +8,6 @@ import { SERVICE_PAGE_COPY } from "@/content/service-copy";
  * @typedef {import("@/lib/content-types").ServiceRecord} ServiceRecord
  */
 
-const META_TAIL_VARIANTS = [
-  "Scoped in writing. Weekly demos in your repo.",
-  "One team from kickoff to launch. No hand-offs.",
-  "Fixed window quoted after a 30-minute scoping call.",
-  "Acceptance tests signed before we call it done.",
-  "Ship in your stack with explicit cut lines up front.",
-  "Direct access to the people doing the work.",
-];
-
-const STANDARD_META_TAIL =
-  /Fixed-scope sprints, direct team access, ship in your repo\.?$/;
-
-function hashIndex(seed, modulo) {
-  let hash = 0;
-  for (let i = 0; i < seed.length; i += 1) {
-    hash = (hash << 5) - hash + seed.charCodeAt(i);
-    hash |= 0;
-  }
-  return Math.abs(hash) % modulo;
-}
-
-function varyMetaDescription(slug, description) {
-  if (!description || !STANDARD_META_TAIL.test(description)) {
-    return description;
-  }
-  const tail = META_TAIL_VARIANTS[hashIndex(slug, META_TAIL_VARIANTS.length)];
-  return description.replace(STANDARD_META_TAIL, tail);
-}
-
 export const SERVICE_CATEGORIES = [
   {
     slug: "build",
@@ -52,7 +23,7 @@ export const SERVICE_CATEGORIES = [
     title: "AI & Automation",
     shortTitle: "AI & Automation",
     description:
-      "Production AI: agents, RAG, chatbots, custom GPTs, and workflow automation with evals, fallbacks, and human review where it matters.",
+      "Agents, RAG, chatbots, custom GPTs, and workflow automation with test sets, fallbacks, and human review where it matters.",
     ctaLabel: "Book a call",
     ctaHref: CAL.ai,
   },
@@ -88,7 +59,7 @@ export const SERVICE_CATEGORIES = [
     title: "Startup Tech Partner",
     shortTitle: "Startup Partner",
     description:
-      "Founder tech partner, MVP scope, product strategy, and idea-to-launch pods. One small team, no equity-only deals.",
+      "MVP scope, product strategy, architecture, and implementation for founders with a defined product problem.",
     ctaLabel: "Book a call",
     ctaHref: CAL.startup,
   },
@@ -233,11 +204,9 @@ export const PRIORITY_SERVICE_SLUGS = new Set([
 export const SERVICES = RAW_SERVICES.map(([categorySlug, slug, title]) => {
   const category = SERVICE_CATEGORIES.find((item) => item.slug === categorySlug);
   const copy = SERVICE_PAGE_COPY[slug];
-  const metaDescription = varyMetaDescription(
-    slug,
+  const metaDescription =
     copy?.metaDescription ??
-      `${title} by Futurebits. Fixed-scope sprints, direct team access, ship in your repo.`
-  );
+    `${title} by Futurebits, implemented in your repository against a written scope.`;
 
   return lintServiceCopy({
     categorySlug,
@@ -247,11 +216,11 @@ export const SERVICES = RAW_SERVICES.map(([categorySlug, slug, title]) => {
     path: `/services/${categorySlug}/${slug}`,
     shortDescription:
       metaDescription ??
-      `${title}. Scoped, shipped in your repo, with weekly demos.`,
-    hero: copy?.hero ?? `${title}. Scoped, shipped, signed off.`,
+      `${title}, implemented in your repository against a written scope.`,
+    hero: copy?.hero ?? title,
     subhead:
       copy?.subhead ??
-      "We write the scope first, ship in your repo, and demo every week until it's done.",
+      "We define the working path and acceptance checks before implementation begins in your repository.",
     metaTitle: copy?.metaTitle ?? `${title} | Futurebits`,
     metaDescription,
     isPriority: PRIORITY_SERVICE_SLUGS.has(slug),
@@ -311,11 +280,11 @@ export function getServiceFaq(service) {
   return [
     {
       q: `What does the first week of ${service.title} look like?`,
-      a: "Access, repo setup, and a written scope draft. We don't start build until you sign off on cut lines and the metric we're targeting.",
+      a: "We review the current path, representative examples, dependencies, and repository setup. The result is a written scope with acceptance checks.",
     },
     {
       q: "How long does delivery usually take?",
-      a: "Focused scopes land in 2-4 weeks. Broader work runs 8-12 weeks with weekly demos and explicit milestones.",
+      a: "Timing depends on the working path, integrations, and review requirements. We quote it after those are written down.",
     },
     {
       q: "Can you work with our existing team and stack?",
