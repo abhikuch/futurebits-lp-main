@@ -236,7 +236,7 @@ export default function ServiceDetailPage({ params }) {
   return (
     <main
       id="main-content"
-      className={`fb-editorial-page min-h-screen ${pageBgClassName} text-white`}
+      className={`fb-editorial-page min-h-screen overflow-hidden ${pageBgClassName} text-white`}
       data-editorial-vertical={detailKey ?? "neutral"}
     >
       <VerticalDecorations categorySlug={category.slug} />
