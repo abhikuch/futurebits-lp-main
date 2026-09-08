@@ -92,7 +92,7 @@ export const ROUTES = {
     cta: CAL.home,
     title: "Futurebits | Digital design, software, and automation",
     description:
-      "Futurebits makes the digital bits a business runs on: understandable interfaces, working software, and automation that removes repeat work—all built by one team.",
+      "Futurebits designs interfaces, builds software, and automates workflows. One team takes web services, internal tools, and AI systems from scope to production.",
     keywords: [
       "Futurebits",
       "AI automation agency",

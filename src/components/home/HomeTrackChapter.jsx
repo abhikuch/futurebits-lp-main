@@ -26,17 +26,16 @@ export default function HomeTrackChapter({ track }) {
         <MotionFadeIn className="fb-practice-lead"><h2>{track.title}</h2><p>{track.lede}</p></MotionFadeIn>
         <MotionStagger className="fb-practice-body">
           <MotionStaggerItem className="fb-practice-problem">
-            <p className="fb-practice-label">When we enter</p><p>{track.painfulState}</p><p className="fb-practice-boundary">{track.wontDo}</p>
+            <p className="fb-practice-label">What we usually find</p><p>{track.painfulState}</p><p className="fb-practice-boundary">{track.scopeNote}</p>
           </MotionStaggerItem>
           <MotionStaggerItem className="fb-practice-artifacts">
             <p className="fb-practice-label">What reaches your repo</p>
             <ol>{track.artifacts.map((artifact, index) => <li key={artifact}><span>{String(index + 1).padStart(2, "0")}</span>{artifact}</li>)}</ol>
           </MotionStaggerItem>
           <MotionStaggerItem className="fb-practice-gate">
-            <p className="fb-practice-label">First milestone</p><strong>{track.milestone}</strong>
+            <p className="fb-practice-label">First release</p><strong>{track.milestone}</strong>
             <div className="fb-practice-actions">
               <Link href={track.href}>{track.enterLabel}<span aria-hidden="true">→</span></Link>
-              <Link href={track.calHref} target="_blank" rel="noopener noreferrer" data-home-cta={track.id}>Book a call<span aria-hidden="true">↗</span></Link>
             </div>
           </MotionStaggerItem>
         </MotionStagger>

@@ -4,6 +4,7 @@ import { describe, it } from "node:test";
 
 import { BANNED_PHRASES } from "../src/content/content-voice.js";
 import { HOME_BELIEFS, HOME_CAL, HOME_CLOSE, HOME_DIAGNOSTIC, HOME_FIT, HOME_HERO, HOME_TRACKS } from "../src/content/home.js";
+import { buildRouteMetadata, ROUTES } from "../src/config/site.js";
 import { getMarkdownForPath } from "../src/lib/agent-markdown.js";
 
 function source(path) {
@@ -27,15 +28,16 @@ describe("home editorial landing", () => {
     assert.deepEqual(HOME_DIAGNOSTIC.routes.map((route) => route.href), ["/design", "/services/build", "/ai"]);
   });
 
-  it("routes buyers through three vertical-first practices", () => {
+  it("routes buyers through the three vertical-first areas", () => {
     assert.deepEqual(HOME_TRACKS.map((track) => track.href), ["/design", "/ai", "/markets"]);
     assert.equal(HOME_DIAGNOSTIC.routes.length, 3);
   });
 
-  it("keeps dedicated call campaigns", () => {
+  it("keeps calls focused at the opening and close", () => {
     assert.equal(new URL(HOME_CAL.hero).searchParams.get("utm_campaign"), "home-hero");
-    assert.equal(new URL(HOME_CAL.markets).pathname, "/futurebits/markets");
-    assert.equal(new URL(HOME_CAL.design).pathname, "/futurebits/design");
+    assert.equal(new URL(HOME_CAL.close).searchParams.get("utm_campaign"), "home-close");
+    assert.deepEqual(Object.keys(HOME_CAL), ["hero", "close"]);
+    assert.doesNotMatch(source("src/components/home/HomeTrackChapter.jsx"), /Book a call/);
   });
 
   it("follows the site voice", () => {
@@ -48,6 +50,12 @@ describe("home editorial landing", () => {
     assert.doesNotMatch(text, /Your next release needs more than a convincing demo/i);
     assert.doesNotMatch(text, /stuck workflows, fragile trading systems, and unclear product journeys/i);
     assert.doesNotMatch(text, /Build the thing your team can actually run/i);
+    assert.doesNotMatch(text, /systems behind it|repeat work worth automating/i);
+    assert.doesNotMatch(text, /Three kinds of work|Interface\. System\. Repeat work\./i);
+    assert.doesNotMatch(text, /Design practice|Specialized systems practice|First gate/i);
+    assert.doesNotMatch(text, /Fewer handoffs\. More proof\.|No black-box handoff/i);
+    assert.doesNotMatch(text, /\bwe (?:will )?not\b|\bwe won't\b/i);
+    assert.doesNotMatch(text, /buyer diagnostic|delivery evidence/i);
   });
 
   it("is server-rendered and contains no home WebGL path", () => {
@@ -62,14 +70,54 @@ describe("home editorial landing", () => {
     assert.equal(JSON.parse(source("package.json")).dependencies.three, undefined);
   });
 
-  it("keeps markdown useful and vertical-first", () => {
+  it("keeps SSR content, metadata, and markdown aligned", () => {
     const result = getMarkdownForPath("/");
+    const metadata = buildRouteMetadata("home");
+    assert.match(result.body, /Makers of the bits/);
     assert.match(result.body, /We make the bits your business runs on/);
-    assert.match(result.body, /Why one maker team/);
-    assert.match(result.body, /Written scope and acceptance checks/);
+    assert.ok(result.body.includes(ROUTES.home.description));
+    assert.equal(metadata.description, ROUTES.home.description);
+    assert.equal(metadata.openGraph.description, ROUTES.home.description);
+    assert.equal(metadata.twitter.description, ROUTES.home.description);
+
+    const syncedSections = [
+      HOME_HERO.lede,
+      HOME_DIAGNOSTIC.title,
+      HOME_DIAGNOSTIC.lede,
+      ...HOME_DIAGNOSTIC.routes.map((route) => route.label),
+      ...HOME_TRACKS.flatMap((track) => [
+        track.title,
+        track.lede,
+        track.painfulState,
+        track.scopeNote,
+        track.milestone,
+        ...track.artifacts,
+      ]),
+      HOME_BELIEFS.title,
+      HOME_BELIEFS.lede,
+      ...HOME_BELIEFS.items.flatMap((item) => [item.title, item.body]),
+      ...HOME_FIT.fit.items,
+      ...HOME_FIT.notFit.items,
+      HOME_CLOSE.title,
+      HOME_CLOSE.lede,
+    ];
+    for (const copy of syncedSections) {
+      assert.ok(result.body.includes(copy), `markdown missing: ${copy}`);
+    }
+
+    assert.match(source("src/app/page.jsx"), /description: ROUTES\.home\.description/);
     assert.match(result.body, /\/services\/build/);
     assert.match(result.body, /\/ai/);
     assert.match(result.body, /\/markets/);
     assert.match(result.body, /\/design/);
+    assert.ok(result.body.split(/\s+/).length > 300);
+  });
+
+  it("keeps the llms home description concrete", () => {
+    const llms = source("public/llms.txt");
+    assert.match(llms, /Makers of the bits/);
+    assert.match(llms, /interfaces, software, and workflow automation/i);
+    assert.match(llms, /written scope to code running in production/i);
+    assert.doesNotMatch(llms, /repeat work worth automating|delivery evidence|specialized systems practice/i);
   });
 });

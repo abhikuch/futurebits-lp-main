@@ -2,91 +2,87 @@ import { buildCalUrl } from "@/lib/cal";
 import { ROUTES } from "@/config/site";
 
 const CAL_AI = "https://cal.com/futurebits/ai?duration=30";
-const CAL_MARKETS = "https://cal.com/futurebits/markets?duration=30";
-const CAL_DESIGN = "https://cal.com/futurebits/design?duration=30";
 
 export const HOME_CAL = {
   hero: buildCalUrl(CAL_AI, { medium: "cta", campaign: "home-hero" }),
-  ai: buildCalUrl(CAL_AI, { medium: "cta", campaign: "home-ai" }),
-  markets: buildCalUrl(CAL_MARKETS, { medium: "cta", campaign: "home-markets" }),
-  design: buildCalUrl(CAL_DESIGN, { medium: "cta", campaign: "home-design" }),
   close: buildCalUrl(CAL_AI, { medium: "cta", campaign: "home-close" }),
 };
 
 export const HOME_HERO = {
   kicker: "Makers of the bits",
   title: ["We make the bits", "your business", "runs on."],
-  lede: "Digital design, software, and automation—planned, built, and shipped by one team. The interface people use, the systems behind it, and the repeat work worth automating.",
+  lede: "We design interfaces, build software, and automate workflows. One Futurebits team takes the work from a written scope to code running in production.",
   primaryCta: "Book a call",
   secondaryCta: "See what we make",
   index: [
-    { n: "01", label: "Design", href: ROUTES.design.path, line: "Make the interface understandable." },
-    { n: "02", label: "Software", href: "/services/build", line: "Make the product and its systems work." },
-    { n: "03", label: "Automation", href: ROUTES.ai.path, line: "Remove repeat work and connect the tools around it." },
+    { n: "01", label: "Design", href: ROUTES.design.path, line: "Interfaces and product journeys people can use." },
+    { n: "02", label: "Software", href: "/services/build", line: "Web services, internal tools, and product infrastructure." },
+    { n: "03", label: "Automation", href: ROUTES.ai.path, line: "Support, reporting, and operations workflows with less manual work." },
   ],
 };
 
 export const HOME_DIAGNOSTIC = {
-  kicker: "Three kinds of work. One maker team.",
-  title: "Interface. System. Repeat work.",
-  lede: "Design makes the interface understandable. Software makes the product work. Automation removes repeat work and connects the systems around it.",
+  kicker: "Start with the work",
+  title: "What needs to work next?",
+  lede: "Choose the closest starting point. We scope design, software, and automation together when the job spans them.",
   routes: [
-    { n: "D", href: ROUTES.design.path, label: "The interface people need to understand and use.", answer: "Explore Design" },
-    { n: "S", href: "/services/build", label: "The product, platform, or internal system behind it.", answer: "Explore Build" },
-    { n: "A", href: ROUTES.ai.path, label: "The repeated work that should move without copying and chasing.", answer: "Explore AI & Automation" },
+    { n: "D", href: ROUTES.design.path, label: "An interface or product journey is confusing users.", answer: "Explore Design" },
+    { n: "S", href: "/services/build", label: "A web service, internal tool, or product needs to be built.", answer: "Explore Build" },
+    { n: "A", href: ROUTES.ai.path, label: "A support queue, reporting process, or back-office workflow is still manual.", answer: "Explore AI & Automation" },
   ],
 };
 
 export const HOME_TRACKS = [
   {
-    id: "design", index: "01", href: ROUTES.design.path, calHref: HOME_CAL.design, enterLabel: "Explore Design", kicker: "Design practice",
-    title: "Make the interface make sense.",
-    lede: "For founders and product leads with a named point of friction: activation, onboarding, upgrade, or conversion. Design and frontend stay in the same working loop.",
-    painfulState: "People hesitate, abandon, or ask for help. The team keeps polishing screens while the critical path remains unclear.",
-    wontDo: "We will not redraw the whole product to avoid deciding which journey matters.",
-    artifacts: ["Journey diagnosis", "Critical-flow prototype", "Component and state contract", "Frontend code and instrumentation"],
-    milestone: "First gate: the critical path works in your repo and the event is measurable.",
+    id: "design", index: "01", href: ROUTES.design.path, enterLabel: "Explore Design", kicker: "Product design + frontend",
+    title: "Fix a critical product journey.",
+    lede: "For founders and product leads who can point to friction in onboarding, activation, checkout, or upgrades. We trace where users stall, prototype the selected flow, and implement it in the product.",
+    painfulState: "Users hesitate, abandon the flow, or contact support. Screen-by-screen polish has not fixed the journey.",
+    scopeNote: "A full redesign only makes sense when the evidence points beyond the critical path.",
+    artifacts: ["Annotated journey map", "Prototype for the selected flow", "Component states and interaction rules", "Frontend code with event instrumentation"],
+    milestone: "The selected flow works in your repo, with its key event instrumented.",
   },
   {
-    id: "ai", index: "02", href: ROUTES.ai.path, calHref: HOME_CAL.ai, enterLabel: "Explore AI", kicker: "Automation / applied AI",
-    title: "Take repeat work out of the loop.",
-    lede: "For product and operations teams with a repeated job, real inputs, and someone accountable for the result. We map the exceptions before choosing a model.",
-    painfulState: "Tickets are triaged by hand. Answers are copied between systems. A demo looked good, but nobody trusts it with live work.",
-    wontDo: "We will not start with an autonomous agent when retrieval or a small automation is the safer answer.",
-    artifacts: ["Workflow and exception map", "Real-input test set", "Retrieval or automation service", "Review queue, logs, and rollback"],
-    milestone: "First gate: one narrow workflow handles real inputs with a human review path.",
+    id: "ai", index: "02", href: ROUTES.ai.path, enterLabel: "Explore AI", kicker: "AI + workflow automation",
+    title: "Move a manual workflow into software.",
+    lede: "For product and operations teams dealing with recurring work such as ticket triage, document lookup, or report preparation. We map real inputs and exceptions before choosing retrieval, rules, or an agent.",
+    painfulState: "People copy answers between tools, sort queues by hand, and check every result because the existing demo cannot be trusted with live work.",
+    scopeNote: "Autonomous agents are reserved for workflows where simpler automation cannot handle the decisions involved.",
+    artifacts: ["Workflow map with exception paths", "Test set made from real inputs", "Retrieval or automation service", "Review queue, logs, and rollback controls"],
+    milestone: "One defined workflow handles real inputs and sends uncertain cases to a person.",
   },
   {
-    id: "markets", index: "03", href: ROUTES.markets.path, calHref: HOME_CAL.markets, enterLabel: "Explore Markets", kicker: "Specialized systems practice",
-    title: "Build systems for markets.",
-    lede: "For trading teams whose research has outrun their execution stack. We build the path from a costed backtest to observable, controlled deployment.",
-    painfulState: "Fill assumptions are generous. Paper and live behavior disagree. Risk controls live in one person’s head.",
-    wontDo: "We do not manage capital, promise returns, or hide slippage in a footnote.",
+    id: "markets", index: "03", href: ROUTES.markets.path, enterLabel: "Explore Markets", kicker: "Market infrastructure",
+    title: "Turn a strategy into controlled execution.",
+    lede: "For trading teams that need to test and operate a strategy beyond a research notebook. We build costed backtests, execution engines, operator controls, and monitoring.",
+    painfulState: "Fill assumptions are generous, paper and live behavior disagree, or risk controls live in one person’s head.",
+    scopeNote: "Capital management and return promises stay outside the engagement. Fees, slippage, latency, and failure states stay in the specification.",
     artifacts: ["Event-driven, costed backtest", "Paper and shadow deployment", "Risk limits and kill switch", "Monitoring and operator runbook"],
-    milestone: "First gate: the strategy survives explicit fees, slippage, latency, and bad data.",
+    milestone: "The strategy is tested against explicit fees, slippage, latency, and bad data.",
   },
 ];
 
 export const HOME_BELIEFS = {
-  kicker: "Why one maker team",
-  title: "Fewer handoffs. More proof.",
-  lede: "The people shaping the interface also understand the system behind it and the automation around it. Progress shows up in work your team can inspect.",
+  kicker: "How work gets shipped",
+  title: "From scope to production.",
+  lede: "You work with the people doing the design and writing the code. Decisions and working versions remain visible throughout the project.",
   items: [
-    { index: "01", title: "Written scope", body: "The job, the boundary, the acceptance checks, and the person who can make a call." },
-    { index: "02", title: "Work in the repo", body: "Code and decisions live where your team can inspect them. No black-box handoff." },
-    { index: "03", title: "Demos of working paths", body: "See the interface, system behavior, or automation run. A status percentage proves nothing." },
-    { index: "04", title: "Acceptance and runbook", body: "We agree what done means, then leave the operating notes with the people running it." },
+    { index: "01", title: "Scope you can approve", body: "The first release, its boundaries, and acceptance checks are written down before the build expands." },
+    { index: "02", title: "Changes in your repo", body: "Code and design decisions live where your team can review them during the project." },
+    { index: "03", title: "Working reviews", body: "Reviews use the actual interface, service response, or automation run instead of a status percentage." },
+    { index: "04", title: "Operating notes", body: "The people running the work receive acceptance notes, setup details, and a runbook." },
   ],
 };
 
 export const HOME_FIT = {
-  fit: { title: "A good fit", items: ["An interface, system, or repeated task needs to work better.", "One person can make scope decisions.", "We can work in the repo and see real inputs.", "A useful first acceptance check can be named."] },
-  notFit: { title: "Not a fit", items: ["A deck is the main deliverable.", "The brief is a 40-feature wishlist.", "Access to users, data, or code is off-limits.", "You need guaranteed trading or business results."] },
+  kicker: "Useful when",
+  fit: { title: "The work has a real starting point", items: ["A user journey or workflow can be shown as it works today.", "Someone on your team can make scope decisions.", "We can review the relevant repo, data, or real inputs."] },
+  notFit: { title: "A different partner is better when", items: ["The main deliverable is a strategy deck.", "The brief must keep every item in a long feature list.", "The project depends on guaranteed trading or business results."] },
 };
 
 export const HOME_CLOSE = {
-  kicker: "Make the next bit",
-  title: "What should work better?",
-  lede: "In 30 minutes, we will identify the interface, system, or repeated task that matters first—and say plainly if the work is not ready or not ours.",
-  phoneNote: "No pitch deck. No obligation. You leave with a narrower first move.",
+  kicker: "Bring us the current version",
+  title: "What needs to ship next?",
+  lede: "Use a 30-minute call to show us the interface, service, or workflow and the problem around it. We will discuss a practical first release and how it could reach production.",
+  phoneNote: "Bring the current flow or workflow and any constraints that matter.",
 };

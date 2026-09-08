@@ -16,10 +16,13 @@ describe("agent markdown", () => {
   it("returns studio-cover markdown for home", () => {
     const result = getMarkdownForPath("/");
     assert.ok(result);
+    assert.match(result.body, /Makers of the bits/);
     assert.match(result.body, /We make the bits your business runs on/);
-    assert.match(result.body, /Choose a practice/);
-    assert.match(result.body, /Why one maker team/);
+    assert.match(result.body, /What needs to work next/);
+    assert.match(result.body, /Areas of work/);
+    assert.match(result.body, /From scope to production/);
     assert.match(result.body, /Book a call/);
+    assert.doesNotMatch(result.body, /Choose a practice|Why one maker team/);
   });
 
   it("returns markdown for core routes", () => {
