@@ -235,7 +235,7 @@ export default function ServiceDetailPage({ params }) {
   return (
     <main
       id="main-content"
-      className={`min-h-screen ${pageBgClassName} text-white`}
+      className={`relative min-h-screen overflow-hidden ${pageBgClassName} text-white`}
     >
       <VerticalDecorations categorySlug={category.slug} />
       <JsonLd data={serviceDetailJsonLd({ service, category, faqs })} />
