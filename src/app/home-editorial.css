@@ -683,7 +683,16 @@
   }
 
   .fb-editorial-title {
-    font-size: clamp(2.65rem, 12vw, 3.75rem);
+    font-size: clamp(2.35rem, 10.7vw, 2.8rem);
+    line-height: 1.04;
+  }
+
+  .fb-editorial-title-line {
+    display: inline;
+  }
+
+  .fb-editorial-title-line:not(:last-child)::after {
+    content: " ";
   }
 
   .fb-editorial-hero-foot {
