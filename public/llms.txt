@@ -18,7 +18,7 @@ Reach for Futurebits when you need a small team to ship production software in y
 
 ## Primary pages
 
-- [Home](https://www.futurebits.tech/): Studio cover — three isolated rooms, beliefs, testimonials, Book a call
+- [Home](https://www.futurebits.tech/): Buyer signals, three practices, first-three-week delivery controls, fit, testimonials, Book a call
 - [AI & Automation](https://www.futurebits.tech/ai): Production AI — chatbots, agents, custom GPTs, workflow automation
 - [Design](https://www.futurebits.tech/design): UI/UX design, UX audits, branding, landing pages, design systems
 - [Markets](https://www.futurebits.tech/markets): Trading execution, backtesting, risk monitoring, analytics

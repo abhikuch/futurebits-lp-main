@@ -11,20 +11,15 @@ export function MotionFadeIn({
   as = "div",
 }) {
   const reduceMotion = useReducedMotion();
-  if (reduceMotion) {
-    const Tag = as === "section" ? "section" : "div";
-    return <Tag className={className}>{children}</Tag>;
-  }
-
   const MotionTag = motion[as] ?? motion.div;
 
   return (
     <MotionTag
       className={className}
-      initial="hidden"
-      whileInView="show"
+      initial={reduceMotion ? false : "hidden"}
+      whileInView={reduceMotion ? undefined : "show"}
       viewport={{ once: true, amount: MOTION.viewportAmount }}
-      variants={MOTION_VARIANTS.fadeUp}
+      variants={reduceMotion ? undefined : MOTION_VARIANTS.fadeUp}
       custom={delay}
     >
       {children}
@@ -38,20 +33,15 @@ export function MotionStagger({
   as = "div",
 }) {
   const reduceMotion = useReducedMotion();
-  if (reduceMotion) {
-    const Tag = as === "ul" ? "ul" : "div";
-    return <Tag className={className}>{children}</Tag>;
-  }
-
   const MotionTag = motion[as] ?? motion.div;
 
   return (
     <MotionTag
       className={className}
-      initial="hidden"
-      whileInView="show"
+      initial={reduceMotion ? false : "hidden"}
+      whileInView={reduceMotion ? undefined : "show"}
       viewport={{ once: true, amount: MOTION.viewportAmount }}
-      variants={MOTION_VARIANTS.staggerContainer}
+      variants={reduceMotion ? undefined : MOTION_VARIANTS.staggerContainer}
     >
       {children}
     </MotionTag>
@@ -64,15 +54,13 @@ export function MotionStaggerItem({
   as = "div",
 }) {
   const reduceMotion = useReducedMotion();
-  if (reduceMotion) {
-    const Tag = as === "li" ? "li" : "div";
-    return <Tag className={className}>{children}</Tag>;
-  }
-
   const MotionTag = motion[as] ?? motion.div;
 
   return (
-    <MotionTag className={className} variants={MOTION_VARIANTS.staggerItem}>
+    <MotionTag
+      className={className}
+      variants={reduceMotion ? undefined : MOTION_VARIANTS.staggerItem}
+    >
       {children}
     </MotionTag>
   );

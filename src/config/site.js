@@ -92,7 +92,7 @@ export const ROUTES = {
     cta: CAL.home,
     title: "Futurebits | A studio for AI, markets, and design",
     description:
-      "Futurebits is one small team across three isolated tracks: production AI, trading infrastructure, and product design with frontend in your repo. Pick a room. Book a call.",
+      "Futurebits turns stuck workflows, fragile trading systems, and unclear product journeys into software people can use. Choose AI, Markets, or Design.",
     keywords: [
       "Futurebits",
       "AI automation agency",

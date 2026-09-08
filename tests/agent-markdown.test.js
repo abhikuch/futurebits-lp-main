@@ -16,7 +16,8 @@ describe("agent markdown", () => {
   it("returns studio-cover markdown for home", () => {
     const result = getMarkdownForPath("/");
     assert.ok(result);
-    assert.match(result.body, /The rooms/);
+    assert.match(result.body, /Choose by failure state/);
+    assert.match(result.body, /runbook/);
     assert.match(result.body, /Book a call/);
   });
 

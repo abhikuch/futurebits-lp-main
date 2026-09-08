@@ -14,39 +14,80 @@ export const HOME_CAL = {
 };
 
 export const HOME_HERO = {
-  kicker: `${COMPANY.name} · three isolated tracks`,
-  title: "Pick the room. We will not sell you the other two.",
+  kicker: `${COMPANY.name} · design and engineering studio`,
+  title: "AI workflows. Trading infrastructure. Product interfaces.",
   lede:
-    "AI, markets, and design do not share a palette, a process, or a pitch. Same small team. Different failure modes. Walk into the room that already has a problem — we ship in your repo, and we will tell you if we should pass.",
+    "We build the systems behind manual operations, live markets, and products people struggle to use. Different disciplines, one standard: observable behavior, written acceptance checks, and code your team owns.",
+  audience:
+    "Hired by founders, product and operations leads, and trading teams with a specific failure to fix.",
   primaryCta: "Book a call",
-  secondaryCta: "See the tracks",
+  secondaryCta: "Choose a track",
   index: [
     {
       n: "01",
-      label: "AI",
-      href: "#track-ai",
-      line: "Retrieval, agents, and automations that cut real hours.",
+      label: "AI & automation",
+      href: "#signal-ai",
+      line: "A queue, handoff, or search problem is consuming the week.",
     },
     {
       n: "02",
       label: "Markets",
-      href: "#track-markets",
-      line: "Execution and risk plumbing that survives the next regime.",
+      href: "#signal-markets",
+      line: "Research, execution, and live risk no longer agree.",
     },
     {
       n: "03",
       label: "Design",
+      href: "#signal-design",
+      line: "The product works, but users still miss the next step.",
+    },
+  ],
+};
+
+export const HOME_SIGNALS = {
+  kicker: "Start with the failure",
+  title: "You probably have one of three expensive problems.",
+  lede:
+    "Do not start by shopping for a capability. Start where time, control, or conversion is leaking.",
+  items: [
+    {
+      id: "ai",
+      label: "AI & automation",
+      href: "#track-ai",
+      signal:
+        "People keep reading, classifying, copying, or answering the same material.",
+      detail:
+        "The queue grows with the team. Search is unreliable. A wrong automated answer still needs an owner.",
+      routeLabel: "Follow the AI track",
+    },
+    {
+      id: "markets",
+      label: "Markets systems",
+      href: "#track-markets",
+      signal:
+        "The backtest looks clean. Live fills, risk, and PnL tell a different story.",
+      detail:
+        "Fees are approximate, observability is late, or nobody trusts the path from signal to execution.",
+      routeLabel: "Follow the Markets track",
+    },
+    {
+      id: "design",
+      label: "Design + frontend",
       href: "#track-design",
-      line: "Product surfaces that ship in your repo, not a deck.",
+      signal:
+        "Users arrive, hesitate, and leave before the product proves its value.",
+      detail:
+        "The flow has accumulated exceptions. Design and frontend disagree. Nobody owns the last mile.",
+      routeLabel: "Follow the Design track",
     },
   ],
 };
 
 export const HOME_TRACKS_INTRO = {
-  kicker: "The rooms",
-  title: "Three worlds. The doors stay closed.",
+  kicker: "Three practices",
+  title: "One studio for systems where mistakes stay expensive.",
   lede:
-    "We do not remix an AI pitch into a trading desk, or a markets motif into a marketing site. Each chapter below uses that vertical’s tokens only. Start in one room.",
+    "The common work is not a technology. It is turning ambiguous behavior into something visible, testable, and maintainable. Each practice keeps its own methods, specialists, and visual language.",
 };
 
 export const HOME_TRACKS = [
@@ -55,19 +96,23 @@ export const HOME_TRACKS = [
     index: "01",
     href: ROUTES.ai.path,
     calHref: HOME_CAL.ai,
-    enterLabel: "Enter the AI room",
+    enterLabel: "Explore AI & automation",
     kicker: "AI & Automation",
-    title: "Production AI that cuts manual work.",
+    title: "Make the repeated decision visible before you automate it.",
     lede:
-      "Retrieval, automation, and agent systems inside your repo. First useful automation in 2–3 weeks; a full rollout in 8–12. We map the workflow before we pick a model.",
+      "For operations, support, and product teams with a workflow already burning hours. We map the decisions, failure cost, data access, and human handoff before choosing a model.",
     point:
-      "Most teams should not start with an agent. Start with the line that already burns hours every week.",
+      "Most teams do not need an autonomous agent. They need one reliable step, measured on real cases.",
     wontDo:
-      "We will not ship a demo that cannot survive a first week of real tickets.",
-    signals: [
-      { label: "First useful automation", value: "2–3 weeks" },
-      { label: "Typical rollout", value: "8–12 weeks" },
-      { label: "Bar to ship", value: "Evals, or it waits" },
+      "Not a fit when there is no owner for bad output or no representative data to test.",
+    buyer: "Support, ops, and product leads",
+    milestone:
+      "In 2–3 weeks: one bounded workflow on staging, tested against a first eval set.",
+    artifacts: [
+      "Workflow and data map",
+      "Eval set from real cases",
+      "Human review and escalation",
+      "Repo code, logging, and runbook",
     ],
     services: [
       { categorySlug: "ai-automation", serviceSlug: "chatbot-development" },
@@ -80,19 +125,23 @@ export const HOME_TRACKS = [
     index: "02",
     href: ROUTES.markets.path,
     calHref: HOME_CAL.markets,
-    enterLabel: "Enter Markets",
+    enterLabel: "Explore Markets systems",
     kicker: "Markets",
-    title: "Trading systems built to survive the next regime change.",
+    title: "Close the gap between the research result and the live system.",
     lede:
-      "Event-driven backtests with real costs. Paper-and-shadow before production. Runbooks and kill-switches a junior can run at 2am. Edge dies. Infrastructure compounds.",
+      "For funds, prop teams, and serious traders that need a defensible path from research to execution. Costs, partial fills, risk, and observability belong in the system—not in a post-launch explanation.",
     point:
-      "We do not run your capital. That keeps the invoice honest and the incentives clean.",
+      "Paper and shadow mode come before cutover. A calm rollback beats a heroic go-live.",
     wontDo:
-      "We will not treat slippage, fees, or latency as a footnote you discover after go-live.",
-    signals: [
-      { label: "Backtests", value: "Event-driven + real costs" },
-      { label: "Go-live", value: "Paper, then shadow" },
-      { label: "Ops", value: "Runbook + kill switch" },
+      "We do not run your capital, promise alpha, or hide fees and latency in a footnote.",
+    buyer: "Funds, prop desks, and trading product teams",
+    milestone:
+      "First useful slice: a realistic backtest or a shadow path with named failure checks.",
+    artifacts: [
+      "Event-driven backtest",
+      "Execution and retry rules",
+      "Risk, PnL, and alert views",
+      "Kill switch, runbook, and rollback",
     ],
     services: [
       { categorySlug: "markets-trading", serviceSlug: "strategy-backtesting" },
@@ -111,19 +160,23 @@ export const HOME_TRACKS = [
     index: "03",
     href: ROUTES.design.path,
     calHref: HOME_CAL.design,
-    enterLabel: "Enter Design",
+    enterLabel: "Explore Design + frontend",
     kicker: "Design",
-    title: "Design that moves the metric, not the deck.",
+    title: "Fix the decision path, then ship the interface.",
     lede:
-      "Product design plus frontend in one small team. Onboarding, activation, upgrade. Mockups are throwaways. The artefact is live code in your repo, every week.",
+      "For founders and product teams with a broken onboarding, activation, upgrade, or launch path. Design and frontend work together, so the argument ends in a working surface—not a handoff.",
     point:
-      "We default to fewer pixels, fewer pages, and fewer features. The hard work is removing things.",
+      "We remove steps before we decorate them. Every screen needs a job and an acceptance check.",
     wontDo:
-      "We will not polish a flow that has no named number attached to it.",
-    signals: [
-      { label: "Team shape", value: "Design + frontend together" },
-      { label: "Cadence", value: "Weekly demo" },
-      { label: "The number", value: "Activation, conversion, retention" },
+      "Not a fit for a standalone logo or a mockup package nobody is ready to build.",
+    buyer: "Founders, product leads, and growth teams",
+    milestone:
+      "In 2–3 weeks: an audited priority flow and a working slice on a review URL.",
+    artifacts: [
+      "Flow audit and decision log",
+      "Working prototype",
+      "Component and state contracts",
+      "Merged frontend with acceptance checks",
     ],
     services: [
       { categorySlug: "design", serviceSlug: "website-ux-audit" },
@@ -133,52 +186,86 @@ export const HOME_TRACKS = [
   },
 ];
 
-export const HOME_BELIEFS = {
-  kicker: "How this studio works",
-  title: "We say no more often than shops that only say yes.",
+export const HOME_DELIVERY = {
+  kicker: "The first three weeks",
+  title: "Reduce the risk before the scope gets bigger.",
   lede:
-    "Most teams should not hire us for a logo, a strategy PDF, or a bench of interchangeable juniors. We take scoped work we can merge. If that feels tight, we are the wrong call — better on the first conversation than in month three.",
-  manifesto: {
-    title: "Three rooms. One bar.",
-    body:
-      "Isolation is the product. AI cyan stays in the AI room. Markets teal stays on the desk. Design keeps its air and its white type. We will not flatten the three into a generic services grid and hope you pick something.",
-  },
-  items: [
+    "A focused slice usually runs 2–4 weeks. Broader work can run 8–12, but only after the first slice proves the working rhythm.",
+  steps: [
     {
-      title: "You talk to the people doing the work.",
+      index: "00",
+      timing: "Before kickoff",
+      title: "Write the bet and the cut line.",
       body:
-        "No account-manager layer. No junior hot-swaps mid-sprint. Designers, engineers, and AI builders in the same thread as the weekly demo.",
+        "One page: the failure, the acceptance checks, access needed, and what is explicitly out. You keep it even if we pass.",
+      artifact: "Written scope",
     },
     {
-      title: "Smallest bet that can fail in public.",
+      index: "01",
+      timing: "Week one",
+      title: "Make the risky part testable.",
       body:
-        "We cut scope until one hypothesis is testable. A sprint before a pod. A pod before a partner seat. The first useful version should land in weeks.",
+        "Set up the repo and staging path. Use representative inputs. Name the failure checks before polishing the happy path.",
+      artifact: "Repo + staging",
     },
     {
-      title: "A metric you can check weekly, or we stop.",
+      index: "02",
+      timing: "Weeks two and three",
+      title: "Demo the slice against the checks.",
       body:
-        "Hours saved, fill quality, activation. If we cannot name the number on the first call, we will not invent a program around the fog.",
+        "Working software every week. Decisions and misses are written down. If the slice does not hold, we cut or stop.",
+      artifact: "Demo + acceptance",
     },
+    {
+      index: "03",
+      timing: "Before handoff",
+      title: "Leave an operable system.",
+      body:
+        "Runbook, ownership, alerts, and a rollback on load-bearing paths. The work stays in your repository.",
+      artifact: "Runbook + rollback",
+    },
+  ],
+  definition:
+    "Done means another person can review the behavior, deploy it, and recover it without calling the person who built it.",
+};
+
+export const HOME_PROOF = {
+  kicker: "Existing work",
+  title: "Claims are cheap. Look for a record and a working cadence.",
+  lede:
+    "These are the counts already published by Futurebits. The testimonials below are unchanged; the delivery controls above are what you should ask us to demonstrate.",
+  stats: [
+    { value: "12+", label: "Engagements run end to end" },
+    { value: "20+", label: "AI systems in production" },
+    { value: "30+", label: "Trading systems live" },
+    { value: COMPANY.founded, label: "Operating since" },
   ],
 };
 
-export const HOME_FEATURED_SERVICES = [
-  { categorySlug: "ai-automation", serviceSlug: "chatbot-development" },
-  { categorySlug: "ai-automation", serviceSlug: "ai-agents-development" },
-  { categorySlug: "markets-trading", serviceSlug: "strategy-backtesting" },
-  {
-    categorySlug: "markets-trading",
-    serviceSlug: "live-trading-execution-systems",
-  },
-  { categorySlug: "design", serviceSlug: "website-ux-audit" },
-  { categorySlug: "design", serviceSlug: "landing-page-design" },
-];
+export const HOME_FIT = {
+  kicker: "Fit check",
+  title: "Useful when the problem has an owner.",
+  forTitle: "Book the call if",
+  forItems: [
+    "A founder or lead can make scope decisions each week.",
+    "There is a real workflow, trading path, or product flow to inspect.",
+    "Your team can provide representative data and repository access.",
+    "You want a focused slice before a broader commitment.",
+  ],
+  notForTitle: "Do not book if",
+  notForItems: [
+    "You need anonymous staff augmentation or a large bench.",
+    "The deliverable is strategy slides with no build.",
+    "You want unattended AI with no owner for bad output.",
+    "You need alpha promises, capital management, or a standalone logo.",
+  ],
+};
 
 export const HOME_CLOSE = {
-  kicker: "Start in one room",
-  title: "Bring the problem, not the wishlist.",
+  kicker: "The next step",
+  title: "Bring one failure you want fixed.",
   lede:
-    "Thirty minutes. We will tell you which track, which model, and whether we should pass. Keep the one-page scope sketch either way.",
+    "The call is 30 minutes. We will ask what happens today, who owns the decision, and what must be true in 2–3 weeks. If there is a fit, the next artifact is a one-page scope. If not, we will say so.",
   phoneNote:
-    "UAE number +971 58 516 5671. GST invoicing is available when you need it — this page is the studio door, not a regional landing.",
+    "Prefer the phone? +971 58 516 5671 during GST working hours.",
 };
