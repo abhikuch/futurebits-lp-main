@@ -44,14 +44,14 @@ export const CATEGORY_VISUAL_THEME = {
     dividerClass:
       "mt-6 h-px w-28 bg-gradient-to-r from-[#01B0EA]/80 via-[#2E2688]/60 to-transparent",
     titleClass:
-      "mt-6 fb-hero-title max-w-4xl text-transparent bg-clip-text bg-gradient-to-r from-white via-[#DDF7FF] to-[#B6E9FF]",
+      "mt-6 fb-hero-title max-w-4xl",
     bodyClass: "mt-6 max-w-3xl text-lg text-[#D4F2FF]/80",
     serviceCardClass:
-      "rounded-2xl border border-[#01B0EA]/25 bg-gradient-to-b from-[#01B0EA]/10 to-white/[0.02] p-5 transition hover:from-[#01B0EA]/15 hover:to-white/[0.04]",
+      "border-t border-[#01B0EA]/35 bg-transparent p-5 transition hover:bg-[#01B0EA]/[0.06]",
     ctaPanelClass:
-      "rounded-3xl border border-[#01B0EA]/25 bg-gradient-to-b from-[#01B0EA]/10 to-white/[0.03] p-8",
+      "border-y border-[#01B0EA]/35 bg-transparent p-8",
     ctaButtonClass:
-      "mt-7 inline-flex h-11 items-center justify-center rounded-full border border-[#01B0EA]/40 bg-[#01B0EA]/18 px-6 text-sm font-medium text-white transition hover:bg-[#01B0EA]/26",
+      "mt-7 inline-flex h-11 items-center justify-center border border-[#01B0EA]/50 bg-[#01B0EA]/18 px-6 text-sm font-medium text-white transition hover:bg-[#01B0EA]/26",
   },
   "markets-trading": {
     pageBg: "bg-[#080808]",
@@ -59,14 +59,14 @@ export const CATEGORY_VISUAL_THEME = {
     dividerClass:
       "mt-6 h-px w-28 bg-gradient-to-r from-[#7BC3D8]/80 via-[#267088]/70 to-transparent",
     titleClass:
-      "mt-6 fb-hero-title max-w-4xl text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E7F6FB] to-[#C2E6F1]",
+      "mt-6 fb-hero-title max-w-4xl",
     bodyClass: "mt-6 max-w-3xl text-lg text-[#D8EEF4]/80",
     serviceCardClass:
-      "rounded-2xl border border-[#267088]/40 bg-gradient-to-b from-[#267088]/14 to-white/[0.02] p-5 transition hover:from-[#267088]/20 hover:to-white/[0.04]",
+      "border-t border-[#267088]/55 bg-transparent p-5 transition hover:bg-[#267088]/[0.08]",
     ctaPanelClass:
-      "rounded-3xl border border-[#267088]/40 bg-gradient-to-b from-[#267088]/16 to-white/[0.03] p-8",
+      "border-y border-[#267088]/55 bg-transparent p-8",
     ctaButtonClass:
-      "mt-7 inline-flex h-11 items-center justify-center rounded-full border border-[#267088]/55 bg-[#267088]/26 px-6 text-sm font-medium text-white transition hover:bg-[#267088]/36",
+      "mt-7 inline-flex h-11 items-center justify-center border border-[#267088]/55 bg-[#267088]/26 px-6 text-sm font-medium text-white transition hover:bg-[#267088]/36",
   },
   design: {
     pageBg: "bg-[#060618]",
@@ -74,14 +74,14 @@ export const CATEGORY_VISUAL_THEME = {
     dividerClass:
       "mt-6 h-px w-28 bg-gradient-to-r from-white/80 via-white/40 to-transparent",
     titleClass:
-      "mt-6 fb-hero-title max-w-4xl text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/80",
+      "mt-6 fb-hero-title max-w-4xl",
     bodyClass: "mt-6 max-w-3xl text-lg text-white/75",
     serviceCardClass:
-      "rounded-2xl border border-white/20 bg-gradient-to-b from-white/[0.1] to-white/[0.02] p-5 transition hover:from-white/[0.14] hover:to-white/[0.05]",
+      "border-t border-white/30 bg-transparent p-5 transition hover:bg-white/[0.06]",
     ctaPanelClass:
-      "rounded-3xl border border-white/20 bg-gradient-to-b from-white/[0.1] to-white/[0.03] p-8",
+      "border-y border-white/30 bg-transparent p-8",
     ctaButtonClass:
-      "mt-7 inline-flex h-11 items-center justify-center rounded-full border border-white/35 bg-white/15 px-6 text-sm font-medium text-white transition hover:bg-white/22",
+      "mt-7 inline-flex h-11 items-center justify-center border border-white/35 bg-white/15 px-6 text-sm font-medium text-white transition hover:bg-white/22",
   },
   /** Build, Integrations, Startup — amber accent (distinct from AI cyan, Design white, Markets teal). */
   platform: {
@@ -131,16 +131,16 @@ export const DETAIL_VISUAL_THEME = {
 export const DETAIL_HERO_PRESET = {
   "ai-automation": {
     shellClass:
-      "relative overflow-hidden rounded-3xl border border-[#01B0EA]/35 bg-[#080811]/85 p-7 text-center sm:p-10",
-    titleClass: "mt-5 fb-hero-title mx-auto max-w-4xl",
+      "relative overflow-hidden border-y border-[#01B0EA]/35 bg-transparent p-7 sm:p-10",
+    titleClass: "mt-5 fb-hero-title max-w-4xl",
     subheadClass:
-      "mt-5 mx-auto max-w-3xl text-lg leading-relaxed text-[#D9F5FF]/78",
-    ctaRowClass: "mt-8 flex flex-wrap justify-center gap-3",
+      "mt-5 max-w-3xl text-lg leading-relaxed text-[#D9F5FF]/78",
+    ctaRowClass: "mt-8 flex flex-wrap gap-3",
     bottomRailType: "ai",
   },
   "markets-trading": {
     shellClass:
-      "relative overflow-hidden rounded-3xl border border-[#267088]/45 bg-[#07070f]/90 p-7 sm:p-10",
+      "relative overflow-hidden border-y border-[#267088]/45 bg-transparent p-7 sm:p-10",
     titleClass: "mt-5 fb-hero-title max-w-4xl",
     subheadClass: "mt-5 max-w-3xl text-lg leading-relaxed text-[#D6EDF3]/78",
     ctaRowClass: "mt-8 flex flex-wrap gap-3",
@@ -148,10 +148,10 @@ export const DETAIL_HERO_PRESET = {
   },
   design: {
     shellClass:
-      "relative overflow-hidden rounded-3xl border border-white/25 bg-gradient-to-b from-white/[0.09] to-white/[0.03] p-7 text-center sm:p-10",
-    titleClass: "mt-5 fb-hero-title mx-auto max-w-4xl",
-    subheadClass: "mt-5 mx-auto max-w-3xl text-lg leading-relaxed text-white/78",
-    ctaRowClass: "mt-8 flex flex-wrap justify-center gap-3",
+      "relative overflow-hidden border-y border-white/30 bg-transparent p-7 sm:p-10",
+    titleClass: "mt-5 fb-hero-title max-w-4xl",
+    subheadClass: "mt-5 max-w-3xl text-lg leading-relaxed text-white/78",
+    ctaRowClass: "mt-8 flex flex-wrap gap-3",
     bottomRailType: "design",
   },
   platform: {
@@ -173,9 +173,9 @@ export const DETAIL_RHYTHM_PRESET = {
     relatedSectionClass: "py-10 sm:py-12",
     splitGapClass: "grid gap-5 md:grid-cols-3",
     compactCardClass:
-      "rounded-2xl border bg-white/[0.04] p-5 sm:p-6 backdrop-blur-sm",
+      "border-t bg-transparent p-5 sm:p-6",
     wideCardClass:
-      "rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 backdrop-blur-sm",
+      "border-t border-white/20 bg-transparent p-5 sm:p-6",
   },
   "markets-trading": {
     heroSectionClass: "pb-6 pt-32 sm:pb-8 sm:pt-36",
@@ -185,9 +185,9 @@ export const DETAIL_RHYTHM_PRESET = {
     relatedSectionClass: "py-8 sm:py-10",
     splitGapClass: "grid gap-6 md:grid-cols-3",
     compactCardClass:
-      "rounded-2xl border bg-white/[0.04] p-6 sm:p-7 backdrop-blur-sm",
+      "border-t bg-transparent p-6 sm:p-7",
     wideCardClass:
-      "rounded-2xl border border-white/10 bg-white/[0.04] p-6 sm:p-7 backdrop-blur-sm",
+      "border-t border-white/20 bg-transparent p-6 sm:p-7",
   },
   design: {
     heroSectionClass: "pb-14 pt-32 sm:pb-16 sm:pt-36",
@@ -197,9 +197,9 @@ export const DETAIL_RHYTHM_PRESET = {
     relatedSectionClass: "py-10 sm:py-12",
     splitGapClass: "grid gap-7 md:grid-cols-3",
     compactCardClass:
-      "rounded-3xl border bg-white/[0.05] p-6 sm:p-7 backdrop-blur-sm",
+      "border-t bg-transparent p-6 sm:p-7",
     wideCardClass:
-      "rounded-3xl border border-white/10 bg-white/[0.05] p-6 sm:p-7 backdrop-blur-sm",
+      "border-t border-white/25 bg-transparent p-6 sm:p-7",
   },
   platform: {
     heroSectionClass: "pb-10 pt-32 sm:pb-12 sm:pt-36",

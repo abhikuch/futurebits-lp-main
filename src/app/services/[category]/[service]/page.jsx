@@ -236,7 +236,8 @@ export default function ServiceDetailPage({ params }) {
   return (
     <main
       id="main-content"
-      className={`min-h-screen ${pageBgClassName} text-white`}
+      className={`fb-editorial-page min-h-screen ${pageBgClassName} text-white`}
+      data-editorial-vertical={detailKey ?? "neutral"}
     >
       <VerticalDecorations categorySlug={category.slug} />
       <JsonLd data={serviceDetailJsonLd({ service, category, faqs })} />
@@ -268,10 +269,10 @@ export default function ServiceDetailPage({ params }) {
                   {sectionData.chips.map((chip) => (
                     <span
                       key={chip}
-                      className={`inline-flex rounded-full px-3 py-1 text-xs font-medium text-white/90 ${
+                      className={`inline-flex border px-3 py-1 text-xs font-medium text-white/90 ${
                         sectionData.chips.indexOf(chip) === 0
                           ? theme.chipBg
-                          : "bg-white/10"
+                          : "border-white/20 bg-transparent"
                       }`}
                     >
                       {chip}
@@ -284,13 +285,13 @@ export default function ServiceDetailPage({ params }) {
                   href={calHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-flex h-11 items-center justify-center rounded-full border px-6 text-sm font-medium text-white transition hover:scale-[1.02] ${theme.accentBorder} ${theme.chipBg}`}
+                  className={`inline-flex h-11 items-center justify-center border px-6 text-sm font-medium text-white transition ${theme.accentBorder} ${theme.chipBg}`}
                 >
-                  {category.ctaLabel}
+                  Book a call
                 </Link>
                 <Link
                   href={`/services/${category.slug}`}
-                  className="inline-flex h-11 items-center justify-center rounded-full border border-white/20 px-6 text-sm font-medium text-white/90 transition hover:bg-white/10"
+                  className="inline-flex h-11 items-center justify-center border border-white/20 px-6 text-sm font-medium text-white/90 transition hover:bg-white/10"
                 >
                   Back to {category.shortTitle}
                 </Link>
@@ -314,7 +315,7 @@ export default function ServiceDetailPage({ params }) {
         <Section className="py-6">
           <Container className="max-w-3xl space-y-4">
             {sectionData.contrarian ? (
-              <p className="border-l-2 border-[#01B0EA]/60 pl-4 text-sm leading-relaxed text-white/80">
+              <p className={`border-l-2 pl-4 text-sm leading-relaxed text-white/80 ${theme.accentBorder}`}>
                 {sectionData.contrarian}
               </p>
             ) : null}
@@ -479,11 +480,7 @@ export default function ServiceDetailPage({ params }) {
           <Heading as="h2" className="fb-h3">
             Frequently asked questions
           </Heading>
-          <div
-            className={`mt-6 divide-y divide-white/10 border border-white/10 bg-white/[0.04] backdrop-blur-sm ${
-              category.slug === "design" ? "rounded-3xl" : "rounded-2xl"
-            }`}
-          >
+          <div className="mt-6 divide-y divide-white/10 border border-white/10 bg-transparent">
             {faqs.map((item) => (
               <details
                 key={item.q}

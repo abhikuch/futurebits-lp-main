@@ -184,7 +184,8 @@ export default function ServiceCategoryPage({ params }) {
   return (
     <main
       id="main-content"
-      className={`relative min-h-screen overflow-hidden ${theme.pageBg} text-white`}
+      className={`fb-editorial-page relative min-h-screen overflow-hidden ${theme.pageBg} text-white`}
+      data-editorial-vertical={themeKey}
     >
       <VerticalDecorations categorySlug={categoryBundle.slug} />
       <JsonLd data={serviceCategoryJsonLd(categoryBundle)} />
@@ -276,7 +277,7 @@ export default function ServiceCategoryPage({ params }) {
               rel="noopener noreferrer"
               className={theme.ctaButtonClass}
             >
-              {categoryBundle.ctaLabel}
+              Book a call
             </Link>
           </div>
         </Container>

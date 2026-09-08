@@ -1,4 +1,5 @@
 @import "./home-editorial.css";
+@import "./editorial-system.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -326,7 +327,7 @@
     @apply -translate-y-0.5 border-white/20 bg-white/[0.05];
   }
   .fb-shell {
-    @apply mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-16;
+    @apply mx-auto w-full max-w-[1312px] px-6 sm:px-10;
   }
   .fb-panel {
     @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm;
@@ -349,7 +350,7 @@
     backdrop-filter: blur(16px);
   }
   .fb-nav-inner {
-    @apply mx-auto w-full max-w-[1200px] px-5 sm:px-10 lg:px-16;
+    @apply mx-auto w-full max-w-[1312px] px-5 sm:px-10;
   }
   .fb-nav-link {
     @apply relative inline-flex h-11 items-center px-2.5 text-[13px] font-medium tracking-[0.08em] text-white/55 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#060618];

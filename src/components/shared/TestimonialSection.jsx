@@ -16,27 +16,19 @@ import { TESTIMONIALS } from "./testimonialsData";
 const THEME = {
   ai: {
     kickerClass: "fb-kicker text-[#01B0EA]",
-    cardClass:
-      "border-[#01B0EA]/30 bg-gradient-to-b from-[#01B0EA]/10 to-[#060618]/80",
-    glowClass: "from-[#01B0EA]/30 to-[#2E2688]/20",
+    cardClass: "border-[#01B0EA]/30 bg-transparent",
   },
   markets: {
     kickerClass: "fb-kicker text-[#7BC3D8]",
-    cardClass:
-      "border-white/20 bg-gradient-to-b from-white/[0.08] to-[#060618]/85",
-    glowClass: "from-[#267088]/30 to-white/10",
+    cardClass: "border-[#267088]/50 bg-transparent",
   },
   design: {
     kickerClass: "fb-kicker text-white/85",
-    cardClass:
-      "border-white/25 bg-gradient-to-b from-white/[0.12] to-[#060618]/85",
-    glowClass: "from-white/20 to-[#01B0EA]/15",
+    cardClass: "border-white/30 bg-transparent",
   },
   home: {
     kickerClass: "fb-kicker text-white/70",
-    cardClass:
-      "border-white/15 bg-gradient-to-b from-white/[0.07] to-[#060618]/88",
-    glowClass: "from-white/12 to-[#15203a]/30",
+    cardClass: "border-white/20 bg-transparent",
   },
 };
 
@@ -147,8 +139,7 @@ function BentoCard({
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
       custom={animationIndex}
-      whileHover={{ y: -4 }}
-      className={`flex h-full flex-col justify-between rounded-[24px] border ${shellClass} ${themeClass} ${className}`}
+      className={`flex h-full flex-col justify-between border ${shellClass} ${themeClass} ${className}`}
     >
       <p className={`${copyClass} text-white/85 ${contentClampClass}`}>
         {item.content}
@@ -191,10 +182,6 @@ export default function TestimonialSection({ theme = "ai", cta }) {
       id="testimonials"
       className="relative scroll-mt-28 overflow-hidden py-20 sm:py-24"
     >
-      <div
-        className={`pointer-events-none absolute left-1/2 top-20 h-56 w-56 -translate-x-1/2 rounded-full bg-gradient-to-br blur-[110px] ${currentTheme.glowClass}`}
-      />
-
       <div className="relative z-10 fb-shell">
         <div className="mx-auto w-full max-w-[1120px]">
           <p className={`text-center ${currentTheme.kickerClass}`}>Testimonials</p>

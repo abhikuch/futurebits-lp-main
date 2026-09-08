@@ -118,7 +118,8 @@ export default function UaeGeoPage({ page }) {
   return (
     <main
       id="main-content"
-      className={`relative min-h-screen overflow-hidden ${visual.pageBg} text-white`}
+      className={`fb-editorial-page relative min-h-screen overflow-hidden ${visual.pageBg} text-white`}
+      data-editorial-vertical={resolveGeoThemeKey(page.themeKey)}
     >
       <GeoVerticalDecor themeKey={page.themeKey} />
 
@@ -145,14 +146,14 @@ export default function UaeGeoPage({ page }) {
             {page.key === "hub" ? (
               <Link
                 href="/services"
-                className="inline-flex h-11 items-center justify-center rounded-full border border-white/20 px-6 text-sm font-medium text-white/90 transition hover:bg-white/10"
+                className="inline-flex h-11 items-center justify-center border border-white/20 px-6 text-sm font-medium text-white/90 transition hover:bg-white/10"
               >
                 See the catalog
               </Link>
             ) : (
               <Link
                 href="/uae"
-                className="inline-flex h-11 items-center justify-center rounded-full border border-white/20 px-6 text-sm font-medium text-white/90 transition hover:bg-white/10"
+                className="inline-flex h-11 items-center justify-center border border-white/20 px-6 text-sm font-medium text-white/90 transition hover:bg-white/10"
               >
                 All UAE tracks
               </Link>

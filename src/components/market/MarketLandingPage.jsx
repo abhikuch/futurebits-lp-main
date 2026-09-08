@@ -6,7 +6,6 @@ import FeaturedServiceLinks from "@/components/shared/FeaturedServiceLinks";
 import ProofBand from "@/components/shared/ProofBand";
 import SiteFooter from "@/components/shared/SiteFooter";
 import TestimonialSection from "@/components/shared/TestimonialSection";
-import TopNavbar from "@/components/shared/TopNavbar";
 import MarketingButton from "@/components/ui/marketing-button";
 import { CAL } from "@/config/site";
 
@@ -39,9 +38,11 @@ const FooterCTA = dynamic(() => import("@/components/market/FooterCTA"), {
 
 const MarketPage = () => {
   return (
-    <div className="bg-[#080808] ">
-      <main id="main-content" className="relative bg-[#080808]">
-        <TopNavbar />
+    <div
+      className="fb-editorial-page bg-[#080808]"
+      data-editorial-vertical="markets"
+    >
+      <main id="main-content" className="relative">
         <Hero />
       </main>
       <ProofBand vertical="markets" ctaHref={CAL.markets} ctaLabel="Book a call" />
