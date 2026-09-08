@@ -188,20 +188,20 @@ function createMaterials() {
       opacity: 0.26,
     }),
     glass: new THREE.MeshPhysicalMaterial({
-      color: 0xcbd2d7,
+      color: 0xe1e4e6,
       metalness: 0.05,
-      roughness: 0.12,
-      transmission: 0.48,
+      roughness: 0.2,
+      transmission: 0.24,
       thickness: 0.28,
       transparent: true,
-      opacity: 0.74,
+      opacity: 0.84,
       clearcoat: 1,
       clearcoatRoughness: 0.08,
     }),
     metal: new THREE.MeshStandardMaterial({
-      color: 0xaeb0b4,
-      metalness: 1,
-      roughness: 0.19,
+      color: 0xd0d0ce,
+      metalness: 0.86,
+      roughness: 0.28,
     }),
     paper: new THREE.MeshPhysicalMaterial({
       color: 0xeee8da,
@@ -309,7 +309,8 @@ export function mountHomeHeroWebGL({
   camera.position.set(0, 0.35, 6.3);
 
   const instrument = createInstrument();
-  instrument.root.position.set(1.72, 0.1, 0);
+  instrument.root.position.set(1.92, 0.1, 0);
+  instrument.root.scale.setScalar(0.94);
   instrument.root.rotation.set(-0.03, -0.14, 0.02);
   scene.add(instrument.root);
 
@@ -389,13 +390,13 @@ export function mountHomeHeroWebGL({
       -0.03 + pointer.x * 0.075 + ambient * 0.018 + scrollProgress * 0.2;
     instrument.armature.rotation.x = pointer.y * 0.04 - scrollProgress * 0.08;
     instrument.root.position.y = 0.1 + ambient * 0.018 - scrollProgress * 0.24;
-    instrument.root.scale.setScalar(1 - scrollProgress * 0.075);
+    instrument.root.scale.setScalar(0.94 - scrollProgress * 0.07);
     instrument.dust.rotation.y = elapsed * 0.012;
     instrument.aperture.material.opacity = 0.78 + Math.sin(elapsed * 0.8) * 0.1;
 
     camera.position.x = pointer.x * 0.07;
     camera.position.y = 0.35 - pointer.y * 0.045;
-    camera.lookAt(1.45, 0.04, 0);
+    camera.lookAt(1.62, 0.04, 0);
     renderer.render(scene, camera);
 
     if (!readySignaled) {
