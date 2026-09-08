@@ -19,6 +19,8 @@ function collectCopy(value, bag = []) {
 
 describe("home editorial landing", () => {
   it("routes buyers through three vertical-first practices", () => {
+    assert.deepEqual(HOME_HERO.title, ["Build the thing", "your team can", "actually run."]);
+    assert.match(HOME_HERO.lede, /from a written scope to production code in your repo/);
     assert.equal(HOME_HERO.primaryCta, "Book a call");
     assert.equal(HOME_HERO.secondaryCta, "Choose a track");
     assert.deepEqual(HOME_TRACKS.map((track) => track.href), ["/ai", "/markets", "/design"]);
@@ -54,6 +56,9 @@ describe("home editorial landing", () => {
 
   it("keeps markdown useful and vertical-first", () => {
     const result = getMarkdownForPath("/");
+    assert.match(result.body, /^# Build the thing your team can actually run\./);
+    assert.match(result.body, /Futurebits designs and engineers AI systems, trading infrastructure, and digital products/);
+    assert.doesNotMatch(result.body, /convincing demo|Your next release/);
     assert.match(result.body, /Choose by failure state/);
     assert.match(result.body, /What delivery produces/);
     assert.match(result.body, /\/ai/);

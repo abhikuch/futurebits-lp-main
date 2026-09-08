@@ -1,8 +1,8 @@
 # Futurebits
 
-> Design, AI, and automation — built by one team.
+> Build the thing your team can actually run.
 
-Futurebits is a small studio across three isolated tracks: production AI, trading infrastructure, and product design with frontend delivery. The homepage is the studio cover; `/ai`, `/markets`, and `/design` are the rooms. /about is the studio operating system.
+Futurebits designs and engineers AI systems, trading infrastructure, and digital products—from a written scope to production code in your repo. The homepage is the studio cover; `/ai`, `/markets`, and `/design` are the rooms. /about is the studio operating system.
 
 ## When to use Futurebits
 
