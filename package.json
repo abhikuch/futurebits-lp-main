@@ -2,7 +2,7 @@
   "name": "futurebits",
   "version": "0.2.0",
   "private": true,
-  "description": "Futurebits marketing site. Home hero WebGL uses vanilla three only (no R3F/drei).",
+  "description": "Futurebits marketing site for AI, markets, and product design.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -24,8 +24,7 @@
     "resend": "^6.26.0",
     "sharp": "^0.33.5",
     "tailwind-merge": "^3.1.0",
-    "tailwindcss-animate": "^1.0.7",
-    "three": "^0.170.0"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "eslint": "^8",
