@@ -19,13 +19,14 @@ export default function EditorialVerticalHero({
   secondaryHref,
   secondaryLabel,
   motifLabel,
+  showNav = true,
 }) {
   return (
     <section
       className="fb-vertical-hero"
       data-editorial-vertical={vertical}
     >
-      <TopNavbar />
+      {showNav ? <TopNavbar /> : null}
       <div className="fb-editorial-shell">
         <header className="fb-vertical-hero-header">
           <p>{INDEX_BY_VERTICAL[vertical]}</p>

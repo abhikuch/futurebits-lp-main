@@ -14,6 +14,7 @@ export default function AboutHero() {
       secondaryHref="#rooms"
       secondaryLabel="Explore the three rooms"
       motifLabel="One studio / three disciplines"
+      showNav={false}
     />
   );
 }
