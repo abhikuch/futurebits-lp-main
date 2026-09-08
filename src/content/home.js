@@ -15,8 +15,8 @@ export const HOME_CAL = {
 
 export const HOME_HERO = {
   kicker: "Futurebits / independent product studio",
-  title: ["Your next release", "needs more than", "a convincing demo."],
-  lede: "We turn stuck workflows, fragile trading systems, and unclear product journeys into software people can use. One small team works from the first hard decision to code in your repo.",
+  title: ["Build the thing", "your team can", "actually run."],
+  lede: "Futurebits designs and engineers AI systems, trading infrastructure, and digital products—from a written scope to production code in your repo.",
   primaryCta: "Book a call",
   secondaryCta: "Choose a track",
   index: [

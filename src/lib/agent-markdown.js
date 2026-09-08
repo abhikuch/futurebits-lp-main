@@ -1,5 +1,6 @@
 import { BLOG_POSTS } from "@/content/blog";
 import { getAboutMarkdown } from "@/content/about";
+import { HOME_HERO } from "@/content/home";
 import { FREE_RESOURCES } from "@/content/link-building";
 import { SERVICE_CATEGORIES, SERVICES } from "@/content/services";
 import { COMPANY, ROUTES, SITE_URL } from "@/config/site";
@@ -49,8 +50,10 @@ function routeMarkdown(path) {
     });
   }
 
+  const title =
+    path === ROUTES.home.path ? HOME_HERO.title.join(" ") : route.title;
   const lines = [
-    `# ${route.title}`,
+    `# ${title}`,
     "",
     route.description,
     "",
