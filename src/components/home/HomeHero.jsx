@@ -11,16 +11,16 @@ export default function HomeHero() {
     <section className="fb-home-hero relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-[#060618] text-white">
       <HomeHeroStage />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-end px-6 pb-12 pt-[22rem] sm:px-10 sm:pt-[25rem] lg:justify-center lg:px-16 lg:pb-28 lg:pt-36">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-end px-6 pb-12 pt-[20rem] sm:px-10 sm:pt-[25rem] lg:justify-center lg:px-16 lg:pb-28 lg:pt-36">
         <p className="fb-kicker fb-home-hero-kicker">{HOME_HERO.kicker}</p>
-        <h1 className="fb-hero-title fb-home-hero-title mt-6 max-w-[760px] text-left">
+        <h1 className="fb-hero-title fb-home-hero-title mt-4 max-w-[760px] text-left sm:mt-6">
           {HOME_HERO.title}
         </h1>
-        <p className="fb-home-hero-copy mt-6 max-w-[620px] text-pretty font-poppins text-[15px] leading-relaxed text-white/64 sm:text-lg">
+        <p className="fb-home-hero-copy mt-4 max-w-[620px] text-pretty font-poppins text-[15px] leading-relaxed text-white/64 sm:mt-6 sm:text-lg">
           {HOME_HERO.lede}
         </p>
 
-        <div className="fb-home-hero-cta mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div className="fb-home-hero-cta mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center">
           <Link
             href={HOME_CAL.hero}
             target="_blank"
