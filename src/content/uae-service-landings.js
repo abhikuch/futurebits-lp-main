@@ -848,7 +848,7 @@ export function getUaeServiceLanding(service) {
   );
 
   const start = lintText(
-    `Book a 30-minute call. We will tell you if ${service.title.toLowerCase()} is the wrong slice. If we continue, you get a written scope, weekly demos, and the work in your repo. ${catalogCopy?.subhead ?? service.subhead} Remote studio, no invented Dubai address, travel when a workshop is the faster path.`
+    `Book a 30-minute call. We will tell you if ${service.title.toLowerCase()} is the wrong slice. If we continue, you get a written scope, weekly demos, and the work in your repo. ${catalogCopy?.subhead ?? service.subhead} The scope identifies dependencies, review points, production ownership, and the evidence needed before work expands beyond the first path. Remote studio, no invented Dubai address, travel when a workshop is the faster path.`
   );
 
   const playbookIntro = lintText(
