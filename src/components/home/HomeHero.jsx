@@ -5,17 +5,11 @@ import { HOME_CAL, HOME_HERO } from "@/content/home";
 export default function HomeHero() {
   return (
     <section className="fb-editorial-hero">
-      <div className="fb-editorial-shell">
-        <header className="fb-editorial-hero-header">
-          <p>{HOME_HERO.kicker}</p>
-          <p aria-hidden="true">Issue 01 / 2026</p>
-        </header>
+      <div className="fb-home-hero-glow" aria-hidden="true" />
+      <div className="fb-home-hero-frame" aria-hidden="true" />
+      <div className="fb-editorial-shell fb-home-hero-inner">
         <div className="fb-editorial-title-wrap">
-          <p className="fb-editorial-title-note" aria-hidden="true">
-            From brief
-            <br />
-            to shipped
-          </p>
+          <p className="fb-kicker fb-home-kicker">{HOME_HERO.kicker}</p>
           <h1 className="fb-editorial-title">
             {HOME_HERO.title.map((line, index) => (
               <span key={line} className={`fb-editorial-title-line is-${index + 1}`}>
@@ -35,20 +29,21 @@ export default function HomeHero() {
             </Link>
           </div>
         </div>
+        <nav aria-label="Practice index" className="fb-editorial-index">
+          <p className="fb-home-index-label">Choose the room that matches the constraint</p>
+          <ol>
+            {HOME_HERO.index.map((item) => (
+              <li key={item.n}>
+                <Link href={item.href}>
+                  <span className="fb-editorial-index-number">{item.n}</span>
+                  <span className="fb-editorial-index-copy"><strong>{item.label}</strong><small>{item.line}</small></span>
+                  <span aria-hidden="true">↗</span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </nav>
       </div>
-      <nav aria-label="Practice index" className="fb-editorial-index">
-        <ol className="fb-editorial-shell">
-          {HOME_HERO.index.map((item) => (
-            <li key={item.n}>
-              <Link href={item.href}>
-                <span className="fb-editorial-index-number">{item.n}</span>
-                <span className="fb-editorial-index-copy"><strong>{item.label}</strong><small>{item.line}</small></span>
-                <span aria-hidden="true">↗</span>
-              </Link>
-            </li>
-          ))}
-        </ol>
-      </nav>
     </section>
   );
 }

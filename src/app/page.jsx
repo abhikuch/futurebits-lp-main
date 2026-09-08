@@ -7,7 +7,6 @@ import HomeTracks from "@/components/home/HomeTracks";
 import SiteFooter from "@/components/shared/SiteFooter";
 import TopNavbar from "@/components/shared/TopNavbar";
 import logo from "@/assets/logo.svg";
-import { SERVICE_HUB_THEME } from "@/app/services/themeTokens";
 import { buildRouteMetadata, ROUTES, SITE_URL } from "@/config/site";
 
 export const metadata = buildRouteMetadata("home");
@@ -18,10 +17,10 @@ export default function HomePage() {
     <>
       <JsonLd data={[webPageJsonLd({ path: ROUTES.home.path, name: ROUTES.home.title, description: ROUTES.home.description, image: ROUTES.home.ogImage, breadcrumbItems }), breadcrumbJsonLd(breadcrumbItems, ROUTES.home.path)]} />
       <TopNavbar />
-      <main id="main-content" className="min-h-screen bg-[#f1efe8] text-[#11110f]">
+      <main id="main-content" className="min-h-screen bg-[#060618] text-white">
         <HomeHero /><HomeDiagnostic /><HomeTracks /><HomeBeliefs /><HomeClose />
       </main>
-      <SiteFooter logo={logo} homePath={ROUTES.home.path} backgroundClassName={SERVICE_HUB_THEME.footerBgClass} />
+      <SiteFooter logo={logo} homePath={ROUTES.home.path} backgroundClassName="bg-[#050512]" />
     </>
   );
 }

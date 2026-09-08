@@ -1,5 +1,11 @@
 import Link from "next/link";
 
+import {
+  MotionFadeIn,
+  MotionStagger,
+  MotionStaggerItem,
+} from "@/components/shared/MotionReveal";
+
 const TRACK_LABELS = {
   ai: "Automation / retrieval / agents",
   markets: "Research / execution / risk",
@@ -17,23 +23,23 @@ export default function HomeTrackChapter({ track }) {
     <article id={`practice-${track.id}`} data-home-track={track.id} className={`fb-practice fb-practice-${track.id}`}>
       <div className="fb-editorial-shell">
         <header className="fb-practice-header"><p>{track.index}</p><p>{track.kicker}</p><p>{getTrackLabel(track.id)}</p></header>
-        <div className="fb-practice-lead"><h2>{track.title}</h2><p>{track.lede}</p></div>
-        <div className="fb-practice-body">
-          <div className="fb-practice-problem">
+        <MotionFadeIn className="fb-practice-lead"><h2>{track.title}</h2><p>{track.lede}</p></MotionFadeIn>
+        <MotionStagger className="fb-practice-body">
+          <MotionStaggerItem className="fb-practice-problem">
             <p className="fb-practice-label">When we enter</p><p>{track.painfulState}</p><p className="fb-practice-boundary">{track.wontDo}</p>
-          </div>
-          <div className="fb-practice-artifacts">
+          </MotionStaggerItem>
+          <MotionStaggerItem className="fb-practice-artifacts">
             <p className="fb-practice-label">What reaches your repo</p>
             <ol>{track.artifacts.map((artifact, index) => <li key={artifact}><span>{String(index + 1).padStart(2, "0")}</span>{artifact}</li>)}</ol>
-          </div>
-          <div className="fb-practice-gate">
+          </MotionStaggerItem>
+          <MotionStaggerItem className="fb-practice-gate">
             <p className="fb-practice-label">First milestone</p><strong>{track.milestone}</strong>
             <div className="fb-practice-actions">
               <Link href={track.href}>{track.enterLabel}<span aria-hidden="true">→</span></Link>
               <Link href={track.calHref} target="_blank" rel="noopener noreferrer" data-home-cta={track.id}>Book a call<span aria-hidden="true">↗</span></Link>
             </div>
-          </div>
-        </div>
+          </MotionStaggerItem>
+        </MotionStagger>
       </div>
     </article>
   );
