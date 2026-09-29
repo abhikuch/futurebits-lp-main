@@ -10,6 +10,7 @@
  *  - any component that needs an external link or contact email
  */
 
+import { OG_TRACKS, ROUTE_OG_TRACK } from "@/config/og-tracks";
 import { buildCalUrl } from "@/lib/cal";
 
 export const SITE_URL = "https://www.futurebits.tech";
@@ -80,7 +81,36 @@ export const ASSETS = {
   ogDesign: `${BLOB_BASE}/Futurebits_Design-E1Fc22OUTeWKEw5cZUtEvf281rlfyq.png`,
 };
 
-export const DEFAULT_OG_IMAGE = ASSETS.ogAi;
+/**
+ * Dynamic Open Graph image URL (`/og`).
+ * @param {{ title?: string, description?: string, track?: string, caption?: string }} [options]
+ */
+export function buildOgImageUrl(options = {}) {
+  const trackId =
+    options.track && OG_TRACKS[options.track] ? options.track : "home";
+  const defaults = OG_TRACKS[trackId];
+  const params = new URLSearchParams();
+
+  if (trackId !== "home") {
+    params.set("track", trackId);
+  }
+
+  const title = options.title || defaults.title;
+  if (title) params.set("title", title);
+
+  if (options.description) {
+    params.set("description", options.description);
+  }
+
+  if (options.caption) {
+    params.set("caption", options.caption);
+  }
+
+  const query = params.toString();
+  return query ? `/og?${query}` : "/og";
+}
+
+export const DEFAULT_OG_IMAGE = buildOgImageUrl({ track: "home" });
 
 /**
  * Per-route metadata. Each entry is consumed by the route's `generateMetadata`.
@@ -523,6 +553,8 @@ export function buildRouteMetadata(routeKey) {
     throw new Error(`Unknown route key: ${routeKey}`);
   }
   const url = `${SITE_URL}${route.path}`;
+  const track = ROUTE_OG_TRACK[routeKey] || "home";
+  const ogImage = buildOgImageUrl({ track });
   return {
     title: route.title,
     description: route.description,
@@ -540,7 +572,7 @@ export function buildRouteMetadata(routeKey) {
       description: route.description,
       images: [
         {
-          url: route.ogImage,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: route.ogImageAlt,
@@ -554,7 +586,7 @@ export function buildRouteMetadata(routeKey) {
       creator: SOCIAL.twitterHandle,
       title: route.title,
       description: route.description,
-      images: [route.ogImage],
+      images: [ogImage],
     },
     icons: {
       icon: ASSETS.favicon,
